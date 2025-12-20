@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Video Feed</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kokosima AI Visual</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app">
-  <header class="top-bar">
-    <span class="logo">🎬 VideoFeed</span>
-    <button id="muteBtn">🔊</button>
-  </header>
+<header class="top-bar">
+  <span class="logo">🧠 kokosima</span>
+</header>
 
-  <main class="feed">
-    <section class="video-item">
-      <video src="videos/video1.mp4" loop muted playsinline></video>
+<main class="feed">
 
-      <div class="ui-right">
-        <button>❤️<span>12K</span></button>
-        <button>👁️<span>45K</span></button>
-      </div>
+  <section class="item">
+    <img src="images/scene1.jpg" alt="AI Scene">
 
-      <div class="caption">
-        <h4>@kokosima</h4>
-        <p>Eksperimen video AI 🔥</p>
-      </div>
-    </section>
+    <div class="overlay">
+      <h3>Air Terjun Terbalik</h3>
+      <p>Eksperimen AI image to video</p>
 
-    <section class="video-item">
-      <video src="videos/video2.mp4" loop muted playsinline></video>
-      <div class="ui-right">
-        <button>❤️<span>8K</span></button>
-        <button>👁️<span>30K</span></button>
-      </div>
-      <div class="caption">
-        <h4>@kokosima</h4>
-        <p>Gravity terbalik 😮</p>
-      </div>
-    </section>
-  </main>
-</div>
+      <a class="play-btn"
+         href="https://youtube.com/shorts/VIDEO_ID"
+         target="_blank">
+        ▶ Tonton Video
+      </a>
+    </div>
+  </section>
 
-<script src="script.js"></script>
+  <section class="item">
+    <img src="images/scene2.jpg" alt="AI Scene">
+
+    <div class="overlay">
+      <h3>Dunia Gravitasi Terbalik</h3>
+      <p>AI cinematic experiment</p>
+
+      <a class="play-btn"
+         href="https://youtu.be/VIDEO_ID"
+         target="_blank">
+        ▶ Tonton Video
+      </a>
+    </div>
+  </section>
+
+</main>
+
 </body>
 </html>
