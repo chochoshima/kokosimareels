@@ -207,7 +207,30 @@ textarea {
   resize: vertical;
 }
 
+.overlay-top {
+  position: absolute;
+  bottom: 96px;       /* ⬅️ tombol naik ke atas */
+  left: 16px;
+  right: 16px;
+  max-width: 90%;
+}
 
+.overlay-top h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.overlay-top p {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
 
 /* =========================
    UTILITIES
