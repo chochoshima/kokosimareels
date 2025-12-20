@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Feed</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="app">
+  <header class="top-bar">
+    <span class="logo">🎬 VideoFeed</span>
+    <button id="muteBtn">🔊</button>
+  </header>
+
+  <main class="feed">
+    <section class="video-item">
+      <video src="videos/video1.mp4" loop muted playsinline></video>
+
+      <div class="ui-right">
+        <button>❤️<span>12K</span></button>
+        <button>👁️<span>45K</span></button>
+      </div>
+
+      <div class="caption">
+        <h4>@kokosima</h4>
+        <p>Eksperimen video AI 🔥</p>
+      </div>
+    </section>
+
+    <section class="video-item">
+      <video src="videos/video2.mp4" loop muted playsinline></video>
+      <div class="ui-right">
+        <button>❤️<span>8K</span></button>
+        <button>👁️<span>30K</span></button>
+      </div>
+      <div class="caption">
+        <h4>@kokosima</h4>
+        <p>Gravity terbalik 😮</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
