@@ -4,101 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Prompt Library</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --primary: #38bdf8;
-            --text-main: #f1f5f9;
-            --text-dim: #94a3b8;
-        }
-
+        /* Mengintegrasikan Style Global ke halaman ini */
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding-top: 0; /* Reset padding dari style global khusus hal ini */
         }
 
-        .container {
-            width: 90%;
+        .prompt-container {
+            width: 95%;
             max-width: 700px;
-            background: var(--card-bg);
+            background: #111; /* Senada dengan tema gelap index */
             padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            border: 1px solid #222;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        .top-bar { margin-bottom: 1.5rem; }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+        .top-bar-internal {
+            margin-bottom: 20px;
         }
 
-        .btn-outline {
-            color: var(--primary);
-            border: 1px solid var(--primary);
+        h2 { 
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #fff;
         }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #000;
-            width: 100%;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .btn:hover { opacity: 0.8; transform: translateY(-1px); }
-
-        h2 { margin: 0 0 0.5rem 0; color: var(--primary); }
 
         textarea {
             width: 100%;
-            height: 300px;
-            background: #0f172a;
-            color: #cbd5e1;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 1rem;
+            height: 350px;
+            background: #000;
+            color: #ccc;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 1.2rem;
             box-sizing: border-box;
             resize: none;
             font-family: 'Courier New', monospace;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #555;
         }
 
         .status-msg {
-            color: #ef4444;
+            color: #ff4444;
             text-align: center;
             display: none;
+            margin-bottom: 20px;
+        }
+        
+        /* Tombol menyesuaikan style global index */
+        .btn-copy {
+            width: 100%;
+            cursor: pointer;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="top-bar">
-        <a href="index.html" class="btn btn-outline">← Kembali</a>
+<div class="prompt-container">
+    <div class="top-bar-internal">
+        <a href="index.html" class="btn outline">← Kembali</a>
     </div>
 
-    <h2 id="title">Memuat Prompt...</h2>
-    <p id="error-msg" class="status-msg">Prompt tidak ditemukan!</p>
+    <h2 id="title">Memuat...</h2>
+    <p id="error-msg" class="status-msg">Ups! Prompt tidak ditemukan.</p>
     
     <textarea id="promptText" readonly spellcheck="false"></textarea>
 
-    <button class="btn btn-primary" onclick="copyPrompt()">
-        <span>📋 Salin Prompt</span>
+    <button class="btn btn-copy" onclick="copyPrompt()">
+        <span id="btn-text">📋 Salin Prompt</span>
     </button>
 </div>
 
@@ -106,27 +92,31 @@
     const prompts = {
         "ai-001": {
             title: "🏍️ RIDE (Cyberpunk)",
-            text: "A relaxed yet high-octane cinematic shot of a man riding a vintage customized classic cafe racer motorcycle through a sprawling, sun-drenched neo-cyberpunk ruin. The rider exudes a "casual-cool" vibe, wearing a modish cyberpunk casual outfit: a weathered oversized denim jacket over a technical charcoal hoodie, distressed dark cargo joggers with tactical straps, and fingerless leather gloves. His posture is relaxed but focused, one hand confidently on the throttle as he navigates through the desolate city. The motorcycle is a masterpiece of retro-future engineering, featuring polished chrome pipes with heat discoloration, a hand-stitched tan leather seat, and a glowing warm analog headlight revealing intricate internal wiring.
-​Environment & Atmosphere:
-​A bright, post-apocalyptic urban wasteland under a vast, hazy sky. The background is filled with the skeletal remains of mega-skyscrapers, overgrown with digital moss and rusted steel rebar. Flickering holographic advertisements in faded Kanji colors cast subtle glows on the cracked asphalt. The air is alive with floating dust motes and heat haze. A gentle motion blur on the crumbling roadside structures emphasizes a smooth, cruising speed.
-​Technical Photography Settings:
-​Shot on Hasselblad X1D II, 50mm lens at f/1.8 for professional subject separation and creamy bokeh. High-resolution 8K photo quality, Golden Ratio composition, cinematic natural lighting with high-contrast daylight shadows. Sharp focus on the textures of the fabric, the metallic sheen of the bike, and the microscopic details of the ruin. Neutral color grading with a slight warm film grain.
-​Reference Face Integration (Mandatory):
-​[FACIAL REFERENCE INTEGRATION]: Use the provided photo reference. Facial features must remain 100% identical to the source: maintain the exact shape of the eyes, nose, lips, jawline, and facial proportions without any alteration. The face must be organically reconstructed into the scene, matching the natural daylight color temperature, ambient occlusion, and subtle skin textures. The expression is shifted to a relaxed, calm, and confident "cruising" look while preserving the original identity and hairstyle perfectly.// Isi teks Anda di sini
+            text: `A relaxed yet high-octane cinematic shot of a man riding a vintage customized classic cafe racer motorcycle through a sprawling, sun-drenched neo-cyberpunk ruin. The rider exudes a "casual-cool" vibe, wearing a modish cyberpunk casual outfit.
+
+Environment & Atmosphere:
+A bright, post-apocalyptic urban wasteland under a vast, hazy sky. Skeletal mega-skyscrapers overgrown with digital moss.
+
+Technical Photography Settings:
+Shot on Hasselblad X1D II, 50mm lens at f/1.8. 8K photo quality, Golden Ratio composition.
+
+Reference Face Integration:
+Use the provided photo reference. Facial features must remain 100% identical to the source.`
         },
         "ai-002": {
             title: "🐉 How To Train Your Dragon",
-            text: "Ultra-realistic cinematic scene of a man using the provided photo reference, riding a massive black dragon resembling Toothless soaring through the sky above steep rocky sea cliffs.
-Facial features must remain identical to the reference photo — same eyes, nose, lips, jawline, hairstyle, and facial proportions, no alteration.
-The man wears authentic Viking-style armor: dark leather outfit with thick fur lining, rugged textures, weathered details, and a horned Viking helmet. His expression is intense and determined, hair and fur violently flowing in the wind.
-The dragon flies at high speed, wings fully extended, powerful wingbeats creating strong air turbulence. Subtle muscle movement visible beneath its dark scales, glossy black skin reflecting cold ocean light.
-Environment: dramatic coastal cliffs, sharp rock formations rising from the ocean, crashing waves far below, mist and sea spray swirling upward. Golden-hour sky mixed with stormy clouds, volumetric light rays piercing through, creating epic contrast.
-Camera: dynamic cinematic angle, slight low-angle tracking shot, shallow depth of field, realistic motion blur on wings and background, smooth cinematic movement, IMAX-level realism.
-Hyper-detailed textures, realistic lighting, atmospheric perspective, epic fantasy realism, dramatic mood, ultra-high resolution, lifelike motion" // Isi teks Anda di sini
+            text: `Ultra-realistic cinematic scene of a man using the provided photo reference, riding a massive black dragon resembling Toothless soaring through the sky above steep rocky sea cliffs.
+
+Facial features must remain identical to the reference photo. The man wears authentic Viking-style armor: dark leather outfit with thick fur lining.
+
+Environment: 
+Dramatic coastal cliffs, sharp rock formations, crashing waves far below. Golden-hour sky mixed with stormy clouds.
+
+Camera: 
+Dynamic cinematic angle, slight low-angle tracking shot, IMAX-level realism.`
         }
     };
 
-    // Mengambil ID dari URL
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
@@ -134,7 +124,6 @@ Hyper-detailed textures, realistic lighting, atmospheric perspective, epic fanta
     const textEl = document.getElementById("promptText");
     const errorEl = document.getElementById("error-msg");
 
-    // Inisialisasi Data
     if (id && prompts[id]) {
         titleEl.textContent = prompts[id].title;
         textEl.value = prompts[id].text;
@@ -144,17 +133,16 @@ Hyper-detailed textures, realistic lighting, atmospheric perspective, epic fanta
         errorEl.style.display = "block";
     }
 
-    // Fungsi Copy yang lebih modern
     async function copyPrompt() {
         try {
             await navigator.clipboard.writeText(textEl.value);
-            const btn = document.querySelector('.btn-primary');
-            const originalText = btn.innerHTML;
+            const btnText = document.getElementById('btn-text');
+            const original = btnText.innerHTML;
             
-            btn.innerHTML = "✅ Tersalin!";
-            setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            btnText.innerHTML = "✅ Tersalin!";
+            setTimeout(() => { btnText.innerHTML = original; }, 2000);
         } catch (err) {
-            alert("Gagal menyalin teks.");
+            alert("Gagal menyalin.");
         }
     }
 </script>
