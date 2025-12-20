@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+
+<title>Prompt</title>
+
+</head>
+<body>
+<div class="top-bar">
+  <a class="btn outline"
+           a href="index.html"">BACK</a>
+</div>
+<h2 id="title"></h2>
+<textarea id="promptText" readonly></textarea>
+<br>
+<a href="#" class="btn" onclick="copyPrompt()">📋 Copy Prompt</a>
+
+<script>
+const prompts = {
+  "ai-001": {
+    title: "RIDE",
+    text: `A relaxed yet high-octane cinematic shot of a man riding a vintage customized classic cafe racer motorcycle through a sprawling, sun-drenched neo-cyberpunk ruin.
+
+The rider exudes a "casual-cool" vibe, wearing a modish cyberpunk casual outfit: a weathered oversized denim jacket over a technical charcoal hoodie, distressed dark cargo joggers with tactical straps, and fingerless leather gloves.
+
+His posture is relaxed but focused, one hand confidently on the throttle as he navigates through the desolate city.
+
+The motorcycle is a masterpiece of retro-future engineering, featuring polished chrome pipes with heat discoloration, a hand-stitched tan leather seat, and a glowing warm analog headlight revealing intricate internal wiring.
+
+Environment & Atmosphere:
+A bright, post-apocalyptic urban wasteland under a vast, hazy sky. Skeletal mega-skyscrapers overgrown with digital moss and rusted steel rebar. Flickering holographic advertisements in faded Kanji colors. Floating dust motes and heat haze. Gentle motion blur on roadside structures.
+
+Technical Photography Settings:
+Shot on Hasselblad X1D II, 50mm lens at f/1.8. Professional subject separation, creamy bokeh, 8K quality, Golden Ratio composition, cinematic daylight lighting, neutral color grading, subtle warm film grain.
+
+Reference Face Integration (Mandatory):
+Use the provided photo reference. Facial features must remain 100% identical: same eyes, nose, lips, jawline, proportions, hairstyle, and identity. Organic integration with correct daylight color temperature and realistic skin texture.`
+  },
+
+  "ai-002": {
+    title: "How To Train Your Dragon",
+    text: `Ultra-realistic cinematic scene of a man using the provided photo reference, riding a massive black dragon resembling Toothless soaring through the sky above steep rocky sea cliffs.
+
+Facial features must remain identical to the reference photo — same eyes, nose, lips, jawline, hairstyle, and facial proportions.
+
+The man wears authentic Viking-style armor with thick fur lining and a horned helmet. Expression intense and determined, hair and fur violently flowing in the wind.
+
+The dragon flies at high speed with powerful wingbeats creating strong air turbulence. Subtle muscle movement beneath glossy black scales reflecting cold ocean light.
+
+Environment:
+Dramatic coastal cliffs, crashing waves far below, swirling mist and sea spray, golden-hour sky mixed with storm clouds, volumetric light rays.
+
+Camera:
+Dynamic low-angle tracking shot, shallow depth of field, realistic motion blur, IMAX-level cinematic realism, ultra-high resolution.`
+  }
+};
+
+const id = new URLSearchParams(window.location.search).get("id");
+
+if (prompts[id]) {
+  document.getElementById("title").textContent = prompts[id].title;
+  document.getElementById("promptText").value = prompts[id].text;
+} else {
+  document.getElementById("title").textContent = "Prompt tidak ditemukan";
+}
+
+function copyPrompt() {
+  navigator.clipboard.writeText(
+    document.getElementById("promptText").value
+  );
+  alert("Prompt copied!");
+}
+</script>
+
+</body>
+</html>
