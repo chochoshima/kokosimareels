@@ -2,76 +2,44 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kokosima AI Visual | Feed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kokosima AI Visual</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-    <header class="main-header">
-        <div class="container">
-            <span class="logo">🧠 kokosima</span>
-        </div>
+    <header class="top-bar">
+        <span class="logo">🧠 kokosima</span>
     </header>
 
-    <main class="content-feed">
-        <div class="container grid-layout">
-
-            <article class="card">
-                <figure class="card__figure">
-                    <img src="images/ai-001.jpg" alt="Cinematic AI rendering of a cyberpunk rider" class="card__img">
-                </figure>
-
-                <div class="card__overlay">
-                    <div class="card__info">
-                        <h3 class="card__title">RIDE</h3>
-                        <p class="card__subtitle">AI image to video experiment</p>
-                    </div>
-
-                    <div class="card__actions">
-                        <a href="https://youtube.com/shorts/VIDEO_ID" 
-                           class="btn btn--primary" 
-                           target="_blank" 
-                           rel="noopener">
-                           <span>▶</span> Video
-                        </a>
-                        <a href="prompt.html?id=ai-001" 
-                           class="btn btn--outline">
-                           PROMPT
-                        </a>
-                    </div>
+    <main class="feed">
+        <section class="item">
+            <img src="images/ai-001.jpg" alt="AI Scene RIDE" loading="lazy">
+            <div class="overlay-content">
+                <div class="info-text">
+                    <h3>RIDE</h3>
+                    <p>AI image to video experiment</p>
                 </div>
-            </article>
-
-            <article class="card">
-                <figure class="card__figure">
-                    <img src="images/ai-002.jpg" alt="Viking riding a black dragon over sea cliffs" class="card__img">
-                </figure>
-
-                <div class="card__overlay">
-                    <div class="card__info">
-                        <h3 class="card__title">How To Train Your Dragon</h3>
-                        <p class="card__subtitle">AI image to video experiment</p>
-                    </div>
-
-                    <div class="card__actions">
-                        <a href="https://youtube.com/shorts/VAF2idTiAe0" 
-                           class="btn btn--primary" 
-                           target="_blank" 
-                           rel="noopener">
-                           <span>▶</span> Video
-                        </a>
-                        <a href="prompt.html?id=ai-002" 
-                           class="btn btn--outline">
-                           PROMPT
-                        </a>
-                    </div>
+                <div class="actions">
+                    <a class="btn" href="https://youtube.com/..." target="_blank" rel="noopener">▶ Video</a>
+                    <a class="btn outline" href="prompt.html?id=ai-001">PROMPT</a>
                 </div>
-            </article>
+            </div>
+        </section>
 
-        </div>
+        <section class="item">
+            <img src="images/ai-002.jpg" alt="AI Scene Dragon" loading="lazy">
+            <div class="overlay-content">
+                <div class="info-text">
+                    <h3>How To Train Your Dragon</h3>
+                    <p>AI image to video experiment</p>
+                </div>
+                <div class="actions">
+                    <a class="btn" href="https://youtube.com/..." target="_blank" rel="noopener">▶ Video</a>
+                    <a class="btn outline" href="prompt.html?id=ai-002">PROMPT</a>
+                </div>
+            </div>
+        </section>
     </main>
 
 </body>
