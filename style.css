@@ -1,3 +1,6 @@
+/* =========================
+   RESET & BASE
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -5,27 +8,49 @@
 }
 
 body {
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: #000;
   color: #fff;
   overflow: hidden;
 }
 
+/* =========================
+   TOP BAR
+========================= */
 .top-bar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 48px;
   padding: 0 16px;
   display: flex;
   align-items: center;
+  gap: 12px;
   z-index: 10;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0)
+  );
 }
 
+.back {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.85;
+}
+.back:hover {
+  opacity: 1;
+}
+
+/* =========================
+   FEED (TIKTOK STYLE)
+========================= */
 .feed {
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   scroll-snap-type: y mandatory;
 }
 
@@ -39,32 +64,154 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
+/* =========================
+   OVERLAY CONTENT
+========================= */
 .overlay {
   position: absolute;
   bottom: 40px;
   left: 16px;
-  max-width: 75%;
+  max-width: 80%;
 }
 
 .overlay h3 {
-  font-size: 18px;
-  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .overlay p {
-  font-size: 14px;
+  font-size: 13px;
   opacity: 0.85;
+  margin-top: 4px;
 }
 
-.play-btn {
-  display: inline-block;
-  margin-top: 10px;
+/* =========================
+   ACTION BUTTONS
+========================= */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
   padding: 10px 16px;
   background: rgba(255,255,255,0.15);
   color: #fff;
   text-decoration: none;
   border-radius: 999px;
+  font-size: 14px;
   backdrop-filter: blur(6px);
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.btn.outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.btn.full {
+  width: 100%;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* =========================
+   PROMPT PAGE
+========================= */
+.prompt-page {
+  padding: 72px 16px 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.prompt-page h2 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+/* =========================
+   PROMPT CONTENT
+========================= */
+pre {
+  background: #111;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #000;
+  color: #fff;
+  padding-top: 60px; /* ruang untuk top-bar */
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0)
+  );
+  z-index: 10;
+}
+
+.back {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.85;
+}
+.back:hover {
+  opacity: 1;
+}
+
+.prompt-page {
+  padding: 72px 16px 40px; /* aman dari top-bar */
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 320px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 16px; /* ⬅️ INI KUNCI */
+  resize: vertical;
+}
+
+
+
+/* =========================
+   UTILITIES
+========================= */
+.hidden {
+  display: none;
 }
