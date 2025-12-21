@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kokosima AI Visual</title>
+    <title>Kokosima AI - Galeri Prompt AI & Inspirasi Gambar Cinematic</title>
+    <meta name="title" content="Kokosima AI - Galeri Prompt AI & Inspirasi Gambar Cinematic">
+    <meta name="description" content="Pusat berbagi prompt AI gratis. Temukan inspirasi pembuatan gambar AI cinematic, photorealistic, dan art style unik untuk Midjourney, DALL-E, dan Stable Diffusion di Kokosima.">
+    <meta name="keywords" content="kokosima, ai prompt, berbagi prompt ai, pembuatan gambar ai, prompt midjourney indonesia, stable diffusion prompt, inspirasi ai, cinematic ai prompt">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Indonesian">
+    <meta name="author" content="Kokosima AI">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kokosima.pages.dev/"> 
+    <meta property="og:title" content="Kokosima AI - Galeri Prompt AI & Inspirasi Gambar Cinematic">
+    <meta property="og:description" content="Copy-paste prompt AI terbaik untuk membuat gambar berkualitas tinggi. Cinematic, Art, dan Photorealistic.">
+    <meta property="og:image" content="https://kokosima.pages.dev/images/banner-share.jpg"> 
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kokosima.pages.dev/">
+    <meta property="twitter:title" content="Kokosima AI - Galeri Prompt AI & Inspirasi Gambar Cinematic">
+    <meta property="twitter:description" content="Copy-paste prompt AI terbaik untuk membuat gambar berkualitas tinggi. Cinematic, Art, dan Photorealistic.">
+    <meta property="twitter:image" content="https://kokosima.pages.dev/images/banner-share.jpg">
+
+    <link rel="canonical" href="https://kokosima.pages.dev/">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,33 +34,101 @@
 
     <main class="feed">
         <section class="item">
-            <img src="images/ai-001.jpg" alt="AI Scene RIDE" loading="lazy">
-            <div class="overlay-content">
+            <div class="media-container">
+                <img src="images/ai-001.jpg" alt="" loading="lazy">
+            </div>
+            <div class="content-container">
                 <div class="info-text">
-                    <h3>RIDE</h3>
-                    <p>AI image to video experiment</p>
+                    <h3 data-id="ai-001"></h3>
+                    <p class="prompt-preview" data-id="ai-001"></p>
                 </div>
                 <div class="actions">
-                    <a class="btn" href=" https://youtube.com/shorts/HAlAwqD8jGE?feature=share" target="_blank" rel="noopener">▶ Video</a>
-                    <a class="btn outline" href="prompt.html?id=ai-001">PROMPT</a>
+                    <a class="btn btn-primary btn-video" data-id="ai-001" href="#" target="_blank">▶ Video</a>
+                    <a class="btn btn-outline" href="prompt.html?id=ai-001">PROMPT</a>
                 </div>
             </div>
         </section>
 
         <section class="item">
-            <img src="images/ai-002.jpg" alt="AI Scene Dragon" loading="lazy">
-            <div class="overlay-content">
+            <div class="media-container">
+                <img src="images/ai-002.jpg" alt="" loading="lazy">
+            </div>
+            <div class="content-container">
                 <div class="info-text">
-                    <h3>How To Train Your Dragon</h3>
-                    <p>AI image to video experiment</p>
+                    <h3 data-id="ai-002"></h3>
+                    <p class="prompt-preview" data-id="ai-002"></p>
                 </div>
                 <div class="actions">
-                    <a class="btn" href="https://youtube.com/shorts/VAF2idTiAe0?feature=share" target="_blank" rel="noopener">▶ Video</a>
-                    <a class="btn outline" href="prompt.html?id=ai-002">PROMPT</a>
+                    <a class="btn btn-primary btn-video" data-id="ai-002" href="#" target="_blank">▶ Video</a>
+                    <a class="btn btn-outline" href="prompt.html?id=ai-002">PROMPT</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="item">
+            <div class="media-container">
+                <img src="images/ai-003.jpg" alt="" loading="lazy">
+            </div>
+            <div class="content-container">
+                <div class="info-text">
+                    <h3 data-id="ai-003"></h3>
+                    <p class="prompt-preview" data-id="ai-003"></p>
+                </div>
+                <div class="actions">
+                    <a class="btn btn-primary btn-video" data-id="ai-003" href="#" target="_blank">▶ Video</a>
+                    <a class="btn btn-outline" href="prompt.html?id=ai-003">PROMPT</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="item">
+            <div class="media-container">
+                <img src="images/ai-004.jpg" alt="" loading="lazy">
+            </div>
+            <div class="content-container">
+                <div class="info-text">
+                    <h3 data-id="ai-004"></h3>
+                    <p class="prompt-preview" data-id="ai-004"></p>
+                </div>
+                <div class="actions">
+                    <a class="btn btn-primary btn-video" data-id="ai-004" href="#" target="_blank">▶ Video</a>
+                    <a class="btn btn-outline" href="prompt.html?id=ai-004">PROMPT</a>
                 </div>
             </div>
         </section>
     </main>
-
+    
+    <script src="data.js"></script>
+    <script>
+        document.querySelectorAll('[data-id]').forEach(el => {
+            const id = el.getAttribute('data-id');
+            const data = PROMPT_DATABASE[id];
+            
+            if (data) {
+                // 1. Isi Judul (H3) & SEO Alt Gambar
+                if (el.tagName === "H3") {
+                    el.textContent = data.title;
+                    
+                    const parentSection = el.closest('.item');
+                    if (parentSection) {
+                        const img = parentSection.querySelector('img');
+                        if (img) img.alt = "Prompt AI " + data.title + " - Kokosima";
+                    }
+                } 
+                // 2. Isi Preview Teks (P)
+                else if (el.classList.contains("prompt-preview")) {
+                    const words = data.text.split(/\s+/);
+                    el.textContent = words.slice(0, 12).join(" ") + "...";
+                }
+                // 3. Isi Link Video (A)
+                else if (el.classList.contains("btn-video")) {
+                    el.href = data.videoUrl;
+                    if(!data.videoUrl || data.videoUrl === "" || data.videoUrl === "#") {
+                        el.style.display = 'none';
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
