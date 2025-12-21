@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kokosima.pages.dev/</loc>
-    <lastmod>2024-05-20</lastmod>
+    <loc>https://kokosimareels.pages.dev/</loc>
+    <lastmod>2024-05-22</lastmod>
     <priority>1.00</priority>
   </url>
 
-  <url>
-    <loc>https://kokosima.pages.dev/prompt.html?id=ai-001</loc>
-    <lastmod>2024-05-20</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://kokosima.pages.dev/prompt.html?id=ai-002</loc>
-    <lastmod>2024-05-20</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://kokosima.pages.dev/prompt.html?id=ai-003</loc>
-    <lastmod>2024-05-20</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://kokosima.pages.dev/prompt.html?id=ai-004</loc>
-    <lastmod>2024-05-20</lastmod>
-    <priority>0.80</priority>
-  </url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-001</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-002</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-003</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-004</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-005</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-006</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-007</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-008</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-009</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-010</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-011</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-012</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-013</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-014</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-015</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
+  <url><loc>https://kokosimareels.pages.dev/prompt.html?id=ai-016</loc><lastmod>2024-05-22</lastmod><priority>0.80</priority></url>
 </urlset>
