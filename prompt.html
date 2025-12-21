@@ -7,25 +7,29 @@
     <title>Prompt Detail | Kokosima AI</title>
 
     <meta property="og:type" content="article">
-    <meta property="og:title" id="meta-title" content="Kokosima AI – Koleksi Prompt Cinematic">
-    <meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis untuk kreativitas tak terbatas.">
+    <meta property="og:title" id="meta-title" content="Kokosima AI">
+    <meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis.">
     <meta property="og:url" id="meta-url" content="https://kokosimareels.pages.dev/">
-    
     <meta property="og:image" id="meta-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" id="tw-title" content="Kokosima AI – Koleksi Prompt Cinematic">
-    <meta name="twitter:image" id="tw-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
-
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .prompt-detail-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+    </style>
 </head>
 <body>
-
-    <div style="display:none;">
-        <img id="hidden-img" src="https://kokosimareels.pages.dev/images/default-preview.jpg" alt="Preview">
-    </div>
 
     <header class="top-bar">
         <a href="index.html" class="btn-back" id="backBtn">← BACK</a>
@@ -36,8 +40,10 @@
 
     <main class="prompt-page-wrapper">
         <div class="prompt-card">
+            <img id="main-image" src="" alt="Prompt Preview" class="prompt-detail-img" style="display:none;">
+            
             <h2 id="title">Loading...</h2>
-            <textarea id="promptText" readonly spellcheck="false" placeholder="Sedang mengambil prompt..."></textarea>
+            <textarea id="promptText" readonly spellcheck="false"></textarea>
             <div style="display: flex; justify-content: flex-end;">
                 <button class="btn btn-primary" onclick="copyPrompt()" id="copyBtn">📋 Copy Prompt</button>
             </div>
@@ -49,49 +55,40 @@
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
 
-        // Jika ID tidak ada atau tidak ditemukan di database, tendang balik ke Index
         if (!id || !PROMPT_DATABASE[id]) {
             window.location.href = "index.html";
         } else {
             const data = PROMPT_DATABASE[id];
             const domain = "https://kokosimareels.pages.dev"; 
             const fullImgUrl = domain + "/images/" + id + ".jpg";
-            const fullPageUrl = window.location.href;
 
-            // 1. Update Tampilan Halaman
+            // 1. Tampilkan Gambar Utama
+            const imgElement = document.getElementById("main-image");
+            imgElement.src = "images/" + id + ".jpg";
+            imgElement.style.display = "block"; // Tampilkan setelah src terisi
+
+            // 2. Update Teks
             document.getElementById("title").textContent = data.title;
             document.getElementById("promptText").value = data.text;
             document.title = data.title + " | Kokosima AI";
 
-            // 2. Update Meta Tags (Untuk browser & crawler pintar)
+            // 3. Update Meta Tags untuk Share
             document.getElementById('meta-title').setAttribute("content", data.title);
             document.getElementById('meta-img').setAttribute("content", fullImgUrl);
-            document.getElementById('meta-url').setAttribute("content", fullPageUrl);
-            
-            document.getElementById('tw-title').setAttribute("content", data.title);
-            document.getElementById('tw-img').setAttribute("content", fullImgUrl);
-            
-            // 3. Update Umpan Gambar
-            document.getElementById('hidden-img').src = fullImgUrl;
+            document.getElementById('meta-url').setAttribute("content", window.location.href);
 
-            // 4. Update Link Back (Fokus ke ID yang tadi dilihat)
             document.getElementById("backBtn").href = `index.html#${id}`;
         }
 
-        // Fungsi Copy
         async function copyPrompt() {
             const text = document.getElementById("promptText").value;
             const btn = document.getElementById("copyBtn");
             if (!text) return;
-            
             try {
                 await navigator.clipboard.writeText(text);
-                const originalText = btn.innerHTML;
                 btn.innerHTML = "✅ Copied!";
-                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
-            } catch (err) {
-                console.error("Gagal menyalin", err);
-            }
+                setTimeout(() => { btn.innerHTML = "📋 Copy Prompt"; }, 2000);
+            } catch (err) { alert("Gagal menyalin!"); }
         }
     </script>
 </body>
