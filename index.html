@@ -4,26 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kokosima AI - Galeri Prompt AI & Inspirasi Gambar Cinematic</title>
-    <meta name="title" content="Kokosima AI - Galeri Prompt AI & Inspirasi Gambar Cinematic">
-    <meta name="description" content="Pusat berbagi prompt AI gratis. Temukan inspirasi pembuatan gambar AI cinematic, photorealistic, dan art style unik untuk Midjourney, DALL-E, dan Stable Diffusion di Kokosima.">
-    <meta name="keywords" content="kokosima, ai prompt, berbagi prompt ai, pembuatan gambar ai, prompt midjourney indonesia, stable diffusion prompt, inspirasi ai, cinematic ai prompt">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Indonesian">
-    <meta name="author" content="Kokosima AI">
-
-    <meta property="og:type" content="website">
+    
+    <meta name="description" content="Pusat berbagi prompt AI gratis. Temukan inspirasi pembuatan gambar AI cinematic.">
     <meta property="og:url" content="https://kokosima.pages.dev/"> 
-    <meta property="og:title" content="Kokosima AI - Galeri Prompt AI & Inspirasi Gambar Cinematic">
-    <meta property="og:description" content="Copy-paste prompt AI terbaik untuk membuat gambar berkualitas tinggi. Cinematic, Art, dan Photorealistic.">
     <meta property="og:image" content="https://kokosima.pages.dev/images/banner-share.jpg"> 
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://kokosima.pages.dev/">
-    <meta property="twitter:title" content="Kokosima AI - Galeri Prompt AI & Inspirasi Gambar Cinematic">
-    <meta property="twitter:description" content="Copy-paste prompt AI terbaik untuk membuat gambar berkualitas tinggi. Cinematic, Art, dan Photorealistic.">
-    <meta property="twitter:image" content="https://kokosima.pages.dev/images/banner-share.jpg">
-
-    <link rel="canonical" href="https://kokosima.pages.dev/">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,7 +18,7 @@
     </header>
 
     <main class="feed">
-        <section class="item">
+        <section class="item" id="ai-001">
             <div class="media-container">
                 <img src="images/ai-001.jpg" alt="" loading="lazy">
             </div>
@@ -50,7 +35,7 @@
             </div>
         </section>
 
-        <section class="item">
+        <section class="item" id="ai-002">
             <div class="media-container">
                 <img src="images/ai-002.jpg" alt="" loading="lazy">
             </div>
@@ -66,8 +51,8 @@
                 </div>
             </div>
         </section>
-        
-        <section class="item">
+
+        <section class="item" id="ai-003">
             <div class="media-container">
                 <img src="images/ai-003.jpg" alt="" loading="lazy">
             </div>
@@ -84,7 +69,7 @@
             </div>
         </section>
 
-        <section class="item">
+        <section class="item" id="ai-004">
             <div class="media-container">
                 <img src="images/ai-004.jpg" alt="" loading="lazy">
             </div>
@@ -101,10 +86,10 @@
             </div>
         </section>
     </main>
-    
+
     <script src="data.js"></script>
     <script>
-        // 1. Fungsi Otomatisasi Tampilan Feed
+        // 1. OTOMATISASI FEED (Ambil data dari data.js)
         document.querySelectorAll('[data-id]').forEach(el => {
             const id = el.getAttribute('data-id');
             const data = PROMPT_DATABASE[id];
@@ -112,11 +97,6 @@
             if (data) {
                 if (el.tagName === "H3") {
                     el.textContent = data.title;
-                    const parentSection = el.closest('.item');
-                    if (parentSection) {
-                        const img = parentSection.querySelector('img');
-                        if (img) img.alt = "Prompt AI " + data.title + " - Kokosima";
-                    }
                 } 
                 else if (el.classList.contains("prompt-preview")) {
                     const words = data.text.split(/\s+/);
@@ -131,10 +111,14 @@
             }
         });
 
-        // 2. Fungsi Tombol Share Pintar
+        // 2. FUNGSI SHARE SMART (Diperbaiki agar Link tidak Broken)
         function sharePrompt(id) {
             const data = PROMPT_DATABASE[id];
-            const shareUrl = window.location.origin + '/prompt.html?id=' + id;
+            
+            // Mendeteksi path folder otomatis agar link tetap benar meski di sub-folder
+            const currentPath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+            const shareUrl = window.location.origin + currentPath + 'prompt.html?id=' + id;
+            
             const shareText = `Cek prompt AI "${data.title}" di Kokosima AI!`;
 
             if (navigator.share) {
@@ -142,9 +126,9 @@
                     title: 'Kokosima AI - ' + data.title,
                     text: shareText,
                     url: shareUrl,
-                }).catch(console.error);
+                }).catch(err => console.log('Share canceled'));
             } else {
-                // Link khusus share ke Facebook untuk Desktop
+                // Fallback Facebook Share
                 const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
                 window.open(fbUrl, '_blank', 'width=600,height=400');
             }
