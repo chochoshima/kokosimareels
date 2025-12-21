@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prompt Detail | Kokosima AI</title>
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" id="og-title" content="Kokosima AI">
+    <meta property="og:description" id="og-desc" content="Koleksi prompt AI terbaik.">
+    <meta property="og:image" id="og-img" content="">
+    <meta property="og:url" id="og-url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" id="tw-img" content="">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,26 +34,53 @@
 
     <script src="data.js"></script>
     <script>
+        // Ambil ID dari URL
         const urlParams = new URLSearchParams(window.location.search);
         const currentId = urlParams.get('id');
         const backBtn = document.getElementById("backBtn");
 
+        // Cek data di data.js
         if (currentId && PROMPT_DATABASE[currentId]) {
-            document.getElementById("title").textContent = PROMPT_DATABASE[currentId].title;
-            document.getElementById("promptText").value = PROMPT_DATABASE[currentId].text;
-            // Kunci sukses kembali ke posisi semula:
+            const data = PROMPT_DATABASE[currentId];
+            const imageUrl = window.location.origin + "/images/" + currentId + ".jpg";
+            const shortDesc = data.text.substring(0, 150) + "...";
+
+            // 1. Update Konten Halaman
+            document.getElementById("title").textContent = data.title;
+            document.getElementById("promptText").value = data.text;
+            document.title = data.title + " - Kokosima AI";
+
+            // 2. Suntik Meta Tags untuk Preview Share
+            document.getElementById('og-title').setAttribute("content", data.title);
+            document.getElementById('og-desc').setAttribute("content", shortDesc);
+            document.getElementById('og-img').setAttribute("content", imageUrl);
+            document.getElementById('og-url').setAttribute("content", window.location.href);
+            document.getElementById('tw-img').setAttribute("content", imageUrl);
+
+            // 3. Set link tombol Back agar kembali ke posisi scroll yang benar
             backBtn.href = `index.html#${currentId}`;
+
+        } else {
+            document.getElementById("title").textContent = "Not Found";
+            document.getElementById("promptText").value = "Maaf, prompt tidak ditemukan.";
         }
 
+        // Fungsi Copy
         async function copyPrompt() {
             const btn = document.getElementById("copyBtn");
+            const text = document.getElementById("promptText").value;
             try {
-                await navigator.clipboard.writeText(document.getElementById("promptText").value);
+                await navigator.clipboard.writeText(text);
                 const original = btn.innerHTML;
                 btn.innerHTML = "✅ Copied!";
                 btn.style.background = "#4ade80";
-                setTimeout(() => { btn.innerHTML = original; btn.style.background = ""; }, 2000);
-            } catch (err) { alert("Gagal menyalin."); }
+                setTimeout(() => { 
+                    btn.innerHTML = original; 
+                    btn.style.background = ""; 
+                }, 2000);
+            } catch (err) { 
+                alert("Gagal menyalin."); 
+            }
         }
     </script>
 </body>
