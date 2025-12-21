@@ -7,25 +7,24 @@
     <title>Prompt Detail | Kokosima AI</title>
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Kokosima AI – Koleksi Prompt Cinematic">
-    <meta property="og:description" content="Temukan prompt AI cinematic gratis untuk kreativitas tak terbatas.">
-    <meta property="og:url" content="https://kokosimareels.pages.dev/">
-    <meta property="og:image" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
+    <meta property="og:title" id="meta-title" content="Kokosima AI – Koleksi Prompt Cinematic">
+    <meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis untuk kreativitas tak terbatas.">
+    <meta property="og:url" id="meta-url" content="https://kokosimareels.pages.dev/">
+    
+    <meta property="og:image" id="meta-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kokosima AI – Koleksi Prompt Cinematic">
-    <meta name="twitter:description" content="Temukan prompt AI cinematic gratis untuk kreativitas tak terbatas.">
-    <meta name="twitter:image" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
+    <meta name="twitter:title" id="tw-title" content="Kokosima AI – Koleksi Prompt Cinematic">
+    <meta name="twitter:image" id="tw-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div style="display:none;">
-        <img id="hidden-img" src="https://kokosima.pages.dev/images/ai-001.jpg" alt="Preview">
+        <img id="hidden-img" src="https://kokosimareels.pages.dev/images/default-preview.jpg" alt="Preview">
     </div>
 
     <header class="top-bar">
@@ -51,27 +50,43 @@
         if (id && PROMPT_DATABASE[id]) {
             const data = PROMPT_DATABASE[id];
             
-            // 1. Buat URL Gambar Secara Dinamis
-            // Ganti 'kokosima.pages.dev' dengan domain asli Anda jika berbeda
-            const domain = window.location.origin;
+            // Gunakan domain asli untuk URL absolut
+            const domain = "https://kokosimareels.pages.dev"; 
             const fullImgUrl = domain + "/images/" + id + ".jpg";
             const fullPageUrl = window.location.href;
 
-            // 2. Update Elemen Visual di Halaman
+            // 1. Update Konten Visual
             document.getElementById("title").textContent = data.title;
             document.getElementById("promptText").value = data.text;
             document.title = data.title + " | Kokosima AI";
 
-            // 3. SUNTIK META TAG (Untuk Browser Modern & Crawler Pintar)
-            document.getElementById('meta-title').setAttribute("content", data.title);
-            document.getElementById('meta-img').setAttribute("content", fullImgUrl);
-            document.getElementById('meta-url').setAttribute("content", fullPageUrl);
+            // 2. SUNTIK META TAG (Memperbaiki ID yang hilang)
+            if(document.getElementById('meta-title')) document.getElementById('meta-title').setAttribute("content", data.title);
+            if(document.getElementById('meta-img')) document.getElementById('meta-img').setAttribute("content", fullImgUrl);
+            if(document.getElementById('meta-url')) document.getElementById('meta-url').setAttribute("content", fullPageUrl);
             
-            // Update Umpan Gambar di Body
+            // Update Twitter Meta
+            if(document.getElementById('tw-title')) document.getElementById('tw-title').setAttribute("content", data.title);
+            if(document.getElementById('tw-img')) document.getElementById('tw-img').setAttribute("content", fullImgUrl);
+            
+            // 3. Update Gambar Tersembunyi (Umpan WA)
             document.getElementById('hidden-img').src = fullImgUrl;
 
             // 4. Update Link Back
             document.getElementById("backBtn").href = `index.html#${id}`;
+        }
+
+        async function copyPrompt() {
+            const text = document.getElementById("promptText").value;
+            const btn = document.getElementById("copyBtn");
+            try {
+                await navigator.clipboard.writeText(text);
+                const originalText = btn.innerHTML;
+                btn.innerHTML = "✅ Copied!";
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            } catch (err) {
+                alert("Gagal menyalin!");
+            }
         }
     </script>
 </body>
