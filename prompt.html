@@ -29,13 +29,15 @@
 
     <header class="top-bar">
         <a href="index.html" class="btn-back" id="backBtn">← BACK</a>
-        <span class="logo">Kokosima</span>
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+            <span class="logo">Kokosima</span>
+        </a>
     </header>
 
     <main class="prompt-page-wrapper">
         <div class="prompt-card">
             <h2 id="title">Loading...</h2>
-            <textarea id="promptText" readonly spellcheck="false"></textarea>
+            <textarea id="promptText" readonly spellcheck="false" placeholder="Sedang mengambil prompt..."></textarea>
             <div style="display: flex; justify-content: flex-end;">
                 <button class="btn btn-primary" onclick="copyPrompt()" id="copyBtn">📋 Copy Prompt</button>
             </div>
@@ -47,45 +49,48 @@
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
 
-        if (id && PROMPT_DATABASE[id]) {
+        // Jika ID tidak ada atau tidak ditemukan di database, tendang balik ke Index
+        if (!id || !PROMPT_DATABASE[id]) {
+            window.location.href = "index.html";
+        } else {
             const data = PROMPT_DATABASE[id];
-            
-            // Gunakan domain asli untuk URL absolut
             const domain = "https://kokosimareels.pages.dev"; 
             const fullImgUrl = domain + "/images/" + id + ".jpg";
             const fullPageUrl = window.location.href;
 
-            // 1. Update Konten Visual
+            // 1. Update Tampilan Halaman
             document.getElementById("title").textContent = data.title;
             document.getElementById("promptText").value = data.text;
             document.title = data.title + " | Kokosima AI";
 
-            // 2. SUNTIK META TAG (Memperbaiki ID yang hilang)
-            if(document.getElementById('meta-title')) document.getElementById('meta-title').setAttribute("content", data.title);
-            if(document.getElementById('meta-img')) document.getElementById('meta-img').setAttribute("content", fullImgUrl);
-            if(document.getElementById('meta-url')) document.getElementById('meta-url').setAttribute("content", fullPageUrl);
+            // 2. Update Meta Tags (Untuk browser & crawler pintar)
+            document.getElementById('meta-title').setAttribute("content", data.title);
+            document.getElementById('meta-img').setAttribute("content", fullImgUrl);
+            document.getElementById('meta-url').setAttribute("content", fullPageUrl);
             
-            // Update Twitter Meta
-            if(document.getElementById('tw-title')) document.getElementById('tw-title').setAttribute("content", data.title);
-            if(document.getElementById('tw-img')) document.getElementById('tw-img').setAttribute("content", fullImgUrl);
+            document.getElementById('tw-title').setAttribute("content", data.title);
+            document.getElementById('tw-img').setAttribute("content", fullImgUrl);
             
-            // 3. Update Gambar Tersembunyi (Umpan WA)
+            // 3. Update Umpan Gambar
             document.getElementById('hidden-img').src = fullImgUrl;
 
-            // 4. Update Link Back
+            // 4. Update Link Back (Fokus ke ID yang tadi dilihat)
             document.getElementById("backBtn").href = `index.html#${id}`;
         }
 
+        // Fungsi Copy
         async function copyPrompt() {
             const text = document.getElementById("promptText").value;
             const btn = document.getElementById("copyBtn");
+            if (!text) return;
+            
             try {
                 await navigator.clipboard.writeText(text);
                 const originalText = btn.innerHTML;
                 btn.innerHTML = "✅ Copied!";
                 setTimeout(() => { btn.innerHTML = originalText; }, 2000);
             } catch (err) {
-                alert("Gagal menyalin!");
+                console.error("Gagal menyalin", err);
             }
         }
     </script>
