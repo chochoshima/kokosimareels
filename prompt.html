@@ -3,149 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Prompt Library</title>
+    <title>Prompt Detail | Kokosima AI</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Mengintegrasikan Style Global ke halaman ini */
+        /* CSS Tambahan Khusus Halaman Prompt agar Center */
         body {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
             min-height: 100vh;
-            padding-top: 0; /* Reset padding dari style global khusus hal ini */
-        }
-
-        .prompt-container {
-            width: 95%;
-            max-width: 700px;
-            background: #111; /* Senada dengan tema gelap index */
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid #222;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-
-        .top-bar-internal {
-            margin-bottom: 20px;
-        }
-
-        h2 { 
-            font-size: 24px;
-            margin-bottom: 15px;
+            background-color: #000; /* Backup warna jika CSS eksternal gagal */
             color: #fff;
+            margin: 0;
+        }
+
+        .prompt-page-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 40px; /* Jarak aman dari top-bar */
+        }
+
+        .prompt-card {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .prompt-card h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            margin-top: 0;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         textarea {
             width: 100%;
-            height: 350px;
-            background: #000;
-            color: #ccc;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 1.2rem;
-            box-sizing: border-box;
-            resize: none;
+            height: 380px;
+            background: rgba(0, 0, 0, 0.4);
+            color: #ddd;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
             font-family: 'Courier New', monospace;
+            font-size: 16px;
             line-height: 1.6;
-            font-size: 14px;
-            margin-bottom: 20px;
+            resize: none;
+            margin-bottom: 25px;
+            outline: none;
+            box-sizing: border-box;
+            transition: border 0.3s ease;
         }
 
         textarea:focus {
-            outline: none;
-            border-color: #555;
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .status-msg {
-            color: #ff4444;
-            text-align: center;
-            display: none;
-            margin-bottom: 20px;
+        .copy-wrapper {
+            display: flex;
+            justify-content: flex-end;
         }
-        
-        /* Tombol menyesuaikan style global index */
-        .btn-copy {
-            width: 100%;
-            cursor: pointer;
-            justify-content: center;
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .prompt-page-wrapper { padding: 80px 15px 30px; }
+            .prompt-card { padding: 25px; }
+            textarea { height: 400px; font-size: 15px; }
+            .prompt-card h2 { font-size: 24px; }
         }
     </style>
 </head>
 <body>
 
-<div class="prompt-container">
-    <div class="top-bar-internal">
-        <a href="index.html" class="btn outline">← Kembali</a>
-    </div>
+    <header class="top-bar">
+        <a href="index.html" class="btn btn-outline" style="padding: 10px 20px; text-decoration: none;">← BACK</a>
+    </header>
 
-    <h2 id="title">Memuat...</h2>
-    <p id="error-msg" class="status-msg">Ups! Prompt tidak ditemukan.</p>
-    
-    <textarea id="promptText" readonly spellcheck="false"></textarea>
+    <main class="prompt-page-wrapper">
+        <div class="prompt-card">
+            <h2 id="title">Loading Prompt...</h2>
+            
+            <textarea id="promptText" readonly spellcheck="false"></textarea>
 
-    <button class="btn btn-copy" onclick="copyPrompt()">
-        <span id="btn-text">📋 Salin Prompt</span>
-    </button>
-</div>
+            <div class="copy-wrapper">
+                <button class="btn btn-primary" onclick="copyPrompt()" id="copyBtn" style="cursor: pointer; padding: 12px 25px; font-weight: bold; border-radius: 10px; border: none;">
+                    📋 Copy Prompt
+                </button>
+            </div>
+        </div>
+    </main>
 
-<script>
-    const prompts = {
-        "ai-001": {
-            title: "🏍️ RIDE (Cyberpunk)",
-            text: `A relaxed yet high-octane cinematic shot of a man riding a vintage customized classic cafe racer motorcycle through a sprawling, sun-drenched neo-cyberpunk ruin. The rider exudes a "casual-cool" vibe, wearing a modish cyberpunk casual outfit.
+    <script>
+        const prompts = {
+            "ai-001": {
+                title: "RIDE",
+                text: `A relaxed yet high-octane cinematic shot of a man riding a vintage customized classic cafe racer motorcycle through a sprawling, sun-drenched neo-cyberpunk ruin.\n\nThe rider exudes a "casual-cool" vibe, wearing a modish cyberpunk casual outfit: a weathered oversized denim jacket over a technical charcoal hoodie, distressed dark cargo joggers with tactical straps, and fingerless leather gloves.\n\nHis posture is relaxed but focused, one hand confidently on the throttle as he navigates through the desolate city.\n\nEnvironment & Atmosphere:\nA bright, post-apocalyptic urban wasteland under a vast, hazy sky. Skeletal mega-skyscrapers overgrown with digital moss and rusted steel rebar.\n\nTechnical Settings:\nShot on Hasselblad X1D II, 50mm lens at f/1.8. 8K quality, Golden Ratio composition.\n\nReference Face Integration:\nUse provided photo reference. Facial features 100% identical.`
+            },
+            "ai-002": {
+                title: "How To Train Your Dragon",
+                text: `Ultra-realistic cinematic scene of a man using the provided photo reference, riding a massive black dragon resembling Toothless soaring through the sky above steep rocky sea cliffs.\n\nThe man wears authentic Viking-style armor with thick fur lining and a horned helmet. Expression intense and determined.\n\nEnvironment:\nDramatic coastal cliffs, crashing waves far below, swirling mist and sea spray, golden-hour sky.\n\nCamera:\nDynamic low-angle tracking shot, shallow depth of field, IMAX-level cinematic realism.`
+            },
+            "ai-003": {
+                title: "PINK RANGER",
+                text: `Using the provided photo reference, keep the exact shape, structure, and layout of the vegetable seller rack as seen in the original image:\n\na large rectangular wooden-and-metal rack, multi-level shelves, open wire mesh sides, with plastic bags of vegetables hanging on the sides and rear. Do not redesign the rack shape — maintain its authentic Indonesian mobile vegetable seller form.\n\nTransform the motorcycle itself into a modern sport motorcycle, fully faired, aggressive and aerodynamic, finished in glossy pink color that harmonizes with the overall look.\n\nThe original vegetable rack is carefully modified only at the mounting points, reinforced with custom brackets so it can be securely attached to the rear subframe of a sport bike, without changing the rack’s proportions or visual identity.\n\nThe motorcycle is stationary, stopped on a small Indonesian neighborhood street.\n\nA man is seated on the motorcycle, using the photo reference for body position and scale.\n\nA pink sport helmet is placed on top of the fuel tank, resting naturally with realistic contact shadows.\n\nThe man is holding a smartphone, looking at the screen as if reading a message.\n\nHe is wearing a full Power Ranger Pink costume (helmet off) — iconic pink suit with white diamond pattern, gloves, and boots, clean and vibrant.\n\nThe rack is filled exactly like the reference: spinach, kangkung, sawi, chilies (red and green), tomatoes, onions, herbs, and groceries, stored in shelves and transparent plastic bags hanging on the sides, maintaining the same visual density and randomness as a real Indonesian vegetable seller.\n\nStrong visual contrast between:\n– modern pink sport motorcycle\n– traditional Indonesian vegetable rack unchanged in shape\n– Power Ranger Pink costume\n\nUltra-realistic, natural daylight, sharp textures, cinematic depth of field, grounded Indonesian street atmosphere.`
+            },
+			"ai-004": {
+                title: "PINK RANGER",
+                text: `Ultra-realistic cinematic macro–medium shot of a flat open-air PC case placed on an elegant, clean work desk. The flagship motherboard is mounted horizontally, fully exposed in a low-profile open-air layout.At the exact center sits a brain-shaped processor, hyper-realistic human brain form with deep neural folds, organic matte surface, subtle veins, and natural flesh tones — no glow, no internal light, completely unpowered.Several transparent liquid-cooling tubes are connected directly into the brain processor through clean bio-mechanical connectors embedded naturally between folds. The tubes contain clear, colorless coolant, fully static, with no ARGB, no illumination, no movement, no reflections from LEDs.All PC components are powered off:– No RGB or indicator lights– No illuminated RAM or GPU– Monitor screen completely black and off– No reflections from active displaysSurrounding the processor are high-end RAM modules, GPU, and premium motherboard circuitry, all visible in dark metallic finishes, softly blurred to maintain focus on the brain CPU. Cable management is clean and precise.A man assembling the PC is visible from the side or top-down angle, hands carefully adjusting components near the processor. If his face appears, use photo reference for exact facial accuracy (do not alter eyes, nose, lips, jaw, or hairstyle). He wears a plain white casual t-shirt.Lighting is purely studio and environmental, soft diffused light from above and side, realistic shadows defining depth and texture, no artificial tech glow.Camera angle: slightly elevated top-down three-quarter view, macro lens look (85–100mm), shallow depth of field emphasizing the processor and cooling tubes.Ultra-photorealistic, extreme material accuracy, professional studio photography, clean futuristic-minimal aesthetic, 8K detail.`
+            }
+        };
 
-Environment & Atmosphere:
-A bright, post-apocalyptic urban wasteland under a vast, hazy sky. Skeletal mega-skyscrapers overgrown with digital moss.
+        const id = new URLSearchParams(window.location.search).get("id");
+        const titleEl = document.getElementById("title");
+        const textEl = document.getElementById("promptText");
 
-Technical Photography Settings:
-Shot on Hasselblad X1D II, 50mm lens at f/1.8. 8K photo quality, Golden Ratio composition.
-
-Reference Face Integration:
-Use the provided photo reference. Facial features must remain 100% identical to the source.`
-        },
-        "ai-002": {
-            title: "🐉 How To Train Your Dragon",
-            text: `Ultra-realistic cinematic scene of a man using the provided photo reference, riding a massive black dragon resembling Toothless soaring through the sky above steep rocky sea cliffs.
-
-Facial features must remain identical to the reference photo. The man wears authentic Viking-style armor: dark leather outfit with thick fur lining.
-
-Environment: 
-Dramatic coastal cliffs, sharp rock formations, crashing waves far below. Golden-hour sky mixed with stormy clouds.
-
-Camera: 
-Dynamic cinematic angle, slight low-angle tracking shot, IMAX-level realism.`
+        if (id && prompts[id]) {
+            titleEl.textContent = prompts[id].title;
+            textEl.value = prompts[id].text;
+        } else {
+            titleEl.textContent = "Prompt Tidak Ditemukan";
+            textEl.value = "Silakan kembali ke halaman utama.";
         }
-    };
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get("id");
-
+        async function copyPrompt() {
+            const copyBtn = document.getElementById("copyBtn");
+            try {
+                await navigator.clipboard.writeText(textEl.value);
+                const originalText = copyBtn.innerHTML;
+                const originalBg = copyBtn.style.background;
+                
+                copyBtn.innerHTML = "✅ Copied!";
+                copyBtn.style.background = "#4ade80";
+                copyBtn.style.color = "#000";
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                    copyBtn.style.background = originalBg;
+                    copyBtn.style.color = "";
+                }, 2000);
+            } catch (err) {
+                console.error('Gagal menyalin: ', err);
+                alert("Gagal menyalin teks.");
+            }
+        }
+    </script>
+	<script src="data.js"></script>
+<script>
+    const id = new URLSearchParams(window.location.search).get("id");
     const titleEl = document.getElementById("title");
     const textEl = document.getElementById("promptText");
-    const errorEl = document.getElementById("error-msg");
 
-    if (id && prompts[id]) {
-        titleEl.textContent = prompts[id].title;
-        textEl.value = prompts[id].text;
+    if (id && PROMPT_DATABASE[id]) {
+        titleEl.textContent = PROMPT_DATABASE[id].title;
+        textEl.value = PROMPT_DATABASE[id].text;
     } else {
-        titleEl.style.display = "none";
-        textEl.style.display = "none";
-        errorEl.style.display = "block";
+        titleEl.textContent = "Tidak Ditemukan";
+        textEl.value = "Prompt tidak tersedia.";
     }
 
+    // Fungsi copyPrompt tetap sama seperti sebelumnya
     async function copyPrompt() {
         try {
             await navigator.clipboard.writeText(textEl.value);
-            const btnText = document.getElementById('btn-text');
-            const original = btnText.innerHTML;
-            
-            btnText.innerHTML = "✅ Tersalin!";
-            setTimeout(() => { btnText.innerHTML = original; }, 2000);
-        } catch (err) {
-            alert("Gagal menyalin.");
-        }
+            const copyBtn = document.getElementById("copyBtn");
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = "✅ Copied!";
+            setTimeout(() => { copyBtn.innerHTML = originalText; }, 2000);
+        } catch (err) { alert("Gagal menyalin."); }
     }
 </script>
-
 </body>
 </html>
