@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kokosima.pages.dev/sitemap.xml
+Sitemap: https://kokosimareels.pages.dev/sitemap.xml
