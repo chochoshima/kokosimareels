@@ -16,14 +16,14 @@
 <body>
 
     <header class="top-bar">
-        <span class="logo">🧠 kokosima</span>
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+            <span class="logo">🧠 kokosima</span>
+        </a>
     </header>
 
     <main class="feed">
         <section class="item" id="ai-001">
-            <div class="media-container">
-                <img src="images/ai-001.jpg" alt="" loading="lazy">
-            </div>
+            <div class="media-container"><img src="images/ai-001.jpg" loading="lazy"></div>
             <div class="content-container">
                 <div class="info-text">
                     <h3 data-id="ai-001"></h3>
@@ -38,9 +38,7 @@
         </section>
 
         <section class="item" id="ai-002">
-            <div class="media-container">
-                <img src="images/ai-002.jpg" alt="" loading="lazy">
-            </div>
+            <div class="media-container"><img src="images/ai-002.jpg" loading="lazy"></div>
             <div class="content-container">
                 <div class="info-text">
                     <h3 data-id="ai-002"></h3>
@@ -55,9 +53,7 @@
         </section>
 
         <section class="item" id="ai-003">
-            <div class="media-container">
-                <img src="images/ai-003.jpg" alt="" loading="lazy">
-            </div>
+            <div class="media-container"><img src="images/ai-003.jpg" loading="lazy"></div>
             <div class="content-container">
                 <div class="info-text">
                     <h3 data-id="ai-003"></h3>
@@ -72,9 +68,7 @@
         </section>
 
         <section class="item" id="ai-004">
-            <div class="media-container">
-                <img src="images/ai-004.jpg" alt="" loading="lazy">
-            </div>
+            <div class="media-container"><img src="images/ai-004.jpg" loading="lazy"></div>
             <div class="content-container">
                 <div class="info-text">
                     <h3 data-id="ai-004"></h3>
@@ -87,11 +81,9 @@
                 </div>
             </div>
         </section>
-		
-		<section class="item" id="ai-005">
-            <div class="media-container">
-                <img src="images/ai-005.jpg" alt="" loading="lazy">
-            </div>
+
+        <section class="item" id="ai-005">
+            <div class="media-container"><img src="images/ai-005.jpg" loading="lazy"></div>
             <div class="content-container">
                 <div class="info-text">
                     <h3 data-id="ai-005"></h3>
@@ -104,15 +96,13 @@
                 </div>
             </div>
         </section>
-		
-		<section class="item" id="ai-006">
-            <div class="media-container">
-                <img src="images/ai-006.jpg" alt="" loading="lazy">
-            </div>
+
+        <section class="item" id="ai-006">
+            <div class="media-container"><img src="images/ai-006.jpg" loading="lazy"></div>
             <div class="content-container">
                 <div class="info-text">
                     <h3 data-id="ai-006"></h3>
-                    <p class="prompt-preview" data-id="ai-005"></p>
+                    <p class="prompt-preview" data-id="ai-006"></p>
                 </div>
                 <div class="actions">
                     <a class="btn btn-primary btn-video" data-id="ai-006" href="#" target="_blank">▶ Video</a>
@@ -121,40 +111,67 @@
                 </div>
             </div>
         </section>
+
+        <section class="item" id="ai-007">
+            <div class="media-container"><img src="images/ai-007.jpg" loading="lazy"></div>
+            <div class="content-container">
+                <div class="info-text">
+                    <h3 data-id="ai-007"></h3>
+                    <p class="prompt-preview" data-id="ai-007"></p>
+                </div>
+                <div class="actions">
+                    <a class="btn btn-primary btn-video" data-id="ai-007" href="#" target="_blank">▶ Video</a>
+                    <a class="btn btn-outline" href="prompt.html?id=ai-007">PROMPT</a>
+                    <button class="btn btn-share" onclick="sharePrompt('ai-007')">🔗 Share</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="data.js"></script>
     <script>
-        // 1. OTOMATISASI FEED (Ambil data dari data.js)
+        const CHANNEL_YOUTUBE = "https://youtube.com/@kokosimaabsurd?si=jx6EpLD7tZzhM1GO";
+
+        // 1. OTOMATISASI FEED
         document.querySelectorAll('[data-id]').forEach(el => {
             const id = el.getAttribute('data-id');
             const data = PROMPT_DATABASE[id];
             
             if (data) {
+                // Set Judul
                 if (el.tagName === "H3") {
                     el.textContent = data.title;
                 } 
+                // Set Preview Teks
                 else if (el.classList.contains("prompt-preview")) {
-                    const words = data.text.split(/\s+/);
-                    el.textContent = words.slice(0, 12).join(" ") + "...";
+                    if (data.text) {
+                        const words = data.text.split(/\s+/);
+                        el.textContent = words.slice(0, 12).join(" ") + "...";
+                    }
                 }
+                // Set Tombol Video & Logic Default Channel
                 else if (el.classList.contains("btn-video")) {
-                    el.href = data.videoUrl;
-                    if(!data.videoUrl || data.videoUrl === "" || data.videoUrl === "#") {
-                        el.style.display = 'none';
+                    const hasVideo = data.videoUrl && data.videoUrl.trim() !== "" && data.videoUrl !== "#";
+                    if (hasVideo) {
+                        el.href = data.videoUrl;
+                        el.innerHTML = "▶ Video";
+                        el.style.backgroundColor = ""; 
+                    } else {
+                        el.href = CHANNEL_YOUTUBE;
+                        el.innerHTML = "📺 Channel";
+                        el.style.backgroundColor = "#cc0000"; 
+                        el.style.color = "white";
                     }
                 }
             }
         });
 
-        // 2. FUNGSI SHARE SMART (Diperbaiki agar Link tidak Broken)
+        // 2. FUNGSI SHARE
         function sharePrompt(id) {
             const data = PROMPT_DATABASE[id];
-            
-            // Mendeteksi path folder otomatis agar link tetap benar meski di sub-folder
+            if(!data) return;
             const currentPath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
             const shareUrl = window.location.origin + currentPath + 'prompt.html?id=' + id;
-            
             const shareText = `Cek prompt AI "${data.title}" di Kokosima AI!`;
 
             if (navigator.share) {
@@ -164,7 +181,6 @@
                     url: shareUrl,
                 }).catch(err => console.log('Share canceled'));
             } else {
-                // Fallback Facebook Share
                 const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
                 window.open(fbUrl, '_blank', 'width=600,height=400');
             }
