@@ -57,7 +57,12 @@ function generateFeed() {
         feedContainer.innerHTML += `
             <section class="item" id="${id}">
                 <div class="media-container">
-                    <img src="images/${id}.jpg" alt="${data.title}" loading="lazy">
+                    <img 
+  src="images/${id}.webp"
+  alt="Prompt AI ${data.title}"
+  loading="lazy"
+  decoding="async"
+  onerror="this.onerror=null;this.src='images/${id}.jpg';">
                 </div>
                 <div class="content-container">
                     <h3>${data.title}</h3>
