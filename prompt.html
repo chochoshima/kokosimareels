@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Loading Prompt... | Kokosima AI</title>
+<title>Loading Prompt... | Kokosima AI</title>
 
-    <!-- OPEN GRAPH -->
-    <meta property="og:type" content="article">
-    <meta property="og:title" id="meta-title" content="Kokosima AI">
-    <meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis.">
-    <meta property="og:url" id="meta-url" content="https://kokosimareels.pages.dev/">
-    <meta property="og:image" id="meta-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="article">
+<meta property="og:title" id="meta-title" content="Kokosima AI">
+<meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis.">
+<meta property="og:url" id="meta-url" content="https://kokosimareels.pages.dev/">
+<meta property="og:image" id="meta-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
-    <style>
-        .prompt-detail-img {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 12px;
-            margin: 0 auto 20px;
-            display: block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        #promptText {
-            width: 100%;
-            height: 200px;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-family: monospace;
-            margin-bottom: 15px;
-            resize: none;
-        }
-    </style>
+<style>
+.prompt-detail-img{
+    width:100%;
+    max-width:520px;
+    margin:0 auto 18px;
+    display:block;
+    border-radius:14px;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+#promptText{
+    width:100%;
+    min-height:220px;
+    padding:16px;
+    font-family:monospace;
+    border-radius:10px;
+    border:1px solid #ddd;
+    resize:none;
+}
+</style>
 </head>
+
 <body>
 
 <header class="top-bar">
-    <a href="index.html" class="btn-back" id="backBtn">← BACK</a>
-    <a href="index.html" style="text-decoration:none;color:inherit">
-        <span class="logo">Kokosima</span>
-    </a>
+    <a href="index.html" class="btn-back">← BACK</a>
+    <a href="index.html" class="logo">Kokosima</a>
 </header>
 
 <main class="prompt-page-wrapper">
-    <div class="prompt-card">
-        <img id="main-image" class="prompt-detail-img" style="display:none" alt="Prompt Preview">
+<div class="prompt-card">
 
-        <h2 id="title">Loading...</h2>
-        <textarea id="promptText" readonly spellcheck="false"></textarea>
+    <img id="main-image" class="prompt-detail-img" style="display:none" alt="Prompt Preview">
 
-        <div style="display:flex;justify-content:flex-end">
-            <button class="btn btn-primary" id="copyBtn" onclick="copyPrompt()">📋 Copy Prompt</button>
-        </div>
+    <h2 id="title">Loading...</h2>
+
+    <textarea id="promptText" readonly spellcheck="false">
+Memuat prompt...
+    </textarea>
+
+    <div style="display:flex;justify-content:flex-end;margin-top:12px">
+        <button class="btn btn-primary" onclick="copyPrompt()">📋 Copy Prompt</button>
     </div>
+
+</div>
 </main>
 
 <script src="data.js"></script>
@@ -67,10 +69,36 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-// VALIDASI
 if (!id || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[id]) {
     window.location.href = "index.html";
-} else {
-    const data = PROMPT_DATABASE[id];
-    const domain = "https://kokosimareels.pages.dev";
-    const imageUrl = `${domain}/images/${id}.jpg`;
+}
+
+const data = PROMPT_DATABASE[id];
+const domain = "https://kokosimareels.pages.dev";
+const imageUrl = `${domain}/images/${id}.jpg`;
+
+// === ISI KONTEN ===
+document.title = `${data.title} | Kokosima AI`;
+document.getElementById("title").textContent = data.title;
+document.getElementById("promptText").value = data.text;
+
+// === GAMBAR ===
+const img = document.getElementById("main-image");
+img.src = imageUrl;
+img.style.display = "block";
+
+// === META SEO ===
+document.getElementById("meta-title").content = data.title;
+document.getElementById("meta-desc").content = data.text.slice(0,150);
+document.getElementById("meta-url").content = window.location.href;
+document.getElementById("meta-img").content = imageUrl;
+
+// === COPY ===
+function copyPrompt(){
+    navigator.clipboard.writeText(data.text);
+    alert("Prompt berhasil disalin!");
+}
+</script>
+
+</body>
+</html>
