@@ -31,8 +31,11 @@
     min-height:220px;
     padding:16px;
     font-family:monospace;
+    font-size:14px;
     border-radius:10px;
-    border:1px solid #ddd;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(0,0,0,.35);
+    color:#e5e7eb;
     resize:none;
 }
 </style>
@@ -48,16 +51,22 @@
 <main class="prompt-page-wrapper">
 <div class="prompt-card">
 
-    <img id="main-image" class="prompt-detail-img" style="display:none" alt="Prompt Preview">
+    <img id="main-image" class="prompt-detail-img" alt="Prompt Preview" hidden>
 
     <h2 id="title">Loading...</h2>
+    <div id="viewCounter" class="prompt-view">
+    👁️ <span id="viewCount">0</span> views
+</div>
 
-    <textarea id="promptText" readonly spellcheck="false">
-Memuat prompt...
-    </textarea>
 
-    <div style="display:flex;justify-content:flex-end;margin-top:12px">
-        <button class="btn btn-primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+    <textarea
+        id="promptText"
+        readonly
+        spellcheck="false"
+    >Memuat prompt...</textarea>
+
+    <div style="display:flex;justify-content:flex-end;margin-top:14px">
+        <button class="btn btn-primary" id="copyBtn">📋 Copy Prompt</button>
     </div>
 
 </div>
@@ -66,6 +75,9 @@ Memuat prompt...
 <script src="data.js"></script>
 
 <script>
+/* =========================
+   LOAD DATA
+========================= */
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
@@ -77,45 +89,48 @@ const data = PROMPT_DATABASE[id];
 const domain = "https://kokosimareels.pages.dev";
 const imageUrl = `${domain}/images/${id}.jpg`;
 
-// === ISI KONTEN ===
+// TITLE & CONTENT
 document.title = `${data.title} | Kokosima AI`;
 document.getElementById("title").textContent = data.title;
 document.getElementById("promptText").value = data.text;
 
-// === GAMBAR ===
+// IMAGE
 const img = document.getElementById("main-image");
 img.src = imageUrl;
-img.style.display = "block";
+img.hidden = false;
 
-// === META SEO ===
+// META SHARE
 document.getElementById("meta-title").content = data.title;
 document.getElementById("meta-desc").content = data.text.slice(0,150);
 document.getElementById("meta-url").content = window.location.href;
 document.getElementById("meta-img").content = imageUrl;
 
-// === COPY ===
-function copyPrompt(){
-    navigator.clipboard.writeText(data.text);
-    alert("Prompt berhasil disalin!");
-}
+/* =========================
+   COPY PROMPT
+========================= */
+document.getElementById("copyBtn").onclick = async () => {
+    try {
+        await navigator.clipboard.writeText(data.text);
+        const btn = document.getElementById("copyBtn");
+        btn.textContent = "✅ Copied";
+        setTimeout(() => btn.textContent = "📋 Copy Prompt", 1600);
+    } catch {
+        alert("Gagal menyalin prompt");
+    }
+};
+
 /* =========================
    VISITOR PER PROMPT
 ========================= */
 const VISITOR_ENDPOINT = "https://kokosima-visitor.kokopujiyanto.workers.dev";
 
 fetch(`${VISITOR_ENDPOINT}?page=prompt:${id}`, {
-    method: "GET",
-    headers: {
-        "Accept": "application/json"
-    }
+    headers: { "Accept": "application/json" }
 })
-.then(res => res.json())
-.then(data => {
-    console.log("Visitor prompt", id, data);
-})
-.catch(err => {
-    console.warn("Visitor error:", err);
-});
+.then(r => r.json())
+.then(d => console.log("Visitor:", d))
+.catch(e => console.warn("Visitor error:", e));
 </script>
+
 </body>
 </html>
