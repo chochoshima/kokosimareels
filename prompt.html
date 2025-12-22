@@ -109,6 +109,12 @@
                 alert("Gagal menyalin!"); 
             }
         }
-    </script>
+    <const id = new URLSearchParams(location.search).get("id") || "unknown";
+fetch(`https://kokosima-visitor.kokopujiyanto.workers.dev/?page=prompt_${id}`)
+  .then(res => res.json())
+  .then(data => {
+    console.log("Visitor halaman ini:", data.page);
+  });
+</script>
 </body>
 </html>
