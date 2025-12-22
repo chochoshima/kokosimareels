@@ -3,106 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kokosima AI - Katalog Prompt Cinematic</title>
 
-    <meta name="description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion. Temukan inspirasi prompt terbaik di Kokosima AI.">
+    <meta name="description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Kokosima AI">
     <meta property="og:description" content="Koleksi prompt AI Cinematic gratis dan inspirasi gambar AI terbaru.">
     <meta property="og:image" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
-    <meta name="google-site-verification" content="sFMgW89eT9aIsDnRR-9xdOmZPKxlmcFDILNTJJ0bCMY" />
+    <meta name="google-site-verification" content="sFMgW89eT9aIsDnRR-9xdOmZPKxlmcFDILNTJJ0bCMY">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="top-bar">
-        <a href="index.html" style="text-decoration: none; color: inherit;">
-            <span class="logo">🧠 kokosima</span>
-        </a>
-    </header>
+<!-- HEADER -->
+<header class="top-bar">
+    <a href="index.html" style="text-decoration:none;color:inherit;">
+        <span class="logo">🧠 kokosima</span>
+    </a>
+</header>
 
-    <div class="visitor-bar">
+<!-- VISITOR BAR -->
+<div class="visitor-bar">
     👁️ <span id="visitor-today">0</span> hari ini · 
-        <span id="visitor-total">0</span> total
-    </div>
+    <span id="visitor-total">0</span> total
+</div>
 
-    <main class="feed" id="main-feed"></main>
+<!-- FEED -->
+<main class="feed" id="main-feed"></main>
 
-    <script src="data.js"></script>
-    <script>
-        const CHANNEL_YOUTUBE = "https://youtube.com/@kokosimaabsurd?si=jx6EpLD7tZzhM1GO";
-        const feedContainer = document.getElementById('main-feed');
+<!-- DATA -->
+<script src="data.js"></script>
 
-        // FUNGSI OTOMATIS MEMBUAT ITEM DARI data.js
-        function generateFeed() {
-            // Kita ambil semua ID (ai-001, ai-002, dst) dari PROMPT_DATABASE
-            Object.keys(PROMPT_DATABASE).reverse().forEach(id => { 
-                // .reverse() agar postingan terbaru (ID besar) muncul di paling atas
-                
-                const data = PROMPT_DATABASE[id];
-                
-                // Potong teks untuk preview
-                const words = data.text ? data.text.split(/\s+/) : [];
-                const previewText = words.slice(0, 12).join(" ") + "...";
-
-                // Logika tombol video
-                const hasVideo = data.videoUrl && data.videoUrl.trim() !== "" && data.videoUrl !== "#";
-                const btnLabel = hasVideo ? "▶ Video" : "📺 Channel";
-                const btnHref = hasVideo ? data.videoUrl : CHANNEL_YOUTUBE;
-                const btnStyle = hasVideo ? "" : "style='background-color: #cc0000; color: white;'";
-
-                // Template HTML untuk setiap item
-                const itemHTML = `
-                    <section class="item" id="${id}">
-                        <div class="media-container">
-                            <img src="images/${id}.jpg" alt="Prompt AI ${data.title}" loading="lazy">
-                        </div>
-                        <div class="content-container">
-                            <div class="info-text">
-                                <h3>${data.title}</h3>
-                                <p class="prompt-preview">${previewText}</p>
-                            </div>
-                            <div class="actions">
-                                <a class="btn btn-primary btn-video" href="${btnHref}" target="_blank" ${btnStyle}>${btnLabel}</a>
-                                <a class="btn btn-outline" href="prompt.html?id=${id}">PROMPT</a>
-                                <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗 Share</button>
-                            </div>
-                        </div>
-                    </section>
-                `;
-                
-                feedContainer.innerHTML += itemHTML;
-            });
-        }
-
-        // JALANKAN GENERATOR
-        generateFeed();
-
-        // FUNGSI SHARE
-        function sharePrompt(id) {
-            const data = PROMPT_DATABASE[id];
-            if(!data) return;
-            const currentPath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-            const shareUrl = window.location.origin + currentPath + 'prompt.html?id=' + id;
-
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Kokosima AI - ' + data.title,
-                    url: shareUrl,
-                }).catch(err => console.log('Canceled'));
-            } else {
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank');
-            }
-        }
 <script>
+/* ==========================
+   FEED GENERATOR
+========================== */
+const CHANNEL_YOUTUBE = "https://youtube.com/@kokosimaabsurd";
+const feedContainer = document.getElementById("main-feed");
+
+function generateFeed() {
+    Object.keys(PROMPT_DATABASE).reverse().forEach(id => {
+        const data = PROMPT_DATABASE[id];
+        const words = data.text ? data.text.split(/\s+/) : [];
+        const previewText = words.slice(0, 12).join(" ") + "...";
+
+        const hasVideo = data.videoUrl && data.videoUrl !== "#";
+        const btnLabel = hasVideo ? "▶ Video" : "📺 Channel";
+        const btnHref = hasVideo ? data.videoUrl : CHANNEL_YOUTUBE;
+        const btnStyle = hasVideo ? "" : "style='background:#cc0000;color:#fff;'";
+
+        feedContainer.innerHTML += `
+            <section class="item" id="${id}">
+                <div class="media-container">
+                    <img src="images/${id}.jpg" alt="${data.title}" loading="lazy">
+                </div>
+                <div class="content-container">
+                    <h3>${data.title}</h3>
+                    <p class="prompt-preview">${previewText}</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="${btnHref}" target="_blank" ${btnStyle}>${btnLabel}</a>
+                        <a class="btn btn-outline" href="prompt.html?id=${id}">PROMPT</a>
+                        <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗 Share</button>
+                    </div>
+                </div>
+            </section>
+        `;
+    });
+}
+
+generateFeed();
+
+/* ==========================
+   SHARE
+========================== */
+function sharePrompt(id) {
+    const data = PROMPT_DATABASE[id];
+    if (!data) return;
+
+    const base = location.origin + location.pathname.replace("index.html", "");
+    const url = base + "prompt.html?id=" + id;
+
+    if (navigator.share) {
+        navigator.share({ title: data.title, url });
+    } else {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+    }
+}
+
+/* ==========================
+   VISITOR COUNTER (HOME)
+========================== */
 fetch("https://kokosima-visitor.kokopujiyanto.workers.dev/?page=index")
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("visitor-today").textContent = data.today;
-    document.getElementById("visitor-total").textContent = data.total;
-  })
-  .catch(console.error);
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("visitor-today").textContent = data.today;
+        document.getElementById("visitor-total").textContent = data.total;
+    })
+    .catch(err => console.error("Visitor error:", err));
 </script>
+
 </body>
 </html>
