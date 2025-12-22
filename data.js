@@ -108,8 +108,24 @@ const PROMPT_DATABASE = {
         title: "MANCING EMOSI",
         videoUrl: "https://youtube.com/shorts/21KTuiG24MY",
         text:`Ultra-realistic scene of a man using the reference photo for his exact face and hairstyle, sitting casually on the front porch of a classic Indonesian house with weathered cement walls, clay roof tiles, and an old wooden door. He wears a white sleeveless singlet and a black sarung tied naturally around his waist, giving an authentic relaxed village look.He holds a fishing rod with a serious yet humorous expression. In front of him sits a single rubber boot filled with water, creating a small puddle inside. The man is earnestly fishing into the water inside the boot, with the fishing line dipping into the tiny water pool as if expecting a real catch.Soft daylight, natural shadows, subtle movements such as the fishing line wobbling gently and small ripples forming inside the boot. Detailed textures of the porch, the sarung fabric, the boot, and the surroundings appear crisp and lifelike.Ultra-realistic, cinematic, slightly comedic mood,`
+    },
+	"ai-023": {
+        title: "PESEPEDA VS SAPI",
+        videoUrl: "https://youtube.com/shorts/jgMkD4F4nrQ",
+        text:`Ultra-realistic shot of a man using the provided photo reference, keeping his exact facial features, hair shape, and hairstyle. He is riding a modern road racing bicycle and has just stopped on a simple rural asphalt road with small cracks and light potholes. On both sides, open empty land and wide green rice paddies sway gently in the wind.Directly in front of him, a large male cow stands facing him head-on, blocking the road. The cow takes an aggressive stance like a bull preparing to charge—head lowered, front legs braced, nostrils flaring, and dust rising beneath its hooves. The man, still on his bicycle, leans slightly forward with a natural startled reaction, both locked in a tense face-to-face standoff.Cinematic tension, faint ground vibrations, subtle motion in the cow’s tail and the rice fields, hyper-detailed textures of cow fur, bicycle metal, skin texture (matching the reference), and rural atmosphere. Natural daylight and realistic shadows.`
+    },
+	"ai-024": {
+        title: "JEMUR KASUR",
+        videoUrl: "https://youtube.com/shorts/qRpxuzWcGSA",
+        text:`Ultra-realistic shot of a man using the provided photo reference, keeping his exact facial features, hair shape, and hairstyle. He is riding a modern road racing bicycle and has just stopped on a simple rural asphalt road with small cracks and light potholes. On both sides, open empty land and wide green rice paddies sway gently in the wind.Directly in front of him, a large male cow stands facing him head-on, blocking the road. The cow takes an aggressive stance like a bull preparing to charge—head lowered, front legs braced, nostrils flaring, and dust rising beneath its hooves. The man, still on his bicycle, leans slightly forward with a natural startled reaction, both locked in a tense face-to-face standoff.Cinematic tension, faint ground vibrations, subtle motion in the cow’s tail and the rice fields, hyper-detailed textures of cow fur, bicycle metal, skin texture (matching the reference), and rural atmosphere. Natural daylight and realistic shadows.`
+    },
+	"ai-025": {
+        title: "NGOPI",
+        videoUrl: "https://youtube.com/shorts/UDqmdTV4w-k",
+        text:`“Ultra-realistic morning scene at an old, busy Indonesian railway station. Di atas meja kayu warung kopi peron terdapat wadah minum ayam —tabung plastik putih besar dengan tatakan merah di bagian bawah—yang berisi kopi panas. Seseorang (gunakan wajah & gaya rambut persis foto referensi) duduk santai di bangku peron menyruput kopi langsung dari tepi tatakan YANG BERWARNA MERAH, memperlakukannya seperti piring yang berisi cairan KOPI HITAM. Bibir menempel di tepi TATAKAN merah sambil sedikit menunduk, tangan memiringkan wadah secara realistis agar kopi mengalir ke sisi piring merah. Uap kopi terlihat naik dari celah bawah. Suasana pagi ramai: kereta tua mendesis, orang berlalu-lalang, matahari pagi masuk dari sela atap stasiun tua. Detail plastik wadah minum ayam, kilau merah tatakan, uap kopi, serta ambience stasiun tampak sangat hidup dan sinematik.`
     }
 };
+
 
 
 
