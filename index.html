@@ -95,6 +95,16 @@
                 window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank');
             }
         }
+fetch("https://kokosima-visitor.kokopujiyanto.workers.dev/")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("visitor-total").textContent = data.count;
+  })
+  .catch(err => {
+    console.error("Visitor error:", err);
+  });
+</script>
+
     </script>
 </body>
 </html>
