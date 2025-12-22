@@ -1,15 +1,15 @@
 export async function onRequest() {
   const BASE_URL = 'https://kokosimareels.pages.dev/';
   const DATA_FILE = 'functions/data.js';
-  const GITHUB_API = `https://api.github.com/repos/chochoshima/kokosimareels/commits/main?path=${DATA_FILE}`;
+  const GITHUB_COMMIT_API = `https://api.github.com/repos/chochoshima/kokosimareels/commits/main?path=${DATA_FILE}`;
   const RAW_DATA_API = `https://raw.githubusercontent.com/chochoshima/kokosimareels/main/${DATA_FILE}`;
 
   let lastmod = new Date().toISOString();
   let pages = ['']; // homepage
 
   try {
-    // Ambil commit terakhir data.js
-    const resCommit = await fetch(GITHUB_API, {
+    // Ambil commit terakhir data.js untuk lastmod
+    const resCommit = await fetch(GITHUB_COMMIT_API, {
       headers: { 'Accept': 'application/vnd.github+json' }
     });
     if (resCommit.ok) {
@@ -21,8 +21,7 @@ export async function onRequest() {
     const resData = await fetch(RAW_DATA_API);
     if (resData.ok) {
       const text = await resData.text();
-
-      // Asumsi data.js export array prompts: ['ai-001', 'ai-002', ...]
+      // Ambil semua ID prompt, misal: 'ai-001', 'ai-002', dst
       const matches = text.match(/['"]ai-\d+['"]/g);
       if (matches) {
         const ids = matches.map(m => m.replace(/['"]/g, ''));
