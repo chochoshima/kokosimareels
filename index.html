@@ -95,16 +95,14 @@
                 window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank');
             }
         }
-fetch("https://kokosima-visitor.kokopujiyanto.workers.dev/")
+<script>
+fetch("https://kokosima-visitor.kokopujiyanto.workers.dev/?page=index")
   .then(res => res.json())
   .then(data => {
-    document.getElementById("visitor-total").textContent = data.count;
+    document.getElementById("visitor-today").textContent = data.today;
+    document.getElementById("visitor-total").textContent = data.total;
   })
-  .catch(err => {
-    console.error("Visitor error:", err);
-  });
+  .catch(console.error);
 </script>
-
-    </script>
 </body>
 </html>
