@@ -61,60 +61,69 @@
     </main>
 
     <script src="data.js"></script>
-    
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get('id');
 
-        // Pastikan database sudah terload
-        if (!id || typeof PROMPT_DATABASE === 'undefined' || !PROMPT_DATABASE[id]) {
-            window.location.href = "index.html";
-        } else {
-            const data = PROMPT_DATABASE[id];
-            const domain = "https://kokosimareels.pages.dev"; 
-            const fullImgUrl = domain + "/images/" + id + ".jpg";
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
 
-            // 1. Update Teks & UI
-            document.title = data.title + " | Kokosima AI";
-            document.getElementById("title").textContent = data.title;
-            document.getElementById("promptText").value = data.text;
-            
-            const imgElement = document.getElementById("main-image");
-            imgElement.src = "images/" + id + ".jpg";
-            imgElement.style.display = "block";
+// VALIDASI ID
+if (!id || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[id]) {
+    location.href = "index.html";
+} else {
+    const data = PROMPT_DATABASE[id];
+    const domain = "https://kokosimareels.pages.dev";
+    const fullImgUrl = domain + "/images/" + id + ".jpg";
 
-            // 2. Update Meta Tags (Penting untuk Share WA/FB)
-            document.getElementById('meta-title').setAttribute("content", data.title);
-            document.getElementById('meta-desc').setAttribute("content", data.text.substring(0, 150) + "...");
-            document.getElementById('meta-img').setAttribute("content", fullImgUrl);
-            document.getElementById('meta-url').setAttribute("content", window.location.href);
+    // UI
+    document.title = data.title + " | Kokosima AI";
+    document.getElementById("title").textContent = data.title;
+    document.getElementById("promptText").value = data.text;
 
-            // 3. Tombol Back Kembali ke Posisi Scroll Sebelumnya
-            document.getElementById("backBtn").href = `index.html#${id}`;
-        }
+    const img = document.getElementById("main-image");
+    img.src = "images/" + id + ".jpg";
+    img.style.display = "block";
 
-        async function copyPrompt() {
-            const text = document.getElementById("promptText").value;
-            const btn = document.getElementById("copyBtn");
-            if (!text) return;
-            try {
-                await navigator.clipboard.writeText(text);
-                btn.innerHTML = "✅ Copied!";
-                btn.style.backgroundColor = "#28a745";
-                setTimeout(() => { 
-                    btn.innerHTML = "📋 Copy Prompt"; 
-                    btn.style.backgroundColor = ""; 
-                }, 2000);
-            } catch (err) { 
-                alert("Gagal menyalin!"); 
-            }
-        }
-    <const id = new URLSearchParams(location.search).get("id") || "unknown";
+    // META SHARE
+    document.getElementById("meta-title").content = data.title;
+    document.getElementById("meta-desc").content = data.text.slice(0, 150) + "...";
+    document.getElementById("meta-img").content = fullImgUrl;
+    document.getElementById("meta-url").content = location.href;
+
+    // BACK BUTTON
+    document.getElementById("backBtn").href = `index.html#${id}`;
+}
+
+/* ==========================
+   COPY PROMPT
+========================== */
+async function copyPrompt() {
+    const text = document.getElementById("promptText").value;
+    const btn = document.getElementById("copyBtn");
+    if (!text) return;
+
+    try {
+        await navigator.clipboard.writeText(text);
+        btn.innerHTML = "✅ Copied!";
+        btn.style.background = "#28a745";
+        setTimeout(() => {
+            btn.innerHTML = "📋 Copy Prompt";
+            btn.style.background = "";
+        }, 2000);
+    } catch {
+        alert("Gagal menyalin!");
+    }
+}
+
+/* ==========================
+   VISITOR COUNTER PER PROMPT
+========================== */
 fetch(`https://kokosima-visitor.kokopujiyanto.workers.dev/?page=prompt_${id}`)
-  .then(res => res.json())
-  .then(data => {
-    console.log("Visitor halaman ini:", data.page);
-  });
+    .then(res => res.json())
+    .then(data => {
+        console.log("Visitor prompt ini:", data);
+    })
+    .catch(console.error);
 </script>
+
 </body>
 </html>
