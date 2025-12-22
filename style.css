@@ -273,3 +273,14 @@ body {
         padding: 0;
     }
 }
+.prompt-view{
+    position:absolute;
+    top:18px;
+    right:22px;
+    font-size:12px;
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(0,0,0,.45);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(8px);
+}
