@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Loading Prompt... | Kokosima AI</title>
 
+    <!-- OPEN GRAPH -->
     <meta property="og:type" content="article">
     <meta property="og:title" id="meta-title" content="Kokosima AI">
     <meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis.">
@@ -15,18 +16,17 @@
     <meta property="og:image:height" content="630">
 
     <link rel="stylesheet" href="style.css">
-    
+
     <style>
         .prompt-detail-img {
             width: 100%;
             max-width: 500px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin: 0 auto 20px;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
+
         #promptText {
             width: 100%;
             height: 200px;
@@ -41,89 +41,36 @@
 </head>
 <body>
 
-    <header class="top-bar">
-        <a href="index.html" class="btn-back" id="backBtn">← BACK</a>
-        <a href="index.html" style="text-decoration: none; color: inherit;">
-            <span class="logo">Kokosima</span>
-        </a>
-    </header>
+<header class="top-bar">
+    <a href="index.html" class="btn-back" id="backBtn">← BACK</a>
+    <a href="index.html" style="text-decoration:none;color:inherit">
+        <span class="logo">Kokosima</span>
+    </a>
+</header>
 
-    <main class="prompt-page-wrapper">
-        <div class="prompt-card">
-            <img id="main-image" src="" alt="Prompt Preview" class="prompt-detail-img" style="display:none;">
-            
-            <h2 id="title">Loading...</h2>
-            <textarea id="promptText" readonly spellcheck="false"></textarea>
-            <div style="display: flex; justify-content: flex-end;">
-                <button class="btn btn-primary" onclick="copyPrompt()" id="copyBtn">📋 Copy Prompt</button>
-            </div>
+<main class="prompt-page-wrapper">
+    <div class="prompt-card">
+        <img id="main-image" class="prompt-detail-img" style="display:none" alt="Prompt Preview">
+
+        <h2 id="title">Loading...</h2>
+        <textarea id="promptText" readonly spellcheck="false"></textarea>
+
+        <div style="display:flex;justify-content:flex-end">
+            <button class="btn btn-primary" id="copyBtn" onclick="copyPrompt()">📋 Copy Prompt</button>
         </div>
-    </main>
+    </div>
+</main>
 
-    <script src="data.js"></script>
+<script src="data.js"></script>
 
 <script>
-const urlParams = new URLSearchParams(window.location.search);
-const id = urlParams.get("id");
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
 
-// VALIDASI ID
+// VALIDASI
 if (!id || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[id]) {
-    location.href = "index.html";
+    window.location.href = "index.html";
 } else {
     const data = PROMPT_DATABASE[id];
     const domain = "https://kokosimareels.pages.dev";
-    const fullImgUrl = domain + "/images/" + id + ".jpg";
-
-    // UI
-    document.title = data.title + " | Kokosima AI";
-    document.getElementById("title").textContent = data.title;
-    document.getElementById("promptText").value = data.text;
-
-    const img = document.getElementById("main-image");
-    img.src = "images/" + id + ".jpg";
-    img.style.display = "block";
-
-    // META SHARE
-    document.getElementById("meta-title").content = data.title;
-    document.getElementById("meta-desc").content = data.text.slice(0, 150) + "...";
-    document.getElementById("meta-img").content = fullImgUrl;
-    document.getElementById("meta-url").content = location.href;
-
-    // BACK BUTTON
-    document.getElementById("backBtn").href = `index.html#${id}`;
-}
-
-/* ==========================
-   COPY PROMPT
-========================== */
-async function copyPrompt() {
-    const text = document.getElementById("promptText").value;
-    const btn = document.getElementById("copyBtn");
-    if (!text) return;
-
-    try {
-        await navigator.clipboard.writeText(text);
-        btn.innerHTML = "✅ Copied!";
-        btn.style.background = "#28a745";
-        setTimeout(() => {
-            btn.innerHTML = "📋 Copy Prompt";
-            btn.style.background = "";
-        }, 2000);
-    } catch {
-        alert("Gagal menyalin!");
-    }
-}
-
-/* ==========================
-   VISITOR COUNTER PER PROMPT
-========================== */
-fetch(`https://kokosima-visitor.kokopujiyanto.workers.dev/?page=prompt_${id}`)
-    .then(res => res.json())
-    .then(data => {
-        console.log("Visitor prompt ini:", data);
-    })
-    .catch(console.error);
-</script>
-
-</body>
-</html>
+    const imageUrl = `${domain}/images/${id}.jpg`;
