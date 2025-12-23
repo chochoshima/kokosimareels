@@ -13,7 +13,7 @@
     --accent-color: #fff;
     --text-dim: #aaa;
     --border-soft: rgba(255, 255, 255, 0.1);
-    --vh: 1vh; /* default, JS akan override */
+    --vh: 1vh; /* JS akan override */
 }
 
 html {
@@ -52,14 +52,47 @@ body {
 }
 
 /* =========================
-   FEED CONTAINER
+   BUTTON SYSTEM
+========================= */
+.btn {
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary { background: var(--accent-color); color: #000; }
+
+.btn-outline, .btn-share, .btn-back {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid var(--border-soft);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+}
+
+.btn:active, .btn-share:active { transform: scale(0.96); }
+.btn:hover, .btn-share:hover, .btn-back:hover { 
+    background: rgba(255, 255, 255, 0.25); 
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* =========================
+   FEED VIEW
 ========================= */
 .feed {
     width: 100%;
 }
 
 /* =========================
-   MOBILE (<1024px) - TikTok style
+   MOBILE (<1024px)
 ========================= */
 @media (max-width: 1023px) {
     .feed {
@@ -86,7 +119,6 @@ body {
     }
     .media-container img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* overlay konten */
     .content-container {
         position: absolute;
         bottom: 0;
@@ -94,7 +126,7 @@ body {
         padding: 20px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
         z-index: 10;
         background: linear-gradient(
             to top,
@@ -117,15 +149,14 @@ body {
         text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     }
 
-    /* ===== MOBILE - TOMBOL BERJARAK HORIZONTAL ===== */
-@media (max-width: 1023px) {
+    /* Tombol berjajar horizontal di bawah preview text */
     .actions {
-        position: static;            /* ikut aliran konten */
+        position: static;
         display: flex;
-        flex-direction: row;         /* berjajar horizontal */
-        gap: 10px;                   /* jarak antar tombol */
-        margin-top: 8px;             /* jarak dari prompt preview */
-        flex-wrap: wrap;             /* jika tidak muat, lanjut baris baru */
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 8px;
+        flex-wrap: wrap;
         justify-content: flex-start;
         pointer-events: auto;
     }
@@ -142,7 +173,6 @@ body {
         cursor: pointer;
         transition: background 0.2s;
     }
-
     .actions a:hover,
     .actions span:hover {
         background: rgba(255,255,255,0.25);
@@ -150,7 +180,7 @@ body {
 }
 
 /* =========================
-   DESKTOP (≥1024px) - Grid style
+   DESKTOP GRID (≥1024px)
 ========================= */
 @media (min-width: 1024px) {
     .feed {
@@ -160,7 +190,7 @@ body {
         padding: 20px;
         height: auto;
         overflow: visible;
-        scroll-snap-type: none;
+        scroll-snap-type: none; 
     }
 
     .item {
@@ -188,23 +218,12 @@ body {
         padding: 16px;
     }
 
-    .content-container h3 {
-        font-size: 22px;
-        font-weight: 700;
-        color: #fff;
-        text-shadow: none;
+    .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
     }
 
-    .content-container p {
-        font-size: 14px;
-        color: var(--text-dim);
-        text-shadow: none;
-    }
-
-    /* =========================
-   DESKTOP - TOMBOL BENTUKNYA MIRIP MOBILE
-========================= */
-@media (min-width: 1024px) {
     .actions a,
     .actions span {
         background: rgba(255,255,255,0.15);
@@ -216,17 +235,9 @@ body {
         cursor: pointer;
         transition: background 0.2s;
     }
-
     .actions a:hover,
     .actions span:hover {
         background: rgba(255,255,255,0.25);
-    }
-
-    /* Jika ingin berjajar horizontal */
-    .actions {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
     }
 }
 
@@ -264,3 +275,47 @@ body {
     border: 1px solid rgba(255,255,255,0.08);
     backdrop-filter: blur(8px);
 }
+
+/* =========================
+   PROMPT DETAIL PAGE
+========================= */
+.prompt-page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px 40px;
+}
+
+.prompt-card {
+    width: 100%;
+    max-width: 800px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 24px;
+    padding: 40px;
+    backdrop-filter: blur(20px);
+}
+
+.prompt-card h2 {
+    font-size: 30px; margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.prompt-card textarea {
+    width: 100%; height: 350px;
+    background: rgba(0,0,0,0.3);
+    color: #ddd;
+    border: 1px solid var(--border-soft);
+    border-radius: 15px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 15px;
+    resize: none; margin-bottom: 20px;
+    outline: none;
+}
+
+/* =========================
+   JS untuk viewport mobile
+========================= */
