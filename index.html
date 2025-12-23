@@ -38,6 +38,17 @@
 
 <script>
 /* ==========================
+   VIEWPORT MOBILE HEIGHT
+========================== */
+function setVh(){
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+window.addEventListener('resize', setVh);
+window.addEventListener('load', setVh);
+setVh();
+
+/* ==========================
    FEED GENERATOR
 ========================== */
 const CHANNEL_YOUTUBE = "https://youtube.com/@kokosimaabsurd";
@@ -58,11 +69,11 @@ function generateFeed() {
             <section class="item" id="${id}">
                 <div class="media-container">
                     <img 
-  src="images/${id}.webp"
-  alt="Prompt AI ${data.title}"
-  loading="lazy"
-  decoding="async"
-  onerror="this.onerror=null;this.src='images/${id}.jpg';">
+                      src="images/${id}.webp"
+                      alt="Prompt AI ${data.title}"
+                      loading="lazy"
+                      decoding="async"
+                      onerror="this.onerror=null;this.src='images/${id}.jpg';">
                 </div>
                 <div class="content-container">
                     <h3>${data.title}</h3>
@@ -81,7 +92,7 @@ function generateFeed() {
 generateFeed();
 
 /* ==========================
-   SHARE
+   SHARE PROMPT
 ========================== */
 function sharePrompt(id) {
     const data = PROMPT_DATABASE[id];
