@@ -38,6 +38,21 @@
     color:#e5e7eb;
     resize:none;
 }
+.prompt-page-wrapper {
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:100px 20px 40px;
+}
+.prompt-card {
+    width:100%;
+    max-width:600px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:12px;
+}
 </style>
 </head>
 
@@ -56,8 +71,7 @@
     <h2 id="title">Loading...</h2>
     <div id="viewCounter" class="prompt-view">
     👁️ <span id="viewCount">0</span> views
-</div>
-
+    </div>
 
     <textarea
         id="promptText"
@@ -65,8 +79,9 @@
         spellcheck="false"
     >Memuat prompt...</textarea>
 
-    <div style="display:flex;justify-content:flex-end;margin-top:14px">
+    <div style="display:flex;justify-content:center;margin-top:14px;gap:10px;">
         <button class="btn btn-primary" id="copyBtn">📋 Copy Prompt</button>
+        <a class="btn btn-outline" id="shareBtn" href="#">🔗 Share</a>
     </div>
 
 </div>
@@ -87,23 +102,23 @@ if (!id || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[id]) {
 
 const data = PROMPT_DATABASE[id];
 const domain = "https://kokosimareels.pages.dev";
-const imageUrl = `${domain}/images/${id}.jpg`;
+
+// Coba pakai .webp dulu, jika gagal fallback ke .jpg
+const img = document.getElementById("main-image");
+img.src = `${domain}/images/${id}.webp`;
+img.onerror = () => { img.onerror = null; img.src = `${domain}/images/${id}.jpg`; };
+img.hidden = false;
 
 // TITLE & CONTENT
 document.title = `${data.title} | Kokosima AI`;
 document.getElementById("title").textContent = data.title;
 document.getElementById("promptText").value = data.text;
 
-// IMAGE
-const img = document.getElementById("main-image");
-img.src = imageUrl;
-img.hidden = false;
-
 // META SHARE
 document.getElementById("meta-title").content = data.title;
 document.getElementById("meta-desc").content = data.text.slice(0,150);
 document.getElementById("meta-url").content = window.location.href;
-document.getElementById("meta-img").content = imageUrl;
+document.getElementById("meta-img").content = img.src;
 
 /* =========================
    COPY PROMPT
@@ -116,6 +131,18 @@ document.getElementById("copyBtn").onclick = async () => {
         setTimeout(() => btn.textContent = "📋 Copy Prompt", 1600);
     } catch {
         alert("Gagal menyalin prompt");
+    }
+};
+
+/* =========================
+   SHARE
+========================= */
+document.getElementById("shareBtn").onclick = () => {
+    const url = window.location.href;
+    if (navigator.share) {
+        navigator.share({ title: data.title, url });
+    } else {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
     }
 };
 
