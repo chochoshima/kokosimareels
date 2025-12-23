@@ -126,22 +126,85 @@ body {
 }
 
 /* =========================
-   PROMPT PAGE SPECIFIC
+   PROMPT PAGE SPECIFIC (Optimized)
 ========================= */
 .prompt-page-wrapper {
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  padding:100px 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 80px 24px 40px;
 }
-.prompt-page-wrapper .prompt-card {
-  width:100%;
-  max-width:600px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  gap:12px;
+
+.prompt-card {
+  display: flex;
+  flex-direction: column; /* Default mobile: tumpuk ke bawah */
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 1000px; /* Diperlebar untuk menampung kiri-kanan */
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid var(--border-soft);
+}
+
+.prompt-card .media-container {
+  width: 100%;
+  max-width: 400px; /* Ukuran gambar */
+  aspect-ratio: 9/16;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.prompt-card .content-container {
+  position: static; /* Reset dari style feed mobile */
+  background: transparent;
+  padding: 0;
+  text-align: left; /* Teks rata kiri di desktop */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.prompt-card h3 {
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.prompt-card p {
+  font-size: 16px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* DESKTOP VIEW: Gambar Kiri, Tulisan Kanan */
+@media (min-width: 1024px) {
+  .prompt-card {
+    flex-direction: row; /* Berjejer ke samping */
+    align-items: stretch;
+    text-align: left;
+  }
+  
+  .prompt-card .media-container {
+    width: 40%; /* Proporsi gambar di kiri */
+  }
+  
+  .prompt-card .content-container {
+    width: 60%; /* Proporsi teks di kanan */
+  }
+}
+
+/* MOBILE ADJUSTMENT */
+@media (max-width: 1023px) {
+  .prompt-card {
+    text-align: center;
+  }
+  .prompt-card .content-container {
+    align-items: center;
+  }
 }
 
 /* =========================
