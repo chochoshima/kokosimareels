@@ -122,9 +122,49 @@ const PROMPT_DATABASE = {
 	"ai-025": {
         title: "NGOPI",
         videoUrl: "https://youtube.com/shorts/UDqmdTV4w-k",
-        text:`“Ultra-realistic morning scene at an old, busy Indonesian railway station. Di atas meja kayu warung kopi peron terdapat wadah minum ayam —tabung plastik putih besar dengan tatakan merah di bagian bawah—yang berisi kopi panas. Seseorang (gunakan wajah & gaya rambut persis foto referensi) duduk santai di bangku peron menyruput kopi langsung dari tepi tatakan YANG BERWARNA MERAH, memperlakukannya seperti piring yang berisi cairan KOPI HITAM. Bibir menempel di tepi TATAKAN merah sambil sedikit menunduk, tangan memiringkan wadah secara realistis agar kopi mengalir ke sisi piring merah. Uap kopi terlihat naik dari celah bawah. Suasana pagi ramai: kereta tua mendesis, orang berlalu-lalang, matahari pagi masuk dari sela atap stasiun tua. Detail plastik wadah minum ayam, kilau merah tatakan, uap kopi, serta ambience stasiun tampak sangat hidup dan sinematik.`
+        text:`Ultra-realistic morning scene at an old, busy Indonesian railway station. Di atas meja kayu warung kopi peron terdapat wadah minum ayam —tabung plastik putih besar dengan tatakan merah di bagian bawah—yang berisi kopi panas. Seseorang (gunakan wajah & gaya rambut persis foto referensi) duduk santai di bangku peron menyruput kopi langsung dari tepi tatakan YANG BERWARNA MERAH, memperlakukannya seperti piring yang berisi cairan KOPI HITAM. Bibir menempel di tepi TATAKAN merah sambil sedikit menunduk, tangan memiringkan wadah secara realistis agar kopi mengalir ke sisi piring merah. Uap kopi terlihat naik dari celah bawah. Suasana pagi ramai: kereta tua mendesis, orang berlalu-lalang, matahari pagi masuk dari sela atap stasiun tua. Detail plastik wadah minum ayam, kilau merah tatakan, uap kopi, serta ambience stasiun tampak sangat hidup dan sinematik.`
+    },
+	"ai-026": {
+        title: "NGOPI",
+        videoUrl: "https://youtube.com/shorts/UDqmdTV4w-k",
+        text:`[NOTE] FOR HUMAN ONLY
+---
+Open Gemini, upload photo, then copy the prompt below.
+Instructions in this note are NOT part of AI prompt:
+- Use uploaded photo ONLY for face identity and facial features.
+- Do NOT copy hairstyle, outfit, pose, lighting, or background unless instructed.
+- The prompt is non-gender: AI will adjust outfit and pose according to the uploaded photo's gender.
+---
+
+[AI PROMPT]
+Use the uploaded photo reference for facial features ONLY.
+Do not copy hairstyle, outfit, or lighting unless specified.
+Cinematic live-action portrait, like a paused frame from a high-budget movie.
+
+A grounded steampunk military character, seated on a worn leather armchair, leaning forward with authority. 
+Holds a functional flintlock rifle (or equivalent weapon matching gender and pose of the reference): one hand on stock (finger outside trigger), other supporting barrel. Realistic weight, scratches, oil stains, mechanical details.
+
+OUTFIT:
+Royal gray velvet military-style coat with gold embroidery (or equivalent color and style adjusted for reference gender), fitted trousers or skirt as appropriate, dark leather gloves, tall leather boots.
+Vivid pink hair braided to one side for women; hairstyle adapted for men if reference is male.
+Face highly realistic, visible pores, subtle imperfections, eyepatch optional.
+Visible eye stares coldly at camera.
+
+BACKGROUND & MOOD:
+Elegant antique library or comparable interior, tall dark wooden bookshelves, aged books, classic paintings.
+Warm late-afternoon sunlight, cinematic shadows, realistic contrast.
+
+CAMERA:
+Full-frame cinema camera, 85mm lens, shallow depth of field.
+Natural practical lighting, subtle film grain, true blacks, soft highlight roll-off.
+
+
+---
+
+#Steampunk #CinematicPortrait #LiveAction #PhotoRealistic #FantasyCharacter #MilitaryStyle #CosplayInspiration #FilmQuality #CreativeAI #GeminiAI #PortraitPhotography #EpicCharacter #AIArt #DigitalArt #VisualStorytelling`
     }
 };
+
 
 
 
