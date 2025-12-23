@@ -117,33 +117,36 @@ body {
         text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     }
 
-    /* tombol floating di kanan bawah */
+    /* ===== MOBILE - TOMBOL BERJARAK HORIZONTAL ===== */
+@media (max-width: 1023px) {
     .actions {
-        position: absolute;
-        bottom: 16px;        /* aman dari browser UI */
-        right: 16px;
+        position: static;            /* ikut aliran konten */
         display: flex;
-        flex-direction: column;
-        gap: 14px;
-        z-index: 20;
+        flex-direction: row;         /* berjajar horizontal */
+        gap: 10px;                   /* jarak antar tombol */
+        margin-top: 8px;             /* jarak dari prompt preview */
+        flex-wrap: wrap;             /* jika tidak muat, lanjut baris baru */
+        justify-content: flex-start;
         pointer-events: auto;
     }
 
     .actions a,
     .actions span {
-        height: 48px;
-        min-width: 90px;
-        padding: 0 14px;
-        border-radius: 12px;
         background: rgba(255,255,255,0.15);
         color: #fff;
+        padding: 10px 14px;
+        border-radius: 12px;
         font-size: 14px;
         text-align: center;
         text-decoration: none;
         cursor: pointer;
+        transition: background 0.2s;
     }
+
     .actions a:hover,
-    .actions span:hover { background: rgba(255,255,255,0.25); }
+    .actions span:hover {
+        background: rgba(255,255,255,0.25);
+    }
 }
 
 /* =========================
