@@ -125,7 +125,7 @@ const PROMPT_DATABASE = {
         text:`Ultra-realistic morning scene at an old, busy Indonesian railway station. Di atas meja kayu warung kopi peron terdapat wadah minum ayam —tabung plastik putih besar dengan tatakan merah di bagian bawah—yang berisi kopi panas. Seseorang (gunakan wajah & gaya rambut persis foto referensi) duduk santai di bangku peron menyruput kopi langsung dari tepi tatakan YANG BERWARNA MERAH, memperlakukannya seperti piring yang berisi cairan KOPI HITAM. Bibir menempel di tepi TATAKAN merah sambil sedikit menunduk, tangan memiringkan wadah secara realistis agar kopi mengalir ke sisi piring merah. Uap kopi terlihat naik dari celah bawah. Suasana pagi ramai: kereta tua mendesis, orang berlalu-lalang, matahari pagi masuk dari sela atap stasiun tua. Detail plastik wadah minum ayam, kilau merah tatakan, uap kopi, serta ambience stasiun tampak sangat hidup dan sinematik.`
     },
 	"ai-026": {
-        title: "NGOPI",
+        title: "STEAMPUNK MILITARY CHARACTER",
         videoUrl: "https://youtube.com/shorts/UDqmdTV4w-k",
         text:`[NOTE] FOR HUMAN ONLY
 ---
@@ -164,6 +164,7 @@ Natural practical lighting, subtle film grain, true blacks, soft highlight roll-
 #Steampunk #CinematicPortrait #LiveAction #PhotoRealistic #FantasyCharacter #MilitaryStyle #CosplayInspiration #FilmQuality #CreativeAI #GeminiAI #PortraitPhotography #EpicCharacter #AIArt #DigitalArt #VisualStorytelling`
     }
 };
+
 
 
 
