@@ -1,4 +1,65 @@
-/* ===== MOBILE SCROLL (TikTok modern) - tombol terlihat ===== */
+/* =========================
+   RESET & BASE
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #000;
+    --card-bg: rgba(20, 20, 20, 0.85);
+    --accent-color: #fff;
+    --text-dim: #aaa;
+    --border-soft: rgba(255, 255, 255, 0.1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-color);
+    color: #fff;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+.top-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+}
+
+/* =========================
+   FEED CONTAINER
+========================= */
+.feed {
+    width: 100%;
+}
+
+/* =========================
+   MOBILE (<1024px) - TikTok style
+========================= */
 @media (max-width: 1023px) {
     .feed {
         height: 100vh;
@@ -6,10 +67,7 @@
         scroll-snap-type: y mandatory;
         scrollbar-width: none;
     }
-
-    .feed::-webkit-scrollbar {
-        display: none;
-    }
+    .feed::-webkit-scrollbar { display: none; }
 
     .item {
         position: relative;
@@ -25,36 +83,44 @@
         height: 100%;
         position: relative;
     }
-
     .media-container img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
 
+    /* overlay konten */
     .content-container {
         position: absolute;
         bottom: 0;
         width: 100%;
         padding: 20px;
-        background: linear-gradient(to top, rgba(0,0,0,0.85) 50%, transparent 100%);
         display: flex;
         flex-direction: column;
         gap: 12px;
         z-index: 10;
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.85) 40%,
+            rgba(0,0,0,0.2) 80%,
+            transparent 100%
+        );
     }
 
     .content-container h3 {
         font-size: 24px;
         font-weight: 700;
+        color: #fff;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     }
 
     .content-container p {
         font-size: 14px;
-        color: var(--text-dim);
+        color: #f0f0f0;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     }
 
-    /* Tombol sekarang terlihat di mobile */
+    /* tombol overlay terlihat */
     .actions {
         display: flex;
         gap: 10px;
@@ -75,9 +141,8 @@
         cursor: pointer;
         text-decoration: none;
     }
-
     .actions a:hover,
-    .actions span:hover {
-        background: rgba(255,255,255,0.25);
-    }
+    .actions span:hover { background: rgba(255,255,255,0.25); }
 }
+
+/* =========================
