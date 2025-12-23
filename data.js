@@ -126,7 +126,7 @@ const PROMPT_DATABASE = {
     },
 	"ai-026": {
         title: "STEAMPUNK MILITARY CHARACTER",
-        videoUrl: "https://youtube.com/shorts/UDqmdTV4w-k",
+        videoUrl: "https://youtube.com/shorts/e5OWhK2ZSUo",
         text:`[NOTE] FOR HUMAN ONLY
 ---
 Open Gemini, upload photo, then copy the prompt below.
@@ -164,6 +164,7 @@ Natural practical lighting, subtle film grain, true blacks, soft highlight roll-
 #Steampunk #CinematicPortrait #LiveAction #PhotoRealistic #FantasyCharacter #MilitaryStyle #CosplayInspiration #FilmQuality #CreativeAI #GeminiAI #PortraitPhotography #EpicCharacter #AIArt #DigitalArt #VisualStorytelling`
     }
 };
+
 
 
 
