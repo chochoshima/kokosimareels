@@ -18,40 +18,96 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-.prompt-detail-img{
-    width:100%;
-    max-width:520px;
-    margin:0 auto 18px;
-    display:block;
-    border-radius:14px;
-    box-shadow:0 6px 18px rgba(0,0,0,.25);
-}
-#promptText{
-    width:100%;
-    min-height:220px;
-    padding:16px;
-    font-family:monospace;
-    font-size:14px;
-    border-radius:10px;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(0,0,0,.35);
-    color:#e5e7eb;
-    resize:none;
-}
+/* =========================
+   PROMPT PAGE SPECIFIC
+========================= */
 .prompt-page-wrapper {
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding:100px 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 80px 24px 40px;
 }
+
 .prompt-card {
-    width:100%;
-    max-width:600px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:12px;
+  display: flex;
+  flex-direction: column; /* mobile default */
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 1000px;
+  background: rgba(20,20,20,0.85);
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.prompt-card .media-container {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 9/16;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.prompt-card .content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.prompt-card h3 {
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.prompt-card p {
+  font-size: 16px;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.prompt-card .actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.prompt-card .actions a, 
+.prompt-card .actions button {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  transition: 0.2s;
+}
+.prompt-card .actions a:hover,
+.prompt-card .actions button:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* Desktop layout: image left, text right */
+@media (min-width:1024px) {
+  .prompt-card {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .prompt-card .media-container { width: 40%; }
+  .prompt-card .content-container { width: 60%; }
+  .prompt-card .content-container h3 { font-size: 32px; }
+  .prompt-card .content-container p { font-size: 16px; }
+}
+
+/* Mobile adjustment */
+@media (max-width:1023px) {
+  .prompt-card { text-align: center; }
+  .prompt-card .content-container { align-items: center; }
 }
 </style>
 </head>
@@ -64,34 +120,25 @@
 </header>
 
 <main class="prompt-page-wrapper">
-<div class="prompt-card">
-
-    <img id="main-image" class="prompt-detail-img" alt="Prompt Preview" hidden>
-
-    <h2 id="title">Loading...</h2>
-    <div id="viewCounter" class="prompt-view">
-    👁️ <span id="viewCount">0</span> views
+  <div class="prompt-card">
+    <div class="media-container">
+      <img id="main-image" alt="Prompt Preview" hidden style="width:100%; height:100%; object-fit:cover;">
     </div>
-
-    <textarea
-        id="promptText"
-        readonly
-        spellcheck="false"
-    >Memuat prompt...</textarea>
-
-    <div style="display:flex;justify-content:center;margin-top:14px;gap:10px;">
+    <div class="content-container">
+      <h3 id="title">Loading...</h3>
+      <p id="promptText">Memuat prompt...</p>
+      <div class="actions">
         <button class="btn btn-primary" id="copyBtn">📋 Copy Prompt</button>
-        <a class="btn btn-outline" id="shareBtn" href="#">🔗 Share</a>
+      </div>
+      <div id="viewCounter">👁️ <span id="viewCount">0</span> views</div>
     </div>
-
-</div>
+  </div>
 </main>
 
 <script src="data.js"></script>
-
 <script>
 /* =========================
-   LOAD DATA
+   LOAD PROMPT DATA
 ========================= */
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
@@ -102,27 +149,26 @@ if (!id || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[id]) {
 
 const data = PROMPT_DATABASE[id];
 const domain = "https://kokosimareels.pages.dev";
+const imgElement = document.getElementById("main-image");
 
-// Coba pakai .webp dulu, jika gagal fallback ke .jpg
-const img = document.getElementById("main-image");
-img.src = `${domain}/images/${id}.webp`;
-img.onerror = () => { img.onerror = null; img.src = `${domain}/images/${id}.jpg`; };
-img.hidden = false;
+// fallback webp → jpg
+const webpUrl = `${domain}/images/${id}.webp`;
+const jpgUrl  = `${domain}/images/${id}.jpg`;
+imgElement.src = webpUrl;
+imgElement.onerror = () => { imgElement.src = jpgUrl; imgElement.onerror = null; };
+imgElement.onload = () => { imgElement.hidden = false; };
 
 // TITLE & CONTENT
-document.title = `${data.title} | Kokosima AI`;
 document.getElementById("title").textContent = data.title;
-document.getElementById("promptText").value = data.text;
+document.getElementById("promptText").textContent = data.text;
 
 // META SHARE
 document.getElementById("meta-title").content = data.title;
 document.getElementById("meta-desc").content = data.text.slice(0,150);
 document.getElementById("meta-url").content = window.location.href;
-document.getElementById("meta-img").content = img.src;
+document.getElementById("meta-img").content = webpUrl;
 
-/* =========================
-   COPY PROMPT
-========================= */
+// COPY PROMPT
 document.getElementById("copyBtn").onclick = async () => {
     try {
         await navigator.clipboard.writeText(data.text);
@@ -134,29 +180,12 @@ document.getElementById("copyBtn").onclick = async () => {
     }
 };
 
-/* =========================
-   SHARE
-========================= */
-document.getElementById("shareBtn").onclick = () => {
-    const url = window.location.href;
-    if (navigator.share) {
-        navigator.share({ title: data.title, url });
-    } else {
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
-    }
-};
-
-/* =========================
-   VISITOR PER PROMPT
-========================= */
+// VISITOR COUNTER
 const VISITOR_ENDPOINT = "https://kokosima-visitor.kokopujiyanto.workers.dev";
-
-fetch(`${VISITOR_ENDPOINT}?page=prompt:${id}`, {
-    headers: { "Accept": "application/json" }
-})
-.then(r => r.json())
-.then(d => console.log("Visitor:", d))
-.catch(e => console.warn("Visitor error:", e));
+fetch(`${VISITOR_ENDPOINT}?page=prompt:${id}`, { headers:{ "Accept":"application/json" } })
+  .then(r => r.json())
+  .then(d => console.log("Visitor:", d))
+  .catch(e => console.warn("Visitor error:", e));
 </script>
 
 </body>
