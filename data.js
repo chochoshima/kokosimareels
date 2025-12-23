@@ -162,8 +162,29 @@ Natural practical lighting, subtle film grain, true blacks, soft highlight roll-
 ---
 
 #Steampunk #CinematicPortrait #LiveAction #PhotoRealistic #FantasyCharacter #MilitaryStyle #CosplayInspiration #FilmQuality #CreativeAI #GeminiAI #PortraitPhotography #EpicCharacter #AIArt #DigitalArt #VisualStorytelling`
+    },
+	"ai-027": {
+        title: "NGARIT FREESTYLE",
+        videoUrl: "https://youtube.com/shorts/h3WiIFz8xJ4",
+        text:`Sebuah foto street photography yang kasar (gritty), candid, dan ultra-realistis, menangkap momen seorang pria mengendarai superbike modern sambil membawa muatan pakan ternak liar.
+Subjek Utama dan Kendaraan: Pria tersebut (gunakan wajah dari foto referensi secara presisi) mengenakan kaos oblong putih yang sangat lusuh, bernoda tanah dan keringat, celana pendek hitam pudar, dan sandal jepit karet. Ia mengendarai superbike produksi massal termahal dan terbaru (seperti Ducati Panigale V4 SP2 atau Kawasaki H2) yang berkilau mewah, menciptakan kontras ironis yang ekstrem.
+Detail Muatan (Revisi Fokus): Di jok belakang, terikat kuat dengan tali plastik kuning yang tegang, terdapat tumpukan besar vegetasi liar yang beragam (mixed wild forage). Tumpukan ini harus menampilkan variasi tekstur yang jelas: campuran batang rumput gajah yang tebal dan tajam, ilalang liar yang panjang, daun-daun lebar (seperti daun talas liar atau tanaman merambat), dan berbagai jenis gulma dengan gradasi warna dari hijau tua, hijau muda, hingga sedikit kecokelatan pada ujung daun yang kering. Detail tanah dan akar yang tercabut masih terlihat menempel, menekankan keaslian hasil pencarian rumput liar.
+Latar Belakang: Jalanan pinggiran Jakarta yang padat dengan aspal yang tidak rata. Latar belakang menampilkan ruko-ruko kusam, tiang listrik dengan kabel semrawut, dan kendaraan lain yang blur karena kecepatan, memberikan konteks lokasi tropis yang sibuk.
+Spesifikasi Teknis Fotografi:
+
+Kamera: Hasselblad X1D II 50C untuk detail tekstur ekstrem pada dedaunan dan logam motor.
+Lensa: 45mm f/3.5 untuk kompresi subjek yang natural namun tetap tajam.
+Pencahayaan: Overcast daylight (cahaya siang mendung) yang menyebar rata, menghilangkan bayangan keras namun menonjolkan volume tumpukan rumput dan lekukan motor.
+Shutter Speed: Kecepatan tinggi (misalnya 1/1000s) untuk membekukan detail rumput yang berkibar tertiup angin, namun dengan sedikit panning pada background untuk efek gerakan.
+Color Grading: Desaturated, kontras tinggi, raw tones.
+[INTEGRASI WAJAH REFERENSI KRITIS]:
+
+Identitas: Gunakan fitur wajah dari foto referensi secara mutlak. Jangan mengubah bentuk mata, hidung, bibir, atau struktur tulang wajah.
+Penyatuan: Pastikan skin tone wajah bereaksi terhadap pencahayaan mendung di lokasi. Wajah harus terlihat sedikit berkeringat dan realistis, menyatu dengan leher dan tubuh, tidak terlihat seperti tempelan.
+Ekspresi: Ekspresi wajah pengendara harus terlihat wajar, fokus ke jalan, dan tidak berpose (candid)`
     }
 };
+
 
 
 
