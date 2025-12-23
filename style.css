@@ -13,6 +13,7 @@
     --accent-color: #fff;
     --text-dim: #aaa;
     --border-soft: rgba(255, 255, 255, 0.1);
+    --vh: 1vh; /* default, JS akan override */
 }
 
 html {
@@ -62,7 +63,7 @@ body {
 ========================= */
 @media (max-width: 1023px) {
     .feed {
-        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
         scrollbar-width: none;
@@ -71,7 +72,7 @@ body {
 
     .item {
         position: relative;
-        height: 100vh;
+        min-height: calc(var(--vh, 1vh) * 100);
         scroll-snap-align: start;
         display: flex;
         flex-direction: column;
@@ -83,11 +84,7 @@ body {
         height: 100%;
         position: relative;
     }
-    .media-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+    .media-container img { width: 100%; height: 100%; object-fit: cover; }
 
     /* overlay konten */
     .content-container {
@@ -120,29 +117,137 @@ body {
         text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     }
 
-    /* tombol overlay terlihat */
+    /* tombol floating di kanan bawah */
     .actions {
+        position: absolute;
+        bottom: 16px;        /* aman dari browser UI */
+        right: 16px;
         display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        opacity: 1;
-        transform: translateY(0);
+        flex-direction: column;
+        gap: 14px;
+        z-index: 20;
         pointer-events: auto;
     }
 
     .actions a,
     .actions span {
+        height: 48px;
+        min-width: 90px;
+        padding: 0 14px;
+        border-radius: 12px;
         background: rgba(255,255,255,0.15);
         color: #fff;
-        padding: 8px 12px;
-        border-radius: 8px;
         font-size: 14px;
-        cursor: pointer;
+        text-align: center;
         text-decoration: none;
+        cursor: pointer;
     }
     .actions a:hover,
     .actions span:hover { background: rgba(255,255,255,0.25); }
 }
 
 /* =========================
+   DESKTOP (≥1024px) - Grid style
+========================= */
+@media (min-width: 1024px) {
+    .feed {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+        padding: 20px;
+        height: auto;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+
+    .item {
+        position: relative;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        background: var(--card-bg);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .media-container {
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+    .media-container img { width: 100%; height: 100%; object-fit: cover; }
+
+    .content-container {
+        position: static;
+        background: none;
+        padding: 16px;
+    }
+
+    .content-container h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: none;
+    }
+
+    .content-container p {
+        font-size: 14px;
+        color: var(--text-dim);
+        text-shadow: none;
+    }
+
+    /* tombol desktop berupa teks sederhana */
+    .actions {
+        position: static;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .actions a,
+    .actions span {
+        background: none;
+        border: none;
+        color: var(--accent-color);
+        padding: 0;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+}
+
+/* =========================
+   VISITOR BAR
+========================= */
+.visitor-bar {
+    position: fixed;
+    z-index: 90;
+    background: rgba(15, 15, 15, 0.55);
+    backdrop-filter: blur(10px);
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #94a3b8;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    pointer-events: none;
+}
+@media (min-width: 768px) { .visitor-bar { top: 70px; right: 20px; } }
+@media (max-width: 767px) { .visitor-bar { bottom: 16px; right: 16px; } }
+
+/* =========================
+   PROMPT VIEW BADGE
+========================= */
+.prompt-view {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+}
