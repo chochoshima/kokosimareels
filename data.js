@@ -182,8 +182,19 @@ Color Grading: Desaturated, kontras tinggi, raw tones.
 Identitas: Gunakan fitur wajah dari foto referensi secara mutlak. Jangan mengubah bentuk mata, hidung, bibir, atau struktur tulang wajah.
 Penyatuan: Pastikan skin tone wajah bereaksi terhadap pencahayaan mendung di lokasi. Wajah harus terlihat sedikit berkeringat dan realistis, menyatu dengan leher dan tubuh, tidak terlihat seperti tempelan.
 Ekspresi: Ekspresi wajah pengendara harus terlihat wajar, fokus ke jalan, dan tidak berpose (candid)`
+    },
+	"ai-028": {
+        title: "PORTRAIT WATERCOLOUR",
+        videoUrl: "https://youtube.com/shorts/PvOhzweTwsY",
+        text:`Close-up portrait illustration based on the uploaded reference photo, maintaining precise facial identity (eye shape, nose, lips, jawline, and hair must remain unchanged). Style: Black ink sketch and monochromatic watercolor on textured paper. Loose and expressive ink lines, transparent gray watercolor washes for facial shadows, featuring bleeding effects, natural stains, and ink drips. Palette: Strictly black, white, and gray, no other colors. Background: Minimalist aged cream paper, visible paper texture, ink splatters and watercolor bleeds as artistic imperfections. Suggestive facial details, focusing on light and contrast rather than photographic detail. Negative: Not a photo, not photorealistic, not digital painting, no colors, no glossy effects, no smooth digital shading, no skin smoothing, no AI-perfect face, no modern background, no camera effects.`
+    },
+	"ai-029": {
+        title: "PORTRAIT WATERCOLOUR",
+        videoUrl: "https://youtube.com/shorts/gnmLIGcFwpk",
+        text:`Editorial cover portrait based on the uploaded reference photo, maintain identical facial identity (eyes, nose, lips, jawline). Close-up or slightly cropped composition, art magazine cover style. Wild ink sketch combined with expressive watercolor, overlapping thin lines, raw and emotional strokes forming the face. Layered transparent watercolor washes, naturally bleeding and dripping like an authentic paper painting. Limited artistic palette (brownish orange, dark blue, gray), textured and non-solid colors. Background is a light-textured paper, minimalist, with ink splatters and water stains. Illustrative detail, focus on lighting and character rather than photo realism. Negative prompt: not a photo, not photorealistic, not smooth digital painting, no glossy finish, no skin smoothing, no AI-perfect face, no modern background.`
     }
 };
+
 
 
 
