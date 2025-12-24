@@ -267,3 +267,10 @@ body {
   100%{transform:scale(1)}
 }
 
+/* =========================
+   HIDE VISITOR BAR - INDEX ONLY
+========================= */
+.page-index .visitor-bar{
+  display:none !important;
+}
+
