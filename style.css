@@ -223,3 +223,59 @@ body {
 }
 @media (min-width:768px) { .visitor-bar { top:70px; right:20px; } }
 @media (max-width:767px) { .visitor-bar { bottom:16px; right:16px; } }
+
+/* TOP BAR */
+.top-bar{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  justify-content:flex-end;
+  gap:16px;
+  padding:8px 16px;
+  background:#111;
+}
+
+.top-bar a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  opacity:.85;
+}
+
+.top-bar a:hover{
+  opacity:1;
+}
+
+/* FLOATING YOUTUBE */
+.floating-youtube{
+ _toggle-display: block;
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:52px;
+  height:52px;
+  background:#ff0000;
+  color:#fff;
+  font-size:22px;
+  font-weight:bold;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  z-index:1000;
+}
+
+/* Pulse ringan (opsional, aman SEO) */
+.floating-youtube{
+  animation:pulse 2.2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
