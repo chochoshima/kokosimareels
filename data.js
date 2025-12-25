@@ -232,8 +232,14 @@ The outfit should be gender-appropriate and modern/casual-chic. For women, a sty
 The painting style resembles oil paint on aged poster paper, with rough yet controlled brushstrokes, detailed wrinkled skin, sharp facial shadows, and warm highlights. Brushstrokes are dynamic without excessive fine detail. The background is designed like a magazine cover, featuring a vintage poster paper texture with subtle stains and worn edges. and large bold typography at the top: KOKOSIMA.PAGES.DEV, in a contrasting color, sans-serif, propaganda poster style.
 Add magazine-style tags randomly around the portrait, mimicking article titles, highlights, and quotes. Examples include “EXCLUSIVE INTERVIEW,” “THE SECRET OF SUCCESS,” “TRENDING NOW,” “INSIDE THIS ISSUE,” “NEW & UNEXPECTED,” and “HUMOR, STYLE, LIFE.” Use different font sizes, colors, and orientations (angled, vertical, diagonal) while keeping readability.
 The color palette is warm and muted — cream, brown, dark red, dull green. Lighting is soft frontal, creating dramatic shadows. The overall style combines editorial illustration and satirical poster art, with exaggerated realism, gritty texture, cinematic painterly look, sharp facial feature exaggeration, and ironic artistic distortion. The final composition should convey a dynamic, comedic magazine cover energy.`
+},
+	"ai-037": {
+    title: "MENYARING KOK",
+    videoUrl: "",
+    text: `Ultra-realistic candid photograph of a man playing badminton using a traditional frying strainer exactly like the provided photo reference. He is about to perform a smash, with natural body posture and focused facial expression, perfectly aligned like a professional badminton player. He is wearing a bright, eye-catching competition-style badminton jersey with clear details and realistic fabric texture. The shuttlecock is accurately positioned above the strainer. Indoor badminton court with realistic perspective, correct net placement, and natural lighting. No added dramatic effects or motion blur—just a lifelike, authentic moment captured naturally. Full-body, high-detail textures, realistic shadows, and reflections.`
 }
 };
+
 
 
 
