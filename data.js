@@ -218,8 +218,14 @@ Ekspresi: Ekspresi wajah pengendara harus terlihat wajar, fokus ke jalan, dan ti
     title: "IDJO mini Car",
     videoUrl: "https://youtube.com/shorts/ar4qDet5sRE",
     text: `Ultra-realistic yet Disney/anime-inspired cartoon car with exaggerated, non-proportional features: the car is shorter in height, hood appears taller relative to cabin, wheels slightly oversized, maintaining playful, whimsical cartoon style. Materials are realistic (metal, glass, rubber) with natural reflections and textures. Driving on a bustling city street alongside conventional cars. A man is casually driving, relaxed, enjoying the breeze, wearing casual clothing, with facial features exactly matching provided photo reference. Street-level perspective, dynamic motion, daylight lighting with realistic shadows, cinematic composition, ultra-detailed texture.`
+},
+	"ai-035": {
+    title: "MEKUIN",
+    videoUrl: "",
+    text: `Ultra-realistic Disney/anime-style cartoon car inspired by Lightning McQueen, with playful exaggerated proportions (short height, rounded body, slightly oversized wheels), crafted from realistic materials (metal, glass, rubber) with natural reflections. Front windshield is clear glass, no cartoon eyes, allowing the driver to be fully visible. Car driving on a city street alongside normal cars. A man casually driving, relaxed, enjoying breeze, wearing casual clothing, facial features exactly matching provided photo reference. Street-level perspective, daylight lighting with realistic shadows, cinematic composition, ultra-detailed textures. @kokosima hidden.`
 }
 };
+
 
 
 
