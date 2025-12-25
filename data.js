@@ -237,8 +237,19 @@ The color palette is warm and muted — cream, brown, dark red, dull green. Ligh
     title: "MENYARING KOK",
     videoUrl: "",
     text: `Ultra-realistic candid photograph of a man playing badminton using a traditional frying strainer exactly like the provided photo reference. He is about to perform a smash, with natural body posture and focused facial expression, perfectly aligned like a professional badminton player. He is wearing a bright, eye-catching competition-style badminton jersey with clear details and realistic fabric texture. The shuttlecock is accurately positioned above the strainer. Indoor badminton court with realistic perspective, correct net placement, and natural lighting. No added dramatic effects or motion blur—just a lifelike, authentic moment captured naturally. Full-body, high-detail textures, realistic shadows, and reflections.`
+},
+	"ai-038": {
+    title: "TUXEDO BERTOPENG",
+    videoUrl: "",
+    text: `Ultra-realistic candid photograph of a man playing badminton using a traditional frying strainer exactly like the provided photo reference. He is about to perform a smash, with natural body posture and focused facial expression, perfectly aligned like a professional badminton player. He is wearing a bright, eye-catching competition-style badminton jersey with clear details and realistic fabric texture. The shuttlecock is accurately positioned above the strainer. Indoor badminton court with realistic perspective, correct net placement, and natural lighting. No added dramatic effects or motion blur—just a lifelike, authentic moment captured naturally. Full-body, high-detail textures, realistic shadows, and reflections.`
+},
+"ai-039": {
+    title: "KAITOU KID",
+    videoUrl: "",
+    text: `Ultra-realistic photograph of a man using the provided photo reference as the exact facial and body reference, styled as a Kaitou Kid–inspired gentleman thief superhero, wearing an all-white formal outfit consisting of a white tuxedo jacket, white tailored pants, and white leather dress shoes; on both shoulders are white fabric epaulets positioned exactly on top of the left and right shoulders at the precise seam where the shoulder meets the sleeve, firmly attached to the jacket (not hanging, not floating, not loose), each epaulet formed from two layers of circularly cut white fabric, stacked neatly and secured at the center with a small round pin, creating a soft, naturally wavy surface (subtle fabric undulation, not rigid, not overly detailed), understated and clearly smaller than classic military epaulets, made of smooth formal tailored cloth perfectly matching the jacket with clean stitched edges; under the jacket he wears a blue dress shirt with a red necktie, white gloves on both hands, and a longer, wider white cape that flows and billows artistically in the wind, emphasizing elegant motion; he wears a taller white top hat with a short circular blue ribbon wrapped cleanly around it (no long ribbon tails, no hanging fabric), and a single monocle with a thin metallic frame worn over one eye only (no glasses, no sunglasses, no goggles); the man stands on the edge of a skyscraper rooftop at night in a dynamic action pose, body slightly twisted with one leg forward, one hand firmly holding a sleek white pistol while the other balances his stance or interacts with the flowing cape, the city skyline glowing far below, wind subtly lifting clothing and cape, cinematic night lighting with realistic city illumination, natural shadows, ultra-realistic fabric textures, clean dramatic composition, candid photography feel, no fantasy glow, no visual effects, ultra-realistic cinematic depth of field, heroic yet elegant atmosphere.`
 }
 };
+
 
 
 
