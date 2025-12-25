@@ -1,36 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Kokosima AI - Katalog Prompt Cinematic</title>
-
-    <meta name="description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Kokosima AI">
-    <meta property="og:description" content="Koleksi prompt AI Cinematic gratis dan inspirasi gambar AI terbaru.">
-    <meta property="og:image" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
-    <meta name="google-site-verification" content="sFMgW89eT9aIsDnRR-9xdOmZPKxlmcFDILNTJJ0bCMY">
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kokosima AI - Katalog Prompt Cinematic</title>
+<meta name="description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- HEADER -->
 <header class="top-bar">
-    <a href="index.html" style="text-decoration:none;color:inherit;">
-        <span class="logo">🧠 kokosima</span>
-    </a>
+    <a href="index.html" class="logo-link"><span class="logo">🧠 kokosima</span></a>
     <a href="https://www.facebook.com/chochoshima/" target="_blank" aria-label="Facebook">Facebook</a>
-	<a href="https://youtube.com/@kokosimaabsurd" target="_blank" aria-label="YouTube">YouTube</a>
+    <a href="https://youtube.com/@kokosimaabsurd" target="_blank" aria-label="YouTube">YouTube</a>
 </header>
-<body class="page-index">
-<!-- VISITOR BAR -->
-<div class="visitor-bar">
-    👁️ <span id="visitor-today">0</span> hari ini · 
-    <span id="visitor-total">0</span> total
-</div>
 
 <!-- FEED -->
 <main class="feed" id="main-feed"></main>
@@ -51,31 +35,65 @@ window.addEventListener('load', setVh);
 setVh();
 
 /* ==========================
-   FEED GENERATOR
+   FEED GENERATOR (ANTI-CRASH)
 ========================== */
 const CHANNEL_YOUTUBE = "https://youtube.com/@kokosimaabsurd";
 const feedContainer = document.getElementById("main-feed");
 
 function generateFeed() {
-    Object.keys(PROMPT_DATABASE).reverse().forEach(id => {
-        const data = PROMPT_DATABASE[id];
-        const words = data.text ? data.text.split(/\s+/) : [];
-        const previewText = words.slice(0, 12).join(" ") + "...";
+    // 1. CEK APAKAH DATABASE BERHASIL DIMUAT
+    // Jika data.js error syntax (kurung kurang, dll), PROMPT_DATABASE tidak akan ada.
+    if (typeof PROMPT_DATABASE === 'undefined') {
+        console.error("CRITICAL: PROMPT_DATABASE tidak ditemukan. Cek syntax error di data.js");
+        feedContainer.innerHTML = `
+            <div style="text-align:center; padding: 2rem; color: #cc0000;">
+                <h3>Gagal Memuat Data</h3>
+                <p>Terjadi kesalahan pada file data (Syntax Error). Cek Console Browser.</p>
+            </div>`;
+        return;
+    }
 
-        const hasVideo = data.videoUrl && data.videoUrl !== "#";
-        const btnLabel = hasVideo ? "▶ Video" : "📺 Channel";
-        const btnHref = hasVideo ? data.videoUrl : CHANNEL_YOUTUBE;
-        const btnStyle = hasVideo ? "" : "style='background:#cc0000;color:#fff;'";
+    const fragment = document.createDocumentFragment();
+    const keys = Object.keys(PROMPT_DATABASE).reverse();
 
-        feedContainer.innerHTML += `
-            <section class="item" id="${id}">
+    if (keys.length === 0) {
+        feedContainer.innerHTML = "<p style='text-align:center; padding:20px;'>Belum ada data prompt.</p>";
+        return;
+    }
+
+    keys.forEach(id => {
+        // 2. GUNAKAN TRY-CATCH AGAR SATU ERROR TIDAK MEMATIKAN SEMUA
+        try {
+            const data = PROMPT_DATABASE[id];
+
+            // Validasi Data Minimal
+            if (!data || !data.title) {
+                console.warn(`Item ${id} di-skip karena tidak punya judul.`);
+                return; 
+            }
+
+            // 3. HANDLING TEXT AMAN (Mencegah error jika data.text undefined)
+            // Jika data.text kosong, pakai string kosong "" agar .split() tidak error
+            const safeText = data.text || ""; 
+            const words = safeText.split(/\s+/);
+            const previewText = words.length > 0 
+                ? words.slice(0, 12).join(" ") + (words.length > 12 ? "..." : "")
+                : "Tidak ada deskripsi.";
+
+            // Logika Tombol
+            const hasVideo = data.videoUrl && data.videoUrl !== "#";
+            const btnLabel = hasVideo ? "▶ Video" : "📺 Channel";
+            const btnHref = hasVideo ? data.videoUrl : CHANNEL_YOUTUBE;
+            const btnStyle = hasVideo ? "" : "style='background:#cc0000;color:#fff;'";
+
+            // Buat Element
+            const section = document.createElement("section");
+            section.className = "item";
+            section.id = id;
+            section.innerHTML = `
                 <div class="media-container">
-                    <img 
-                      src="images/${id}.webp"
-                      alt="Prompt AI ${data.title}"
-                      loading="lazy"
-                      decoding="async"
-                      onerror="this.onerror=null;this.src='images/${id}.jpg';">
+                    <img src="images/${id}.webp" alt="Prompt AI ${data.title}" loading="lazy" decoding="async"
+                    onerror="this.onerror=null;this.src='images/${id}.jpg';">
                 </div>
                 <div class="content-container">
                     <h3>${data.title}</h3>
@@ -86,46 +104,45 @@ function generateFeed() {
                         <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗 Share</button>
                     </div>
                 </div>
-            </section>
-        `;
+            `;
+            fragment.appendChild(section);
+
+        } catch (err) {
+            // Jika terjadi error parah di satu item, catat di console dan LANJUT ke item berikutnya
+            console.error(`Gagal me-render item ID: ${id}`, err);
+        }
     });
+
+    feedContainer.appendChild(fragment);
 }
 
+// Jalankan fungsi
 generateFeed();
 
 /* ==========================
    SHARE PROMPT
 ========================== */
 function sharePrompt(id) {
+    // Cek lagi apakah database ada sebelum share
+    if (typeof PROMPT_DATABASE === 'undefined' || !PROMPT_DATABASE[id]) return;
+    
     const data = PROMPT_DATABASE[id];
-    if (!data) return;
-
-    const base = location.origin + location.pathname.replace("index.html", "");
-    const url = base + "prompt.html?id=" + id;
+    const base = location.origin + location.pathname.replace("index.html", ""); // Handle folder
+    
+    // Pastikan URL bersih dari double slash jika di root
+    const cleanBase = base.endsWith('/') ? base : base + '/';
+    const url = cleanBase + "prompt.html?id=" + id;
 
     if (navigator.share) {
-        navigator.share({ title: data.title, url });
+        navigator.share({ title: data.title, url }).catch(console.error);
     } else {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
     }
 }
-
-/* ==========================
-   VISITOR COUNTER (HOME)
-========================== */
-fetch("https://kokosima-visitor.kokopujiyanto.workers.dev/?page=index")
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById("visitor-today").textContent = data.today;
-        document.getElementById("visitor-total").textContent = data.total;
-    })
-    .catch(err => console.error("Visitor error:", err));
 </script>
-<a href="https://youtube.com/@kokosimaabsurd" 
-   class="floating-youtube" 
-   target="_blank"
-   aria-label="YouTube Channel">
-  ▶
-</a>
+
+<!-- FLOATING YOUTUBE -->
+<a href="https://youtube.com/@kokosimaabsurd" class="floating-youtube" target="_blank" aria-label="YouTube Channel">▶</a>
+
 </body>
 </html>
