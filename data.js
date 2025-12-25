@@ -223,8 +223,18 @@ Ekspresi: Ekspresi wajah pengendara harus terlihat wajar, fokus ke jalan, dan ti
     title: "MEKUIN",
     videoUrl: "",
     text: `Ultra-realistic Disney/anime-style cartoon car inspired by Lightning McQueen, with playful exaggerated proportions (short height, rounded body, slightly oversized wheels), crafted from realistic materials (metal, glass, rubber) with natural reflections. Front windshield is clear glass, no cartoon eyes, allowing the driver to be fully visible. Car driving on a city street alongside normal cars. A man casually driving, relaxed, enjoying breeze, wearing casual clothing, facial features exactly matching provided photo reference. Street-level perspective, daylight lighting with realistic shadows, cinematic composition, ultra-detailed textures. @kokosima hidden.`
+},
+	"ai-036": {
+    title: "KARUKATUR",
+    videoUrl: "",
+    text: `Convert my photo into a painterly caricature realism illustration poster, using my face as the main reference. The portrait is half-length, featuring highly exaggerated facial proportions: a very large head, long thin neck, prominent jaw and cheekbones, and a facial expression that exactly matches the photo. The pose should be dynamic and humorous, with a playful or quirky gesture that adds energy and character.
+The outfit should be gender-appropriate and modern/casual-chic. For women, a stylish blouse or casual top with minimal accessories works best, while for men, a fitted shirt, trendy jacket, or modern casual streetwear is ideal. The clothing should complement the caricature style without overpowering the face.
+The painting style resembles oil paint on aged poster paper, with rough yet controlled brushstrokes, detailed wrinkled skin, sharp facial shadows, and warm highlights. Brushstrokes are dynamic without excessive fine detail. The background is designed like a magazine cover, featuring a vintage poster paper texture with subtle stains and worn edges. and large bold typography at the top: KOKOSIMA.PAGES.DEV, in a contrasting color, sans-serif, propaganda poster style.
+Add magazine-style tags randomly around the portrait, mimicking article titles, highlights, and quotes. Examples include “EXCLUSIVE INTERVIEW,” “THE SECRET OF SUCCESS,” “TRENDING NOW,” “INSIDE THIS ISSUE,” “NEW & UNEXPECTED,” and “HUMOR, STYLE, LIFE.” Use different font sizes, colors, and orientations (angled, vertical, diagonal) while keeping readability.
+The color palette is warm and muted — cream, brown, dark red, dull green. Lighting is soft frontal, creating dramatic shadows. The overall style combines editorial illustration and satirical poster art, with exaggerated realism, gritty texture, cinematic painterly look, sharp facial feature exaggeration, and ironic artistic distortion. The final composition should convey a dynamic, comedic magazine cover energy.`
 }
 };
+
 
 
 
