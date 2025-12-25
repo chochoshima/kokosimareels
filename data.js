@@ -211,7 +211,7 @@ Ekspresi: Ekspresi wajah pengendara harus terlihat wajar, fokus ke jalan, dan ti
     },
 	"ai-033": {
     title: "BACK TO THE FUTURE",
-    videoUrl: "",
+    videoUrl: "https://youtube.com/shorts/bz6gWl-JRso",
     text: `Ultra-realistic cinematic photo, rear three-quarter angle perspective of the individual from the reference photo seated in the driver's seat of an authentic brushed stainless-steel DeLorean DMC-12. The character's facial features, structure, and hairstyle must be preserved with absolute precision from the reference. The person is wearing a classic 1985-style red puffer vest over a blue denim jacket, casual shirt, blue jeans, and retro sneakers. The driver-side gull-wing door is fully open upward. One leg is outside on the sand, the other inside, with the body slightly turned toward the open door. The interior features visible time-circuit panels, cables, and mechanical elements. Set on a bright beach with large rocky cliffs and the ocean in the distance. Natural daylight, realistic metallic reflections, sharp textures, 16:9 aspect ratio, cinematic film look.`
 },
 	"ai-034": {
@@ -220,6 +220,7 @@ Ekspresi: Ekspresi wajah pengendara harus terlihat wajar, fokus ke jalan, dan ti
     text: `Ultra-realistic yet Disney/anime-inspired cartoon car with exaggerated, non-proportional features: the car is shorter in height, hood appears taller relative to cabin, wheels slightly oversized, maintaining playful, whimsical cartoon style. Materials are realistic (metal, glass, rubber) with natural reflections and textures. Driving on a bustling city street alongside conventional cars. A man is casually driving, relaxed, enjoying the breeze, wearing casual clothing, with facial features exactly matching provided photo reference. Street-level perspective, dynamic motion, daylight lighting with realistic shadows, cinematic composition, ultra-detailed texture.`
 }
 };
+
 
 
 
