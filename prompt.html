@@ -181,7 +181,7 @@ document.getElementById("copyBtn").onclick = async () => {
 };
 
 // VISITOR COUNTER
-const VISITOR_ENDPOINT = "https://kokosima-visitor.kokopujiyanto.workers.dev";
+const VISITOR_ENDPOINT = "https://visitor-counter.kokopujiyanto.workers.dev/";
 fetch(`${VISITOR_ENDPOINT}?page=prompt:${id}`, { headers:{ "Accept":"application/json" } })
   .then(r => r.json())
   .then(d => console.log("Visitor:", d))
