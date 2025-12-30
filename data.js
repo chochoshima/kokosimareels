@@ -305,8 +305,14 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "MANCING MACAN",
     videoUrl: "",
     text: `Use the provided reference photo as the main subject and preserve facial features exactly without altering the eyes, nose, lips, jawline, face shape, skin tone, or hairstyle; depict a natural candid scene of a man sitting calmly while fishing on the edge of a deep, slow-flowing river, his face visible in a natural profile or three-quarter angle, not looking at the camera and not posing; in front of him the dark river water flows steadily, beside him on the ground sits a black plastic bucket containing fish, and behind him are dense bushes and tall tropical trees forming thick Indonesian riverside vegetation; on the opposite side of the river, partially hidden among bushes and trees, a realistic tiger stands still observing from afar; natural daylight with soft shadows and earthy tones, calm yet subtly tense atmosphere, documentary-style realism, ultra-realistic detail and textures, natural proportions, no cinematic effects or exaggerated drama, with @kokosima hidden subtly in the environment and not attached to the main subject.`
+},
+	"ai-051": {
+    title: "INK BLOOM",
+    videoUrl: "",
+    text: `A high-fidelity medium shot of a man, preserving 100% facial accuracy from the reference photo—eyes, nose, lips, jawline, skin tone, and facial structure remain completely untouched. He sits calmly yet dominantly on a throne of charcoal-black leather fused with slowly flowing, glowing molten lava. His right hand clearly holds a lit cigar with a bright, burning ember; thick, natural white smoke continuously rises, curling upward in slow, realistic spirals. Surrounding him is an ultra-dense Ether Ink Bloom, behaving exactly like highly concentrated India ink released into a clear liquid chamber. The ink is extremely opaque and heavily pigmented, blooming outward in powerful, slow expansions originating from the cigar ember and lava vents. At its core, the ink forms solid, shadow-casting black masses, while the outer edges fracture into fine, feathery filaments drifting and curling through the air—never obscuring the man or the cigar. Warm lava light pulses from below, illuminating the ink from within, creating deep black volumes layered with subtle amber translucence. Shot on a Hasselblad H6D-100c with a 100mm f/2.2 lens, revealing hyper-realistic skin pores, ivory-white wool suit fabric weave, and physically accurate fluid dynamics—slow, hypnotic, and believable. The atmosphere feels thick, immersive, and cinematic in 8K RAW realism, where the Ether Ink Bloom, cigar smoke, and heat feel tangible, heavy, and alive in the space.`
 }
 };
+
 
 
 
