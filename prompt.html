@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" id="main-desc-meta" content="Temukan prompt AI cinematic gratis.">
 
-<title>Loading Prompt... | Kokosima AI</title>
+    <title>Loading Prompt... | Kokosima AI</title>
 
-<!-- OPEN GRAPH -->
-<meta property="og:type" content="article">
-<meta property="og:title" id="meta-title" content="Kokosima AI">
-<meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis.">
-<meta property="og:url" id="meta-url" content="https://kokosimareels.pages.dev/">
-<meta property="og:image" id="meta-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+    <meta property="og:type" content="article">
+    <meta property="og:title" id="meta-title" content="Kokosima AI">
+    <meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis.">
+    <meta property="og:url" id="meta-url" content="https://kokosimareels.pages.dev/">
+    <meta property="og:image" id="meta-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentId = urlParams.get('id');
+        const canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        canonical.href = currentId ? `https://kokosimareels.pages.dev/prompt.html?id=${currentId}` : 'https://kokosimareels.pages.dev/';
+        document.head.appendChild(canonical);
+    </script>
 </head>
 
 <body>
@@ -37,9 +46,9 @@
         <button class="btn btn-primary" id="copyBtn">📋 Copy Prompt</button>
       </div>
       <div class="floating-visitor" id="visitorBar">
-    👁️ <span id="visitorToday">0</span> hari ini ·
-    <strong id="visitorTotal">0</strong> total
-  </div>
+        👁️ <span id="visitorToday">0</span> hari ini ·
+        <strong id="visitorTotal">0</strong> total
+      </div>
     </div>
   </div>
 </main>
@@ -50,44 +59,61 @@
    LOAD PROMPT DATA
 ========================= */
 const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-
-if (!id || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[id]) {
-    window.location.href = "index.html";
-}
-
-const data = PROMPT_DATABASE[id];
+const promptId = params.get("id");
 const domain = "https://kokosimareels.pages.dev";
-const imgElement = document.getElementById("main-image");
 
-// fallback webp → jpg
-const webpUrl = `${domain}/images/${id}.webp`;
-const jpgUrl  = `${domain}/images/${id}.jpg`;
-imgElement.src = webpUrl;
-imgElement.onerror = () => { imgElement.src = jpgUrl; imgElement.onerror = null; };
-imgElement.onload = () => { imgElement.hidden = false; };
+// Cek apakah data ada
+if (!promptId || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[promptId]) {
+    window.location.href = "index.html";
+} else {
+    const data = PROMPT_DATABASE[promptId];
+    const cleanDesc = data.text.slice(0, 150).replace(/(\r\n|\n|\r)/gm, " ");
 
-// TITLE & CONTENT
-document.getElementById("title").textContent = data.title;
-document.getElementById("promptText").textContent = data.text;
+    // 1. UPDATE SEO & META (Sangat Penting)
+    document.title = data.title + " | Kokosima AI";
+    
+    // Ganti meta description (standard & OG)
+    document.getElementById("main-desc-meta").setAttribute("content", cleanDesc);
+    document.getElementById("meta-desc").setAttribute("content", cleanDesc);
+    document.getElementById("meta-title").setAttribute("content", data.title);
+    document.getElementById("meta-img").setAttribute("content", `${domain}/images/${promptId}.webp`);
+    document.getElementById("meta-url").setAttribute("content", window.location.href);
 
-// META SHARE
-document.getElementById("meta-title").content = data.title;
-document.getElementById("meta-desc").content = data.text.slice(0,150);
-document.getElementById("meta-url").content = window.location.href;
-document.getElementById("meta-img").content = webpUrl;
+    // 2. INJECT SCHEMA DATA
+    const schemaData = {
+        "@context": "https://schema.org/",
+        "@type": "VisualArtwork",
+        "name": data.title,
+        "description": cleanDesc,
+        "image": `${domain}/images/${promptId}.webp`,
+        "creator": { "@type": "Person", "name": "Kokosima AI" }
+    };
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.text = JSON.stringify(schemaData);
+    document.head.appendChild(schemaScript);
 
-// COPY PROMPT
-document.getElementById("copyBtn").onclick = async () => {
-    try {
-        await navigator.clipboard.writeText(data.text);
-        const btn = document.getElementById("copyBtn");
-        btn.textContent = "✅ Copied";
-        setTimeout(() => btn.textContent = "📋 Copy Prompt", 1600);
-    } catch {
-        alert("Gagal menyalin prompt");
-    }
-};
+    // 3. TAMPILKAN KONTEN DI HALAMAN
+    document.getElementById("title").textContent = data.title;
+    document.getElementById("promptText").textContent = data.text;
+    
+    const imgElement = document.getElementById("main-image");
+    imgElement.src = `${domain}/images/${promptId}.webp`;
+    imgElement.onerror = () => { imgElement.src = `${domain}/images/${promptId}.jpg`; imgElement.onerror = null; };
+    imgElement.onload = () => { imgElement.hidden = false; };
+
+    // 4. COPY BUTTON
+    document.getElementById("copyBtn").onclick = async () => {
+        try {
+            await navigator.clipboard.writeText(data.text);
+            const btn = document.getElementById("copyBtn");
+            btn.textContent = "✅ Copied";
+            setTimeout(() => btn.textContent = "📋 Copy Prompt", 1600);
+        } catch {
+            alert("Gagal menyalin prompt");
+        }
+    };
+}
 </script>
 <script src="visitor.js" defer></script>
 </body>
