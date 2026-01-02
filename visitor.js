@@ -20,9 +20,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const PAGE_KEY = 'index';
 
   function fetchVisitor() {
-    fetch(`https://visitor-counter.kokopujiyanto.workers.dev/?page=${PAGE_KEY}`, {
-      credentials: 'include',
-      cache: 'no-store'
+    fetch(`https://visitor-counter.kokopujiyanto.workers.dev/?page=${PAGE_KEY}&t=${Date.now()}`, {
+  credentials: 'include',
+  cache: 'no-store'
     })
       .then(r => r.ok ? r.json() : null)
       .then(d => {
@@ -69,3 +69,4 @@ window.addEventListener('DOMContentLoaded', () => {
   setInterval(fetchVisitor, 30000);
 
 });
+
