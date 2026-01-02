@@ -1,24 +1,20 @@
-const CACHE_NAME = 'kokosima-v2'; // Naikkan versi ke v2
+const CACHE_NAME = 'kokosima-v3'; // Naikkan versi lagi agar browser mengupdate SW
 const assets = [
   './',
   './index.html',
   './style.css',
   './data.js',
   './manifest.json',
-  './images/icon-192.png' // Pastikan path benar
+  './images/icon-192.png'
 ];
 
-// Install & Caching
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(assets);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(assets))
   );
   self.skipWaiting();
 });
 
-// Aktivasi & Hapus Cache Lama
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keys) => {
@@ -27,24 +23,34 @@ self.addEventListener('activate', (e) => {
       );
     })
   );
+  return self.clients.claim();
 });
 
-// Fetch dengan penanganan Redirect
 self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((res) => {
-      if (res) return res;
+  // Hanya tangani request GET
+  if (e.request.method !== 'GET') return;
 
-      // Perbaikan utama: menangani request yang berpotensi redirect
-      return fetch(e.request).then((networkRes) => {
-        // Jangan simpan ke cache jika respon redirect (opsional, demi keamanan)
-        if (!networkRes || networkRes.status !== 200 || networkRes.type === 'opaque') {
+  e.respondWith(
+    caches.match(e.request).then((cachedRes) => {
+      if (cachedRes) return cachedRes;
+
+      // Kunci perbaikan error "redirect mode":
+      // Kita buat request baru berdasarkan request asli tapi dengan redirect mode 'follow'
+      const fetchRequest = e.request.clone();
+
+      return fetch(fetchRequest, {
+        redirect: 'follow' // Memaksa fetch mengikuti redirect sebelum sampai ke SW
+      }).then((networkRes) => {
+        // Cek jika respon valid untuk disimpan ke cache (optional)
+        if (!networkRes || networkRes.status !== 200) {
           return networkRes;
         }
         return networkRes;
       }).catch(() => {
-        // Jika benar-benar offline dan tidak ada di cache
-        return caches.match('./index.html');
+        // Fallback jika offline total
+        if (e.request.mode === 'navigate') {
+          return caches.match('./index.html');
+        }
       });
     })
   );
