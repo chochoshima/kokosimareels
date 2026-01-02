@@ -317,6 +317,13 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     text: `Gunakan gambar sebagai referensi wajah utama dan pertahankan 100% akurasi penampilan kedua orang sesuai foto referensi; jangan meremajakan wajah, jangan memperhalus kulit secara berlebihan, dan jangan mengubah tingkat kematangan wajah—struktur tulang, proporsi, kontur, tekstur kulit, serta kesan kedewasaan harus identik dengan referensi. Sebuah foto candid realistis menampilkan dua orang mengenakan seragam SMA Indonesia (putih–abu) di ruang kelas sekolah negeri, berdiri di depan papan tulis hitam model lama yang menempel langsung pada tembok kusam dengan cat memudar dan bekas pemakaian lama. Pria berada di sebelah kiri frame, tubuh sedikit menghadap papan tulis, memegang kapur putih dan sedang menggambar, bahu condong ke depan dengan gerakan alami seolah tertangkap kamera di tengah aktivitas. Wanita berada di sebelah kanan frame, sedikit lebih ke belakang, memperhatikan pria yang menggambar dengan kepala sedikit miring, ekspresi hangat dan canggung yang subtil, bukan kekanak-kanakan. Pencahayaan berasal dari cahaya alami siang hari dari jendela kelas, lembut dan jujur tanpa lighting studio. Di permukaan papan tulis hitam tampak sketsa kapur sederhana bergaya manga/anime 90-an, digambar longgar dengan goresan kasar dan tidak rapi, menampilkan dua figur yang secara visual menyerupai wajah dan gaya rambut kedua orang di foto referensi, berdiri lebih dekat dan saling menatap dengan sebuah hati kecil di antara mereka. Nuansa keseluruhan natural, hangat, nostalgik, intim, dengan gaya fotografi realistis candid tanpa efek berlebihan dan tanpa teks tambahan selain gambar kapur.`
 }
 };
+Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
+  const num = key.replace("ai-", "");
+  const cleanTitle = item.title.replace(/^\d+\./, "");
+  item.title = `${num}.${cleanTitle}`;
+});
+
+
 
 
 
