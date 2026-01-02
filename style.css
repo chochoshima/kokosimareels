@@ -1,5 +1,5 @@
 /* =========================
-   GLOBAL RESET & BASE
+    GLOBAL RESET & BASE
 ========================= */
 * { margin:0; padding:0; box-sizing:border-box; }
 :root {
@@ -20,22 +20,28 @@ body {
 }
 
 /* =========================
-    TOP BAR (OPTIMIZED & CLEAN)
+    TOP BAR (FIXED & CLICKABLE)
 ========================= */
 .top-bar {
     position: fixed; top: 0; width: 100%; height: 60px;
     padding: 0 15px; display: flex; align-items: center; justify-content: space-between;
-    z-index: 2000; background: rgba(0, 0, 0, 0.7); 
+    z-index: 9999; background: rgba(0, 0, 0, 0.7); 
     backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-pointer-events: none; 
+    pointer-events: none; /* Klik tembus ke video jika area kosong */
 }
+
+.logo-link, .search-container, .social-links, #searchInput {
+    pointer-events: auto; /* Aktifkan kembali klik untuk elemen ini */
+}
+
 .logo-link {
     text-decoration: none; flex-shrink: 0; display: flex; align-items: center;
-    padding: 10px 8px; position: relative; z-index: 2010;
+    padding: 10px 8px; position: relative; z-index: 10001;
+    cursor: pointer !important;
 }
 
 .search-container {
-    flex-grow: 1; max-width: 400px; position: relative; margin: 0 15px; z-index: 2005;
+    flex-grow: 1; max-width: 400px; position: relative; margin: 0 15px; z-index: 10000;
 }
 
 #searchInput {
@@ -54,28 +60,19 @@ pointer-events: none;
 }
 
 .social-links { display: flex; gap: 15px; flex-shrink: 0; }
-
-/* Link Styles */
 .top-bar a { color: #ffffff; transition: 0.3s ease; opacity: 0.8; text-decoration: none; }
 .top-bar a:hover { color: #00d2ff; opacity: 1; }
 
 /* =========================
-    RESPONSIVE (COMBINED)
+    FEED & ITEMS (GENERAL)
 ========================= */
-@media (max-width: 768px) {
-    .social-links { display: none; }
-    .search-container { max-width: none; margin: 0 10px; }
-    .logo { font-size: 14px; }
-    #searchInput { font-size: 13px; padding-left: 30px; }
-    .top-bar { padding: 0 10px; }
-}
+.item { transition: transform 0.3s ease, opacity 0.3s ease; animation: fadeIn 0.4s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-.no-results {
-    grid-column: 1 / -1; text-align: center; padding: 50px; color: #888;
-}
+.no-results { grid-column: 1 / -1; text-align: center; padding: 50px; color: #888; }
 
 /* =========================
-   BUTTON SYSTEM
+    BUTTON SYSTEM
 ========================= */
 .btn, .actions a, .actions button {
     text-decoration:none; font-weight:700; font-size:12px;
@@ -85,74 +82,47 @@ pointer-events: none;
     padding: 10px 4px; white-space: nowrap; min-width: 0;
 }
 
-/* =========================
-   ACTIONS CONTAINER (FORCED ROW)
-========================= */
 .actions {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
+    display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important;
     gap: 6px; width: 100%; margin-top: 10px; align-items: center;
 }
 .actions .btn-outline { flex: 2 !important; }
-.btn-yt-icon, .btn-yt-small, .btn-share {
-    flex: 0 0 42px !important;
-    font-size: 16px !important;
-}
+.btn-yt-icon, .btn-yt-small, .btn-share { flex: 0 0 42px !important; font-size: 16px !important; }
 
 /* =========================
-   TITLES & TEXT PREVIEW
-========================= */
-.content-container h3 {
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    width: 100%; display: block; margin-bottom: 8px; font-size: 1.1rem;
-}
-.feed:not(.prompt-page-wrapper) .content-container p {
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;  
-    overflow: hidden; text-overflow: ellipsis; line-height: 1.5;
-}
-
-/* =========================
-   FEED VIEW (SCROLL SNAP MOBILE)
+    RESPONSIVE MOBILE (SCROLL SNAP)
 ========================= */
 @media (max-width:1023px) {
+    .social-links { display: none; }
+    .search-container { max-width: none; margin: 0 10px; }
+    .logo { font-size: 14px; }
+    #searchInput { font-size: 13px; padding-left: 30px; }
+    .top-bar { padding: 0 10px; }
+
     .feed {
         height: calc(var(--vh, 1vh) * 100);
-        overflow-y: auto; 
-        scroll-snap-type: y mandatory;
+        overflow-y: auto; scroll-snap-type: y mandatory;
         scrollbar-width: none;
     }
     .feed::-webkit-scrollbar { display: none; }
-    
     .item {
-        position: relative; 
-        height: calc(var(--vh, 1vh) * 100);
-        scroll-snap-align: start; 
-        display: flex; 
-        flex-direction: column;
+        position: relative; height: calc(var(--vh, 1vh) * 100);
+        scroll-snap-align: start; display: flex; flex-direction: column;
     }
-    
-    .media-container { 
-        width: 100%; height: 100%; position: relative; 
-        overflow: hidden; background: #000;
-    }
-    
-    .media-container img {
-        width: 100%; height: 100%;
-        object-fit: cover;
-        object-position: center; 
-        display: block;
-    }
+    .media-container { width: 100%; height: 100%; position: relative; overflow: hidden; background: #000; }
+    .media-container img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 
     .content-container {
         position: absolute; bottom: 0; left: 0; right: 0;
-        padding: 20px 20px 60px; 
-        z-index: 10;
+        padding: 20px 20px 60px; z-index: 10;
         background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+        pointer-events: none; /* Agar area tengah layar bisa disentuh untuk play video */
     }
-} /* Pastikan kurung penutup media query ada di sini */
+    .content-container > * { pointer-events: auto; } /* Aktifkan klik kembali untuk tombol/teks */
+}
+
 /* =========================
-   DESKTOP GRID (FILL OPTIMIZED)
+    DESKTOP GRID
 ========================= */
 @media (min-width:1024px) {
     .feed:not(.prompt-page-wrapper) {
@@ -164,61 +134,21 @@ pointer-events: none;
         overflow: hidden; border: 1px solid var(--border-soft);
         display: flex; flex-direction: column; height: fit-content;
     }
-    .feed:not(.prompt-page-wrapper) .media-container {
-        width: 100%; aspect-ratio: 9/16; background: #111; overflow: hidden;
-    }
-    .feed:not(.prompt-page-wrapper) .media-container img {
-        width: 100%; height: 100%;
-        object-fit: cover; /* FILL KE SEMUA SUDUT (DESKTOP) */
-        object-position: center; display: block;
-        transition: transform 0.5s ease;
-    }
+    .feed:not(.prompt-page-wrapper) .media-container { width: 100%; aspect-ratio: 9/16; background: #111; overflow: hidden; }
+    .feed:not(.prompt-page-wrapper) .media-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .item:hover .media-container img { transform: scale(1.05); }
     .feed:not(.prompt-page-wrapper) .content-container { padding: 20px; }
 }
 
 /* =========================
-   PROMPT PAGE SPECIFIC
-========================= */
-.prompt-page-wrapper {
-    display: flex; justify-content: center; align-items: center;
-    min-height: 100vh; padding: 80px 24px 40px;
-}
-.prompt-card {
-    display: flex; flex-direction: column; align-items: center; gap: 40px;
-    width: 100%; max-width: 1000px; background: var(--card-bg);
-    padding: 30px; border-radius: 24px; border: 1px solid var(--border-soft);
-    backdrop-filter: blur(10px);
-}
-.prompt-card .media-container { 
-    width: 100%; max-width: 400px; aspect-ratio: 9/16; 
-    border-radius: 16px; overflow: hidden; flex-shrink: 0; 
-}
-.prompt-card img { width: 100%; height: 100%; object-fit: cover; }
-.prompt-card .content-container { 
-    position:static; background:transparent; padding:0;
-    display: flex; flex-direction: column; gap: 20px; text-align: left; 
-}
-.prompt-card h3 { font-size: 28px; white-space: normal; }
-
-@media (min-width:1024px) {
-    .prompt-card { flex-direction: row; align-items: stretch; }
-    .prompt-card .media-container { width: 40%; }
-    .prompt-card .content-container { width: 60%; }
-}
-
-/* =========================
-   FLOATING STACK
+    FLOATING STACK & PROMPT PAGE
 ========================= */
 .floating-stack {
     position: fixed; right: 18px; bottom: 18px;
-    display: flex; align-items: center; gap: 12px; z-index: 1000;
+    display: flex; align-items: center; gap: 12px; z-index: 10002;
 }
 @media (max-width:1023px) {
-    .floating-stack {
-        top: 50%; left: 14px; right: auto; bottom: auto;
-        transform: translateY(-50%); flex-direction: column;
-    }
+    .floating-stack { top: 50%; left: 14px; right: auto; bottom: auto; transform: translateY(-50%); flex-direction: column; }
 }
 .floating-youtube {
     width:52px; height:52px; background:#ff0000; color:#fff;
@@ -226,9 +156,12 @@ pointer-events: none;
     text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,.25);
     animation:pulse 2.2s infinite; font-size: 22px;
 }
-.floating-visitor {
-    background:rgba(15,15,15,0.55); backdrop-filter:blur(10px);
-    padding:6px 12px; font-size:12px; color:#94a3b8;
-    border-radius:10px; border:1px solid var(--border-soft);
-}
+.floating-visitor { background:rgba(15,15,15,0.55); backdrop-filter:blur(10px); padding:6px 12px; font-size:12px; color:#94a3b8; border-radius:10px; border:1px solid var(--border-soft); }
 @keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)} }
+
+/* Prompt Page Specific */
+.prompt-page-wrapper { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 80px 24px 40px; }
+.prompt-card { display: flex; flex-direction: column; gap: 40px; width: 100%; max-width: 1000px; background: var(--card-bg); padding: 30px; border-radius: 24px; border: 1px solid var(--border-soft); backdrop-filter: blur(10px); }
+.prompt-card .media-container { width: 100%; max-width: 400px; aspect-ratio: 9/16; border-radius: 16px; overflow: hidden; }
+.prompt-card .content-container { position:static; background:transparent; padding:0; display: flex; flex-direction: column; gap: 20px; pointer-events: auto; }
+@media (min-width:1024px) { .prompt-card { flex-direction: row; } .prompt-card .media-container { width: 40%; } .prompt-card .content-container { width: 60%; } }
