@@ -156,19 +156,6 @@ body {
 }
 
 /* =========================
-   VISITOR BAR
-========================= */
-.visitor-bar {
-  position:fixed; z-index:90;
-  background:rgba(15,15,15,0.55); backdrop-filter:blur(10px);
-  padding:6px 12px; font-size:12px; font-weight:500; color:#94a3b8;
-  border-radius:10px; border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 10px 30px rgba(0,0,0,0.25); pointer-events:none;
-}
-@media (min-width:768px){ .visitor-bar{ top:70px; right:20px; } }
-@media (max-width:767px){ .visitor-bar{ bottom:16px; right:16px; } }
-
-/* =========================
    FLOATING YOUTUBE
 ========================= */
 .floating-youtube{
@@ -180,3 +167,38 @@ body {
   z-index:1000; animation:pulse 2.2s infinite;
 }
 @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+/* =========================
+   FLOATING VISITOR + YOUTUBE (RESPONSIVE)
+========================= */
+.floating-visitor{
+  position:fixed;
+  background:rgba(15,15,15,0.55);
+  backdrop-filter:blur(10px);
+  padding:6px 12px;
+  font-size:12px;
+  font-weight:500;
+  color:#94a3b8;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  z-index:999;
+  pointer-events:none;
+  white-space:nowrap;
+}
+
+/* 📱 MOBILE: visitor di atas YT */
+@media (max-width:767px){
+  .floating-visitor{
+    right:18px;
+    bottom:88px; /* jarak aman di atas YT */
+  }
+}
+
+/* 🖥️ DESKTOP: visitor di kiri YT */
+@media (min-width:768px){
+  .floating-visitor{
+    right:86px; /* geser ke kiri tombol YT */
+    bottom:18px;
+  }
+}
+
