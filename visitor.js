@@ -1,34 +1,68 @@
-/* ==========================
-   VISITOR COUNTER (UNIVERSAL)
-========================== */
+// ==========================
+// UNIVERSAL VISITOR + ANIMASI ANGKA + AUTO-HIDE
+// ==========================
+const visitorBar = document.getElementById('visitorBar');
 
-(function () {
-  // Tentukan page key otomatis
-  const path = location.pathname.replace("/", "").replace(".html", "") || "index";
-  const params = new URLSearchParams(location.search);
-  const id = params.get("id");
+let lastScroll = 0;
+let lastToday = 0;
+let lastTotal = 0;
 
-  // Prompt detail → prompt-xxx
-  const pageKey = id ? `${path}-${id}` : path;
-
-  fetch(`https://visitor-counter.kokopujiyanto.workers.dev/?page=${pageKey}`, {
-    headers: { "Accept": "application/json" },
-    credentials: "include"
-  })
+// fetch visitor
+function fetchVisitor() {
+  fetch(`https://visitor-counter.kokopujiyanto.workers.dev/?page=${location.pathname}`)
     .then(r => r.json())
     .then(d => {
       if (!d) return;
 
-      const todayEl = document.getElementById("visitorToday");
-      const totalEl = document.getElementById("visitorTotal");
+      const today = d.today || 0;
+      const total = d.total || 0;
 
-      if (todayEl && typeof d.today === "number") {
-        todayEl.textContent = d.today.toLocaleString("id-ID");
-      }
+      // animasi angka naik
+      animateNumberText(visitorBar, lastToday, today, lastTotal, total, 800);
 
-      if (totalEl && typeof d.total === "number") {
-        totalEl.textContent = d.total.toLocaleString("id-ID");
-      }
+      lastToday = today;
+      lastTotal = total;
     })
     .catch(console.warn);
-})();
+}
+
+// animasi angka naik dengan format "0 hari ini - 0 total"
+function animateNumberText(el, startToday, endToday, startTotal, endTotal, duration) {
+  if (startToday === endToday && startTotal === endTotal) return;
+  let startTime = null;
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+
+    const currentToday = Math.floor(startToday + (endToday - startToday) * progress);
+    const currentTotal = Math.floor(startTotal + (endTotal - startTotal) * progress);
+
+    el.textContent = `${currentToday} hari ini - ${currentTotal} total`;
+
+    if (progress < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+// auto hide saat scroll
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    // scroll ke bawah → sembunyi
+    visitorBar.style.transform = 'translateY(80px)';
+    visitorBar.style.opacity = '0';
+  } else {
+    // scroll ke atas → muncul
+    visitorBar.style.transform = 'translateY(0)';
+    visitorBar.style.opacity = '1';
+  }
+  lastScroll = currentScroll;
+});
+
+// jalankan
+fetchVisitor();
+
+// opsional: update setiap 30 detik
+setInterval(fetchVisitor, 30000);
