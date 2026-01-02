@@ -254,3 +254,39 @@ body {
     min-height: 4.5em; /* (1.5 line-height * 3 baris) */
     line-height: 1.5;
 }
+
+/* CSS Tambahan Langsung untuk Memastikan Kerapian */
+        
+        /* Judul Wajib 1 Baris */
+        .content-container h3 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Container Tombol Paksa Sejajar */
+        .actions {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            gap: 6px;
+            width: 100%;
+            align-items: center;
+        }
+
+        /* Tombol Utama (PROMPT) */
+        .btn-outline {
+            flex: 2 !important;
+            justify-content: center;
+        }
+
+        /* Tombol Ikon (YT & Share) */
+        .btn-yt-small, .btn-share {
+            flex: 0 0 42px !important;
+            padding: 10px 0 !important;
+            justify-content: center;
+            font-size: 16px !important;
+        }
