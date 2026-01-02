@@ -1,26 +1,36 @@
-const CACHE_NAME = 'kokosima-v1';
+const CACHE_NAME = 'kokosima-v2';
 const assets = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/data.js',
-  '/manifest.json'
+  '/',
+  '/style.css',
+  '/data.js',
+  '/manifest.json'
 ];
 
-// Install Service Worker & Simpan Aset ke Cache
-self.addEventListener('install', (e) => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(assets);
-    })
-  );
+// Install
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(assets))
+  );
+  self.skipWaiting();
 });
 
-// Ambil data dari Cache jika offline
-self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((res) => {
-      return res || fetch(e.request);
-    })
-  );
+// Activate
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+      )
+    )
+  );
+  self.clients.claim();
+});
+
+// Fetch
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(res => {
+      return res || fetch(event.request, { redirect: 'follow' });
+    })
+  );
 });
