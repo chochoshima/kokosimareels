@@ -20,28 +20,46 @@ body {
 }
 
 /* =========================
-    TOP BAR (FIXED & CLICKABLE)
+    TOP BAR - FIXED CLICK ACTION
 ========================= */
 .top-bar {
-    position: fixed; top: 0; width: 100%; height: 60px;
-    padding: 0 15px; display: flex; align-items: center; justify-content: space-between;
-    z-index: 9999; background: rgba(0, 0, 0, 0.7); 
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    pointer-events: none; /* Klik tembus ke video jika area kosong */
-}
-
-.logo-link, .search-container, .social-links, #searchInput {
-    pointer-events: auto; /* Aktifkan kembali klik untuk elemen ini */
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    height: 60px;
+    padding: 0 15px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    z-index: 99999 !important; /* Maksimal */
+    background: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 .logo-link {
-    text-decoration: none; flex-shrink: 0; display: flex; align-items: center;
-    padding: 10px 8px; position: relative; z-index: 10001;
+    display: inline-flex !important;
+    align-items: center;
+    position: relative !important;
+    z-index: 100001 !important; /* Harus lebih tinggi dari search */
     cursor: pointer !important;
+    padding: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
 }
 
 .search-container {
-    flex-grow: 1; max-width: 400px; position: relative; margin: 0 15px; z-index: 10000;
+    flex-grow: 1; 
+    max-width: 400px; 
+    position: relative; 
+    z-index: 100000 !important;
+    pointer-events: auto; /* Pastikan input tetap bisa diketik */
+}
+
+/* Pastikan logo atau teks di dalam link tidak menghalangi klik link-nya */
+.logo-link * {
+    pointer-events: none;
 }
 
 #searchInput {
