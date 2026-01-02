@@ -2,54 +2,34 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kokosima AI - Galeri Prompt AI Paling Absurd, Lucu, Realistic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kokosima AI - Galeri Prompt AI Paling Absurd & Realistic</title>
     
-    <meta name="description" content="Koleksi prompt AI unik dan terlengkap. Temukan berbagai inspirasi mulai dari hasil yang absurd, kocak, hingga cinematic realistic. Gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kokosimareels.pages.dev/">
-    <meta property="og:title" content="Kokosima AI - Galeri Prompt AI Paling Absurd, Lucu, Realistic">
-    <meta property="og:description" content="Eksplorasi ide prompt AI paling unik. Dari yang cinematic hingga yang absurd dan lucu, semuanya ada di sini!">
-    <meta property="og:image" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://kokosimareels.pages.dev/">
-    <meta property="twitter:title" content="Kokosima AI - Galeri Prompt AI Paling Absurd, Lucu, Realistic">
-    <meta property="twitter:description" content="Koleksi prompt AI paling absurd dan realistis. Cek sekarang!">
-    <meta property="twitter:image" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
-
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#000000">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="images/icon-192.png">
-
+    <meta name="description" content="Koleksi prompt AI unik. Temukan berbagai inspirasi mulai dari hasil absurd hingga cinematic realistic.">
     <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#000000">
 </head>
 <body>
 
 <header class="top-bar">
-     <a href="index.html" class="logo-link">
-        <span class="logo">🧠 kokosima</span>
-    </a>
+    <a href="index.html" class="logo-link">🧠 KOKOSIMA</a>
+
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Cari (hutan, robot, neon...)" autocomplete="off">
+        <input type="text" id="searchInput" placeholder="Cari prompt..." autocomplete="off">
     </div>
 
     <div class="social-links">
-        <a href="https://www.facebook.com/chochoshima/" target="_blank">Facebook</a>
-        <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank">YouTube</a>
+        <a href="https://www.facebook.com/chochoshima/" target="_blank">FB</a>
+        <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank">YT</a>
     </div>
 </header>
 
 <main class="feed" id="main-feed"></main>
 
 <script src="data.js"></script>
-
 <script>
 /* ==========================
-   VIEWPORT MOBILE HEIGHT
+   VIEWPORT & LAYOUT LOGIC
 ========================== */
 function setVh(){
     const vh = window.innerHeight * 0.01;
@@ -60,128 +40,89 @@ window.addEventListener('load', setVh);
 setVh();
 
 /* ==========================
-   FEED GENERATOR (OPTIMIZED)
-========================== */
+   FEED GENERATOR (FIXED)
+========================= */
 const CHANNEL_YOUTUBE = "https://youtube.com/@kokosimaabsurd";
 const feedContainer = document.getElementById("main-feed");
 
 function generateFeed(keysToRender = null) {
-    if (typeof PROMPT_DATABASE === 'undefined') {
-        feedContainer.innerHTML = `<div style="text-align:center; padding: 2rem; color: #cc0000;"><h3>Gagal Memuat Data</h3></div>`;
-        return;
-    }
+    if (typeof PROMPT_DATABASE === 'undefined') return;
 
-    // Bersihkan kontainer sebelum render ulang
     feedContainer.innerHTML = "";
-
     const fragment = document.createDocumentFragment();
-    
-    // Tentukan ID mana yang akan ditampilkan (filter atau semua)
     let keys = keysToRender || Object.keys(PROMPT_DATABASE);
     
-    // Jika tampilan awal (bukan search), urutkan dari yang terbaru
-    if (!keysToRender) {
-        keys = [...keys].reverse();
-    }
+    if (!keysToRender) keys = [...keys].reverse();
 
     if (keys.length === 0) {
-        feedContainer.innerHTML = `<div class="no-results"><h3>Prompt "${document.getElementById('searchInput').value}" tidak ditemukan...</h3></div>`;
+        feedContainer.innerHTML = `<div class="no-results"><h3>Prompt tidak ditemukan...</h3></div>`;
         return;
     }
 
     keys.forEach(id => {
-        try {
-            const data = PROMPT_DATABASE[id];
-            if (!data || !data.title) return;
+        const data = PROMPT_DATABASE[id];
+        if (!data) return;
 
-            const safeText = data.text || ""; 
-            const words = safeText.split(/\s+/);
-            const previewText = words.length > 0 
-                ? words.slice(0, 10).join(" ") + (words.length > 10 ? "..." : "")
-                : "Tidak ada deskripsi.";
+        const section = document.createElement("section");
+        section.className = "item";
+        
+        // Memastikan button label dinamis
+        const hasVideo = data.videoUrl && data.videoUrl !== "#";
+        const btnLabel = hasVideo ? "▶ Video" : "📺 Channel";
+        const btnHref = hasVideo ? data.videoUrl : CHANNEL_YOUTUBE;
 
-            const hasVideo = data.videoUrl && data.videoUrl !== "#";
-            const btnLabel = hasVideo ? "▶ Video" : "📺"; 
-            const btnHref = hasVideo ? data.videoUrl : CHANNEL_YOUTUBE;
-            const ytClass = hasVideo ? "" : "btn-yt-small";
-            const btnStyle = hasVideo ? "" : "style='background:#cc0000;color:#fff;'";
-
-            const section = document.createElement("section");
-            section.className = "item";
-            section.id = id;
-            section.innerHTML = `
-                <div class="media-container">
-                    <img src="images/${id}.webp" alt="${data.title}" loading="lazy" decoding="async"
-                    onerror="this.onerror=null;this.src='images/${id}.jpg';">
+        section.innerHTML = `
+            <div class="media-container">
+                <img src="images/${id}.webp" alt="${data.title}" loading="lazy" 
+                     onerror="this.src='images/${id}.jpg';">
+            </div>
+            <div class="content-container">
+                <h3>${data.title}</h3>
+                <p>${data.text ? data.text.substring(0, 60) + '...' : ''}</p>
+                <div class="actions">
+                    <a class="btn" href="${btnHref}" target="_blank">${btnLabel}</a>
+                    <a class="btn btn-outline" href="prompt.html?id=${id}">PROMPT</a>
+                    <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗</button>
                 </div>
-                <div class="content-container">
-                    <h3 title="${data.title}">${data.title}</h3>
-                    <p class="prompt-preview">${previewText}</p>
-                    <div class="actions">
-                        <a class="btn btn-primary ${ytClass}" href="${btnHref}" target="_blank" ${btnStyle}>${btnLabel}</a>
-                        <a class="btn btn-outline" href="prompt.html?id=${id}">PROMPT</a>
-                        <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗</button>
-                    </div>
-                </div>
-            `;
-            fragment.appendChild(section);
-        } catch (err) { console.error(err); }
+            </div>
+        `;
+        fragment.appendChild(section);
     });
-
     feedContainer.appendChild(fragment);
 }
 
-// Inisialisasi awal
-generateFeed();
-
-/* ==========================
-   SEARCH LOGIC
-========================== */
-document.getElementById('searchInput').addEventListener('input', function(e) {
+// Search Logic
+document.getElementById('searchInput').addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase().trim();
-    
-    if (term === "") {
-        generateFeed(); // Tampilkan semua jika kosong
-        return;
-    }
-
-    const filteredIds = Object.keys(PROMPT_DATABASE).filter(id => {
+    if (term === "") { generateFeed(); return; }
+    const filtered = Object.keys(PROMPT_DATABASE).filter(id => {
         const item = PROMPT_DATABASE[id];
-        const content = (item.title + " " + item.text).toLowerCase();
-        return content.includes(term);
+        return (item.title + " " + item.text).toLowerCase().includes(term);
     });
-
-    generateFeed(filteredIds);
+    generateFeed(filtered);
 });
 
-/* ==========================
-   SHARE PROMPT
-========================== */
+// Share Logic
 function sharePrompt(id) {
-    if (typeof PROMPT_DATABASE === 'undefined' || !PROMPT_DATABASE[id]) return;
-    const url = window.location.origin + window.location.pathname.replace("index.html", "") + "prompt.html?id=" + id;
+    const url = `${window.location.origin}/prompt.html?id=${id}`;
     if (navigator.share) {
-        navigator.share({ title: PROMPT_DATABASE[id].title, url }).catch(console.error);
+        navigator.share({ title: PROMPT_DATABASE[id].title, url });
     } else {
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+        navigator.clipboard.writeText(url);
+        alert("Link disalin ke clipboard!");
     }
 }
+
+generateFeed();
 </script>
 
 <div class="floating-stack">
-  <div class="floating-visitor" id="visitorBar">
-    👁️ <span id="visitorToday">0</span> · <strong id="visitorTotal">0</strong>
-  </div>
-  <a href="https://youtube.com/@kokosimaabsurd" class="floating-youtube" target="_blank">▶</a>
+    <div class="floating-visitor" id="visitorBar">
+        👁️ <span id="visitorToday">0</span> · <strong id="visitorTotal">0</strong>
+    </div>
+    <a href="https://youtube.com/@kokosimaabsurd" class="floating-youtube" target="_blank">▶</a>
 </div>
 
 <script src="visitor.js" defer></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW error:', err));
-    });
-  }
-</script>
 </body>
 </html>
