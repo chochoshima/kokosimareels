@@ -2,14 +2,23 @@
 // UNIVERSAL VISITOR + ANIMASI ANGKA + AUTO-HIDE
 // ==========================
 const visitorBar = document.getElementById('visitorBar');
+const visitorTodayEl = document.getElementById('visitorToday');
+const visitorTotalEl = document.getElementById('visitorTotal');
 
 let lastScroll = 0;
 let lastToday = 0;
 let lastTotal = 0;
 
-// fetch visitor
+// ==========================
+// FETCH VISITOR
+// ==========================
 function fetchVisitor() {
-  fetch(`https://visitor-counter.kokopujiyanto.workers.dev/?page=${location.pathname}`)
+  if (!visitorBar) return; // safety jika tidak ada visitorBar
+
+  // page key, pakai pathname tanpa slash awal
+  const pageKey = location.pathname.replace(/^\/+/, '') || 'index';
+
+  fetch(`https://visitor-counter.kokopujiyanto.workers.dev/?page=${pageKey}`)
     .then(r => r.json())
     .then(d => {
       if (!d) return;
@@ -18,7 +27,8 @@ function fetchVisitor() {
       const total = d.total || 0;
 
       // animasi angka naik
-      animateNumberText(visitorBar, lastToday, today, lastTotal, total, 800);
+      animateNumber(visitorTodayEl, lastToday, today, 800);
+      animateNumber(visitorTotalEl, lastTotal, total, 800);
 
       lastToday = today;
       lastTotal = total;
@@ -26,28 +36,30 @@ function fetchVisitor() {
     .catch(console.warn);
 }
 
-// animasi angka naik dengan format "0 hari ini - 0 total"
-function animateNumberText(el, startToday, endToday, startTotal, endTotal, duration) {
-  if (startToday === endToday && startTotal === endTotal) return;
+// ==========================
+// ANIMASI ANGKA NAIK
+// ==========================
+function animateNumber(el, start, end, duration) {
+  if (!el || start === end) return;
+
   let startTime = null;
 
   function step(timestamp) {
     if (!startTime) startTime = timestamp;
     const progress = Math.min((timestamp - startTime) / duration, 1);
-
-    const currentToday = Math.floor(startToday + (endToday - startToday) * progress);
-    const currentTotal = Math.floor(startTotal + (endTotal - startTotal) * progress);
-
-    el.textContent = `${currentToday} hari ini - ${currentTotal} total`;
-
+    el.textContent = Math.floor(start + (end - start) * progress);
     if (progress < 1) requestAnimationFrame(step);
   }
 
   requestAnimationFrame(step);
 }
 
-// auto hide saat scroll
+// ==========================
+// AUTO-HIDE SAAT SCROLL
+// ==========================
 window.addEventListener('scroll', () => {
+  if (!visitorBar) return;
+
   const currentScroll = window.scrollY;
   if (currentScroll > lastScroll && currentScroll > 100) {
     // scroll ke bawah → sembunyi
@@ -61,8 +73,8 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
-// jalankan
+// ==========================
+// JALANKAN FETCH + UPDATE SETIAP 30 DETIK
+// ==========================
 fetchVisitor();
-
-// opsional: update setiap 30 detik
 setInterval(fetchVisitor, 30000);
