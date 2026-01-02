@@ -6,7 +6,10 @@
     <title>Kokosima AI - Katalog Prompt Cinematic</title>
     <meta name="description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
     <link rel="stylesheet" href="style.css">
-   
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#000000">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">  
 </head>
 <body>
 
@@ -158,5 +161,12 @@ function sharePrompt(id) {
 </div>
 
 <script src="visitor.js" defer></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW error:', err));
+    });
+  }
+</script>
 </body>
 </html>
