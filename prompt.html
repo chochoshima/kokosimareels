@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" id="main-desc-meta" content="Temukan prompt AI cinematic gratis.">
-
-    <title>Loading Prompt... | Kokosima AI</title>
+    
+    <meta name="description" id="main-desc-meta" content="Koleksi prompt AI unik: Absurd, Lucu, dan Realistic.">
+    <title>Prompt Detail | Kokosima AI</title>
 
     <meta property="og:type" content="article">
-    <meta property="og:title" id="meta-title" content="Kokosima AI">
-    <meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis.">
+    <meta property="og:title" id="meta-title" content="Kokosima AI - Detail Prompt">
+    <meta property="og:description" id="meta-desc" content="Lihat detail prompt AI dan salin untuk Midjourney/Dall-E.">
     <meta property="og:url" id="meta-url" content="https://kokosimareels.pages.dev/">
     <meta property="og:image" id="meta-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twitter-title" content="Kokosima AI">
+    <meta name="twitter:description" id="twitter-desc" content="Lihat detail prompt AI dan salin untuk Midjourney/Dall-E.">
+    <meta name="twitter:image" id="twitter-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
+
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
@@ -25,17 +34,13 @@
         canonical.href = currentId ? `https://kokosimareels.pages.dev/prompt.html?id=${currentId}` : 'https://kokosimareels.pages.dev/';
         document.head.appendChild(canonical);
     </script>
-	<link rel="manifest" href="manifest.json">
-	<meta name="theme-color" content="#000000">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
 
 <body>
 
 <header class="top-bar">
     <a href="index.html" class="btn-back">← BACK</a>
-    <a href="index.html" class="logo">Kokosima</a>
+    <a href="index.html" class="logo">🧠 kokosima</a>
 </header>
 
 <main class="prompt-page-wrapper">
@@ -66,30 +71,34 @@ const params = new URLSearchParams(window.location.search);
 const promptId = params.get("id");
 const domain = "https://kokosimareels.pages.dev";
 
-// Cek apakah data ada
 if (!promptId || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[promptId]) {
     window.location.href = "index.html";
 } else {
     const data = PROMPT_DATABASE[promptId];
     const cleanDesc = data.text.slice(0, 150).replace(/(\r\n|\n|\r)/gm, " ");
+    const fullImgPath = `${domain}/images/${promptId}.webp`;
 
-    // 1. UPDATE SEO & META (Sangat Penting)
+    // 1. UPDATE SEO & META (Dinamis untuk Browser)
     document.title = data.title + " | Kokosima AI";
     
-    // Ganti meta description (standard & OG)
     document.getElementById("main-desc-meta").setAttribute("content", cleanDesc);
     document.getElementById("meta-desc").setAttribute("content", cleanDesc);
     document.getElementById("meta-title").setAttribute("content", data.title);
-    document.getElementById("meta-img").setAttribute("content", `${domain}/images/${promptId}.webp`);
+    document.getElementById("meta-img").setAttribute("content", fullImgPath);
     document.getElementById("meta-url").setAttribute("content", window.location.href);
 
-    // 2. INJECT SCHEMA DATA
+    // Update Twitter Tags
+    if(document.getElementById("twitter-title")) document.getElementById("twitter-title").setAttribute("content", data.title);
+    if(document.getElementById("twitter-desc")) document.getElementById("twitter-desc").setAttribute("content", cleanDesc);
+    if(document.getElementById("twitter-img")) document.getElementById("twitter-img").setAttribute("content", fullImgPath);
+
+    // 2. INJECT SCHEMA DATA (Google SEO)
     const schemaData = {
         "@context": "https://schema.org/",
         "@type": "VisualArtwork",
         "name": data.title,
         "description": cleanDesc,
-        "image": `${domain}/images/${promptId}.webp`,
+        "image": fullImgPath,
         "creator": { "@type": "Person", "name": "Kokosima AI" }
     };
     const schemaScript = document.createElement('script');
@@ -97,13 +106,22 @@ if (!promptId || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[prom
     schemaScript.text = JSON.stringify(schemaData);
     document.head.appendChild(schemaScript);
 
-    // 3. TAMPILKAN KONTEN DI HALAMAN
+    // 3. TAMPILKAN KONTEN
     document.getElementById("title").textContent = data.title;
     document.getElementById("promptText").textContent = data.text;
     
     const imgElement = document.getElementById("main-image");
-    imgElement.src = `${domain}/images/${promptId}.webp`;
-    imgElement.onerror = () => { imgElement.src = `${domain}/images/${promptId}.jpg`; imgElement.onerror = null; };
+    imgElement.src = fullImgPath;
+    
+    // Fallback sistem: Webp -> Jpg -> Default
+    imgElement.onerror = function() {
+        if (!this.src.endsWith('.jpg')) {
+            this.src = `${domain}/images/${promptId}.jpg`;
+        } else {
+            this.src = `${domain}/images/default-preview.jpg`;
+            this.onerror = null;
+        }
+    };
     imgElement.onload = () => { imgElement.hidden = false; };
 
     // 4. COPY BUTTON
@@ -111,8 +129,9 @@ if (!promptId || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[prom
         try {
             await navigator.clipboard.writeText(data.text);
             const btn = document.getElementById("copyBtn");
+            const originalText = btn.innerHTML;
             btn.textContent = "✅ Copied";
-            setTimeout(() => btn.textContent = "📋 Copy Prompt", 1600);
+            setTimeout(() => btn.innerHTML = originalText, 1600);
         } catch {
             alert("Gagal menyalin prompt");
         }
