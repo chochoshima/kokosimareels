@@ -1,25 +1,59 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kokosima AI - Katalog Prompt Cinematic</title>
-<meta name="description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kokosima AI - Katalog Prompt Cinematic</title>
+    <meta name="description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Tambahan Langsung untuk Memastikan Kerapian */
+        
+        /* Judul Wajib 1 Baris */
+        .content-container h3 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Container Tombol Paksa Sejajar */
+        .actions {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            gap: 6px;
+            width: 100%;
+            align-items: center;
+        }
+
+        /* Tombol Utama (PROMPT) */
+        .btn-outline {
+            flex: 2 !important;
+            justify-content: center;
+        }
+
+        /* Tombol Ikon (YT & Share) */
+        .btn-yt-small, .btn-share {
+            flex: 0 0 42px !important;
+            padding: 10px 0 !important;
+            justify-content: center;
+            font-size: 16px !important;
+        }
+    </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="top-bar">
     <a href="index.html" class="logo-link"><span class="logo">🧠 kokosima</span></a>
-    <a href="https://www.facebook.com/chochoshima/" target="_blank" aria-label="Facebook">Facebook</a>
-    <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank" aria-label="YouTube">YouTube</a>
+    <a href="https://www.facebook.com/chochoshima/" target="_blank">Facebook</a>
+    <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank">YouTube</a>
 </header>
 
-<!-- FEED -->
 <main class="feed" id="main-feed"></main>
 
-<!-- DATA -->
 <script src="data.js"></script>
 
 <script>
@@ -35,122 +69,86 @@ window.addEventListener('load', setVh);
 setVh();
 
 /* ==========================
-   FEED GENERATOR (ANTI-CRASH)
+   FEED GENERATOR
 ========================== */
 const CHANNEL_YOUTUBE = "https://youtube.com/@kokosimaabsurd";
 const feedContainer = document.getElementById("main-feed");
 
 function generateFeed() {
-    // 1. CEK APAKAH DATABASE BERHASIL DIMUAT
-    // Jika data.js error syntax (kurung kurang, dll), PROMPT_DATABASE tidak akan ada.
     if (typeof PROMPT_DATABASE === 'undefined') {
-        console.error("CRITICAL: PROMPT_DATABASE tidak ditemukan. Cek syntax error di data.js");
-        feedContainer.innerHTML = `
-            <div style="text-align:center; padding: 2rem; color: #cc0000;">
-                <h3>Gagal Memuat Data</h3>
-                <p>Terjadi kesalahan pada file data (Syntax Error). Cek Console Browser.</p>
-            </div>`;
+        feedContainer.innerHTML = `<div style="text-align:center; padding: 2rem; color: #cc0000;"><h3>Gagal Memuat Data</h3></div>`;
         return;
     }
 
     const fragment = document.createDocumentFragment();
     const keys = Object.keys(PROMPT_DATABASE).reverse();
 
-    if (keys.length === 0) {
-        feedContainer.innerHTML = "<p style='text-align:center; padding:20px;'>Belum ada data prompt.</p>";
-        return;
-    }
-
     keys.forEach(id => {
-        // 2. GUNAKAN TRY-CATCH AGAR SATU ERROR TIDAK MEMATIKAN SEMUA
         try {
             const data = PROMPT_DATABASE[id];
+            if (!data || !data.title) return;
 
-            // Validasi Data Minimal
-            if (!data || !data.title) {
-                console.warn(`Item ${id} di-skip karena tidak punya judul.`);
-                return; 
-            }
-
-            // 3. HANDLING TEXT AMAN (Mencegah error jika data.text undefined)
-            // Jika data.text kosong, pakai string kosong "" agar .split() tidak error
             const safeText = data.text || ""; 
             const words = safeText.split(/\s+/);
             const previewText = words.length > 0 
-                ? words.slice(0, 12).join(" ") + (words.length > 12 ? "..." : "")
+                ? words.slice(0, 10).join(" ") + (words.length > 10 ? "..." : "")
                 : "Tidak ada deskripsi.";
 
-            // Logika Tombol
+            // Logika Ikon: Jika tidak ada videoUrl, tampilkan 📺 saja
             const hasVideo = data.videoUrl && data.videoUrl !== "#";
-            const btnLabel = hasVideo ? "▶ Video" : "📺 Channel";
+            const btnLabel = hasVideo ? "▶ Video" : "📺"; 
             const btnHref = hasVideo ? data.videoUrl : CHANNEL_YOUTUBE;
+            const ytClass = hasVideo ? "" : "btn-yt-small";
             const btnStyle = hasVideo ? "" : "style='background:#cc0000;color:#fff;'";
 
-            // Buat Element
             const section = document.createElement("section");
             section.className = "item";
             section.id = id;
             section.innerHTML = `
                 <div class="media-container">
-                    <img src="images/${id}.webp" alt="Prompt AI ${data.title}" loading="lazy" decoding="async"
+                    <img src="images/${id}.webp" alt="${data.title}" loading="lazy" decoding="async"
                     onerror="this.onerror=null;this.src='images/${id}.jpg';">
                 </div>
                 <div class="content-container">
-                    <h3>${data.title}</h3>
+                    <h3 title="${data.title}">${data.title}</h3>
                     <p class="prompt-preview">${previewText}</p>
                     <div class="actions">
-                        <a class="btn btn-primary" href="${btnHref}" target="_blank" ${btnStyle}>${btnLabel}</a>
+                        <a class="btn btn-primary ${ytClass}" href="${btnHref}" target="_blank" ${btnStyle}>${btnLabel}</a>
                         <a class="btn btn-outline" href="prompt.html?id=${id}">PROMPT</a>
-                        <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗 Share</button>
+                        <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗</button>
                     </div>
                 </div>
             `;
             fragment.appendChild(section);
-
-        } catch (err) {
-            // Jika terjadi error parah di satu item, catat di console dan LANJUT ke item berikutnya
-            console.error(`Gagal me-render item ID: ${id}`, err);
-        }
+        } catch (err) { console.error(err); }
     });
 
     feedContainer.appendChild(fragment);
 }
 
-// Jalankan fungsi
 generateFeed();
 
 /* ==========================
    SHARE PROMPT
 ========================== */
 function sharePrompt(id) {
-    // Cek lagi apakah database ada sebelum share
     if (typeof PROMPT_DATABASE === 'undefined' || !PROMPT_DATABASE[id]) return;
-    
-    const data = PROMPT_DATABASE[id];
-    const base = location.origin + location.pathname.replace("index.html", ""); // Handle folder
-    
-    // Pastikan URL bersih dari double slash jika di root
-    const cleanBase = base.endsWith('/') ? base : base + '/';
-    const url = cleanBase + "prompt.html?id=" + id;
-
+    const url = window.location.origin + window.location.pathname.replace("index.html", "") + "prompt.html?id=" + id;
     if (navigator.share) {
-        navigator.share({ title: data.title, url }).catch(console.error);
+        navigator.share({ title: PROMPT_DATABASE[id].title, url }).catch(console.error);
     } else {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
     }
 }
 </script>
-<!-- FLOATING STACK -->
+
 <div class="floating-stack">
   <div class="floating-visitor" id="visitorBar">
-    👁️ <span id="visitorToday">0</span> hari ini ·
-    <strong id="visitorTotal">0</strong> total
+    👁️ <span id="visitorToday">0</span> · <strong id="visitorTotal">0</strong>
   </div>
-  <a href="https://youtube.com/@kokosimaabsurd"
-     class="floating-youtube"
-     target="_blank"
-     aria-label="YouTube Channel">▶</a>
+  <a href="https://youtube.com/@kokosimaabsurd" class="floating-youtube" target="_blank">▶</a>
 </div>
+
 <script src="visitor.js" defer></script>
 </body>
 </html>
