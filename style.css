@@ -20,128 +20,58 @@ body {
 }
 
 /* =========================
-    TOP BAR UPDATED
+    TOP BAR (OPTIMIZED & CLEAN)
 ========================= */
 .top-bar {
     position: fixed; top: 0; width: 100%; height: 60px;
-    padding: 0 20px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; /* Sebar elemen: Kiri, Tengah, Kanan */
-    z-index: 100; 
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-    backdrop-filter: blur(10px);
-    gap: 15px;
+    padding: 0 15px; display: flex; align-items: center; justify-content: space-between;
+    z-index: 2000; background: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
 }
 
-.logo-link { text-decoration: none; flex-shrink: 0; }
+.logo-link {
+    text-decoration: none; flex-shrink: 0; display: flex; align-items: center;
+    padding: 10px 8px; position: relative; z-index: 2010;
+}
 
 .search-container {
-    flex-grow: 1;
-    max-width: 400px; /* Lebar maksimal bar pencarian */
-    position: relative;
+    flex-grow: 1; max-width: 400px; position: relative; margin: 0 15px; z-index: 2005;
 }
 
 #searchInput {
-    width: 100%;
-    padding: 8px 15px 8px 35px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.1);
-    color: #fff;
-    font-size: 14px;
-    outline: none;
-    transition: 0.3s;
+    width: 100%; padding: 8px 15px 8px 35px; border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1);
+    color: #fff; font-size: 14px; outline: none; transition: 0.3s;
 }
 
 #searchInput:focus {
-    background: rgba(255,255,255,0.2);
-    border-color: rgba(0, 123, 255, 0.5);
+    background: rgba(255,255,255,0.2); border-color: rgba(0, 210, 255, 0.5);
 }
 
-/* Ikon Kaca Pembesar */
 .search-container::before {
-    content: "🔍";
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 12px;
-    opacity: 0.6;
+    content: "🔍"; position: absolute; left: 12px; top: 50%;
+    transform: translateY(-50%); font-size: 12px; opacity: 0.6;
 }
 
-.social-links {
-    display: flex;
-    gap: 15px;
-    flex-shrink: 0;
-}
+.social-links { display: flex; gap: 15px; flex-shrink: 0; }
 
-/* Responsif Mobile */
+/* Link Styles */
+.top-bar a { color: #ffffff; transition: 0.3s ease; opacity: 0.8; text-decoration: none; }
+.top-bar a:hover { color: #00d2ff; opacity: 1; }
+
+/* =========================
+    RESPONSIVE (COMBINED)
+========================= */
 @media (max-width: 768px) {
-    .social-links { display: none; } /* Sembunyikan sosmed di HP agar tidak sempit */
-    .search-container { max-width: none; } /* Search bar lebih luas di HP */
+    .social-links { display: none; }
+    .search-container { max-width: none; margin: 0 10px; }
+    .logo { font-size: 14px; }
+    #searchInput { font-size: 13px; padding-left: 30px; }
+    .top-bar { padding: 0 10px; }
 }
 
-.top-bar a { 
-    color: #ffffff; 
-    transition: color 0.3s ease, opacity 0.3s ease;
-    opacity: 0.8; 
-}
-
-.top-bar a:hover { 
-    color: #00d2ff; /* Warna biru muda elektrik saat disentuh */
-    opacity: 1; 
-}
-
-/* Tambahan CSS inline untuk memastikan Search Bar rapi */
-        .search-container {
-            flex-grow: 1;
-            max-width: 400px;
-            position: relative;
-            margin: 0 15px;
-        }
-        #searchInput {
-            width: 100%;
-            padding: 8px 15px 8px 35px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            transition: 0.3s;
-        }
-        #searchInput:focus {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.5);
-        }
-        .search-container::before {
-            content: "🔍";
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            opacity: 0.6;
-        }
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 50px;
-            color: #888;
-        }
-        @media (max-width: 600px) {
-            .social-links { display: none; }
-            .top-bar { padding: 0 15px; }
-        }
-		.item {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    animation: fadeIn 0.4s ease forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.no-results {
+    grid-column: 1 / -1; text-align: center; padding: 50px; color: #888;
 }
 
 /* =========================
@@ -187,31 +117,40 @@ body {
 ========================= */
 @media (max-width:1023px) {
     .feed {
-        height:calc(var(--vh,1vh)*100);
-        overflow-y:auto; scroll-snap-type:y mandatory;
-        scrollbar-width:none;
+        height: calc(var(--vh, 1vh) * 100);
+        overflow-y: auto; 
+        scroll-snap-type: y mandatory;
+        scrollbar-width: none;
     }
-    .feed::-webkit-scrollbar{display:none;}
+    .feed::-webkit-scrollbar { display: none; }
+    
     .item {
-        position:relative; height:calc(var(--vh,1vh)*100);
-        scroll-snap-align:start; display:flex; flex-direction:column;
+        position: relative; 
+        height: calc(var(--vh, 1vh) * 100);
+        scroll-snap-align: start; 
+        display: flex; 
+        flex-direction: column;
     }
+    
     .media-container { 
-        width:100%; height:100%; position:relative; 
-        overflow:hidden; background: #000;
+        width: 100%; height: 100%; position: relative; 
+        overflow: hidden; background: #000;
     }
+    
     .media-container img {
         width: 100%; height: 100%;
-        object-fit: cover; /* FILL KE SEMUA SUDUT (MOBILE) */
-        object-position: center; display: block;
+        object-fit: cover;
+        object-position: center; 
+        display: block;
     }
-    .content-container {
-        position: absolute; bottom:0; left:0; right:0;
-        padding:20px 20px 40px; z-index:10;
-        background:linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
-    }
-}
 
+    .content-container {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        padding: 20px 20px 60px; 
+        z-index: 10;
+        background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+    }
+} /* Pastikan kurung penutup media query ada di sini */
 /* =========================
    DESKTOP GRID (FILL OPTIMIZED)
 ========================= */
