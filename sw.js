@@ -1,7 +1,7 @@
 const CACHE_NAME = 'kokosima-v3';
 
 const ASSETS = [
-  '/',              // root saja, JANGAN index.html
+  '/',
   '/style.css',
   '/data.js',
   '/manifest.json'
@@ -31,8 +31,9 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
-        keys.filter(k => k !== CACHE_NAME)
-            .map(k => caches.delete(k))
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
       )
     )
   );
@@ -43,10 +44,21 @@ self.addEventListener('activate', event => {
    FETCH
 ========================= */
 self.addEventListener('fetch', event => {
-  const req = event.request;
+  const request = event.request;
 
-  // Navigasi halaman (HTML, termasuk prompt.html?id=...)
-  if (req.mode === 'navigate') {
+  // Navigasi halaman HTML
+  if (request.mode === 'navigate') {
     event.respondWith(
-      fetch(req, { redirect: 'follow' })
-        .catch(() => caches.
+      fetch(request, { redirect: 'follow' })
+        .catch(() => caches.match('/'))
+    );
+    return;
+  }
+
+  // Asset statis
+  event.respondWith(
+    caches.match(request).then(response => {
+      return response || fetch(request, { redirect: 'follow' });
+    })
+  );
+});
