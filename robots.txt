@@ -1,5 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
+
 User-agent: *
 Allow: /
 
-Sitemap: https://kokosimareels.pages.dev/sitemap.xml
+# Mencegah bot mengindeks file internal/data jika tidak diperlukan 
+# Namun biarkan data.js tetap bisa diakses agar script bisa running
+Disallow: /functions/
 
+# Link ke sitemap dinamis Anda
+Sitemap: https://kokosimareels.pages.dev/sitemap.xml
