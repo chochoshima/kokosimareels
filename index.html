@@ -6,13 +6,23 @@
     <title>Kokosima AI - Katalog Prompt Cinematic</title>
     <meta name="description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
     <link rel="stylesheet" href="style.css">
+   
 </head>
 <body>
 
 <header class="top-bar">
-    <a href="index.html" class="logo-link"><span class="logo">🧠 kokosima</span></a>
-    <a href="https://www.facebook.com/chochoshima/" target="_blank">Facebook</a>
-    <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank">YouTube</a>
+    <a href="index.html" class="logo-link">
+        <span class="logo">🧠 kokosima</span>
+    </a>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari (hutan, robot, neon...)" autocomplete="off">
+    </div>
+
+    <div class="social-links">
+        <a href="https://www.facebook.com/chochoshima/" target="_blank">Facebook</a>
+        <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank">YouTube</a>
+    </div>
 </header>
 
 <main class="feed" id="main-feed"></main>
@@ -32,19 +42,34 @@ window.addEventListener('load', setVh);
 setVh();
 
 /* ==========================
-   FEED GENERATOR
+   FEED GENERATOR (OPTIMIZED)
 ========================== */
 const CHANNEL_YOUTUBE = "https://youtube.com/@kokosimaabsurd";
 const feedContainer = document.getElementById("main-feed");
 
-function generateFeed() {
+function generateFeed(keysToRender = null) {
     if (typeof PROMPT_DATABASE === 'undefined') {
         feedContainer.innerHTML = `<div style="text-align:center; padding: 2rem; color: #cc0000;"><h3>Gagal Memuat Data</h3></div>`;
         return;
     }
 
+    // Bersihkan kontainer sebelum render ulang
+    feedContainer.innerHTML = "";
+
     const fragment = document.createDocumentFragment();
-    const keys = Object.keys(PROMPT_DATABASE).reverse();
+    
+    // Tentukan ID mana yang akan ditampilkan (filter atau semua)
+    let keys = keysToRender || Object.keys(PROMPT_DATABASE);
+    
+    // Jika tampilan awal (bukan search), urutkan dari yang terbaru
+    if (!keysToRender) {
+        keys = [...keys].reverse();
+    }
+
+    if (keys.length === 0) {
+        feedContainer.innerHTML = `<div class="no-results"><h3>Prompt "${document.getElementById('searchInput').value}" tidak ditemukan...</h3></div>`;
+        return;
+    }
 
     keys.forEach(id => {
         try {
@@ -57,7 +82,6 @@ function generateFeed() {
                 ? words.slice(0, 10).join(" ") + (words.length > 10 ? "..." : "")
                 : "Tidak ada deskripsi.";
 
-            // Logika Ikon: Jika tidak ada videoUrl, tampilkan 📺 saja
             const hasVideo = data.videoUrl && data.videoUrl !== "#";
             const btnLabel = hasVideo ? "▶ Video" : "📺"; 
             const btnHref = hasVideo ? data.videoUrl : CHANNEL_YOUTUBE;
@@ -89,7 +113,28 @@ function generateFeed() {
     feedContainer.appendChild(fragment);
 }
 
+// Inisialisasi awal
 generateFeed();
+
+/* ==========================
+   SEARCH LOGIC
+========================== */
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    const term = e.target.value.toLowerCase().trim();
+    
+    if (term === "") {
+        generateFeed(); // Tampilkan semua jika kosong
+        return;
+    }
+
+    const filteredIds = Object.keys(PROMPT_DATABASE).filter(id => {
+        const item = PROMPT_DATABASE[id];
+        const content = (item.title + " " + item.text).toLowerCase();
+        return content.includes(term);
+    });
+
+    generateFeed(filteredIds);
+});
 
 /* ==========================
    SHARE PROMPT
