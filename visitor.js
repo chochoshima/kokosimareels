@@ -1,20 +1,22 @@
 // ==========================
-// VISITOR UNIVERSAL (FINAL)
+// VISITOR UNIVERSAL (ANTI NULL)
 // ==========================
 
-const visitorBar = document.getElementById('visitorBar');
-const visitorTodayEl = document.getElementById('visitorToday');
-const visitorTotalEl = document.getElementById('visitorTotal');
+window.addEventListener('DOMContentLoaded', () => {
 
-if (!visitorBar || !visitorTodayEl || !visitorTotalEl) {
-  console.warn('Visitor element tidak ditemukan');
-} else {
+  const visitorBar = document.getElementById('visitorBar');
+  const visitorTodayEl = document.getElementById('visitorToday');
+  const visitorTotalEl = document.getElementById('visitorTotal');
+
+  if (!visitorBar || !visitorTodayEl || !visitorTotalEl) {
+    console.warn('Visitor DOM belum siap / tidak ditemukan');
+    return;
+  }
 
   let lastScroll = 0;
   let lastToday = 0;
   let lastTotal = 0;
 
-  // 🔒 KEY HARUS SAMA DENGAN YANG DI WORKER
   const PAGE_KEY = 'index';
 
   function fetchVisitor() {
@@ -29,44 +31,41 @@ if (!visitorBar || !visitorTodayEl || !visitorTotalEl) {
         const today = Number(d.today) || 0;
         const total = Number(d.total) || 0;
 
-        animateNumber(visitorTodayEl, lastToday, today, 700);
-        animateNumber(visitorTotalEl, lastTotal, total, 700);
+        animate(visitorTodayEl, lastToday, today);
+        animate(visitorTotalEl, lastTotal, total);
 
         lastToday = today;
         lastTotal = total;
       })
-      .catch(err => console.warn('Visitor error:', err));
+      .catch(console.warn);
   }
 
-  function animateNumber(el, start, end, duration) {
-    if (start === end) return;
-
-    let startTime = null;
-
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      const p = Math.min((ts - startTime) / duration, 1);
-      el.textContent = Math.floor(start + (end - start) * p);
-      if (p < 1) requestAnimationFrame(step);
+  function animate(el, from, to, dur = 700) {
+    if (from === to) {
+      el.textContent = to;
+      return;
     }
 
+    let start;
+    function step(t) {
+      if (!start) start = t;
+      const p = Math.min((t - start) / dur, 1);
+      el.textContent = Math.floor(from + (to - from) * p);
+      if (p < 1) requestAnimationFrame(step);
+    }
     requestAnimationFrame(step);
   }
 
-  // AUTO HIDE SAAT SCROLL
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
-    if (y > lastScroll && y > 100) {
-      visitorBar.style.transform = 'translateY(80px)';
-      visitorBar.style.opacity = '0';
-    } else {
-      visitorBar.style.transform = 'translateY(0)';
-      visitorBar.style.opacity = '1';
-    }
+    visitorBar.style.opacity = (y > lastScroll && y > 100) ? '0' : '1';
+    visitorBar.style.transform = (y > lastScroll && y > 100)
+      ? 'translateY(80px)'
+      : 'translateY(0)';
     lastScroll = y;
   });
 
-  // INIT
   fetchVisitor();
   setInterval(fetchVisitor, 30000);
-}
+
+});
