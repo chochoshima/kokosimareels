@@ -33,19 +33,51 @@ body {
 .top-bar a:hover { opacity:1; }
 
 /* =========================
-   BUTTON SYSTEM
+   BUTTON SYSTEM (REVISED)
 ========================= */
-.btn, .actions a, .actions button, .actions span {
-    padding:10px 14px; border-radius:12px;
-    text-decoration:none; font-weight:700; font-size:14px;
-    transition:0.2s; display:inline-flex; align-items:center; gap:8px;
-    cursor:pointer; border:none;
-    background:rgba(255,255,255,0.15); color:#fff;
+.btn, .actions a, .actions button {
+    text-decoration:none; 
+    font-weight:700; 
+    font-size:12px; /* Perkecil sedikit agar lebih aman */
+    transition:0.2s; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center;
+    cursor:pointer; 
+    border:none;
+    background:rgba(255,255,255,0.15); 
+    color:#fff;
+    border-radius:10px;
+    padding: 8px 4px; /* Padding sangat tipis agar muat samping */
+    white-space: nowrap; /* Teks tidak boleh pecah baris */
+    min-width: 0; /* Penting: membolehkan tombol menyusut di flexbox */
 }
-.btn-primary { background:var(--accent-color); color:#000; }
-.btn:active { transform:scale(0.96); }
-.btn:hover, .actions a:hover, .actions button:hover, .actions span:hover {
-    background:rgba(255,255,255,0.25);
+
+/* =========================
+   ACTIONS CONTAINER (FORCED ROW)
+========================= */
+.actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; /* HARAM turun ke bawah */
+    gap: 6px; /* Jarak antar tombol dipersempit */
+    width: 100%;
+    margin-top: 10px;
+}
+
+.actions .btn {
+    flex: 1; /* Semua tombol berbagi ruang secara ADIL */
+}
+
+/* Khusus tombol icon (Channel 📺 / Share 🔗) agar tidak memakan tempat */
+.btn-yt-icon, .btn-share {
+    flex: 0 0 40px !important; /* Lebar kaku hanya 40px */
+    font-size: 16px;
+}
+
+/* Tombol Video yang punya teks */
+.btn-primary:not(.btn-yt-icon) {
+    flex: 1.5; /* Beri ruang lebih besar jika ada teks "▶ Video" */
 }
 
 /* =========================
@@ -179,4 +211,17 @@ body {
 
 @media (min-width:768px) {
     .floating-stack { flex-direction:row; align-items:center; }
+}
+
+/* Batasi preview teks di kartu index */
+.feed:not(.prompt-page-wrapper) .content-container p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Angka baris yang diinginkan */
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* Tambahan agar tinggi tetap konsisten (opsional) */
+    min-height: 4.5em; /* (1.5 line-height * 3 baris) */
+    line-height: 1.5;
 }
