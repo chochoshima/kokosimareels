@@ -1,64 +1,49 @@
-const CACHE_NAME = 'kokosima-v3';
+const CACHE_NAME = 'kokosima-clean-v1';
 
-const ASSETS = [
-  '/',
+const STATIC_ASSETS = [
   '/style.css',
   '/data.js',
   '/manifest.json'
 ];
 
-/* =========================
-   INSTALL
-========================= */
+/* INSTALL */
 self.addEventListener('install', event => {
   event.waitUntil(
-    (async () => {
-      const cache = await caches.open(CACHE_NAME);
-      for (const asset of ASSETS) {
-        await cache.add(
-          new Request(asset, { redirect: 'follow' })
-        );
-      }
-    })()
+    caches.open(CACHE_NAME).then(cache => {
+      return Promise.all(
+        STATIC_ASSETS.map(url =>
+          cache.add(new Request(url, { redirect: 'follow' }))
+        )
+      );
+    })
   );
   self.skipWaiting();
 });
 
-/* =========================
-   ACTIVATE
-========================= */
+/* ACTIVATE */
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
-      )
+      Promise.all(keys.map(k => caches.delete(k)))
     )
   );
   self.clients.claim();
 });
 
-/* =========================
-   FETCH
-========================= */
+/* FETCH */
 self.addEventListener('fetch', event => {
-  const request = event.request;
+  const req = event.request;
 
-  // Navigasi halaman HTML
-  if (request.mode === 'navigate') {
-    event.respondWith(
-      fetch(request, { redirect: 'follow' })
-        .catch(() => caches.match('/'))
-    );
+  // ⚠️ JANGAN PERNAH CACHE / INTERCEPT NAVIGASI HTML
+  if (req.destination === 'document') {
+    event.respondWith(fetch(req));
     return;
   }
 
-  // Asset statis
+  // Asset statis saja
   event.respondWith(
-    caches.match(request).then(response => {
-      return response || fetch(request, { redirect: 'follow' });
+    caches.match(req).then(res => {
+      return res || fetch(req, { redirect: 'follow' });
     })
   );
 });
