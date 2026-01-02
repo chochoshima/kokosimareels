@@ -130,7 +130,10 @@
       <div class="actions">
         <button class="btn btn-primary" id="copyBtn">📋 Copy Prompt</button>
       </div>
-      <div id="viewCounter">👁️ <span id="viewCount">0</span> views</div>
+      <div class="floating-visitor" id="visitorBar">
+  👁️ <span id="visitorToday">0</span> hari ini ·
+  <strong id="visitorTotal">0</strong> total
+</div>
     </div>
   </div>
 </main>
@@ -179,21 +182,6 @@ document.getElementById("copyBtn").onclick = async () => {
         alert("Gagal menyalin prompt");
     }
 };
-
-// VISITOR COUNTER
-const viewCountEl = document.getElementById("viewCount");
-
-fetch(`${VISITOR_ENDPOINT}?page=prompt:${id}`, {
-  headers: { "Accept": "application/json" }
-})
-  .then(r => r.json())
-  .then(d => {
-    console.log("Visitor:", d);
-    if (d && typeof d.total === "number") {
-      viewCountEl.textContent = d.total;
-    }
-  })
-  .catch(e => console.warn("Visitor error:", e));
 </script>
 
 </body>
