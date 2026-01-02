@@ -181,10 +181,18 @@ document.getElementById("copyBtn").onclick = async () => {
 };
 
 // VISITOR COUNTER
-const VISITOR_ENDPOINT = "https://visitor-counter.kokopujiyanto.workers.dev/";
-fetch(`${VISITOR_ENDPOINT}?page=prompt:${id}`, { headers:{ "Accept":"application/json" } })
+const viewCountEl = document.getElementById("viewCount");
+
+fetch(`${VISITOR_ENDPOINT}?page=prompt:${id}`, {
+  headers: { "Accept": "application/json" }
+})
   .then(r => r.json())
-  .then(d => console.log("Visitor:", d))
+  .then(d => {
+    console.log("Visitor:", d);
+    if (d && typeof d.total === "number") {
+      viewCountEl.textContent = d.total;
+    }
+  })
   .catch(e => console.warn("Visitor error:", e));
 </script>
 
