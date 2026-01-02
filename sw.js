@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kokosima-v4';
+const CACHE_NAME = 'kokosima-v5';
 const assets = [
   './',
   './index.html',
@@ -32,18 +32,18 @@ self.addEventListener('fetch', (e) => {
     caches.match(e.request).then((cachedRes) => {
       if (cachedRes) return cachedRes;
 
-      // Membuat request baru dengan redirect: 'follow' untuk menghindari ERR_FAILED
-      const fetchRequest = new Request(e.request.url, {
-        method: e.request.method,
-        headers: e.request.headers,
-        mode: e.request.mode,
-        credentials: e.request.credentials,
-        redirect: 'follow'
-      });
+      // SOLUSI: Jangan buat 'new Request' jika mode-nya adalah 'navigate'
+      if (e.request.mode === 'navigate') {
+        return fetch(e.request, { redirect: 'follow' });
+      }
 
-      return fetch(fetchRequest).then((networkRes) => {
+      // Untuk aset lain (images, css, js), gunakan fetch normal dengan proteksi redirect
+      return fetch(e.request, { redirect: 'follow' }).then((networkRes) => {
         return networkRes;
-      }).catch(() => caches.match('./index.html'));
+      }).catch(() => {
+        // Fallback jika gambar/aset hilang dan offline
+        return new Response('Offline', { status: 404 });
+      });
     })
   );
 });
