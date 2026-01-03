@@ -531,3 +531,47 @@ body {
     height: 600px !important;
     border: none;
 }
+/* =========================
+   LANGUAGE SELECTOR SYSTEM
+========================= */
+.language-selector {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+    gap: 8px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 2px 4px;
+}
+
+.lang-btn.active {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+
+.lang-btn:hover {
+    color: #fff;
+}
+
+.lang-divider {
+    color: var(--border-soft);
+    font-size: 10px;
+}
+
+/* Responsif: Di HP kecil, sembunyikan teks divider jika terlalu sempit */
+@media (max-width: 480px) {
+    .language-selector {
+        padding: 4px 8px;
+    }
+}
