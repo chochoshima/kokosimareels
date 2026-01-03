@@ -80,7 +80,7 @@ body {
 }
 
 /* Tambahkan hover agar terasa seperti tombol aktif */
-.logo,.logo-link:hover {
+.logo:hover, .logo-link:hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
@@ -252,6 +252,30 @@ body {
 }
 
 .visitor-inline span { color: #fff; margin-left: 5px; }
+
+/* Menetralkan sifat floating agar bisa masuk ke barisan tombol */
+#visitorBar.visitor-inline {
+    position: static !important; /* Menghapus posisi melayang */
+    display: inline-flex !important;
+    align-items: center;
+    height: 44px; /* Samakan tinggi dengan tombol video/prompt */
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    transform: none !important; /* Menghapus animasi melayang jika ada */
+    box-shadow: none !important;
+}
+
+/* Memperjelas angka agar tidak pudar */
+#visitorToday, #visitorTotal {
+    color: #fff;
+    font-weight: 700;
+    margin: 0 4px;
+}
 
 /* =========================
    1. INDEX (FEED) - TETAP FULL WIDTH
