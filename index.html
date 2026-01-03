@@ -24,6 +24,11 @@
     <div class="social-links">
         <a href="https://www.facebook.com/chochoshima/" target="_blank">Facebook</a>
         <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank">YouTube</a>
+		<div class="language-selector">
+			<button class="lang-btn active" onclick="setLanguage('id')">ID</button>
+			<span class="lang-divider">|</span>
+			<button class="lang-btn" onclick="setLanguage('en')">EN</button>
+		</div>
     </div>
 </header>
 
@@ -143,5 +148,6 @@ generateFeed();
   <a href="https://youtube.com/@kokosimaabsurd" class="floating-youtube" target="_blank">▶</a>
 </div>
 <script src="visitor.js" defer></script>
+<script src="language.js"></script>
 </body>
 </html>
