@@ -3,58 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" id="main-desc-meta" content="Temukan prompt AI cinematic gratis.">
-
     <title>Loading Prompt... | Kokosima AI</title>
-
-    <meta property="og:type" content="article">
-    <meta property="og:title" id="meta-title" content="Kokosima AI">
-    <meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis.">
-    <meta property="og:url" id="meta-url" content="https://kokosimareels.pages.dev/">
-    <meta property="og:image" id="meta-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
     <link rel="stylesheet" href="style.css">
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentId = urlParams.get('id');
-        const canonical = document.createElement('link');
-        canonical.rel = 'canonical';
-        canonical.href = currentId ? `https://kokosimareels.pages.dev/prompt.html?id=${currentId}` : 'https://kokosimareels.pages.dev/';
-        document.head.appendChild(canonical);
-    </script>
-	<link rel="manifest" href="manifest.json">
-	<meta name="theme-color" content="#000000">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-    <style>
-        /* Tambahan CSS agar tombol sejajar */
-        .actions {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 15px;
-        }
-        .btn-like {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid #ff4757;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .btn-like:active { transform: scale(0.9); }
-        .btn-like.active { background: #ff4757; }
-    </style>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
 </head>
-
 <body>
 
 <header class="top-bar">
@@ -70,17 +23,12 @@
     <div class="content-container">
       <h3 id="title">Loading...</h3>
       <p id="promptText">Memuat prompt...</p>
-      
       <div class="actions">
         <button class="btn btn-primary" id="copyBtn">📋 Copy Prompt</button>
-        <button class="btn-like" id="likeBtn">
-            ❤️ <span id="likeCount">0</span>
-        </button>
+        <button class="btn-like" id="likeBtn">❤️ <span id="likeCount">0</span></button>
       </div>
-
       <div class="floating-visitor" id="visitorBar">
-        👁️ <span id="visitorToday">0</span> hari ini ·
-        <strong id="visitorTotal">0</strong> total
+        👁️ <span id="visitorToday">0</span> hari ini · <strong id="visitorTotal">0</strong> total
       </div>
     </div>
   </div>
@@ -88,79 +36,63 @@
 
 <script src="data.js"></script>
 <script>
-/* =========================
-    LOAD PROMPT DATA
-========================= */
+const WORKER_URL = "https://visitor-counter.kokopujiyanto.workers.dev";
 const params = new URLSearchParams(window.location.search);
 const promptId = params.get("id");
-const domain = "https://kokosimareels.pages.dev";
-// GANTI URL INI DENGAN URL WORKER ANDA
-const WORKER_URL = "https://visitor-counter.kokopujiyanto.workers.dev"; 
 
-if (!promptId || typeof PROMPT_DATABASE === "undefined" || !PROMPT_DATABASE[promptId]) {
+if (!promptId || !PROMPT_DATABASE[promptId]) {
     window.location.href = "index.html";
 } else {
     const data = PROMPT_DATABASE[promptId];
-    const cleanDesc = data.text.slice(0, 150).replace(/(\r\n|\n|\r)/gm, " ");
-
     document.title = data.title + " | Kokosima AI";
-    document.getElementById("main-desc-meta").setAttribute("content", cleanDesc);
-    document.getElementById("meta-desc").setAttribute("content", cleanDesc);
-    document.getElementById("meta-title").setAttribute("content", data.title);
-    document.getElementById("meta-img").setAttribute("content", `${domain}/images/${promptId}.webp`);
-    document.getElementById("meta-url").setAttribute("content", window.location.href);
-
     document.getElementById("title").textContent = data.title;
     document.getElementById("promptText").textContent = data.text;
-    
-    const imgElement = document.getElementById("main-image");
-    imgElement.src = `${domain}/images/${promptId}.webp`;
-    imgElement.onerror = () => { imgElement.src = `${domain}/images/${promptId}.jpg`; imgElement.onerror = null; };
-    imgElement.onload = () => { imgElement.hidden = false; };
 
-    // COPY BUTTON LOGIC
+    const img = document.getElementById("main-image");
+    img.src = `images/${promptId}.webp`;
+    img.onerror = () => img.src = `images/${promptId}.jpg`;
+    img.onload = () => img.hidden = false;
+
+    // Copy Logic
     document.getElementById("copyBtn").onclick = async () => {
-        try {
-            await navigator.clipboard.writeText(data.text);
-            const btn = document.getElementById("copyBtn");
-            btn.textContent = "✅ Copied";
-            setTimeout(() => btn.textContent = "📋 Copy Prompt", 1600);
-        } catch {
-            alert("Gagal menyalin prompt");
-        }
+        await navigator.clipboard.writeText(data.text);
+        const btn = document.getElementById("copyBtn");
+        btn.textContent = "✅ Copied";
+        setTimeout(() => btn.textContent = "📋 Copy Prompt", 1600);
     };
 
-    /* =========================
-        LIKE SYSTEM LOGIC
-    ========================= */
+    // Like Logic (1 User 1 Like)
     const likeBtn = document.getElementById('likeBtn');
     const likeCountLabel = document.getElementById('likeCount');
 
-    // Ambil jumlah like awal
-    async function fetchLikes() {
+    async function initLikes() {
         try {
             const res = await fetch(`${WORKER_URL}/?action=like&imageId=${promptId}`);
             const result = await res.json();
             likeCountLabel.innerText = result.likes || 0;
-        } catch (e) { console.error("Like fetch error"); }
+            if (localStorage.getItem('liked_' + promptId)) likeBtn.classList.add('active');
+        } catch (e) {}
     }
 
-    // Klik Like
     likeBtn.onclick = async () => {
+        if (localStorage.getItem('liked_' + promptId)) {
+            alert("Anda sudah memberikan Like! 😊");
+            return;
+        }
         likeBtn.disabled = true;
         try {
             const res = await fetch(`${WORKER_URL}/?action=like&imageId=${promptId}`, { method: 'POST' });
             const result = await res.json();
             likeCountLabel.innerText = result.likes;
             likeBtn.classList.add('active');
+            localStorage.setItem('liked_' + promptId, 'true');
         } catch (e) {
-            alert("Gagal koneksi ke server like");
+            alert("Gagal koneksi server");
         } finally {
             likeBtn.disabled = false;
         }
     };
-
-    fetchLikes();
+    initLikes();
 }
 </script>
 <script src="visitor.js" defer></script>
