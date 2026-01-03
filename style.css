@@ -293,3 +293,47 @@ body {
     border-radius:10px; border:1px solid var(--border-soft);
 }
 @keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)} }
+/* Badge Like di pojok gambar pada Index */
+.media-container {
+    position: relative; /* Wajib ada agar badge menempel di gambar */
+}
+.like-badge-index {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+#likeCount {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+/* Menyamakan Button Like di halaman detail dengan sistem tombol Anda */
+.btn-like {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    min-width: 60px;
+    padding: 10px 12px !important;
+}
+
+.btn-like.active {
+    background: #ff4757 !important; /* Warna merah saat sudah di-like */
+    border-color: #ff4757 !important;
+}
+.btn-like {
+    /* ... kode Anda ... */
+    transition: transform 0.1s ease, background 0.3s ease !important;
+}
+
+.btn-like:active {
+    transform: scale(0.92); /* Memberikan efek ditekan */
+}
