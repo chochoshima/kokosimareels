@@ -20,34 +20,102 @@ body {
 }
 
 /* =========================
-    TOP BAR UPDATED
+   TOP BAR (HEADER SYSTEM)
 ========================= */
 .top-bar {
-    position: fixed; top: 0; width: 100%; height: 60px;
-    padding: 0 20px; 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    height: 70px;
+    padding: 0 24px; 
     display: flex; 
     align-items: center; 
-    justify-content: space-between; /* Sebar elemen: Kiri, Tengah, Kanan */
-    z-index: 100; 
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-    backdrop-filter: blur(10px);
+    justify-content: space-between;
+    z-index: 1000; 
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(15px); 
+    border-bottom: 1px solid var(--border-soft);
     gap: 15px;
 }
 
-.logo-link { text-decoration: none; flex-shrink: 0; }
+/* Tombol Back, Logo, & Social Media agar Seragam */
+.btn-back, .logo-link, .social-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px; /* Sesuai dengan Button System Anda */
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+}
 
+/* Efek Hover Tombol */
+.btn-back:hover, .social-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-back:hover { 
+    transform: translateX(-4px); /* Efek khusus tombol back */
+}
+
+/* Container Link Logo */
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Animasi Khusus untuk Emoji Otak */
+.brain-icon {
+    font-size: 1.3rem;
+    display: inline-block;
+    animation: brainPulse 2s infinite ease-in-out;
+    filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.3)); /* Sedikit glow pink halus */
+}
+
+/* Teks Logo Tetap Diam & Bersih */
+.logo-text {
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-transform: lowercase;
+}
+
+/* Logika Gerakan Denyut Jantung */
+@keyframes brainPulse {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.15); } /* Berdenyut besar */
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }  /* Denyut kedua lebih kecil (seperti detak jantung) */
+    100% { transform: scale(1); }
+}
+
+/* Search Container */
 .search-container {
     flex-grow: 1;
-    max-width: 400px; /* Lebar maksimal bar pencarian */
+    max-width: 400px;
     position: relative;
+    margin: 0 15px;
 }
 
 #searchInput {
     width: 100%;
-    padding: 8px 15px 8px 35px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.1);
+    padding: 10px 15px 10px 40px;
+    border-radius: 20px; /* Lebih membulat untuk Search Bar */
+    border: 1px solid var(--border-soft);
+    background: rgba(255, 255, 255, 0.05);
     color: #fff;
     font-size: 14px;
     outline: none;
@@ -55,31 +123,33 @@ body {
 }
 
 #searchInput:focus {
-    background: rgba(255,255,255,0.2);
-    border-color: rgba(0, 123, 255, 0.5);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Ikon Kaca Pembesar */
 .search-container::before {
     content: "🔍";
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: absolute; 
+    left: 15px; 
+    top: 50%; 
+    transform: translateY(-50%); 
     font-size: 12px;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
+/* Grouping Social Media */
 .social-links {
     display: flex;
-    gap: 15px;
-    flex-shrink: 0;
+    gap: 10px;
 }
 
-/* Responsif Mobile */
+/* Responsif Mobile (Header Saja) */
 @media (max-width: 768px) {
-    .social-links { display: none; } /* Sembunyikan sosmed di HP agar tidak sempit */
-    .search-container { max-width: none; } /* Search bar lebih luas di HP */
+    .social-links { display: none; } /* Sembunyikan di HP agar tidak penuh */
+    .top-bar { height: 60px; padding: 0 15px; }
+    .search-container { margin: 0 10px; }
+    .btn-back { padding: 8px 12px; }
 }
 
 .top-bar a { 
@@ -337,6 +407,7 @@ body {
 .btn-like:active {
     transform: scale(0.92); /* Memberikan efek ditekan */
 }
+
 /* Container Utama Diskusi */
 #comment-section {
     margin-top: 40px;
