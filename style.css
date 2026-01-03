@@ -1,5 +1,5 @@
 /* =========================
-   GLOBAL RESET & BASE
+    GLOBAL RESET & BASE
 ========================= */
 * { margin:0; padding:0; box-sizing:border-box; }
 :root {
@@ -20,7 +20,7 @@ body {
 }
 
 /* =========================
-   TOP BAR (HEADER SYSTEM)
+    TOP BAR (HEADER SYSTEM)
 ========================= */
 .top-bar {
     position: fixed; 
@@ -38,7 +38,6 @@ body {
     gap: 15px;
 }
 
-/* Tombol Back, Logo, & Social Media agar Seragam */
 .btn-back, .logo-link, .social-links a {
     text-decoration: none;
     color: #fff;
@@ -47,7 +46,7 @@ body {
     padding: 8px 16px;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid var(--border-soft);
-    border-radius: 12px; /* Sesuai dengan Button System Anda */
+    border-radius: 12px;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
@@ -56,7 +55,6 @@ body {
     white-space: nowrap;
 }
 
-/* Efek Hover Tombol */
 .btn-back:hover, .social-links a:hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
@@ -64,27 +62,37 @@ body {
 }
 
 .btn-back:hover { 
-    transform: translateX(-4px); /* Efek khusus tombol back */
+    transform: translateX(-4px) translateY(-2px); 
 }
 
-/* Container Link Logo */
-.logo-link {
+.logo,.logo-link {
+    flex-shrink: 0;
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-shrink: 0;
+    /* Menambahkan bentuk dan rounded */
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px; 
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Animasi Khusus untuk Emoji Otak */
+/* Tambahkan hover agar terasa seperti tombol aktif */
+.logo,.logo-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
 .brain-icon {
     font-size: 1.3rem;
     display: inline-block;
     animation: brainPulse 2s infinite ease-in-out;
-    filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.3)); /* Sedikit glow pink halus */
+    filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.3));
 }
 
-/* Teks Logo Tetap Diam & Bersih */
 .logo-text {
     font-weight: 800;
     font-size: 1.1rem;
@@ -93,16 +101,14 @@ body {
     text-transform: lowercase;
 }
 
-/* Logika Gerakan Denyut Jantung */
 @keyframes brainPulse {
     0% { transform: scale(1); }
-    15% { transform: scale(1.15); } /* Berdenyut besar */
+    15% { transform: scale(1.15); }
     30% { transform: scale(1); }
-    45% { transform: scale(1.1); }  /* Denyut kedua lebih kecil (seperti detak jantung) */
+    45% { transform: scale(1.1); } 
     100% { transform: scale(1); }
 }
 
-/* Search Container */
 .search-container {
     flex-grow: 1;
     max-width: 400px;
@@ -113,7 +119,7 @@ body {
 #searchInput {
     width: 100%;
     padding: 10px 15px 10px 40px;
-    border-radius: 20px; /* Lebih membulat untuk Search Bar */
+    border-radius: 20px;
     border: 1px solid var(--border-soft);
     background: rgba(255, 255, 255, 0.05);
     color: #fff;
@@ -127,7 +133,6 @@ body {
     border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Ikon Kaca Pembesar */
 .search-container::before {
     content: "🔍";
     position: absolute; 
@@ -138,18 +143,9 @@ body {
     opacity: 0.5;
 }
 
-/* Grouping Social Media */
 .social-links {
     display: flex;
     gap: 10px;
-}
-
-/* Responsif Mobile (Header Saja) */
-@media (max-width: 768px) {
-    .social-links { display: none; } /* Sembunyikan di HP agar tidak penuh */
-    .top-bar { height: 60px; padding: 0 15px; }
-    .search-container { margin: 0 10px; }
-    .btn-back { padding: 8px 12px; }
 }
 
 .top-bar a { 
@@ -159,52 +155,21 @@ body {
 }
 
 .top-bar a:hover { 
-    color: #00d2ff; /* Warna biru muda elektrik saat disentuh */
+    color: #00d2ff;
     opacity: 1; 
 }
 
-/* Tambahan CSS inline untuk memastikan Search Bar rapi */
-        .search-container {
-            flex-grow: 1;
-            max-width: 400px;
-            position: relative;
-            margin: 0 15px;
-        }
-        #searchInput {
-            width: 100%;
-            padding: 8px 15px 8px 35px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            transition: 0.3s;
-        }
-        #searchInput:focus {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.5);
-        }
-        .search-container::before {
-            content: "🔍";
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            opacity: 0.6;
-        }
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 50px;
-            color: #888;
-        }
-        @media (max-width: 600px) {
-            .social-links { display: none; }
-            .top-bar { padding: 0 15px; }
-        }
-		.item {
+@media (max-width: 768px) {
+    .social-links { display: none; }
+    .top-bar { height: 60px; padding: 0 15px; }
+    .search-container { margin: 0 10px; }
+    .btn-back { padding: 8px 12px; }
+}
+
+/* =========================
+    ITEM & ANIMATION
+========================= */
+.item {
     transition: transform 0.3s ease, opacity 0.3s ease;
     animation: fadeIn 0.4s ease forwards;
 }
@@ -214,34 +179,150 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* =========================
-   BUTTON SYSTEM
-========================= */
-.btn, .actions a, .actions button {
-    text-decoration:none; font-weight:700; font-size:12px;
-    transition:0.2s; display:flex; align-items:center; justify-content:center;
-    cursor:pointer; border:none; border-radius:10px;
-    background:rgba(255,255,255,0.15); color:#fff;
-    padding: 10px 4px; white-space: nowrap; min-width: 0;
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px;
+    color: #888;
 }
 
 /* =========================
-   ACTIONS CONTAINER (FORCED ROW)
+    SYSTEM BUTTONS & ACTIONS
 ========================= */
 .actions {
     display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 6px; width: 100%; margin-top: 10px; align-items: center;
+    align-items: center !important;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    flex-wrap: wrap;
 }
-.actions .btn-outline { flex: 2 !important; }
-.btn-yt-icon, .btn-yt-small, .btn-share {
-    flex: 0 0 42px !important;
-    font-size: 16px !important;
+
+.btn, .btn-like, .visitor-inline {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-soft);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background: rgba(255, 255, 255, 0.15);
+    flex-grow: 0;
+}
+
+.btn-like {
+    min-width: 80px;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    transition: transform 0.1s ease, background 0.3s ease !important;
+}
+
+.btn-like.active {
+    background: #ff4757 !important;
+    border-color: #ff4757 !important;
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
+}
+
+.btn:hover, .btn-like:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn:active, .btn-like:active { transform: scale(0.92); }
+
+.visitor-inline {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-dim);
+    cursor: default;
+    gap: 6px;
+    border-style: dashed;
+}
+
+.visitor-inline span { color: #fff; margin-left: 5px; }
+
+/* =========================
+   1. INDEX (FEED) - TETAP FULL WIDTH
+   ========================= */
+.feed:not(.prompt-page-wrapper) .actions {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    width: 100% !important;
+}
+
+/* Memaksa semua tombol di Index (apapun isinya) bagi rata lebar gambar */
+.feed:not(.prompt-page-wrapper) .actions > a, 
+.feed:not(.prompt-page-wrapper) .actions > button,
+.feed:not(.prompt-page-wrapper) .actions > div {
+    flex: 1 !important;
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0 5px !important;
 }
 
 /* =========================
-   TITLES & TEXT PREVIEW
+   2. PROMPT PAGE - LOGIKA FLEKSIBEL
+   ========================= */
+.prompt-page-wrapper .actions {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important; /* Rata kiri */
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    width: 100% !important;
+}
+
+/* Tombol Prompt & Video (Dinamis): Lebar mengikuti isi */
+.prompt-page-wrapper .actions .btn,
+.prompt-page-wrapper .actions .btn-primary,
+.prompt-page-wrapper .actions .btn-outline,
+.prompt-page-wrapper .actions a[class*="btn-yt"] {
+    flex: 0 1 auto !important; /* TIDAK memaksa lebar, mengikuti isi */
+    width: auto !important;
+    min-width: 44px; /* Minimal berbentuk kotak jika hanya ikon */
+    padding: 0 18px !important;
+    display: inline-flex !important;
+}
+
+/* Khusus Tombol Video TANPA Link (Hanya ikon TV) */
+/* Biasanya terdeteksi jika tidak ada teks di dalamnya atau class spesifik */
+.prompt-page-wrapper .actions .btn-yt-icon:empty,
+.prompt-page-wrapper .actions .btn-yt-small:not(:has(span)) {
+    padding: 0 !important;
+    width: 44px !important;
+    flex: 0 0 44px !important;
+}
+
+/* Tombol Share: Ukuran Fix Kotak */
+.prompt-page-wrapper .btn-share {
+    flex: 0 0 44px !important;
+    width: 44px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+}
+
+/* Visitor Inline: Lebar otomatis mengikuti angka */
+.prompt-page-wrapper .visitor-inline {
+    flex: 0 1 auto !important;
+    width: auto !important;
+    padding: 0 15px !important;
+}
+
+/* =========================
+    TITLES & TEXT PREVIEW
 ========================= */
 .content-container h3 {
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -253,7 +334,7 @@ body {
 }
 
 /* =========================
-   FEED VIEW (SCROLL SNAP MOBILE)
+    FEED VIEW (MOBILE)
 ========================= */
 @media (max-width:1023px) {
     .feed {
@@ -272,7 +353,7 @@ body {
     }
     .media-container img {
         width: 100%; height: 100%;
-        object-fit: cover; /* FILL KE SEMUA SUDUT (MOBILE) */
+        object-fit: cover;
         object-position: center; display: block;
     }
     .content-container {
@@ -283,7 +364,7 @@ body {
 }
 
 /* =========================
-   DESKTOP GRID (FILL OPTIMIZED)
+    DESKTOP GRID
 ========================= */
 @media (min-width:1024px) {
     .feed:not(.prompt-page-wrapper) {
@@ -300,7 +381,7 @@ body {
     }
     .feed:not(.prompt-page-wrapper) .media-container img {
         width: 100%; height: 100%;
-        object-fit: cover; /* FILL KE SEMUA SUDUT (DESKTOP) */
+        object-fit: cover;
         object-position: center; display: block;
         transition: transform 0.5s ease;
     }
@@ -309,7 +390,7 @@ body {
 }
 
 /* =========================
-   PROMPT PAGE SPECIFIC
+    PROMPT PAGE SPECIFIC
 ========================= */
 .prompt-page-wrapper {
     display: flex; justify-content: center; align-items: center;
@@ -338,8 +419,15 @@ body {
     .prompt-card .content-container { width: 60%; }
 }
 
+.prompt-page-wrapper #visitorBar {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+}
+
 /* =========================
-   FLOATING STACK
+    FLOATING STACK
 ========================= */
 .floating-stack {
     position: fixed; right: 18px; bottom: 18px;
@@ -363,91 +451,59 @@ body {
     border-radius:10px; border:1px solid var(--border-soft);
 }
 @keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)} }
-/* Badge Like di pojok gambar pada Index */
+
+/* =========================
+    LIKE BADGE & COMMENT
+========================= */
+/* Mengembalikan posisi Like Badge di Index */
 .media-container {
-    position: relative; /* Wajib ada agar badge menempel di gambar */
+    position: relative !important; /* Memastikan ini adalah jangkar untuk elemen absolute di dalamnya */
 }
+
 .like-badge-index {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-    z-index: 2;
-}
-#likeCount {
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-/* Menyamakan Button Like di halaman detail dengan sistem tombol Anda */
-.btn-like {
-    background: rgba(255, 255, 255, 0.1) !important;
+    position: absolute !important;
+    bottom: 8px !important;
+    right: 8px !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: #fff !important;
+    padding: 2px 8px !important;
+    border-radius: 12px !important;
+    font-size: 11px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    min-width: 60px;
-    padding: 10px 12px !important;
+    backdrop-filter: blur(4px) !important;
+    z-index: 20 !important; /* Pastikan angka ini tinggi agar terlihat di atas gambar/video */
 }
 
-.btn-like.active {
-    background: #ff4757 !important; /* Warna merah saat sudah di-like */
-    border-color: #ff4757 !important;
-}
-.btn-like {
-    /* ... kode Anda ... */
-    transition: transform 0.1s ease, background 0.3s ease !important;
-}
-
-.btn-like:active {
-    transform: scale(0.92); /* Memberikan efek ditekan */
-}
-
-/* Container Utama Diskusi */
 #comment-section {
     margin-top: 40px;
     border-top: 1px solid var(--border-soft);
     padding: 30px 20px;
-    background: rgba(255, 255, 255, 0.03); /* Background tipis agar beda dengan kartu */
-    border-radius: 20px; /* Membuat sudut membulat */
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
     width: 100%;
 }
 
-/* Judul Diskusi */
 #comment-section h4 {
     margin-bottom: 20px;
     color: var(--text-dim);
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex; align-items: center; gap: 8px;
 }
 
-/* Memperhalus tampilan Iframe Cusdis */
 #cusdis_thread {
     min-height: 200px;
     border-radius: 12px;
-    overflow: hidden; /* Memastikan isi di dalam ikut membulat */
+    overflow: hidden;
 }
-/* Memaksa Cusdis mengambil ruang maksimal */
+
 #cusdis_thread iframe {
     width: 100% !important;
     min-width: 100% !important;
-    height: 600px !important; /* Memberikan ruang tinggi agar tidak scroll di dalam scroll */
+    height: 600px !important;
     border: none;
-}
-
-/* Responsif untuk Mobile */
-@media (max-width: 768px) {
-    #comment-section {
-        padding: 15px;
-        margin-top: 20px;
-    }
 }
