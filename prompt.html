@@ -22,12 +22,14 @@
     </div>
     <div class="content-container">
       <h3 id="title">Loading...</h3>
-      <p id="promptText">Memuat prompt...</p>
+      <p id="promptText" style="margin-bottom: 20px;">Memuat prompt...</p>
+      
       <div class="actions">
         <button class="btn btn-primary" id="copyBtn">📋 Copy Prompt</button>
         <button class="btn-like" id="likeBtn">❤️ <span id="likeCount">0</span></button>
       </div>
-        <div id="comment-section" style="margin-top: 30px; border-top: 1px solid var(--border-soft); padding-top: 20px; width: 100%;">
+
+      <div id="comment-section" style="margin-top: 30px; border-top: 1px solid var(--border-soft); padding-top: 20px; width: 100%;">
           <h4 style="margin-bottom: 15px; color: var(--text-dim); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">💬 Diskusi Anonim</h4>
           
           <div id="cusdis_thread"
@@ -39,7 +41,8 @@
             data-theme="dark">
           </div>
       </div>
-      <div class="floating-visitor" id="visitorBar">
+
+      <div class="floating-visitor" id="visitorBar" style="position: static; margin-top: 20px; background: transparent; border: none; padding: 0; font-size: 11px;">
         👁️ <span id="visitorToday">0</span> hari ini · <strong id="visitorTotal">0</strong> total
       </div>
     </div>
@@ -47,6 +50,8 @@
 </main>
 
 <script src="data.js"></script>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
 const WORKER_URL = "https://visitor-counter.kokopujiyanto.workers.dev";
 const params = new URLSearchParams(window.location.search);
@@ -64,6 +69,16 @@ if (!promptId || !PROMPT_DATABASE[promptId]) {
     img.src = `images/${promptId}.webp`;
     img.onerror = () => img.src = `images/${promptId}.jpg`;
     img.onload = () => img.hidden = false;
+
+    // Sinkronisasi Cusdis
+    window.addEventListener('load', () => {
+        const d = document.getElementById('cusdis_thread');
+        if (d) {
+            d.setAttribute('data-page-id', promptId);
+            d.setAttribute('data-page-url', window.location.href);
+            d.setAttribute('data-page-title', data.title);
+        }
+    });
 
     // Copy Logic
     document.getElementById("copyBtn").onclick = async () => {
