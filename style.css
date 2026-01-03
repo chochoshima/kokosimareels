@@ -337,3 +337,46 @@ body {
 .btn-like:active {
     transform: scale(0.92); /* Memberikan efek ditekan */
 }
+/* Container Utama Diskusi */
+#comment-section {
+    margin-top: 40px;
+    border-top: 1px solid var(--border-soft);
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.03); /* Background tipis agar beda dengan kartu */
+    border-radius: 20px; /* Membuat sudut membulat */
+    width: 100%;
+}
+
+/* Judul Diskusi */
+#comment-section h4 {
+    margin-bottom: 20px;
+    color: var(--text-dim);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Memperhalus tampilan Iframe Cusdis */
+#cusdis_thread {
+    min-height: 200px;
+    border-radius: 12px;
+    overflow: hidden; /* Memastikan isi di dalam ikut membulat */
+}
+/* Memaksa Cusdis mengambil ruang maksimal */
+#cusdis_thread iframe {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 600px !important; /* Memberikan ruang tinggi agar tidak scroll di dalam scroll */
+    border: none;
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+    #comment-section {
+        padding: 15px;
+        margin-top: 20px;
+    }
+}
