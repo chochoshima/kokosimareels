@@ -330,6 +330,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "CERAMIC 3D Horror Vacui",
     videoUrl: "",
     text: `A monolithic 9:16 vertical 3D embossed porcelain masterpiece, high-density "horror vacui" composition filling every millimeter of the frame with zero negative space, the entire scene a physical, tangible porcelain block with extreme depth and weight, featuring two half-body figures—a man and a woman—interacting as close friends with elegant, modish poses and natural warmth, such as subtle leaning, light shoulder touch, or playful hand gestures, both wearing casual modern chic outfits—the man in a sleek polo shirt and slim-fit jeans, the woman in a stylish blouse and high-waist pants or midi skirt, colors harmonious and elegant, shoes minimalistic yet fashionable—and expressing thin, stylish smiles conveying approachable charm while maintaining sophistication; [CRITICAL: the man’s face and hair must be an exact 1:1 anatomical replica of his reference photo, the woman’s face and hair must be an exact 1:1 anatomical replica of her reference photo], preserving original eye shape, nose bridge contour, lip volume, jawline, chin proportions, and hair shape, length, texture, and direction with zero deviation, seamlessly integrated into the porcelain medium with hyper-realistic organic blending, skin rendered as ultra-glossy, high-shine glazed ceramic, clothing and hair also rendered in reflective liquid-ceramic finish, maintaining all distinct features; background is a massive, multi-storey architectural facade sculpted entirely in porcelain spanning the full width of the frame horizontally, packed with embossed structural details and windows, composition balancing elegance and dynamic interaction without negative space; 3D physical relief with deep embossing, ultra-glossy glass-like glaze, liquid ceramic finish, dramatic studio lighting with sharp rim lights accentuating the ridges of the porcelain, high-contrast chiaroscuro effect, 8k resolution, macro-photography style, shot on Hasselblad X2D, hyper-realistic material physics, vibrant saturated palette, no digital painting artifacts, pure physical ceramic aesthetic`
+},
+	"ai-056": {
+    title: "DING DONG",
+    videoUrl: "",
+    text: `Foto dokumenter ultra-realistis medium close-up suasana pusat permainan ding-dong Indonesia era 1980-an, memfokuskan pada seorang pria dewasa dengan wajah sesuai foto referensi (identity lock) yang bernostalgia mengenakan seragam SMA Indonesia tahun 80-an, terlihat dari dada hingga kepala, tubuh sedikit condong ke depan dengan ekspresi fokus alami saat bermain mesin ding-dong Street Fighter klasik; sebagian joystick dan layar CRT melengkung dengan scanlines masih terlihat di foreground, sementara latar belakang tetap hidup dan natural—remaja berseragam dan berpakaian bebas melakukan aktivitas berbeda tanpa pose: ada yang menonton sambil merokok, berbincang pelan, jongkok menghitung koin, berjalan melintas, atau sibuk bermain mesin lain tanpa memperhatikan kamera; udara dipenuhi asap rokok tipis, cahaya neon bercampur lampu pijar kuning redup menciptakan haze realistis, kipas angin besar berputar di langit-langit, dinding kusam dengan stiker terkelupas dan coretan spidol tampak blur lembut, warna sedikit pudar dengan grain halus foto analog 35mm, depth of field dangkal, nuansa nostalgia kuat, dan keseluruhan harus terlihat sebagai foto dokumentasi nyata Indonesia tahun 1980-an tanpa CGI, 3D render, atau gaya ilustrasi.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -337,6 +342,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
