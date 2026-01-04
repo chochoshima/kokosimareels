@@ -350,6 +350,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "HOVER BIKE",
     videoUrl: "",
     text: `A sleek futuristic flying vehicle crafted from titanium and carbon fiber, powered by integrated jet turbofans, hovers a few meters above a dense and chaotic Jakarta street, its metallic body gleaming under harsh midday sunlight with visible mechanical intricate details and realistic heat shimmer distorting the air behind the thrusters; a person (utilizing provided reference photo for exact face and body identity) is seated in a motorcycle-like posture with hands on control grips and feet on rests, wearing a casual red leather jacket and ripped jeans, maintaining a confident and neutral expression that blends naturally with the environment’s lighting and shadows; the background captures the raw documentary essence of urban Indonesia—crowded street vendors, tangled overhead cables, weathered billboards, and heavy traffic—all captured from a dynamic high-angle shot with a wide depth of field using a Leica M11 aesthetic at f/8, ensuring both the subject and the gritty city textures remain sharp and hyper-realistic in 8K resolution with authentic daylight tone mapping and natural atmospheric haze.`
+},
+	"ai-060": {
+    title: "COFEE TIME",
+    videoUrl: "",
+    text: `A hyper-realistic underwater scene of a man seated casually on an old sofa resting on a clear riverbed, using the EXACT facial identity and hairstyle from the PROVIDED REFERENCE PHOTO without altering any key facial features; the sofa appears partially merged with the underwater ecosystem, overgrown with river plants, soft moss, algae strands, and small stones embedded into its fabric as if it has remained submerged for years, while the man sits relaxed drinking hot coffee from a cup, the coffee visibly swirling and dissolving into the surrounding water, forming warm brown trails that drift upward; his face remains clearly visible with natural underwater refraction and gentle distortion enhanced by soft caustic light patterns, as sunlight penetrates the water surface creating shimmering volumetric beams and subtle ripples of light across his face, the sofa, and nearby plants; various predatory fish of different species and sizes—including snakehead fish (Channa), arowana, piranha, bass, and other aggressive freshwater predators—swim slowly and deliberately around him, some gliding through the light beams, others emerging from aquatic plants, adding tension and contrast while maintaining calm, controlled motion; ultra-realistic water physics with bubbles, floating particulate matter, soft volumetric rays, cinematic atmosphere, extremely detailed textures on fabric, skin, and underwater vegetation, hyper-detailed realism.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -357,6 +362,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
