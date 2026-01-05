@@ -365,6 +365,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "RAMBUTAN KETEL",
     videoUrl: "",
     text: `“A hyper-realistic professional studio portrait of the person from the reference photo, maintaining absolute facial integrity including the exact eye shape, nose structure, jawline, and original hairstyle. The subject is wearing a high-fashion avant-garde jacket with a hyper-detailed "Rambutan" organic skin texture: the surface features a dense thicket of soft-yet-sharp crimson spines (hairs) with vibrant green tips, showing natural moisture and organic pores. The jacket material must look tactile and "sangar," with realistic subsurface scattering where light hits the red fibers. Underneath, a crisp black cotton t-shirt with the bold, legible white typography "kokosima.pages.dev" and classic indigo denim jeans.Technical Specs: Captured on Hasselblad X2D, 100mm f/2.8 Macro lens for intense texture clarity. Medium close-up shot, sophisticated pose with a slight shoulder tilt. Lighting: Moody cinematic studio setup, strong rim lighting to accentuate the "rambutan" spines, soft-box key light for natural skin tones and a subtle glint in the eyes. Atmosphere: High-end fashion editorial, deep charcoal-to-black gradient background, ultra-sharp focus on the jacket's texture and facial features, 8k resolution, photorealistic perfection, no distortion.”`
+},
+	"ai-063": {
+    title: "RAMBUTAN",
+    videoUrl: "",
+    text: `A hyper-realistic professional studio portrait of the person from the reference photo, maintaining absolute facial integrity including the exact eye shape, nose structure, jawline, and original hairstyle. The subject is wearing a high-fashion avant-garde jacket with a hyper-detailed "Rambutan" organic skin texture: the surface features a dense thicket of soft-yet-sharp crimson spines (hairs) with vibrant green tips, showing natural moisture and organic pores. The jacket material must look tactile and "sangar," with realistic subsurface scattering where light hits the red fibers. Underneath, a crisp black cotton t-shirt with the bold, legible white typography "kokosima.pages.dev" and classic indigo denim jeans. Technical Specs: Captured on Hasselblad X2D, 100mm f/2.8 Macro lens for intense texture clarity. Medium close-up shot, sophisticated pose with a slight shoulder tilt. Lighting: Moody cinematic studio setup, strong rim lighting to accentuate the "rambutan" spines, soft-box key light for natural skin tones and a subtle glint in the eyes. Atmosphere: High-end fashion editorial, deep charcoal-to-black gradient background, ultra-sharp focus on the jacket's texture and facial features, 8k resolution, photorealistic perfection, no distortion.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -372,6 +377,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
