@@ -360,6 +360,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "BLUEPRINT",
     videoUrl: "",
     text: `“A conceptual technical-art portrait in medium shot (waist-up), showing a person posed in a confident yet elegant dynamic stance—slight torso twist, relaxed shoulders, subtle forward lean, one arm slightly bent as if in motion. The outfit is modern elegant and dynamic: tailored blazer with clean cuts, flowing inner fabric, structured collar and refined silhouette, designed to feel lightweight and sophisticated. The entire portrait is reconstructed as an AutoCAD-style technical drawing: precise vector linework, construction grids, dimension arrows, scale measurements, angle indicators, and blueprint annotations defining facial features, posture, fabric folds, and garment structure. The face, clothing, and body proportions are expressed through intersecting geometric lines, sectional cuts, and drafting guides, as if the human figure were an engineered object. Monochrome blueprint palette (white or cyan lines on deep navy background), ultra-clean CAD precision, no painterly textures, no shading, only technical line weight variations. Surreal fusion of architectural drafting and human elegance, high resolution, sharp lines, conceptual technical art.”`
+},
+	"ai-062": {
+    title: "RAMBUTAN KETEL",
+    videoUrl: "",
+    text: `“A hyper-realistic professional studio portrait of the person from the reference photo, maintaining absolute facial integrity including the exact eye shape, nose structure, jawline, and original hairstyle. The subject is wearing a high-fashion avant-garde jacket with a hyper-detailed "Rambutan" organic skin texture: the surface features a dense thicket of soft-yet-sharp crimson spines (hairs) with vibrant green tips, showing natural moisture and organic pores. The jacket material must look tactile and "sangar," with realistic subsurface scattering where light hits the red fibers. Underneath, a crisp black cotton t-shirt with the bold, legible white typography "kokosima.pages.dev" and classic indigo denim jeans.Technical Specs: Captured on Hasselblad X2D, 100mm f/2.8 Macro lens for intense texture clarity. Medium close-up shot, sophisticated pose with a slight shoulder tilt. Lighting: Moody cinematic studio setup, strong rim lighting to accentuate the "rambutan" spines, soft-box key light for natural skin tones and a subtle glint in the eyes. Atmosphere: High-end fashion editorial, deep charcoal-to-black gradient background, ultra-sharp focus on the jacket's texture and facial features, 8k resolution, photorealistic perfection, no distortion.”`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -367,6 +372,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
