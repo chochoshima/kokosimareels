@@ -355,6 +355,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "COFFEE TIME",
     videoUrl: "",
     text: `A hyper-realistic underwater scene of a man seated casually on an old sofa resting on a clear riverbed, using the EXACT facial identity and hairstyle from the PROVIDED REFERENCE PHOTO without altering any key facial features; the sofa appears partially merged with the underwater ecosystem, overgrown with river plants, soft moss, algae strands, and small stones embedded into its fabric as if it has remained submerged for years, while the man sits relaxed drinking hot coffee from a cup, the coffee visibly swirling and dissolving into the surrounding water, forming warm brown trails that drift upward; his face remains clearly visible with natural underwater refraction and gentle distortion enhanced by soft caustic light patterns, as sunlight penetrates the water surface creating shimmering volumetric beams and subtle ripples of light across his face, the sofa, and nearby plants; various predatory fish of different species and sizes—including snakehead fish (Channa), arowana, piranha, bass, and other aggressive freshwater predators—swim slowly and deliberately around him, some gliding through the light beams, others emerging from aquatic plants, adding tension and contrast while maintaining calm, controlled motion; ultra-realistic water physics with bubbles, floating particulate matter, soft volumetric rays, cinematic atmosphere, extremely detailed textures on fabric, skin, and underwater vegetation, hyper-detailed realism.`
+},
+	"ai-061": {
+    title: "BLUEPRINT",
+    videoUrl: "",
+    text: `“A conceptual technical-art portrait in medium shot (waist-up), showing a person posed in a confident yet elegant dynamic stance—slight torso twist, relaxed shoulders, subtle forward lean, one arm slightly bent as if in motion. The outfit is modern elegant and dynamic: tailored blazer with clean cuts, flowing inner fabric, structured collar and refined silhouette, designed to feel lightweight and sophisticated. The entire portrait is reconstructed as an AutoCAD-style technical drawing: precise vector linework, construction grids, dimension arrows, scale measurements, angle indicators, and blueprint annotations defining facial features, posture, fabric folds, and garment structure. The face, clothing, and body proportions are expressed through intersecting geometric lines, sectional cuts, and drafting guides, as if the human figure were an engineered object. Monochrome blueprint palette (white or cyan lines on deep navy background), ultra-clean CAD precision, no painterly textures, no shading, only technical line weight variations. Surreal fusion of architectural drafting and human elegance, high resolution, sharp lines, conceptual technical art.”`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -362,6 +367,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
