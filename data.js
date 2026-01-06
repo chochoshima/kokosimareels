@@ -410,6 +410,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "BADAI",
     videoUrl: "",
     text: `A cinematic minimalistic photograph of a single full-body human silhouette, extremely small, occupying only 10% of the frame, standing at the very bottom of the image. Use the exact body proportions, posture, and silhouette outline from the provided reference photo; do not alter height, body shape, or pose. The figure appears as a pure black silhouette with clearly defined contours of the head, hair shape, shoulders, arms, and legs. 90% of the frame is dominated by a vast stormy sky, filled with dark, heavy thunderclouds, dramatic swirling formations, deep shadows, and subtle streaks of distant rain. Moody, tense atmosphere, wide-angle perspective, strong sense of scale and isolation, ultra-realistic, cinematic lighting.`
+},
+	"ai-072": {
+    title: "Ace Fighter",
+    videoUrl: "",
+    text: `Ultra-realistic professional military editorial photography using the provided photo reference with absolute accuracy — all facial features, bone structure, skin texture, hairstyle, and personal identity must remain completely unchanged. If the reference subject is wearing glasses, replace them with stylish black Ray-Ban sunglasses while maintaining exact facial proportions and a calm, focused pre-flight expression. A single elite ace fighter pilot is captured in a medium close-up seated inside the cockpit just moments before takeoff, body strapped into the ejection seat with visible harness tension, posture composed and authoritative, helmet not yet worn and resting naturally beside the seat or mounted on the cockpit frame. The pilot wears an authentic modern fighter pilot flight suit with accurate military patches, survival vest details, oxygen hose connections (not yet attached), and subtle signs of operational wear; skin shows realistic sweat sheen, natural pores, and micro-texture under cockpit lighting, conveying veteran confidence and disciplined readiness rather than dramatized heroism. The cockpit interior is fully visible and highly detailed — glass canopy reflections, HUD elements softly glowing, analog-digital instruments, switches, wiring, and warning labels rendered with true scale and realism. Through the canopy, parts of a cutting-edge Chinese stealth fighter jet, the Chengdu J-20 Mighty Dragon, are clearly identifiable — angular stealth fuselage lines, forward canards, canopy frame, and matte low-visibility surface visible from the pilot’s perspective, slightly softer in focus to maintain depth separation. Natural daylight illuminates the cockpit with soft directional sunlight, realistic highlights, grounded shadows, and true-to-life skin tones with zero overprocessing. Shallow depth of field with real optical bokeh keeps the pilot’s face razor sharp while preserving cockpit context. Photography style is high-end ace-pilot military editorial realism — real camera optics, ultra-high resolution, natural color grading, strictly no CGI, no illustration, no 3D render, and no cinematic stylization.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -417,6 +422,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
