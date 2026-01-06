@@ -405,6 +405,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "P-40 WARHAWK ROMAN",
     videoUrl: "",
     text: `Ultra-realistic, authentic 1940s archival editorial photography. A masterfully composed shot of [Subject 1 - Male] and [Subject 2 - Female] together in a single frame, maintaining 100% identity accuracy of facial features, bone structure, and skin texture from the provided references. The male subject is a weary WWII fighter pilot in a faded olive-drab flight suit, holding a leather flight helmet and goggles. The female subject wears a modest 1940s floral tea dress with a classic A-line silhouette. They are captured in a moment of profound reunion: foreheads gently touching, eyes closed, expressing a mixture of exhaustion and deep relief. Her hands rest lightly on his chest, his posture leaning into her. If wearing glasses, they are replaced with authentic vintage Ray-Ban Aviators, preserving the bridge and jawline structure.Background: A Curtiss P-40 Warhawk with iconic shark-mouth nose art, parked on a dusty airfield, rendered with atmospheric depth. Technical Specs: Captured on a vintage 1940s 4x5 large format camera, Kodak Kodachrome early color palette, muted saturations, organic heavy film grain, soft-focus background. Lighting: Harsh natural daylight with soft shadows, revealing micro-details like light sweat, dust on skin, and fabric weave.Post-Processing/Damage: Physical archival aging effects; cracked emulsion lines, realistic paper folds, peeling edges, oxidation stains, micro-scratches, and subtle warping. The faces remain the focal point of clarity. No CGI, no 3D render, pure vintage photographic realism. --ar 4:5 --v 6.0 --style raw`
+},
+	"ai-071": {
+    title: "BADAI",
+    videoUrl: "",
+    text: `A cinematic minimalistic photograph of a single full-body human silhouette, extremely small, occupying only 10% of the frame, standing at the very bottom of the image. Use the exact body proportions, posture, and silhouette outline from the provided reference photo; do not alter height, body shape, or pose. The figure appears as a pure black silhouette with clearly defined contours of the head, hair shape, shoulders, arms, and legs. 90% of the frame is dominated by a vast stormy sky, filled with dark, heavy thunderclouds, dramatic swirling formations, deep shadows, and subtle streaks of distant rain. Moody, tense atmosphere, wide-angle perspective, strong sense of scale and isolation, ultra-realistic, cinematic lighting.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -412,6 +417,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
