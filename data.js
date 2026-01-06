@@ -370,6 +370,21 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "RAMBUTAN",
     videoUrl: "",
     text: `A hyper-realistic professional studio portrait of the person from the reference photo, maintaining absolute facial integrity including the exact eye shape, nose structure, jawline, and original hairstyle. The subject is wearing a high-fashion avant-garde jacket with a hyper-detailed "Rambutan" organic skin texture: the surface features a dense thicket of soft-yet-sharp crimson spines (hairs) with vibrant green tips, showing natural moisture and organic pores. The jacket material must look tactile and "sangar," with realistic subsurface scattering where light hits the red fibers. Underneath, a crisp black cotton t-shirt with the bold, legible white typography "kokosima.pages.dev" and classic indigo denim jeans. Technical Specs: Captured on Hasselblad X2D, 100mm f/2.8 Macro lens for intense texture clarity. Medium close-up shot, sophisticated pose with a slight shoulder tilt. Lighting: Moody cinematic studio setup, strong rim lighting to accentuate the "rambutan" spines, soft-box key light for natural skin tones and a subtle glint in the eyes. Atmosphere: High-end fashion editorial, deep charcoal-to-black gradient background, ultra-sharp focus on the jacket's texture and facial features, 8k resolution, photorealistic perfection, no distortion.`
+},
+	"ai-064": {
+    title: "PRIVATE JET",
+    videoUrl: "",
+    text: `Ultra-realistic professional luxury editorial photography using the provided photo reference(s) with absolute accuracy — all facial features, bone structure, skin texture, hairstyle, and identity must remain completely unchanged. Primary composition features two subjects walking side by side in an executive-friendly candid moment while descending the stairs of a private jet, positioned close to the aircraft door in a refined medium close-up; if only one valid reference subject is available, render a single subject with the same composition, mood, and framing. Body language is composed yet approachable, with relaxed posture and a subtle warm executive smile. Wardrobe is high-end and elegant, dominated by white tones — tailored, refined, premium fabrics with understated luxury detailing. Authentic metallic aviation textures on the jet and staircase, jet tail softly blurred in the far background. Natural daylight, soft directional lighting, shallow depth of field, natural optical bokeh, true-to-life skin tones. High-end executive luxury fashion editorial, real camera optics, ultra-high resolution, no CGI, no illustration, no 3D render, no cinematic stylization.`
+},
+"ai-065": {
+    title: "PRIVATE JET 2",
+    videoUrl: "",
+    text: `Ultra-realistic professional luxury editorial photography using the provided photo reference(s) with absolute accuracy — all facial features, bone structure, skin texture, hairstyle, and identity must remain completely unchanged. Primary composition features two subjects walking side by side in an executive-friendly candid moment while descending the stairs of a private jet, positioned close to the aircraft door in a refined medium close-up; if only one valid reference subject is available, render a single subject with the same composition, mood, and framing. Body language is composed yet approachable, with relaxed posture and a subtle warm executive smile. Wardrobe is high-end and elegant, dominated by white tones — tailored, refined, premium fabrics with understated luxury detailing. Authentic metallic aviation textures on the jet and staircase, jet tail softly blurred in the far background. Natural daylight, soft directional lighting, shallow depth of field, natural optical bokeh, true-to-life skin tones. High-end executive luxury fashion editorial, real camera optics, ultra-high resolution, no CGI, no illustration, no 3D render, no cinematic stylization.`
+},
+"ai-066": {
+    title: "PRIVATE COUPLE",
+    videoUrl: "",
+    text: `Ultra-realistic professional luxury editorial photography of two people captured together using the provided photo reference(s) with absolute accuracy — facial features, bone structure, skin texture, hairstyle, and identity must remain completely unchanged for each subject. The pair are descending the stairs of a private jet in a natural, business-like candid moment, positioned close to the aircraft door in a refined medium close-up; the jet door frame is partially visible beside them, reinforcing proximity to the entrance. The male subject steps forward with composed focus, gaze slightly ahead as if transitioning between meetings, while the woman beside him wears an elegant white tailored outfit with clean lines and structured form, walking in calm synchronization. Their interaction is minimal and professional — subtle alignment of pace, relaxed shoulders, and controlled posture — conveying authority, trust, and executive presence rather than intimacy. The private jet staircase and fuselage feature authentic metallic aviation textures, with the jet tail softly blurred in the far background to create strong depth separation. Natural daylight lighting is soft and directional, producing realistic highlights and shadows with true-to-life skin tones, no overprocessing. Shallow depth of field and natural optical bokeh keep both subjects sharply in focus. Photography style is high-end luxury business fashion editorial, real camera optics, ultra-high resolution, natural color grading — strictly no CGI, no illustration, no 3D render, and no cinematic stylization.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -377,6 +392,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
