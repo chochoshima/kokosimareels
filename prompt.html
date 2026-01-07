@@ -3,26 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" id="main-desc-meta" content="Temukan prompt AI cinematic gratis.">
+
     <title>Loading Prompt... | Kokosima AI</title>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" id="meta-title" content="Kokosima AI">
+    <meta property="og:description" id="meta-desc" content="Temukan prompt AI cinematic gratis.">
+    <meta property="og:url" id="meta-url" content="https://kokosimareels.pages.dev/">
+    <meta property="og:image" id="meta-img" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#000000">
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentId = urlParams.get('id');
+        const canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        canonical.href = currentId ? `https://kokosimareels.pages.dev/prompt.html?id=${currentId}` : 'https://kokosimareels.pages.dev/';
+        document.head.appendChild(canonical);
+    </script>
 </head>
 <body>
 
 <header class="top-bar">
     <a href="index.html" class="btn-back">← BACK</a>
     <a href="index.html" class="logo">
-    <span class="brain-icon">🧠</span>
-    <span class="logo-text">Kokosima</span>
-</a>
+        <span class="brain-icon">🧠</span>
+        <span class="logo-text">Kokosima</span>
+    </a>
 </header>
 
 <main class="prompt-page-wrapper">
-  <div class="prompt-card" style="align-items: flex-start;"> 
+  <div class="prompt-card"> 
     
     <div class="media-container">
-      <img id="main-image" alt="Prompt Preview" hidden style="width:100%; height:100%; object-fit:cover;">
+      <img id="main-image" alt="Prompt Preview" hidden>
     </div>
 
     <div class="content-container">
@@ -30,16 +48,16 @@
       <p id="promptText">Memuat prompt...</p>
       
       <div class="actions">
-        <button class="btn btn-primary" id="copyBtn">📋 Copy Prompt</button>
-        <button class="btn-like" id="likeBtn">❤️ <span id="likeCount">0</span></button>
-        <div class="visitor-inline" id="visitorBar">
+    <button class="btn btn-primary" id="copyBtn">📋 Copy</button>
+    <button class="btn-like" id="likeBtn">❤️ <span id="likeCount">0</span></button>
+    <div class="visitor-inline" id="visitorBar">
         👁️ <span id="visitorToday">0</span>&nbsp;hari ini &nbsp;•&nbsp; 
         <strong id="visitorTotal">0</strong>&nbsp;total
     </div>
-      </div>
+</div>
 
-      <div id="comment-section" style="margin-top: 40px; border-top: 1px solid var(--border-soft); padding-top: 25px; width: 100%;">
-          <h4 style="margin-bottom: 20px; color: var(--text-dim); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">💬 Kesan & Pesan</h4>
+      <div id="comment-section" style="margin-top: 15px; border-top: 1px solid var(--border-soft); padding-top: 15px; width: 100%;">
+          <h4 style="margin-bottom: 15px; color: var(--text-dim); font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">💬 Kesan & Pesan</h4>
           
           <div id="cusdis_thread"
             data-host="https://cusdis.com"
@@ -87,11 +105,12 @@ if (!promptId || !PROMPT_DATABASE[promptId]) {
     document.getElementById("copyBtn").onclick = async () => {
         await navigator.clipboard.writeText(data.text);
         const btn = document.getElementById("copyBtn");
-        btn.textContent = "✅ Copied";
-        setTimeout(() => btn.textContent = "📋 Copy Prompt", 1600);
+        btn.innerHTML = "✅ Done";
+        setTimeout(() => { btn.innerHTML = "📋 Copy"; }, 1600);
     };
+    document.getElementById("copyBtn").innerHTML = "📋 Copy";
 
-    // Like Logic (1 User 1 Like)
+    // Like Logic
     const likeBtn = document.getElementById('likeBtn');
     const likeCountLabel = document.getElementById('likeCount');
 
@@ -116,16 +135,25 @@ if (!promptId || !PROMPT_DATABASE[promptId]) {
             likeCountLabel.innerText = result.likes;
             likeBtn.classList.add('active');
             localStorage.setItem('liked_' + promptId, 'true');
-        } catch (e) {
-            alert("Gagal koneksi server");
-        } finally {
+        } catch (e) {} finally {
             likeBtn.disabled = false;
         }
     };
     initLikes();
+
+    // PAKSA VISITOR TAMPIL (PENTING!)
+    const fixVisitor = () => {
+        const v = document.getElementById('visitorBar');
+        if(v) {
+            v.style.setProperty('display', 'inline-flex', 'important');
+            v.style.setProperty('position', 'static', 'important');
+            v.style.setProperty('visibility', 'visible', 'important');
+        }
+    }
+    fixVisitor();
+    setTimeout(fixVisitor, 1500); // Jalankan ulang setelah visitor.js dimuat
 }
 </script>
 <script src="visitor.js" defer></script>
-<script src="language.js"></script>
 </body>
 </html>
