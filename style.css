@@ -57,6 +57,24 @@ body {
     45% { transform: scale(1.15); }
 }
 
+/* Pastikan konten utama turun ke bawah sejauh tinggi header */
+body {
+    padding-top: var(--header-h);
+}
+
+/* Sempurnakan tampilan logo agar tidak terlalu mepet ke pinggir di HP */
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 0 12px;
+        gap: 8px;
+    }
+}
+
+/* Tambahkan sedikit shadow agar header lebih terlihat terpisah dari konten saat scroll */
+.top-bar {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
 /* SEARCH CONTAINER - AUTO FLEX */
 .search-container { 
     flex: 1; 
