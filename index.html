@@ -69,7 +69,6 @@ async function fetchLikeCount(id) {
         if (label) label.innerText = "0";
     }
 }
-
 /* ==========================
    FEED GENERATOR
 ========================== */
@@ -151,8 +150,32 @@ function sharePrompt(id) {
     }
 }
 
+// Jalankan Feed Pertama Kali
 generateFeed();
+
+/* ========================================================
+   LOGIKA TANGKAP PENCARIAN DARI URL (DARI PROMPT.HTML)
+   ======================================================== */
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search');
+    
+    if (searchQuery) {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.value = searchQuery; // Masukkan teks ke kolom cari
+            
+            // Jalankan filter otomatis sesuai database
+            const term = searchQuery.toLowerCase();
+            const filtered = Object.keys(PROMPT_DATABASE).filter(id => 
+                (PROMPT_DATABASE[id].title + PROMPT_DATABASE[id].text).toLowerCase().includes(term)
+            );
+            generateFeed(filtered);
+        }
+    }
+});
 </script>
+
 <div class="floating-stack">
   <div class="floating-visitor" id="visitorBar">👁️ <span id="visitorToday">0</span> · <strong id="visitorTotal">0</strong></div>
   <a href="https://youtube.com/@kokosimaabsurd" class="floating-youtube" target="_blank">▶</a>
@@ -164,8 +187,6 @@ generateFeed();
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
-
-    // Jalankan saat load dan saat layar diputar/resize
     window.addEventListener('resize', adjustVH);
     window.addEventListener('orientationchange', adjustVH);
     adjustVH();
