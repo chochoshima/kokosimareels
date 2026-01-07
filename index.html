@@ -10,25 +10,31 @@
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">  
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <header class="top-bar">
     <a href="index.html" class="logo-link">
-		<span class="brain-icon">🧠</span>
-		<span class="logo-text">kokosima</span>
-	</a>
+        <span class="brain-icon">🧠</span>
+        <span class="logo-text">kokosima</span>
+    </a>
+    
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Cari (hutan, robot, neon...)" autocomplete="off">
     </div>
+
     <div class="social-links">
-        <a href="https://www.facebook.com/chochoshima/" target="_blank">Facebook</a>
-        <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank">YouTube</a>
-		<div class="language-selector">
-			<button class="lang-btn active" onclick="setLanguage('id')">ID</button>
-			<span class="lang-divider">|</span>
-			<button class="lang-btn" onclick="setLanguage('en')">EN</button>
-		</div>
+        <a href="panduan-prompt.html" class="btn-ai-nav">
+            <i class="fas fa-magic"></i> 
+            <span class="text-label">Cara Membuat Gambar AI</span>
+        </a>
+        <a href="https://www.facebook.com/chochoshima/" target="_blank" class="nav-social">
+    <i class="fab fa-facebook"></i> Facebook
+</a>
+<a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank" class="nav-social">
+    <i class="fab fa-youtube"></i> YouTube
+</a>
     </div>
 </header>
 
@@ -91,8 +97,13 @@ function generateFeed(keysToRender = null) {
             const safeText = data.text || ""; 
             const previewText = safeText.split(/\s+/).slice(0, 10).join(" ") + "...";
 
-            const hasVideo = data.videoUrl && data.videoUrl !== "#";
-            const btnLabel = hasVideo ? "▶ Video" : "📺"; 
+            // LOGIKA TOMBOL VIDEO OTOMATIS
+            const hasVideo = data.videoUrl && data.videoUrl !== "#" && data.videoUrl !== "";
+            const isSpecificVideo = hasVideo && (data.videoUrl.includes('watch') || data.videoUrl.includes('shorts') || data.videoUrl.includes('youtu.be'));
+
+            // Tentukan Label dan Class CSS
+            const btnLabel = isSpecificVideo ? "▶ Video" : "<i class='fas fa-tv'></i>"; 
+            const btnClass = isSpecificVideo ? "btn btn-primary" : "btn btn-yt-red btn-icon-only";
             const btnHref = hasVideo ? data.videoUrl : CHANNEL_YOUTUBE;
 
             const section = document.createElement("section");
@@ -108,7 +119,7 @@ function generateFeed(keysToRender = null) {
                     <h3 title="${data.title}">${data.title}</h3>
                     <p class="prompt-preview">${previewText}</p>
                     <div class="actions">
-                        <a class="btn btn-primary" href="${btnHref}" target="_blank">${btnLabel}</a>
+                        <a class="${btnClass}" href="${btnHref}" target="_blank">${btnLabel}</a>
                         <a class="btn btn-outline" href="prompt.html?id=${id}">PROMPT</a>
                         <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗</button>
                     </div>
@@ -142,12 +153,22 @@ function sharePrompt(id) {
 
 generateFeed();
 </script>
-
 <div class="floating-stack">
   <div class="floating-visitor" id="visitorBar">👁️ <span id="visitorToday">0</span> · <strong id="visitorTotal">0</strong></div>
   <a href="https://youtube.com/@kokosimaabsurd" class="floating-youtube" target="_blank">▶</a>
 </div>
 <script src="visitor.js" defer></script>
-<script src="language.js"></script>
+
+<script>
+    function adjustVH() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    // Jalankan saat load dan saat layar diputar/resize
+    window.addEventListener('resize', adjustVH);
+    window.addEventListener('orientationchange', adjustVH);
+    adjustVH();
+</script>
 </body>
 </html>
