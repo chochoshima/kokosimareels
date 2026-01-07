@@ -29,22 +29,31 @@
 <body>
 
 <header class="top-bar">
-    <a href="index.html" class="logo-link">
-        <span class="brain-icon">🧠</span>
-        <span class="logo-text">kokosima</span>
-    </a>
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="index.html" style="text-decoration:none; color:var(--accent); font-size:1.2rem; padding-right:5px;">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <a href="index.html" class="logo-link">
+            <span class="brain-icon">🧠</span>
+            <span class="logo-text">kokosima</span>
+        </a>
+    </div>
     
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari (hutan, robot, neon...)" autocomplete="off">
+    </div>
+
     <div class="social-links">
         <a href="panduan-prompt.html" class="btn-ai-nav">
             <i class="fas fa-magic"></i> 
             <span class="text-label">Cara Membuat Gambar AI</span>
         </a>
         <a href="https://www.facebook.com/chochoshima/" target="_blank" class="nav-social">
-    <i class="fab fa-facebook"></i> Facebook
-</a>
-<a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank" class="nav-social">
-    <i class="fab fa-youtube"></i> YouTube
-</a>
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank" class="nav-social">
+            <i class="fab fa-youtube"></i> YouTube
+        </a>
     </div>
 </header>
 
@@ -102,6 +111,10 @@ if (!promptId || !PROMPT_DATABASE[promptId]) {
     img.src = `images/${promptId}.webp`;
     img.onerror = () => img.src = `images/${promptId}.jpg`;
     img.onload = () => img.hidden = false;
+	// Update Meta Tags secara Dinamis untuk Social Sharing
+document.getElementById("meta-title").content = data.title;
+document.getElementById("meta-desc").content = data.text.substring(0, 150) + "...";
+document.getElementById("meta-img").content = window.location.origin + `/images/${promptId}.webp`;
 
     // Sinkronisasi Cusdis
     window.addEventListener('load', () => {
@@ -167,5 +180,20 @@ if (!promptId || !PROMPT_DATABASE[promptId]) {
 }
 </script>
 <script src="visitor.js" defer></script>
+<script>
+const promptSearch = document.getElementById('searchInput');
+
+if (promptSearch) {
+    promptSearch.addEventListener('keypress', (e) => {
+        // Hanya pindah ke index jika user tekan ENTER
+        if (e.key === 'Enter') {
+            const term = promptSearch.value.trim();
+            if (term !== "") {
+                window.location.href = `index.html?search=${encodeURIComponent(term)}`;
+            }
+        }
+    });
+}
+</script>
 </body>
 </html>
