@@ -34,10 +34,6 @@
         <span class="logo-text">kokosima</span>
     </a>
     
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Cari (hutan, robot, neon...)" autocomplete="off">
-    </div>
-
     <div class="social-links">
         <a href="panduan-prompt.html" class="btn-ai-nav">
             <i class="fas fa-magic"></i> 
@@ -138,7 +134,7 @@ if (!promptId || !PROMPT_DATABASE[promptId]) {
             if (localStorage.getItem('liked_' + promptId)) likeBtn.classList.add('active');
         } catch (e) {}
     }
-
+	
     likeBtn.onclick = async () => {
         if (localStorage.getItem('liked_' + promptId)) {
             alert("Anda sudah memberikan Like! 😊");
