@@ -225,5 +225,44 @@ window.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('orientationchange', adjustVH);
     adjustVH();
 </script>
+	<script>
+/**
+ * AUTO GENERATE JSON-LD SCHEMA FOR SEO
+ * Fungsi ini membaca PROMPT_DATABASE dan membuat skema ItemList untuk Google
+ */
+function generateJsonLd() {
+    if (typeof PROMPT_DATABASE === 'undefined') return;
+
+    const keys = Object.keys(PROMPT_DATABASE);
+    const itemListElement = keys.map((id, index) => {
+        return {
+            "@type": "ListItem",
+            "position": index + 1,
+            "name": PROMPT_DATABASE[id].title,
+            "url": `${window.location.origin}/prompt.html?id=${id}`,
+            "image": `${window.location.origin}/images/${id}.webp`
+        };
+    });
+
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Katalog Prompt AI Cinematic - Kokosima AI",
+        "description": "Koleksi prompt AI gratis untuk Midjourney, Dall-E, dan Stable Diffusion.",
+        "url": window.location.origin,
+        "numberOfItems": keys.length,
+        "itemListElement": itemListElement
+    };
+
+    // Masukkan ke dalam tag script di head
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+}
+
+// Jalankan setelah data.js dimuat
+window.addEventListener('load', generateJsonLd);
+</script>
 </body>
 </html>
