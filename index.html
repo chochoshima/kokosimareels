@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kokosima AI - Katalog Prompt Cinematic</title>
     <meta name="description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
-    <link rel="stylesheet" href="style.css">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://kokosimareels.pages.dev/">
+	<meta property="og:title" content="Kokosima AI - Katalog Prompt Cinematic">
+	<meta property="og:description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
+	<meta property="og:image" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://kokosimareels.pages.dev/">
+	<meta property="twitter:title" content="Kokosima AI - Katalog Prompt Cinematic">
+	<meta property="twitter:description" content="Koleksi prompt AI Cinematic gratis untuk Midjourney, Dall-E, dan Stable Diffusion.">
+	<meta property="twitter:image" content="https://kokosimareels.pages.dev/images/default-preview.jpg">
+	<link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -181,7 +191,31 @@ window.addEventListener('DOMContentLoaded', () => {
   <a href="https://youtube.com/@kokosimaabsurd" class="floating-youtube" target="_blank">▶</a>
 </div>
 <script src="visitor.js" defer></script>
+<script>
+    const stack = document.querySelector('.floating-stack');
+    let isScrolling;
 
+    const handleScroll = () => {
+        stack.classList.add('is-scrolling');
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+            stack.classList.remove('is-scrolling');
+        }, 400);
+    };
+
+    // Listen ke window (Desktop)
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Listen ke main feed (Mobile Reels)
+    // Gunakan interval kecil untuk memastikan elemen .feed sudah di-render
+    const attachFeedScroll = setInterval(() => {
+        const feedEl = document.getElementById('main-feed');
+        if (feedEl) {
+            feedEl.addEventListener('scroll', handleScroll, { passive: true });
+            clearInterval(attachFeedScroll);
+        }
+    }, 500);
+</script>
 <script>
     function adjustVH() {
         let vh = window.innerHeight * 0.01;
