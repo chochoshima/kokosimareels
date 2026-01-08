@@ -430,6 +430,16 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "WILD WILD WEST",
     videoUrl: "",
     text: `Ultra-realistic cinematic photography of an Elite Wild West Gunslinger (1870s legendary outlaw / lawman), using the provided photo reference as the ONLY facial reference — facial proportions, bone structure, eyes, nose, lips, jawline, skin texture, and expression must remain 100% identical (identity lock applies to face only).The man stands with calm dominance in front of a historic frontier town street, slightly angled body, confident posture that shows experience and authority. Background features blurred wooden saloon doors, hitching posts, and dusty ground with subtle wind-blown sand.Outfit: elite, high-status cowboy attire — tailored dark leather duster coat with subtle wear, high-quality wool vest, crisp light shirt, silk neckerchief, engraved gun belt with polished buckle, premium leather holster, well-maintained revolver, and a wide-brim black felt hat tilted slightly forward.Expression: cold, focused, battle-hardened eyes — calm before a duel.Lighting: dramatic cinematic western lighting, warm sunset key light with strong rim light outlining the hat and shoulders, realistic shadows, natural skin tones.Camera: medium close-up, eye-level, 50–85mm lens look, shallow depth of field, authentic film grain.NO modern elements, NO fantasy, NO anime, NO CGI, NO illustration, NO stylized art. Must look like real historical elite gunslinger photography.`
+},
+	"ai-076": {
+    title: "CLIFFHANGER",
+    videoUrl: "",
+    text: `Extreme close-up to medium shot of a climber [Referenced Face] scaling a vertical limestone cliff, intense focus and physical exertion visible, gripping natural rock crevices. The climber is wearing professional outdoor bouldering attire, technical harness, and climbing shoes (no helmet). Background features a breathtaking deep valley with a massive cascading waterfall misting in the sunlight, lush greenery below, and jagged mountain peaks under a crisp blue sky. Shot on Hasselblad X1D II, 35mm lens, f/2.8 for deep environmental focus. Cinematic natural lighting, sun flares, realistic skin textures with sweat beads, hyper-detailed rock grains and moss. Sharp focus, 8k resolution, photorealistic, wide-angle dramatic composition.`
+},
+"ai-077": {
+    title: "FUJIWARA AE86",
+    videoUrl: "",
+    text: `Ultra-realistic 8K professional medium close-up photography capturing a stunningly lifelike portrait of the subject with a subtle, confident smile, leaning casually against the iconic Toyota AE86 Trueno. The legendary AE86 is meticulously rendered in its distinctive black-and-white “panda” livery, featuring razor-sharp body lines, authentic vintage wheels, signature taillights, and the iconic “Fujiwara Tofu Shop” decal—firmly anchoring the car within the composition.The subject wears a premium white heavy-cotton t-shirt, layered with a high-quality distressed denim jacket, folds and fabric textures rendered with extreme realism. The camera locks focus precisely on the subject’s face, revealing hyper-detailed skin textures—visible pores, natural skin sheen, fine peach fuzz, and micro facial details—perfectly matching the reference photo’s identity with zero alteration to facial structure. A soft, thin smile subtly lifts the lips, conveying calm confidence and quiet charisma without exaggeration.The scene is illuminated by a cinematic blend of warm golden lantern light from the Fujiwara Tofu Shop and the cool neon glow of a nearby vending machine, producing natural catchlights in the eyes, realistic skin color separation, and intricate reflections across the AE86’s polished paintwork. The wet asphalt beneath reflects ambient light, adding depth and atmosphere to the scene.Shot on an 85mm f/1.2 prime lens, delivering a creamy, cinematic bokeh and gentle subject separation. A faint misty Japanese suburban night ambiance surrounds the frame, enhancing depth while maintaining clarity. The composition achieves flawless photorealism, cinematic lighting balance, and professional editorial quality—both the subject and the legendary AE86 rendered with uncompromising realism.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -437,6 +447,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
