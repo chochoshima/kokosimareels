@@ -555,43 +555,53 @@ body {
 
 /* ============================================================
    FINAL THEME: DARK & LIGHT COLORFUL GLASSMORPHISM
-   ============================================================ */
-/* --------------------------
-   1. DARK THEME (Default)
---------------------------- */
+   ============================================================ /* =========================
+   THEME + RESPONSIVE BG
+   Desktop : citypunk.webp
+   Mobile  : Oren.webp
+   Fallback: solid + gradient
+========================= */
 :root {
-    --bg-color: radial-gradient(
+    /* Fallback warna solid (PALING AMAN) */
+    --bg-fallback: #12001a;
+
+    /* Gradient layer */
+    --bg-gradient: radial-gradient(
         1400px at 50% -20%,
-        #1a002f 0%,   /* lebih gelap deep purple */
-        #2a0040 50%,  /* medium purple */
-        #12001a 100%  /* dark purple */
+        #1a002f 0%,
+        #2a0040 50%,
+        #12001a 100%
     );
-    --card-bg: rgba(40,10,60,0.8);           /* sedikit lebih gelap */
-    --glass-bg: rgba(255,180,220,0.06);      /* soft pink glow lebih tipis */
+
+    /* Desktop image */
+    --bg-image: url("images/citypunk.webp");
+
+    --card-bg: rgba(40,10,60,0.8);
+    --glass-bg: rgba(255,180,220,0.06);
     --glass-bg-strong: rgba(255,180,220,0.12);
     --glass-border: rgba(255,180,220,0.22);
-    --accent: #ff66bb;                        /* pink accent sedikit lebih gelap */
+    --accent: #ff66bb;
     --glass-blur: blur(22px);
-    --text-color: #e0c0e0;                    /* soft pink lebih redup */
+    --text-color: #e0c0e0;
 }
 
-/* --------------------------
-   2. LIGHT THEME
---------------------------- */
-html.light-theme {
-    --bg-color: radial-gradient(
-        1400px at 50% -20%,
-        #a0dfff 0%,   /* biru lebih soft */
-        #90d0c0 50%,  /* tosca lebih soft */
-        #e0f4f4 100%  /* putih lebih lembut */
-    );
-    --card-bg: rgba(255,255,255,0.55);       /* sedikit lebih gelap */
-    --glass-bg: rgba(200,240,255,0.18);      /* glass lebih tipis */
-    --glass-bg-strong: rgba(200,240,255,0.30);
-    --glass-border: rgba(150,220,230,0.35);
-    --accent: #22bcd4;                       /* biru-tosca lebih lembut */
-    --glass-blur: blur(18px);
-    --text-color: #101c2c;                   /* text lebih gelap agar kontras */
+/* Mobile override */
+@media (max-width: 768px) {
+    :root {
+        --bg-image: url("images/Oren.webp");
+    }
+}
+
+/* Background stack (fallback → gradient → image) */
+body {
+    min-height: 100vh;
+    background-color: var(--bg-fallback);     /* jika SEMUA gagal */
+    background-image: var(--bg-gradient), var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-color);
 }
 
 /* --------------------------
