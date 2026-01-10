@@ -582,7 +582,7 @@ body {
     );
 
     /* Desktop image */
-    --bg-image: url("images/citypunk.webp");
+    --bg-image: url("images/Citypunk.webp");
 
     --card-bg: rgba(40,10,60,0.8);
     --glass-bg: rgba(255,180,220,0.06);
@@ -596,7 +596,7 @@ body {
 /* Mobile override */
 @media (max-width: 768px) {
     :root {
-        --bg-image: url("images/Oren.webp");
+        --bg-image: url("images/oren.webp");
     }
 }
 
