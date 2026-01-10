@@ -51,6 +51,8 @@ body {
     gap: 10px;
     text-decoration: none;
     min-width: max-content;
+    position: relative;
+    z-index: 10000 !important; /* Memastikan di atas segala lapisan */
 }
 
 .brain-icon {
@@ -58,14 +60,35 @@ body {
     animation: brainPulse 2s infinite ease-in-out;
 }
 
+/* =========================
+   GLOBAL LOGO TEXT
+   ========================= */
 .logo-text {
     font-weight: 800;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     letter-spacing: -0.5px;
-    background: linear-gradient(90deg, #ffffff, var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* Menggunakan Kuning-Oranye agar tidak hilang saat kena efek blur putih */
+    background-image: linear-gradient(90deg, #fbbf24, #f97316) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    /* Memberikan sedikit bayangan gelap agar teks "keluar" */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)); 
+    position: relative;
 }
+
+/* --------------------------
+   THEME OVERRIDE
+--------------------------- */
+/* DARK theme logo */
+.dark-theme .logo-text {
+    background: linear-gradient(135deg, #ff77cc, #7f00ff); /* Pink → Ungu */
+}
+
+/* LIGHT theme logo */
+.light-theme .logo-text {
+    background: linear-gradient(135deg, #22d3ee, #3b82f6); /* Tosca → Biru */
+}
+
 
 /* --- SEARCH --- */
 .search-container {
@@ -529,6 +552,7 @@ body {
     0%, 100% { transform: scale(1); } 
     50% { transform: scale(1.02); border-color: var(--accent); } 
 }
+
 /* ============================================================
    FINAL THEME: DARK & LIGHT COLORFUL GLASSMORPHISM
    ============================================================ */
@@ -819,5 +843,6 @@ body, .top-bar, .btn-ai-nav, .btn-skin-toggle, .item, .like-badge-index, .previe
     background: var(--glass-bg-strong);
     transform: translateY(-2px);
 }
+
 
 
