@@ -29,7 +29,6 @@
         <span class="brain-icon">🧠</span>
         <span class="logo-text">kokosima</span>
     </a>
-    
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Cari (hutan, robot, neon...)" autocomplete="off">
     </div>
@@ -40,11 +39,12 @@
             <span class="text-label">Cara Membuat Gambar AI</span>
         </a>
         <a href="https://www.facebook.com/chochoshima/" target="_blank" class="nav-social">
-    <i class="fab fa-facebook"></i> Facebook
-</a>
-<a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank" class="nav-social">
-    <i class="fab fa-youtube"></i> YouTube
-</a>
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank" class="nav-social">
+            <i class="fab fa-youtube"></i> YouTube
+        </a>
+		<button class="btn-skin-toggle" id="themeToggle">🌙/☀️</button>
     </div>
 </header>
 
@@ -263,6 +263,30 @@ function generateJsonLd() {
 
 // Jalankan setelah data.js dimuat
 window.addEventListener('load', generateJsonLd);
+</script>
+	<script>
+const themeToggleBtn = document.getElementById('themeToggle');
+
+function applyTheme(theme) {
+    if (theme === 'light') {
+        document.documentElement.classList.add('light-theme');
+        document.documentElement.classList.remove('dark-theme');
+    } else {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.classList.remove('light-theme');
+    }
+    localStorage.setItem('theme', theme);
+}
+
+// Load theme dari localStorage atau default dark
+const savedTheme = localStorage.getItem('theme') || 'dark';
+applyTheme(savedTheme);
+
+// Toggle saat klik tombol
+themeToggleBtn.addEventListener('click', () => {
+    const current = document.documentElement.classList.contains('light-theme') ? 'light' : 'dark';
+    applyTheme(current === 'light' ? 'dark' : 'light');
+});
 </script>
 </body>
 </html>
