@@ -450,6 +450,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "KUCINGAN",
     videoUrl: "",
     text: `"Ultra-realistic full-body commercial photography of a man joyfully harvesting fried chicken drumsticks from an orchard, captured with a Hasselblad X2D and a 50mm f/4.5 lens, utilizing a high shutter speed to freeze motion, and framed head-to-toe with no cropping, ensuring both legs and feet are clearly visible on the ground. The lush orchard features a completely natural tree with an authentic wooden trunk, visible bark texture, natural cracks, grain, and organic imperfections, where branches grow organically with correct botanical structure, and the canopy is filled with healthy, vibrant green leaves with natural variations in size and color. The surreal element is fried chicken drumsticks growing organically from natural branch nodes, emerging from the same points where fruit normally grows, each connected by a short woody stem with visible fiber texture and natural thickness variation, partially wrapped at the base by small green leaves and buds, creating a smooth and believable transition; these drumsticks follow the direction and gravity of the branches, slightly angled downward without any artificial attachments, all under consistent lighting with soft contact shadows. Some drumsticks are perfectly ripe, golden-brown, crispy with visible breading texture and a subtle oil sheen, while others are smaller and slightly underdeveloped. The man, whose facial identity from the attached photo reference is 100% maintained—preserving jawline, eyes, nose, facial proportions, and skin structure—is captured mid-action with arms reaching upward, a natural body balance with knees slightly bent, and an enthusiastic expression, eyes focused on the chicken (not looking at the camera). On the ground, a rustic woven basket overflows with harvested fried chicken, accompanied by a few fallen leaves and crumbs scattered on the soil. The scene is illuminated by warm golden-hour sunlight filtering through the green leaves, creating natural rim light and realistic shadows on the subject and the ground, all rendered in 8K resolution with cinematic color grading, ultra-realistic skin pores, and hyper-detailed food textures."`
+},
+	"ai-080": {
+    title: "PANGKAS RAMBUT",
+    videoUrl: "",
+    text: `"Absurd ultra-realistic POV photography as if the viewer is standing directly in front of a wooden-framed mirror inside a simple traditional Indonesian barbershop, with the entire scene visible only through the mirror reflection. Reflected in the mirror, a person using the provided photo reference is seated on a barber chair, wearing a haircut cape fully covering his body, while a real barber (a different person) stands behind him. The barber is holding an extremely oversized pair of scissors—almost 20 times larger than normal—using both hands in a realistic, functional manner: one hand gripping the oversized handle loops, the other hand supporting the long blade near the pivot for balance, making the scale believable. The scissors are positioned above a traditional wooden barber table with an embedded mirror surface (not a glass-covered table). On this mirrored wooden table lies an absurdly oversized red plastic comb. The barbershop interior is modest and authentic, with rustic wooden elements, simple haircut tools, faded vintage hairstyle posters, and walls with peeling, cracked paint. Natural ambient lighting, ultra-realistic textures, cinematic composition, shallow depth of field, high detail, and a strict mirror-POV framing that clearly shows correct hand placement, believable weight distribution, and accurate mirror reflections.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -457,6 +462,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
