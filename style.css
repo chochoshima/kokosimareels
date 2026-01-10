@@ -529,3 +529,295 @@ body {
     0%, 100% { transform: scale(1); } 
     50% { transform: scale(1.02); border-color: var(--accent); } 
 }
+/* ============================================================
+   FINAL THEME: DARK & LIGHT COLORFUL GLASSMORPHISM
+   ============================================================ */
+/* --------------------------
+   1. DARK THEME (Default)
+--------------------------- */
+:root {
+    --bg-color: radial-gradient(
+        1400px at 50% -20%,
+        #1a002f 0%,   /* lebih gelap deep purple */
+        #2a0040 50%,  /* medium purple */
+        #12001a 100%  /* dark purple */
+    );
+    --card-bg: rgba(40,10,60,0.8);           /* sedikit lebih gelap */
+    --glass-bg: rgba(255,180,220,0.06);      /* soft pink glow lebih tipis */
+    --glass-bg-strong: rgba(255,180,220,0.12);
+    --glass-border: rgba(255,180,220,0.22);
+    --accent: #ff66bb;                        /* pink accent sedikit lebih gelap */
+    --glass-blur: blur(22px);
+    --text-color: #e0c0e0;                    /* soft pink lebih redup */
+}
+
+/* --------------------------
+   2. LIGHT THEME
+--------------------------- */
+html.light-theme {
+    --bg-color: radial-gradient(
+        1400px at 50% -20%,
+        #a0dfff 0%,   /* biru lebih soft */
+        #90d0c0 50%,  /* tosca lebih soft */
+        #e0f4f4 100%  /* putih lebih lembut */
+    );
+    --card-bg: rgba(255,255,255,0.55);       /* sedikit lebih gelap */
+    --glass-bg: rgba(200,240,255,0.18);      /* glass lebih tipis */
+    --glass-bg-strong: rgba(200,240,255,0.30);
+    --glass-border: rgba(150,220,230,0.35);
+    --accent: #22bcd4;                       /* biru-tosca lebih lembut */
+    --glass-blur: blur(18px);
+    --text-color: #101c2c;                   /* text lebih gelap agar kontras */
+}
+
+/* --------------------------
+   3. GLOBAL TEXT COLOR
+--------------------------- */
+body {
+    color: var(--text-color);
+}
+
+/* --------------------------
+   4. TOP BAR / HEADER
+--------------------------- */
+.top-bar {
+    background: linear-gradient(
+        135deg,
+        rgba(56,189,248,0.25),
+        rgba(129,140,248,0.15),
+        rgba(34,211,238,0.12)
+    );
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* --------------------------
+   5. SEARCH INPUT
+--------------------------- */
+#searchInput {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-color: var(--glass-border);
+    color: var(--text-color);
+}
+
+#searchInput:focus {
+    background: var(--glass-bg-strong);
+}
+
+/* --------------------------
+   6. ITEM / CARD
+--------------------------- */
+.item {
+    background: linear-gradient(
+        135deg,
+        rgba(56,189,248,0.22),
+        rgba(129,140,248,0.12),
+        rgba(34,211,238,0.10)
+    );
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-color: var(--glass-border);
+    color: var(--text-color);
+}
+
+/* --------------------------
+   7. BUTTONS
+--------------------------- */
+.btn {
+    background: linear-gradient(
+        135deg,
+        rgba(56,189,248,0.35),
+        rgba(129,140,248,0.25),
+        rgba(34,211,238,0.22)
+    );
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-color: var(--glass-border);
+    color: var(--text-color);
+}
+
+.btn-primary {
+    background: linear-gradient(
+        135deg,
+        var(--accent),
+        #ffffff,
+        var(--accent)
+    );
+    color: var(--text-color);
+}
+
+/* --------------------------
+   8. BADGES
+--------------------------- */
+.like-badge-index,
+.preview-badge {
+    background: linear-gradient(
+        135deg,
+        rgba(56,189,248,0.3),
+        rgba(129,140,248,0.22)
+    );
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-color: var(--glass-border);
+    color: var(--text-color);
+}
+
+/* --------------------------
+   9. FLOATING STACK
+--------------------------- */
+.floating-visitor {
+    background: linear-gradient(
+        135deg,
+        rgba(56,189,248,0.35),
+        rgba(167,139,250,0.25)
+    );
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-color: var(--glass-border);
+    color: var(--text-color);
+}
+
+.nav-social {
+    background: linear-gradient(
+        135deg,
+        rgba(56,189,248,0.35),
+        rgba(129,140,248,0.25)
+    );
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-color: var(--glass-border);
+    color: var(--text-color);
+}
+
+/* --------------------------
+   10. PROMPT PREVIEW FIX (READABILITY)
+--------------------------- */
+.prompt-preview {
+    color: var(--text-color);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+/* ================================
+   ANIMASI GRADIENT GANTI THEME
+   ================================ */
+
+/* Variabel untuk animasi */
+:root {
+    --dark-grad: linear-gradient(135deg, #7f00ff, #e100ff); /* Ungu → Pink */
+    --light-grad: linear-gradient(135deg, #38bdf8, #22d3ee); /* Biru → Tosca */
+}
+
+/* Smooth transition untuk semua elemen penting */
+body, .top-bar, .btn-ai-nav, .btn-skin-toggle, .item, .like-badge-index, .preview-badge {
+    transition: background 0.8s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+/* DARK THEME */
+.dark-theme {
+    --bg-color: radial-gradient(1400px at 50% -20%, #1e1b4b 0%, #020617 50%, #000 100%);
+    --accent: #e100ff;
+    --text-color: #fff;
+    --glass-bg: rgba(255,255,255,0.08);
+    --glass-bg-strong: rgba(255,255,255,0.16);
+    --glass-border: rgba(255,255,255,0.28);
+    --glass-blur: blur(22px);
+}
+
+/* LIGHT THEME */
+.light-theme {
+    --bg-color: radial-gradient(1400px at 50% -20%, #38bdf8 0%, #22d3ee 50%, #81e6d9 100%);
+    --accent: #22d3ee;
+    --text-color: #020617;
+    --glass-bg: rgba(255,255,255,0.12);
+    --glass-bg-strong: rgba(255,255,255,0.20);
+    --glass-border: rgba(255,255,255,0.3);
+    --glass-blur: blur(18px);
+}
+
+/* HEADER / TOP BAR */
+.top-bar {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* LOGO TEXT GRADIENT */
+.logo-text {
+    background: var(--dark-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background 0.8s ease;
+}
+
+/* DARK theme logo */
+.dark-theme .logo-text {
+    background: linear-gradient(135deg, #7f00ff, #e100ff);
+}
+
+/* LIGHT theme logo */
+.light-theme .logo-text {
+    background: linear-gradient(135deg, #38bdf8, #22d3ee);
+}
+
+/* BTN SKIN ANIMASI GRADIENT */
+.btn-skin-toggle {
+    background: linear-gradient(135deg, #7f00ff, #e100ff);
+    color: var(--text-color);
+    border: 1px solid var(--glass-border);
+    transition: all 0.8s ease;
+}
+
+/* DARK / LIGHT variant */
+.dark-theme .btn-skin-toggle {
+    background: linear-gradient(135deg, #7f00ff, #e100ff);
+    color: #fff;
+}
+
+.light-theme .btn-skin-toggle {
+    background: linear-gradient(135deg, #38bdf8, #22d3ee);
+    color: #020617;
+}
+
+/* CARD / ITEM GRADIENT SMOOTH */
+.item {
+    background: linear-gradient(135deg, rgba(127,0,255,0.25), rgba(225,0,255,0.15));
+}
+
+.light-theme .item {
+    background: linear-gradient(135deg, rgba(56,189,248,0.25), rgba(34,211,238,0.15));
+}
+
+/* ============================
+   BTN SKIN TOGGLE HEADER STYLE
+============================ */
+.btn-skin-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 36px;                    /* sama dengan tombol header lain */
+    padding: 0 12px;                  /* horizontal padding */
+    font-size: 13px;                  /* ukuran font konsisten */
+    font-weight: 700;
+    border-radius: 12px;              /* sesuai style tombol header */
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--text-color);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: max-content;           /* agar teks/icon tidak terpotong */
+    z-index: 9;                        /* di bawah logo */
+}
+
+/* Hover effect */
+.btn-skin-toggle:hover {
+    background: var(--glass-bg-strong);
+    transform: translateY(-2px);
+}
+
+
