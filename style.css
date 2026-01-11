@@ -851,20 +851,28 @@ body, .top-bar, .btn-ai-nav, .btn-skin-toggle, .item, .like-badge-index, .previe
     transform: translateY(-2px);
 }
 
-/* =================================================
-   MOBILE FIX: LIKE BADGE TIDAK MENUTUP SHARE
-   Reposition ke area konten (atas judul)
-================================================= */
+/* =========================================
+   MOBILE FIX: LIKE BADGE TIDAK MOLAR & RAPI
+========================================= */
 @media (max-width: 1023px) {
-  .feed {
-    --like-offset: 180px;
-  }
-
   .feed > .item .like-badge-index {
-    top: calc(100% - var(--like-offset));
-  }
-}
-.like-badge-index {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+
+    bottom: calc(env(safe-area-inset-bottom) + 90px);
+    left: 20px;
+    right: auto;
+    top: auto;
+
     width: fit-content;
+    height: auto;
     white-space: nowrap;
+
+    padding: 4px 10px;
+    font-size: 11px;
+    line-height: 1;
+
+    pointer-events: none;
+  }
 }
