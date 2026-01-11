@@ -851,5 +851,20 @@ body, .top-bar, .btn-ai-nav, .btn-skin-toggle, .item, .like-badge-index, .previe
     transform: translateY(-2px);
 }
 
+/* =================================================
+   MOBILE FIX: LIKE BADGE TIDAK MENUTUP SHARE
+   Reposition ke area konten (atas judul)
+================================================= */
+@media (max-width: 1023px) {
 
+  .feed > .item .like-badge-index {
+    bottom: auto;
+    top: calc(100% - 160px); /* geser dari bawah gambar */
+    right: auto;
+    left: 20px;
+
+    pointer-events: none;
+  }
+
+}
 
