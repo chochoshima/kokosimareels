@@ -860,7 +860,7 @@ body, .top-bar, .btn-ai-nav, .btn-skin-toggle, .item, .like-badge-index, .previe
     display: inline-flex;
     align-items: center;
 
-    bottom: calc(env(safe-area-inset-bottom) + 180px);
+    bottom: calc(env(safe-area-inset-bottom) + 150px);
     left: 20px;
     right: auto;
     top: auto;
