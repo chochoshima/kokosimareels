@@ -241,15 +241,12 @@ body {
 /* --- MOBILE (Reels dengan jarak tepi, FIXED) --- */
 @media (max-width: 1023px) {
 
-    /* body tidak boleh offset header */
     body {
         padding-top: 0;
     }
 
     .feed {
-        height: calc(100dvh - var(--header-h));
-        padding-top: var(--header-h);
-
+        height: 100dvh;              /* ⬅️ FULL layar */
         background: #000;
         overflow-y: auto;
         scroll-snap-type: y mandatory;
@@ -261,26 +258,22 @@ body {
         display: flex;
         flex-direction: column;
 
-        min-height: calc(100dvh - var(--header-h));
+        height: 100dvh;              /* ⬅️ SATU layar pas */
         scroll-snap-align: start;
         scroll-snap-stop: always;
 
-        /* JARAK TEPI AMAN */
+        /* SAFE AREA + JARAK TEPI */
         padding:
-          calc(env(safe-area-inset-top) + 12px)
+          calc(env(safe-area-inset-top) + var(--header-h) + 12px)
           12px
           calc(env(safe-area-inset-bottom) + 12px);
 
-        box-sizing: border-box;
         overflow: hidden;
     }
 
     .media-container {
         position: relative;
-        z-index: 1;
-
-        width: 100%;
-        flex: 1;                 /* ⬅️ KUNCI UTAMA */
+        flex: 1;
         border-radius: 18px;
         overflow: hidden;
     }
