@@ -864,4 +864,7 @@ body, .top-bar, .btn-ai-nav, .btn-skin-toggle, .item, .like-badge-index, .previe
     top: calc(100% - var(--like-offset));
   }
 }
-
+.like-badge-index {
+    width: fit-content;
+    white-space: nowrap;
+}
