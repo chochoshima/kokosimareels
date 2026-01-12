@@ -1,253 +1,307 @@
 /* ============================================================
-   1. LAYOUT UTAMA & WRAPPER
+   PROMPT DETAIL – DESKTOP FINAL FIX (CENTER & STABLE)
    ============================================================ */
-.prompt-page-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 50px 20px 40px;
-    min-height: 100vh;
-    background: var(--bg-color);
+@media (min-width: 901px) {
+
+    /* ===============================
+       WRAPPER
+       =============================== */
+    .prompt-detail-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 64px 32px;
+        background: var(--bg-color);
+    }
+
+    /* ===============================
+       CARD
+       =============================== */
+    .prompt-detail-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+
+        background: #111;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    /* ===============================
+       MEDIA (ANTI ZOOM & STABIL)
+       =============================== */
+    .prompt-detail-media {
+        flex: 0 0 340px;
+        min-width: 340px;
+        max-width: 340px;
+
+        aspect-ratio: 9 / 16;
+        position: sticky;
+        top: 32px;
+
+        border-radius: 20px;
+        overflow: hidden;
+        background: #1a1a1a;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .prompt-detail-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transform: none !important;
+    }
+
+    .prompt-detail-media:hover img {
+        transform: none !important;
+    }
+
+    /* ===============================
+       CONTENT
+       =============================== */
+    .prompt-detail-content {
+        flex: 1 1 auto;
+        min-width: 0;
+
+        padding: 40px 42px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* PROMPT TEXT */
+    #promptText {
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: rgba(255,255,255,0.03);
+        padding: 25px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+    }
+
+    /* ===============================
+       ACTIONS – DESKTOP
+       =============================== */
+    .prompt-detail-content .actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .prompt-detail-content .actions .btn-primary,
+    .prompt-detail-content .actions .btn-like {
+        height: 48px;
+        padding: 0 20px;
+        border-radius: 12px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .prompt-detail-content .actions #visitorBar {
+        height: 48px;
+        min-width: 220px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 16px;
+        border-radius: 12px;
+    }
 }
 
-.prompt-card {
-    display: flex;
-    flex-direction: row; 
-    background: #111;
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    overflow: hidden;
-    max-width: 1100px;
-    width: 100%;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-}
 
 /* ============================================================
-   2. MEDIA CONTAINER (GAMBAR)
+   DESKTOP CENTER ALIGN – PROMPT DETAIL (FRAME VERSION)
    ============================================================ */
-.prompt-card .media-container {
-    flex: 0 0 450px;
-    width: 450px;
-    aspect-ratio: 9/16;
-    position: sticky;
-    top: 20px;
-    align-self: flex-start;
-    margin: 20px; 
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    background: #1a1a1a;
-    z-index: 1;
+@media (min-width: 901px) {
+
+    .prompt-detail-media {
+        padding: 14px;
+        border-radius: 26px;
+
+        background: #0c0c0c;
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+    }
+
+    .prompt-detail-media img {
+        border-radius: 18px;
+        background: #fff;
+    }
 }
 
-.prompt-card .media-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-.prompt-card .media-container:hover img {
-    transform: scale(1.05);
-}
 
 /* ============================================================
-   3. CONTENT & PROMPT TEXT
-   ============================================================ */
-.prompt-card .content-container {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    min-width: 0;
-    background: #111;
-    z-index: 2;
-}
-
-#promptText {
-    font-size: 1.1rem;
-    color: #cbd5e1;
-    line-height: 1.6;
-    background: rgba(255,255,255,0.03);
-    padding: 25px;
-    border-radius: 15px;
-    border: 1px solid var(--border);
-    white-space: pre-wrap;
-    word-break: break-word;
-}
-
-/* ============================================================
-   4. ACTIONS (BUTTONS & VISITOR)
-   ============================================================ */
-.actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    margin-top: 10px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-}
-
-/* Base Style Tombol */
-.btn-primary, .btn-like, #visitorBar {
-    height: 48px;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    border: 1px solid var(--border);
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    text-decoration: none;
-    overflow: hidden;
-}
-
-/* Tombol Copy */
-.btn-primary {
-    background: linear-gradient(-45deg, #38bdf8, #818cf8, #38bdf8, #818cf8);
-    background-size: 300% 300%;
-    animation: gradientMove 3s ease infinite;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-/* Tombol Like */
-.btn-like {
-    background: rgba(255,255,255,0.05);
-    color: #fff;
-    cursor: pointer;
-}
-
-.btn-like.active {
-    background: rgba(239, 68, 68, 0.2);
-    border-color: #ef4444;
-    color: #ef4444;
-    animation: heartBeat 1s infinite;
-}
-
-/* Efek Shine */
-.btn-primary::after, .btn-like::after {
-    content: "";
-    position: absolute;
-    top: -50%; left: -60%; width: 20%; height: 200%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: rotate(30deg);
-    transition: all 0.6s ease-in-out;
-}
-
-.btn-primary:hover::after, .btn-like:hover::after {
-    left: 120%;
-}
-
-/* Visitor Bar */
-#visitorBar {
-    background: rgba(56, 189, 248, 0.05) !important;
-    color: #94a3b8;
-    flex-grow: 1;
-    min-width: 280px;
-    justify-content: space-around !important;
-    cursor: default;
-}
-
-/* ============================================================
-   5. COMMENT SECTION
-   ============================================================ */
-#comment-section {
-    margin-top: 30px;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 20px;
-    border: 1px solid var(--border);
-}
-
-/* ============================================================
-   6. RESPONSIF MOBILE (OPTIMAL & FIX)
+   PROMPT DETAIL – MOBILE FIX TOTAL
    ============================================================ */
 @media (max-width: 900px) {
-    .prompt-page-wrapper {
-        display: block !important;
-        padding-top: 70px !important;
-        overflow-x: hidden;
-    }
 
-    .prompt-card {
-        display: block !important;
-        background: #111;
-        border: none;
-        width: 100% !important;
+    /* ===============================
+       CARD
+       =============================== */
+    .prompt-detail-card {
+        flex-direction: column;
         border-radius: 0;
-    }
-
-    /* Paksa Gambar Tampil di Mobile */
-    .prompt-card .media-container {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        min-height: 400px !important;
-        aspect-ratio: 9/16;
-        position: relative !important;
-        top: 0 !important;
-        margin: 0 !important;
-        border-radius: 0 0 25px 25px;
         border: none;
-        visibility: visible !important;
-        opacity: 1 !important;
+        overflow: visible;
     }
 
-    .prompt-card .media-container img {
-        display: block !important;
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-
-    .prompt-card .content-container {
-        display: block !important;
-        width: 100% !important;
-        padding: 30px 20px !important;
-        background: #111 !important;
+    /* ===============================
+       MEDIA
+       =============================== */
+    .prompt-detail-media {
         position: relative;
-        z-index: 10;
+        top: 0;
+
+        width: 100%;
+        max-width: 100%;
+        min-height: 420px;
+
+        padding: 14px;
+        border-radius: 0 0 24px 24px;
+        background: #0c0c0c;
+        overflow: hidden;
     }
 
-    #promptText {
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
+    .prompt-detail-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
     }
 
-    .actions {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
+    /* ===============================
+       CONTENT
+       =============================== */
+    .prompt-detail-content {
+        padding: 24px 20px 32px;
+        gap: 18px;
     }
 
-    #visitorBar {
-        grid-column: span 2 !important;
-        width: 100% !important;
-        min-width: 0 !important;
+    /* ===============================
+       ACTIONS – MOBILE
+       =============================== */
+    .prompt-detail-content .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .prompt-detail-content .actions > * {
+        width: 100%;
+        height: 48px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .prompt-detail-content .btn-primary {
+        font-weight: 700;
+    }
+
+    .prompt-detail-content .btn-like {
+        justify-content: center;
+    }
+
+    .prompt-detail-content #visitorBar {
+        justify-content: space-between;
+        padding: 0 16px;
+        font-size: 13px;
+    }
+
+    /* ===============================
+       SHINE EFFECT FIX
+       =============================== */
+    .prompt-detail-content .btn-primary::after,
+    .prompt-detail-content .btn-like::after {
+        content: "";
+        position: absolute;
+        top: -60%;
+        left: -80%;
+        width: 40%;
+        height: 220%;
+
+        background: rgba(255,255,255,0.35);
+        transform: rotate(30deg);
+        transition: all 0.6s ease;
+        pointer-events: none;
+    }
+
+    .prompt-detail-content .btn-primary:hover::after,
+    .prompt-detail-content .btn-like:hover::after {
+        left: 120%;
     }
 }
+
 
 /* ============================================================
-   7. KEYFRAMES & UTILITIES
+   FIX SCROLL MOBILE – FINAL (JANGAN DIHAPUS)
    ============================================================ */
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+html,
+body {
+    height: auto !important;
+    min-height: 100%;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
-@keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+/* khusus halaman prompt */
+.prompt-page-wrapper {
+    min-height: 100vh;
+    overflow: visible !important;
 }
 
-.floating-stack { display: none !important; }
+
+/* ============================================================
+   HEADER MOBILE – ICON ONLY
+   ============================================================ */
+@media (max-width: 768px) {
+
+    .btn-ai-nav .text-label {
+        display: none !important;
+    }
+
+    .btn-ai-nav {
+        padding: 10px;
+        min-width: 44px;
+        height: 44px;
+        border-radius: 12px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-ai-nav i {
+        font-size: 20px !important;
+        margin: 0;
+    }
+
+    .header-inner,
+    .nav-header {
+        gap: 10px;
+    }
+}
