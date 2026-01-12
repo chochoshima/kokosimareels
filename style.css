@@ -372,16 +372,22 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 /* ============================================================
-    FINAL OPTIMIZED MOBILE VIEW (MAX-WIDTH: 1023PX)
+   FINAL OPTIMIZED MOBILE VIEW (MAX-WIDTH: 1023PX)
    ============================================================ */
 @media (max-width: 1023px) {
+
+    /* =======================
+       0. BODY & GLOBAL
+       ======================= */
     body { 
         padding-top: 0; 
         background: #000; 
         overflow: hidden; 
     }
 
-    /* --- 1. HEADER RINGKAS --- */
+    /* =======================
+       1. HEADER RINGKAS
+       ======================= */
     .top-bar {
         height: 60px;
         padding: 0 10px;
@@ -389,12 +395,17 @@ body {
         background: rgba(0, 0, 0, 0.95);
     }
 
-    .logo-text, .nav-social, .btn-ai-nav .text-label, 
+    .logo-text,
+    .nav-social,
+    .btn-ai-nav .text-label, 
     .btn-skin-toggle span:not(.icon) {
         display: none !important; 
     }
 
-    .search-container { flex: 1; max-width: none; }
+    .search-container { 
+        flex: 1; 
+        max-width: none; 
+    }
 
     #searchInput {
         height: 36px;
@@ -403,13 +414,20 @@ body {
         border-radius: 12px;
     }
 
-    .btn-ai-nav, .btn-skin-toggle {
-        width: 38px !important; height: 38px !important;
-        min-width: 38px !important; padding: 0 !important;
-        justify-content: center; border-radius: 10px; flex-shrink: 0;
+    .btn-ai-nav,
+    .btn-skin-toggle {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        padding: 0 !important;
+        justify-content: center;
+        border-radius: 10px;
+        flex-shrink: 0;
     }
 
-    /* --- 2. FEED & LAYOUT KARTU (9:16) --- */
+    /* =======================
+       2. FEED & LAYOUT KARTU (9:16)
+       ======================= */
     .feed {
         height: 100dvh;
         display: block; 
@@ -428,6 +446,7 @@ body {
         scroll-snap-align: start;
         background: none !important;
         border: none !important;
+
         /* Reset Hover Mobile */
         transform: none !important;
         animation: none !important;
@@ -459,7 +478,9 @@ body {
         filter: brightness(1) !important;
     }
 
-    /* --- 3. KONTEN DI DALAM GAMBAR --- */
+    /* =======================
+       3. KONTEN DI DALAM GAMBAR
+       ======================= */
     .content-container {
         position: absolute !important;
         bottom: 0 !important;
@@ -468,13 +489,17 @@ body {
         z-index: 10;
         padding: 50px 15px 15px !important;
         pointer-events: none;
-        background: linear-gradient(to top, 
+        background: linear-gradient(
+            to top, 
             rgba(0,0,0,0.9) 0%, 
             rgba(0,0,0,0.5) 60%, 
-            transparent 100%) !important;
+            transparent 100%
+        ) !important;
     }
 
-    .content-container h3, .prompt-preview, .actions { 
+    .content-container h3,
+    .prompt-preview,
+    .actions { 
         pointer-events: auto; 
     }
 
@@ -499,7 +524,9 @@ body {
         overflow: hidden;
     }
 
-    /* --- 4. TOMBOL ACTIONS HORIZONTAL --- */
+    /* =======================
+       4. TOMBOL ACTIONS HORIZONTAL
+       ======================= */
     .actions {
         display: flex !important;
         flex-direction: row !important;
@@ -507,7 +534,8 @@ body {
         width: 100% !important;
     }
 
-    .actions .btn, .actions .like-badge-index {
+    .actions .btn,
+    .actions .like-badge-index {
         flex: 1 !important;
         height: 34px !important;
         font-size: 10px !important;
@@ -521,11 +549,18 @@ body {
         transition: none !important;
     }
 
-    .btn-share { flex: 0 0 38px !important; }
+    .btn-share { 
+        flex: 0 0 38px !important; 
+    }
 
-    /* --- 5. HARD RESET DISABLE HOVER & NAV --- */
-    .item:hover, .item:active, .item:focus,
-    .item:hover .media-container, .item:active .media-container,
+    /* =======================
+       5. HARD RESET DISABLE HOVER & NAV
+       ======================= */
+    .item:hover,
+    .item:active,
+    .item:focus,
+    .item:hover .media-container,
+    .item:active .media-container,
     .item:hover .media-container img {
         transform: none !important;
         animation: none !important;
@@ -533,7 +568,8 @@ body {
         opacity: 1 !important;
     }
 
-    .media-container::before, .media-container::after {
+    .media-container::before,
+    .media-container::after {
         display: none !important;
     }
 
@@ -542,10 +578,14 @@ body {
         transform: none !important;
     }
 
-    .nav-controls-bottom, .floating-stack, .preview-badge { 
+    .nav-controls-bottom,
+    .floating-stack,
+    .preview-badge { 
         display: none !important; 
     }
+
 }
+
 /* ============================================================
     4. KOMPONEN UTAMA (TOMBOL & BADGE)
    ============================================================ */
