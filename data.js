@@ -495,6 +495,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "CHIBY STYLE",
     videoUrl: "",
     text: `A professional full-body chibi caricature illustration based on the provided reference face. The character has an oversized head with exaggerated yet recognizable facial features, maintaining the identical eye shape, jawline, and nose structure from the reference. The body is short and cute (chibi style) with a playful and confident pose.Face & Expression: A warm, cheerful smile with friendly, slightly enlarged expressive eyes to enhance the 'cute' aesthetic. The skin tone and facial details must blend naturally with the artistic style while preserving the person's unique identity.Outfit & Style: Wearing a modern, high-fashion streetwear ensemble: a stylish bomber jacket or trendy oversized outer, a crisp clean white t-shirt, tailored slim-fit trousers, and high-end chunky sneakers.Artistic Execution: Clean vector-style cartoon with smooth outlines and minimalist shading. Bright, harmonious color palette with a vibrant, playful atmosphere. High-resolution digital art, studio lighting, soft 2D cel-shading, fun and adorable vibe, white or simple geometric background to emphasize the character.`
+},
+	"ai-089": {
+    title: "CHIBY STYLE COUPLE",
+    videoUrl: "",
+    text: `Dual-subject full-body chibi caricature illustration featuring two best friends, based on the provided reference photos.Character Physics: Both characters feature the classic chibi 'big head, small body' ratio (1:2 or 1:3 scale). Their facial identities—eye shapes, jawlines, and distinct hairstyles—must be perfectly preserved from the reference images to ensure instant recognition.The Pose & Interaction: They are striking a 'gokil' or wacky, goofy pose together. One character might be jokingly leaning on the other, making funny peace signs or a playful face, while the other laughs or strikes a dramatic 'cool' pose. The interaction is dynamic, showing a strong bond of friendship.Outfits (Personalized): High-detail modern streetwear tailored to each reference.Person 1: Trendy oversized hoodie with techwear accents and high-top sneakers.Person 2: Stylish denim jacket over a graphic tee, joggers, and limited-edition hypebeast sneakers.Art Style: High-quality 2D digital vector art. Sharp, clean outlines with vibrant, saturated colors. Smooth cel-shading and soft highlights.Atmosphere: Playful, fun, and energetic. The background is a simple, colorful pop-art style with abstract shapes (circles/dots) to keep the focus on the duo. 4k resolution, professional illustration, expressive and joyful."`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -502,6 +507,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
