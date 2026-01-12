@@ -383,7 +383,7 @@ body {
         overflow: hidden; 
     }
 
-    /* ----- HEADER RINGKAS ----- */
+    /* ----- HEADER RINGKAS (Tetap Sama) ----- */
     .top-bar {
         height: 60px;
         padding: 0 10px;
@@ -393,36 +393,18 @@ body {
         align-items: center;
     }
 
-    .logo-text,
-    .nav-social,
-    .btn-ai-nav .text-label, 
-    .btn-skin-toggle span:not(.icon) {
-        display: none; 
-    }
+    .logo-text, .nav-social, .btn-ai-nav .text-label, 
+    .btn-skin-toggle span:not(.icon) { display: none; }
 
     .search-container { flex: 1; max-width: none; }
+    #searchInput { height: 36px; font-size: 12px; padding: 0 10px 0 32px; border-radius: 12px; }
 
-    #searchInput {
-        height: 36px;
-        font-size: 12px;
-        padding: 0 10px 0 32px;
-        border-radius: 12px;
-    }
+    .btn-ai-nav, .btn-skin-toggle { width: 38px; height: 38px; padding: 0; justify-content: center; border-radius: 10px; flex-shrink: 0; }
 
-    .btn-ai-nav,
-    .btn-skin-toggle {
-        width: 38px;
-        height: 38px;
-        padding: 0;
-        justify-content: center;
-        border-radius: 10px;
-        flex-shrink: 0;
-    }
-
-    /* ----- FEED 9:16 ----- */
+    /* ----- FEED 9:16 (PERBAIKAN DI SINI) ----- */
     .feed {
-        padding-top: var(--header-h);       /* jarak di bawah header */
-		height: calc(100dvh - var(--header-h)); /* sisa layar */
+        padding-top: 0; /* Ubah ke 0 agar item menempel ke header */
+        height: calc(100dvh - 60px); /* 60px adalah tinggi top-bar mobile */
         overflow-y: auto;
         scroll-snap-type: y mandatory;
         -webkit-overflow-scrolling: touch;
@@ -430,15 +412,15 @@ body {
 
     .item {
         position: relative;
-         height: 100%; 
-		width: 100%;
+        height: 100%; 
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
-        padding: 20px 15px;
+        justify-content: center; /* Ubah ke center agar gambar di tengah */
+        padding: 0; /* HAPUS padding 20px agar tidak mendorong gambar */
         scroll-snap-align: start;
-        background: none;
+        background: #000;
         border: none;
         transform: none;
         animation: none;
@@ -449,47 +431,52 @@ body {
 
     .media-container {
         position: relative;
-        aspect-ratio: 9 / 16;
+        /* Menggunakan aspect-ratio atau kalkulasi tinggi agar tidak terpotong */
         width: 100%;
+        height: 100%; /* Paksa memenuhi container item */
         max-height: 100%;
-        border-radius: 20px;
+        border-radius: 0; /* Ubah ke 0 jika ingin full screen tanpa border */
         overflow: hidden;
         z-index: 1;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        border: none;
+        box-shadow: none;
     }
 
     .media-container img {
         width: 100%;
-		height: 100%;
-		object-fit: cover;  /* gambar fill kotak */
+        height: 100%;
+        object-fit: cover; /* Menghindari gambar nanggung/bolong di pinggir */
         background: #111;
     }
 
-    /* ----- CONTENT OVERLAY ----- */
+    /* ----- CONTENT OVERLAY (Tetap Sama) ----- */
     .content-container {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        padding: 50px 15px 15px;
-        pointer-events: auto;
+        padding: 60px 15px 20px; /* Tambah padding atas untuk gradasi */
+        pointer-events: none;
         z-index: 10;
         background: linear-gradient(
             to top, 
-            rgba(0,0,0,0.9) 0%, 
-            rgba(0,0,0,0.5) 60%, 
+            rgba(0,0,0,1) 0%, 
+            rgba(0,0,0,0.5) 50%, 
             transparent 100%
         );
+    }
+
+    /* Aktifkan klik hanya untuk elemen di dalam container */
+    .content-container h3, 
+    .content-container .prompt-preview,
+    .content-container .actions {
+        pointer-events: auto;
     }
 
     .content-container h3 {
         font-size: 0.95rem;
         margin-bottom: 4px;
         color: #fff;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
         text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
@@ -504,11 +491,11 @@ body {
         overflow: hidden;
     }
 
-    /* ----- ACTION BUTTONS ----- */
+    /* ----- ACTION BUTTONS (Tetap Sama) ----- */
     .actions {
         display: flex;
         flex-direction: row;
-        gap: 5px;
+        gap: 8px;
         width: 100%;
         margin-top: 10px;
     }
@@ -516,41 +503,30 @@ body {
     .actions .btn,
     .actions .like-badge-index {
         flex: 1;
-        height: 34px;
-        font-size: 10px;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(8px);
+        height: 38px; /* Sedikit lebih tinggi agar mudah di-tap jari */
+        font-size: 11px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
         border: 1px solid rgba(255,255,255,0.2);
+        display: flex;
+        align-items: center;
         justify-content: center;
         color: #fff;
     }
 
-    .btn-share { flex: 0 0 38px; }
+    .btn-share { flex: 0 0 45px !important; }
 
-    /* ----- DISABLE HOVER MOBILE ----- */
-    .item:hover,
-    .item:active,
-    .item:focus,
-    .item:hover .media-container,
-    .item:active .media-container,
+    /* ----- DISABLE HOVER & HIDE ELEMENTS (Tetap Sama) ----- */
+    .item:hover, .item:active, .item:focus,
+    .item:hover .media-container, .item:active .media-container,
     .item:hover .media-container img {
-        transform: none;
-        animation: none;
-        filter: brightness(1);
-        opacity: 1;
+        transform: none; animation: none; filter: brightness(1); opacity: 1;
     }
 
-    .media-container::before,
-    .media-container::after { display: none; }
-
-    .nav-controls-bottom,
-    .floating-stack,
-    .preview-badge { display: none; }
-
+    .media-container::before, .media-container::after { display: none; }
+    .nav-controls-bottom, .floating-stack, .preview-badge { display: none; }
 }
-
-
 /* ============================================================
     4. KOMPONEN UTAMA (TOMBOL & BADGE)
    ============================================================ */
