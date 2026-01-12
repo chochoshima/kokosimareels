@@ -46,8 +46,16 @@
         </a>
 		<button class="btn-skin-toggle" id="themeToggle">🌙/☀️</button>
     </div>
+	
 </header>
-
+<div class="nav-controls-bottom">
+    <button class="nav-btn prev" onclick="document.querySelector('.feed').scrollBy({left: -400, behavior: 'smooth'})">
+        <i class="fas fa-chevron-left"></i> Prev
+    </button>
+    <button class="nav-btn next" onclick="document.querySelector('.feed').scrollBy({left: 400, behavior: 'smooth'})">
+        Next <i class="fas fa-chevron-right"></i>
+    </button>
+</div>
 <main class="feed" id="main-feed"></main>
 
 <script src="data.js"></script>
@@ -120,7 +128,6 @@ function generateFeed(keysToRender = null) {
             section.id = id;
             section.innerHTML = `
                 <div class="media-container">
-                    <div class="like-badge-index">❤️ <span id="idx-like-${id}">...</span></div>
                     <img src="images/${id}.webp" alt="${data.title}" loading="lazy" decoding="async"
                     onerror="this.onerror=null;this.src='images/${id}.jpg';">
                 </div>
@@ -131,6 +138,9 @@ function generateFeed(keysToRender = null) {
                         <a class="${btnClass}" href="${btnHref}" target="_blank">${btnLabel}</a>
                         <a class="btn btn-outline" href="prompt.html?id=${id}">PROMPT</a>
                         <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗</button>
+						<div class="like-badge-inline">
+						❤️ <span id="idx-like-${id}">...</span>
+						</div>
                     </div>
                 </div>
             `;
