@@ -192,19 +192,18 @@ body {
    ============================================================ */
 @media (min-width: 1024px) {
     /* Mengubah container jadi baris menyamping */
-    @media (min-width: 1024px) {
     .feed {
         display: flex; 
         flex-direction: row;
-        align-items: center; 
-        gap: 50px; 
+        align-items: center; /* Kartu di tengah vertikal */
+        gap: 20px;           /* Jarak antar kolom lebih lega */
         padding: 0 100px; 
         height: calc(100vh - var(--header-h));
         overflow-x: auto;
+        overflow-y: hidden;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
-        /* FIX: Gunakan variabel, jangan dikunci #000 */
-        background: var(--bg-color); 
+        background: var(--bg-color);
     }
 
     /* Hilangkan scrollbar di Chrome/Safari agar bersih */
@@ -789,90 +788,73 @@ body, .top-bar, .btn-ai-nav, .btn-skin-toggle, .item,
 .dark-theme .media-container::after { background: transparent; }
 
 /* ============================================================
-   3. LIGHT THEME OVERRIDE (Biru - Putih - Terang) - FIXED
+   3. LIGHT THEME OVERRIDE (Biru - Putih - Terang) - MOBILE FRIENDLY
    ============================================================ */
 .light-theme {
-    --bg-color: #f8fafc;        /* Latar belakang abu sangat muda */
-    --accent: #0284c7;          /* Biru laut untuk aksen */
-    --text-color: #1e293b;      /* Biru gelap (hampir hitam) agar teks terbaca */
-    --text-muted: #475569;      /* Abu-abu gelap untuk deskripsi */
+    --bg-color: #f8fafc;        /* Latar belakang terang */
+    --accent: #0284c7;
+    --text-color: #1e293b;      /* Teks gelap agar terbaca */
+    --text-muted: #475569;
     --glass-bg: rgba(255, 255, 255, 0.85);
     --glass-border: rgba(0, 0, 0, 0.1);
     --play-icon: #0284c7;
-    --border: rgba(0, 0, 0, 0.1); /* Timpa border transparan agar terlihat */
+    --border: rgba(0, 0, 0, 0.1);
 }
 
-/* --- UI Dasar --- */
-.light-theme .top-bar { 
-    background: var(--glass-bg) !important; 
-    border-bottom-color: var(--glass-border) !important;
-}
+/* --- FIX GLOBAL LIGHT THEME --- */
+.light-theme body { background: var(--bg-color); color: var(--text-color); }
 
-.light-theme .logo-text { background: var(--light-grad); filter: brightness(0.8); }
+/* --- HEADER & INPUT --- */
+.light-theme .top-bar { background: var(--glass-bg) !important; border-bottom: 1px solid var(--glass-border); }
+.light-theme #searchInput { color: #000 !important; background: #fff !important; border: 1px solid #cbd5e1 !important; }
+.light-theme .nav-social { color: #1e293b !important; background: #fff !important; border: 1px solid #e2e8f0 !important; }
 
-.light-theme .btn-skin-toggle { 
-    background: #e2e8f0; 
-    color: #020617; 
-    border: 1px solid rgba(0,0,0,0.1);
-}
-
-/* --- Kartu & Feed --- */
-.light-theme .feed { background: var(--bg-color) !important; }
-
+/* --- PERBAIKAN KARTU (PENTING AGAR TIDAK KACAU) --- */
 .light-theme .item { 
-    background: #ffffff !important; 
-    border: 1px solid rgba(0,0,0,0.08) !important;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05) !important;
+    /* JANGAN gunakan background solid agar layout mobile tetap floating */
+    background: transparent !important; 
+    border: none !important;
+    box-shadow: none !important;
 }
 
-/* Light Text & UI Fixes (Readability) */
+/* Hanya beri background putih pada media-container jika di DESKTOP */
+@media (min-width: 1024px) {
+    .light-theme .media-container {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+}
+
+/* --- TEKS DI ATAS GAMBAR (Tetap Putih agar terbaca di gradasi) --- */
 .light-theme .content-container h3 { 
-    color: #ffffff !important; /* Judul tetap putih karena ada gradasi gelap di gambar */
+    color: #ffffff !important; 
     text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
 }
-
-.light-theme .prompt-preview { 
-    color: rgba(255, 255, 255, 0.8) !important; /* Prompt di atas gambar tetap terang */
+.light-theme .content-container .prompt-preview { 
+    color: rgba(255,255,255,0.8) !important; 
 }
 
-/* Input & Navigasi */
-.light-theme #searchInput { 
-    color: #0f172a !important; 
-    background: #ffffff !important; 
-    border: 1px solid #cbd5e1 !important; 
-}
-
-.light-theme #searchInput::placeholder { color: #94a3b8; }
-
-.light-theme .nav-social { 
+/* --- TOMBOL AKSI (MOBILE & DESKTOP) --- */
+.light-theme .actions .btn { 
     color: #1e293b !important; 
     background: #ffffff !important; 
-    border: 1px solid #e2e8f0 !important;
+    border: 1px solid #cbd5e1 !important;
 }
-
-.light-theme .nav-social i { color: var(--accent) !important; }
-
-/* Tombol Aksi */
-.light-theme .btn { 
-    color: #1e293b !important; 
-    background: #f1f5f9 !important; 
-    border: 1px solid #e2e8f0 !important;
-}
-
-.light-theme .btn-primary { 
+.light-theme .actions .btn-primary { 
     color: #ffffff !important; 
     background: var(--accent) !important; 
     border: none !important;
 }
-
-.light-theme .nav-btn { color: #1e293b !important; }
-
-/* Media Player */
-.light-theme .media-container::before { 
-    color: #ffffff; /* Icon play tetap putih agar kontras di gambar */
-    filter: drop-shadow(0 0 10px rgba(0,0,0,0.3)); 
+.light-theme .like-badge-index, 
+.light-theme .like-badge-inline {
+    background: rgba(2, 132, 199, 0.1) !important;
+    color: var(--accent) !important;
+    border: 1px solid rgba(2, 132, 199, 0.2) !important;
 }
 
+/* Navigasi Bawah */
+.light-theme .nav-btn { color: #1e293b !important; }
 /* ============================================================
    4. MOBILE & COMPONENT FIXES
    ============================================================ */
