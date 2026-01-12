@@ -195,14 +195,15 @@ body {
     .feed {
         display: flex; 
         flex-direction: row;
-        align-items: flex-start; /* Kartu mulai dari atas */
-        gap: 25px;
-        padding: 40px 60px; 
+        align-items: center; /* Kartu di tengah vertikal */
+        gap: 20px;           /* Jarak antar kolom lebih lega */
+        padding: 0 100px; 
         height: calc(100vh - var(--header-h));
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
+        background: #000;    /* Background gelap agar gambar 'pop out' */
     }
 
     /* Hilangkan scrollbar di Chrome/Safari agar bersih */
@@ -210,105 +211,127 @@ body {
         display: none;
     }
 
+    /* ITEM CONTAINER: Dibuat transparan agar gambar & tombol melayang rapi */
     .item {
         position: relative;
-        flex: 0 0 280px; /* Sedikit lebih ramping agar 9:16 tetap cantik */
-        height: 75vh;    /* Dikurangi dari 85vh agar tombol muat di bawah */
+        flex: 0 0 320px;
+        /* UBAH: Hapus margin-bottom jika ada agar tidak mendorong navigasi */
+        margin-bottom: 0; 
         display: flex;
         flex-direction: column;
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        overflow: hidden;
+        background: transparent !important;
+        border: none !important;
+        overflow: visible;
         scroll-snap-align: center;
-        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        margin-bottom: 80px; /* Ruang kosong cadangan */
+        transition: transform 0.4s ease;
     }
 
-    /* PERBAIKAN: Efek redup hanya aktif jika kursor berada DI ATAS kartu */
-    /* Menggunakan :has agar feed hanya bereaksi saat item disentuh */
-    .feed:has(.item:hover) .item:not(:hover) {
-        opacity: 0.5;
-        transform: scale(0.9);
-    }
-
-    .feed .item:hover {
-        opacity: 1 !important;
-        transform: scale(1.05) !important;
-        border-color: var(--accent);
-        z-index: 100;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-    }
-
+    /* 1. MEDIA CONTAINER (BINGKAI GAMBAR FULL) */
     .media-container {
-        position: absolute; /* Ubah dari relative ke absolute */
-        top: 0;
-        left: 0;
+        position: relative;
         width: 100%;
-        height: 100%;
-        z-index: 1; /* Di bawah teks */
+        /* Anda bisa sedikit mengecilkan tinggi gambar jika masih terasa sesak */
+        height: 460px; 
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     }
 
     .media-container img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Gambar tetap penuh tanpa gepeng */
+        object-fit: cover;  /* Gambar penuh tanpa gepeng */
+        display: block;
     }
 
-    /* 2. Buat konten (judul & prompt) mengapung di bawah */
-    /* Kontainer teks dengan gradasi tetap gelap agar teks putih selalu terbaca */
-    /* 2. Buat konten (judul & prompt) mengapung di bawah */
+    /* 2. CONTENT CONTAINER (OVERLAY TEKS DI DALAM GAMBAR) */
     .content-container {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        padding: 60px 20px 20px; 
-        background: linear-gradient(to top, 
-            rgba(0,0,0,0.9) 0%, 
-            rgba(0,0,0,0.4) 60%, 
-            transparent 100%);
+        padding: 60px 20px 25px; 
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
         z-index: 2;
         pointer-events: none;
         display: flex;
         flex-direction: column;
     }
 
-    /* PAKSA WARNA TEKS: Menjaga readability di atas gambar */
-    .content-container h3, 
-    .content-container p,
-    .content-container .prompt-preview,
-    .content-container .like-badge-index span {
-        color: #ffffff !important; 
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
-        pointer-events: auto;
+    .content-container h3 {
+        font-size: 1rem;
+        color: #fff !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        margin-bottom: 5px;
     }
 
-    /* PERBAIKAN DI SINI: Tombol & Badge Like sejajar horizontal */
-    .content-container .actions {
-        display: flex;            /* Mengaktifkan mode baris */
-        flex-direction: row;      /* Memastikan tombol ke samping */
-        align-items: center;      /* Meluruskan tinggi tombol & badge */
-        gap: 8px;                 /* Memberi jarak antar tombol */
-        margin-top: 10px;
-        pointer-events: auto;
-        flex-wrap: nowrap;        /* Mencegah badge Like turun ke bawah */
+    .content-container .prompt-preview {
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.7) !important;
+        height: auto;
+        -webkit-line-clamp: 2;
+        margin-bottom: 0;
     }
-    
-    /* Efek Hover Desktop yang sudah digabung */
-    .feed .item:hover {
-        opacity: 1 !important;
-        transform: scale(1.05) !important;
+
+    /* 3. ACTIONS (TOMBOL DI BAWAH GAMBAR - TIDAK SESAK) */
+    .actions {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 15px; /* Jarak antara gambar dan tombol */
+        padding: 0 5px;
+    }
+
+    .actions .btn, 
+    .actions .like-badge-inline {
+        flex: 1;
+        height: 40px; 
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.08); 
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .actions .btn:hover {
+        background: var(--accent);
+        color: #000;
         border-color: var(--accent);
-        z-index: 100;
-        /* Shadow gabungan: shadow kartu + glow accent */
-        box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 25px rgba(56, 189, 248, 0.4); 
+    }
+
+    /* Badge Like & Share Kotak */
+    .like-badge-inline {
+        flex: 0 0 60px !important;
+        background: rgba(255, 59, 48, 0.1) !important;
+    }
+    .btn-share {
+        flex: 0 0 42px !important;
+    }
+
+    /* Efek Hover Satu Kolom */
+    .feed:has(.item:hover) .item:not(:hover) {
+        opacity: 0.4;
+        filter: blur(1px);
+    }
+
+    .item:hover {
+        transform: translateY(-12px); /* Efek melayang ke atas */
+    }
+
+    .item:hover .media-container {
+        border-color: var(--accent);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 20px rgba(56, 189, 248, 0.2);
         animation: desktopGlow 2s infinite ease-in-out;
     }
-/* ============================================================
-   FIX: NAVIGASI SLIM TENGAH (HANYA DESKTOP)
-   ============================================================ */
+
+    /* FIX: NAVIGASI SLIM TENGAH */
     .nav-controls-bottom {
         position: fixed; bottom: 15px; left: 50%;
         transform: translateX(-50%); display: flex; gap: 25px; z-index: 10005;
@@ -316,60 +339,13 @@ body {
 
     .nav-btn {
         background: transparent !important; border: none !important;
-        color: #fff; /* Default putih */
-        font-size: 10px; font-weight: 800; letter-spacing: 2px;
+        color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 2px;
         text-transform: uppercase; cursor: pointer; opacity: 0.6;
         transition: all 0.3s ease;
     }
 
-    /* FIX: Agar terbaca di Light Theme */
-    .light-theme .nav-btn {
-        color: #1e293b !important;
-    }
-
+    .light-theme .nav-btn { color: #1e293b !important; }
     .nav-btn:hover { opacity: 1; color: var(--accent) !important; transform: scale(1.1); }
-}
-/* ============================================================
-   FIX READABILITY UNTUK LIGHT THEME (DESKTOP)
-   ============================================================ */
-
-/* 1. Tombol Facebook & Youtube di Header */
-.light-theme .nav-social {
-    color: #1e293b !important; /* Warna biru gelap agar terbaca */
-    background: rgba(0, 0, 0, 0.05) !important;
-    border-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-.light-theme .nav-social i {
-    color: #1e293b !important;
-}
-
-/* 2. Navigasi Next - Prev di Bawah */
-.light-theme .nav-btn {
-    color: #1e293b !important; /* Warna gelap agar kontras dengan bg putih */
-    opacity: 0.7;
-}
-
-.light-theme .nav-btn:hover {
-    color: var(--accent) !important; /* Tetap pakai aksen saat hover */
-    opacity: 1;
-}
-
-/* 3. Perbaikan Teks Search agar tidak hilang */
-.light-theme #searchInput {
-    color: #000 !important;
-    background: rgba(0, 0, 0, 0.05) !important;
-    border-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-.light-theme #searchInput::placeholder {
-    color: #64748b !important;
-}
-
-/* 4. Tombol Theme Toggle & AI Nav di Header */
-.light-theme .btn-skin-toggle {
-    color: #1e293b !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 /* ============================================================
    FINAL OPTIMIZED MOBILE VIEW (MAX-WIDTH: 1023PX)
