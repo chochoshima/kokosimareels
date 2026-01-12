@@ -485,6 +485,16 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "PETAKILAN",
     videoUrl: "",
     text: `Ultra-realistic cinematic cosplay photography of a real human subject (gender-neutral, fully matching the provided reference photo) dressed in a Naruto-style high-ranking Hidden Leaf Shinobi outfit faithfully recreated as real-world cosplay, captured from a very low, downward-tilted angle that creates a strong sense of vertigo, treated strictly as a photographed human model. The subject is crouching in complete stillness on a narrow, high-altitude tree branch near the upper canopy, positioned far above the forest floor, with realistic body mechanics—heels raised, knees deeply bent, core engaged—suggesting tension and balance. The branch extends out of frame, while the massive tree trunk disappears both upward and downward beyond the frame edges, eliminating any nearby ground reference. Dozens of meters below, the forest floor is barely visible through layered atmospheric haze and drifting mist, with distant treetops shrinking dramatically in scale, creating extreme depth and vertical separation. The facial expression is intensely alert and controlled—eyes narrowed with predatory focus, subtle jaw tension, compressed lips, micro brow contraction—enhanced by low-light conditions at dusk transitioning into night. Cool blue ambient shadows dominate the lower environment, while faint warm rim light from the last sunset edges the subject’s silhouette. The Naruto-accurate outfit (forest-green Jonin vest, dark navy undershirt, fitted pants, shinobi sandals, worn metallic forehead protector) is rendered in real fabrics with authentic texture and natural wind interaction. Shot on Hasselblad X1D II, 80mm lens, f/5.6 to preserve depth and scale, cinematic low-key lighting, atmospheric perspective, parallax depth cues, high-contrast color grading, true-to-life skin tones, optical realism, and an 8K ultra-realistic photographic finish.Negative prompt: low-height perspective, visible nearby ground, short trees, shallow environment depth, flat forest, floating pose, anime rendering, CGI look, cartoon proportions, plastic skin, low realism, low resolution.`
+},
+	"ai-087": {
+    title: "CHIBY",
+    videoUrl: "",
+    text: `A professional full-body chibi caricature illustration based on the provided reference face. The character has an oversized head with exaggerated yet recognizable facial features, maintaining the identical eye shape, jawline, and nose structure from the reference. The body is short and cute (chibi style) with a playful and confident pose.Face & Expression: A warm, cheerful smile with friendly, slightly enlarged expressive eyes to enhance the 'cute' aesthetic. The skin tone and facial details must blend naturally with the artistic style while preserving the person's unique identity.Outfit & Style: Wearing a modern, high-fashion streetwear ensemble: a stylish bomber jacket or trendy oversized outer, a crisp clean white t-shirt, tailored slim-fit trousers, and high-end chunky sneakers.Artistic Execution: Clean vector-style cartoon with smooth outlines and minimalist shading. Bright, harmonious color palette with a vibrant, playful atmosphere. High-resolution digital art, studio lighting, soft 2D cel-shading, fun and adorable vibe, white or simple geometric background to emphasize the character.`
+},
+"ai-088": {
+    title: "CHIBY STYLE",
+    videoUrl: "",
+    text: `A professional full-body chibi caricature illustration based on the provided reference face. The character has an oversized head with exaggerated yet recognizable facial features, maintaining the identical eye shape, jawline, and nose structure from the reference. The body is short and cute (chibi style) with a playful and confident pose.Face & Expression: A warm, cheerful smile with friendly, slightly enlarged expressive eyes to enhance the 'cute' aesthetic. The skin tone and facial details must blend naturally with the artistic style while preserving the person's unique identity.Outfit & Style: Wearing a modern, high-fashion streetwear ensemble: a stylish bomber jacket or trendy oversized outer, a crisp clean white t-shirt, tailored slim-fit trousers, and high-end chunky sneakers.Artistic Execution: Clean vector-style cartoon with smooth outlines and minimalist shading. Bright, harmonious color palette with a vibrant, playful atmosphere. High-resolution digital art, studio lighting, soft 2D cel-shading, fun and adorable vibe, white or simple geometric background to emphasize the character.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -492,6 +502,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
