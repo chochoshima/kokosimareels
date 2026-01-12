@@ -127,23 +127,24 @@ function generateFeed(keysToRender = null) {
             section.className = "item";
             section.id = id;
             section.innerHTML = `
-                <div class="media-container">
-                    <img src="images/${id}.webp" alt="${data.title}" loading="lazy" decoding="async"
-                    onerror="this.onerror=null;this.src='images/${id}.jpg';">
+    <div class="media-container">
+        <img src="images/${id}.webp" alt="${data.title}" loading="lazy" decoding="async"
+        onerror="this.onerror=null;this.src='images/${id}.jpg';">
+
+        <div class="content-container">
+            <h3 title="${data.title}">${data.title}</h3>
+            <p class="prompt-preview">${previewText}</p>
+            <div class="actions">
+                <a class="${btnClass}" href="${btnHref}" target="_blank">${btnLabel}</a>
+                <a class="btn btn-outline" href="prompt.html?id=${id}">PROMPT</a>
+                <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗</button>
+                <div class="like-badge-inline">
+                    ❤️ <span id="idx-like-${id}">...</span>
                 </div>
-                <div class="content-container">
-                    <h3 title="${data.title}">${data.title}</h3>
-                    <p class="prompt-preview">${previewText}</p>
-                    <div class="actions">
-                        <a class="${btnClass}" href="${btnHref}" target="_blank">${btnLabel}</a>
-                        <a class="btn btn-outline" href="prompt.html?id=${id}">PROMPT</a>
-                        <button class="btn btn-share" onclick="sharePrompt('${id}')">🔗</button>
-						<div class="like-badge-inline">
-						❤️ <span id="idx-like-${id}">...</span>
-						</div>
-                    </div>
-                </div>
-            `;
+            </div>
+        </div>
+    </div>
+`;
             fragment.appendChild(section);
             likeObserver.observe(section);
         } catch (err) { console.error(err); }
