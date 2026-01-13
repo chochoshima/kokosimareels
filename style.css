@@ -453,30 +453,26 @@ body {
     }
 
     .btn-share { flex: 0 0 40px !important; }
-	/* ================= MOBILE VIEW (NO TYPING) ================= */
-@media (hover: none) and (pointer: coarse) {
-
-    .play-wrapper .play-icon {
-        opacity: 0;
-        animation: pop-in 0.45s ease forwards;
-    }
-
-    .play-wrapper .play-text {
-        opacity: 0;
-        animation: fade-in 0.45s ease forwards;
-    }
-
-    @keyframes pop-in {
-        from { opacity: 0; transform: scale(0.7); }
-        to   { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes fade-in {
-        from { opacity: 0; transform: translateY(6px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
+	.media-container {
+    position: relative;
+    overflow: hidden;
 }
 
+.media-container .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45); /* lebih kontras */
+    transform: scale(0);
+    animation: ripple-wave 0.7s cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+}
+
+@keyframes ripple-wave {
+    to {
+        transform: scale(3.5);
+        opacity: 0;
+    }
+}
     /* Tetap sembunyikan elemen melayang lainnya */
     .nav-controls-bottom, .nav-social { display: none !important; }
 }
