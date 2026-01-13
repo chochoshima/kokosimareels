@@ -743,27 +743,64 @@ body, .top-bar, .btn-ai-nav, .btn-skin-toggle, .item,
 
 /* Base Style Media Hover Play */
 .media-container { position: relative; cursor: pointer; overflow: hidden; }
-.media-container::before {
-    content: "▶"; 
-    position: absolute; 
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(0.5);
-    font-size: 50px; 
-    z-index: 5; 
-    opacity: 0;
-    color: var(--play-icon);
-    /* Tambahkan drop-shadow agar logo tetap kontras di gambar terang */
-    filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)); 
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.play-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
 }
-.media-container::after {
-    content: ""; position: absolute; inset: 0; z-index: 4;
-    opacity: 0; transition: opacity 0.3s ease;
-}
-.item:hover .media-container::before { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-.item:hover .media-container::after { opacity: 1; }
-.item:hover .media-container img { transform: scale(1.08); filter: brightness(1); }
 
+/* Icon PLAY */
+.play-icon {
+    font-size: 50px;
+    color:#ffffff;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.7)) drop-shadow(0 0 4px rgba(255,255,255,0.2));
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* Tulisan Play On YouTube */
+.play-text {
+    margin-top: 8px;
+    color:#ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0; /* mulai dari 0, efek ketik */
+    border-right: 2px solid var(--text-color);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+	text-shadow: 2px 2px 6px rgba(0,0,0,0.7), 0 0 4px rgba(255,255,255,0.2);
+}
+
+/* Hover effect: ikon membesar, tulisan muncul */
+.item:hover .play-wrapper .play-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.item:hover .play-wrapper .play-text {
+    opacity: 1;
+    animation: typing 1s steps(15, end) forwards;
+}
+
+/* Keyframes typing */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 150px; } /* sesuaikan dengan panjang tulisan */
+}
+
+/* Hover overlay gambar */
+.item:hover .media-container img {
+    transform: scale(1.08);
+    filter: brightness(1);
+}
 /* ============================================================
    2. DARK THEME OVERRIDE (Ungu - Kuning - Gelap)
    ============================================================ */
