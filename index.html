@@ -127,17 +127,18 @@ function generateFeed(keysToRender = null) {
             section.className = "item";
             section.id = id;
             section.innerHTML = `
-    <div class="media-container">
-        <img src="images/${id}.webp" alt="${data.title}" loading="lazy" decoding="async"
+    <a href="https://www.youtube.com/@kokosimaabsurd/" target="_blank" rel="noopener noreferrer">
+		<div class="media-container">
+			<img src="images/${id}.webp" alt="${data.title}" loading="lazy" decoding="async"
             onerror="this.onerror=null;this.src='images/${id}.jpg';">
 
         <!-- Gradient overlay hanya untuk judul & preview -->
-        <div class="content-container">
+			<div class="content-container">
             <h3 title="${data.title}">${data.title}</h3>
             <p class="prompt-preview">${previewText}</p>
-        </div>
-    </div>
-
+			</div>
+		</div>
+	</a>
     <!-- Tombol/actions di bawah media-container -->
     <div class="actions">
         <a class="${btnClass}" href="${btnHref}" target="_blank">${btnLabel}</a>
