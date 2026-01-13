@@ -131,7 +131,10 @@ function generateFeed(keysToRender = null) {
 		<div class="media-container">
 			<img src="images/${id}.webp" alt="${data.title}" loading="lazy" decoding="async"
             onerror="this.onerror=null;this.src='images/${id}.jpg';">
-
+			<div class="play-wrapper">
+				<span class="play-icon">▶</span>
+				<span class="play-text">Play On YouTube</span>
+			</div>
         <!-- Gradient overlay hanya untuk judul & preview -->
 			<div class="content-container">
             <h3 title="${data.title}">${data.title}</h3>
