@@ -306,5 +306,14 @@ themeToggleBtn.addEventListener('click', () => {
     applyTheme(current === 'light' ? 'dark' : 'light');
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const wrappers = document.querySelectorAll(".play-wrapper");
+    wrappers.forEach(wrapper => {
+        // Trigger animasi otomatis dengan delay supaya smooth
+        setTimeout(() => wrapper.classList.add("active"), 200);
+    });
+});
+</script>
 </body>
 </html>
