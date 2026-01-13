@@ -265,7 +265,7 @@ The color palette is warm and muted — cream, brown, dark red, dull green. Ligh
 },
 "ai-043": {
     title: "JAMAN BATU",
-    videoUrl: "",
+    videoUrl: "https://youtube.com/shorts/plkLJ8f9EHQ",
     text: `Ultra-realistic cinematic photograph of a person transformed into a prehistoric character, using professional prosthetic makeup based strictly on the provided photo reference. Preserve original facial identity—same eyes, nose, lips, jawline, head shape, skin tone, and hair structure from the reference photo. Subtle stone-age prosthetic enhancements only with slightly thicker brow ridge and textured skin. Outfit: One-shoulder animal-skin tunic in brown with black spotted pattern, turquoise blue animal hide necktie tied primitively around the neck, rough fur/leather texture with visible stitching. Vehicle: Authentic foot-powered stone car (Flintmobile) with large cylindrical stone wheels, frame made from rough hewn wooden beams, seats carved from stone. No modern elements. Action: Sitting and pushing the ground with feet in motion, dust kicking under stone wheels, dynamic motion. Environment: Prehistoric rocky ground and stone hills, natural warm daylight. Cinematic realism, ultra-detailed textures on stone, wood, fur, and skin, 85mm lens, shallow depth of field.`
 },
 "ai-044": {
@@ -507,6 +507,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
