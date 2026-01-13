@@ -505,6 +505,16 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "OCTAGON",
     videoUrl: "",
     text: `Candid, photorealistic sports photography of a male fighter (using exact photo reference, remove glasses completely) in a real-life freestyle boxing match inside a gritty octagon cage, actively exchanging punches with a massive, lifelike gorilla. CRITICAL: Fighter’s facial structure, jawline, eyes, nose, mouth, and proportions must exactly match the reference, no glasses, expression showing raw aggression, focus, and determination. Sweat, fine mist, minor bruises, and realistic skin abrasions visible. Fighter wears a premium red satin boxing outfit with blue professional boxing gloves.Gorilla is fully realistic: natural fur texture, visible muscles, natural skin folds, eyes showing intent and aggression, mid-punch, interacting directly with fighter. Both in real-time combat, fists connecting, bodies twisting dynamically, sweat and impact flying, subtle motion blur from actual movement.Lighting is natural stadium/cage lighting, highlighting true skin tones, sweat, and fur texture, without cinematic grading. Shot in candid photography style: spontaneous action, slightly off-center framing, shallow depth of field, blurred crowd in background, real-world imperfections included. No CGI, no digital rendering, no illustration, colors true-to-life, hyper-realistic textures, raw sports intensity`
+},
+	"ai-091": {
+    title: "POP ART",
+    videoUrl: "",
+    text: `Full-body modern dynamic pop art illustration, using the provided photo reference only for identity likeness (facial features and general proportions), fully stylized and non-photographic. The subject is sitting casually at an outdoor European sidewalk café, small round table, coffee cup, cobblestone street, café umbrellas, and classic European buildings suggested through energetic graphic forms. Rendered with bold contemporary color palettes, high-contrast gradients, expressive brush strokes, dynamic geometric shapes, layered textures, and clean yet energetic outlines, with no skin texture, no realistic lighting, no photographic details, and no photo-pasted look. The pose feels lively and stylish, with motion implied through color flow and shape direction. Outfit is modern, elegant, and fashion-forward, integrated seamlessly into the illustration. The entire scene feels like a contemporary pop art poster or digital art piece, vibrant, urban, and expressive, with a subtly hidden`
+},
+"ai-092": {
+    title: "POPularART",
+    videoUrl: "",
+    text: `Full-body modern dynamic pop art illustration, using the provided photo reference only for identity likeness (facial features and general proportions), fully stylized and non-photographic. The subject is sitting casually at an outdoor European sidewalk café, small round table, coffee cup, cobblestone street, café umbrellas, and classic European buildings suggested through energetic graphic forms. Rendered with bold contemporary color palettes, high-contrast gradients, expressive brush strokes, dynamic geometric shapes, layered textures, and clean yet energetic outlines, with no skin texture, no realistic lighting, no photographic details, and no photo-pasted look. The pose feels lively and stylish, with motion implied through color flow and shape direction. Outfit is modern, elegant, and fashion-forward, integrated seamlessly into the illustration. The entire scene feels like a contemporary pop art poster or digital art piece, vibrant, urban, and expressive, with a subtly hidden`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -512,6 +522,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
