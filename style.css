@@ -456,20 +456,21 @@ body {
 	.media-container {
     position: relative;
     overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .media-container .ripple {
     position: absolute;
     border-radius: 50%;
-    background: rgba(255,255,255,0.45); /* lebih kontras */
+    background: rgba(255,255,255,.35);
     transform: scale(0);
-    animation: ripple-wave 0.7s cubic-bezier(.4,0,.2,1);
+    animation: ripple .6s ease-out;
     pointer-events: none;
 }
 
-@keyframes ripple-wave {
+@keyframes ripple {
     to {
-        transform: scale(3.5);
+        transform: scale(4);
         opacity: 0;
     }
 }
