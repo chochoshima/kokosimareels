@@ -453,7 +453,18 @@ body {
     }
 
     .btn-share { flex: 0 0 40px !important; }
+	.play-wrapper .play-icon {
+    animation: pop-in 0.5s ease forwards;
+}
 
+@keyframes pop-in {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.play-wrapper .play-text {
+    animation: typing 1s steps(15, end) 0.5s forwards; /* delay 0.5s setelah ikon */
+}
     /* Tetap sembunyikan elemen melayang lainnya */
     .nav-controls-bottom, .nav-social { display: none !important; }
 }
