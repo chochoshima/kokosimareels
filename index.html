@@ -328,5 +328,21 @@ if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
 
 }
 </script>
+	<script>
+const feedEl = document.getElementById('main-feed');
+
+// Hanya desktop
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && feedEl) {
+    feedEl.addEventListener('wheel', e => {
+        e.preventDefault(); // cegah scroll vertikal default
+
+        // Geser horizontal sesuai arah scroll mouse
+        feedEl.scrollBy({
+            left: e.deltaY, // deltaY dipakai untuk geser horizontal
+            behavior: 'smooth'
+        });
+    }, { passive: false }); // passive false supaya preventDefault jalan
+}
+</script>
 </body>
 </html>
