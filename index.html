@@ -307,33 +307,46 @@ themeToggleBtn.addEventListener('click', () => {
 });
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const wrappers = document.querySelectorAll(".play-wrapper");
-
-    wrappers.forEach(wrapper => {
-        const icon = wrapper.querySelector('.play-icon');
-        const text = wrapper.querySelector('.play-text');
-
-        // Tampilkan ikon
-        icon.style.opacity = 1;
-        icon.style.transform = 'scale(1)';
-
-        // Animasi ketik manual via JS
-        const fullText = text.textContent;
-        text.textContent = '';
-        text.style.opacity = 1;
-        let index = 0;
-        const typingSpeed = 100; // ms per karakter
-
-        function typeChar() {
-            if (index < fullText.length) {
-                text.textContent += fullText[index];
-                index++;
-                setTimeout(typeChar, typingSpeed);
-            }
+// Fungsi ketik manual
+function typeText(textEl, speed = 100) {
+    const fullText = textEl.textContent;
+    textEl.textContent = '';
+    let index = 0;
+    function typeChar() {
+        if (index < fullText.length) {
+            textEl.textContent += fullText[index];
+            index++;
+            setTimeout(typeChar, speed);
         }
-        typeChar();
+    }
+    typeChar();
+}
+
+// Intersection Observer untuk memicu animasi setiap elemen muncul di viewport
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const wrapper = entry.target;
+            const icon = wrapper.querySelector('.play-icon');
+            const text = wrapper.querySelector('.play-text');
+
+            // Animasi ikon
+            icon.style.opacity = 1;
+            icon.style.transform = 'scale(1)';
+
+            // Animasi teks ketik
+            text.style.opacity = 1;
+            typeText(text, 100);
+
+            // Stop observing setelah animasi jalan
+            observer.unobserve(wrapper);
+        }
     });
+}, { threshold: 0.5 }); // trigger saat 50% elemen terlihat
+
+// Mendaftar semua elemen play-wrapper
+document.querySelectorAll('.play-wrapper').forEach(wrapper => {
+    observer.observe(wrapper);
 });
 </script>
 </body>
