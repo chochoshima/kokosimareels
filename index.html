@@ -307,47 +307,26 @@ themeToggleBtn.addEventListener('click', () => {
 });
 </script>
 <script>
-// Fungsi ketik manual
-function typeText(textEl, speed = 100) {
-    const fullText = textEl.textContent;
-    textEl.textContent = '';
-    let index = 0;
-    function typeChar() {
-        if (index < fullText.length) {
-            textEl.textContent += fullText[index];
-            index++;
-            setTimeout(typeChar, speed);
-        }
-    }
-    typeChar();
-}
+if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
 
-// Intersection Observer untuk memicu animasi setiap elemen muncul di viewport
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const wrapper = entry.target;
-            const icon = wrapper.querySelector('.play-icon');
-            const text = wrapper.querySelector('.play-text');
+    document.querySelectorAll('.media-container').forEach(el => {
+        el.addEventListener('pointerdown', e => {
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
 
-            // Animasi ikon
-            icon.style.opacity = 1;
-            icon.style.transform = 'scale(1)';
+            const rect = el.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
 
-            // Animasi teks ketik
-            text.style.opacity = 1;
-            typeText(text, 100);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+            ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
 
-            // Stop observing setelah animasi jalan
-            observer.unobserve(wrapper);
-        }
+            el.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
     });
-}, { threshold: 0.5 }); // trigger saat 50% elemen terlihat
 
-// Mendaftar semua elemen play-wrapper
-document.querySelectorAll('.play-wrapper').forEach(wrapper => {
-    observer.observe(wrapper);
-});
+}
 </script>
 </body>
 </html>
