@@ -309,9 +309,30 @@ themeToggleBtn.addEventListener('click', () => {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const wrappers = document.querySelectorAll(".play-wrapper");
+
     wrappers.forEach(wrapper => {
-        // Trigger animasi otomatis dengan delay supaya smooth
-        setTimeout(() => wrapper.classList.add("active"), 200);
+        const icon = wrapper.querySelector('.play-icon');
+        const text = wrapper.querySelector('.play-text');
+
+        // Tampilkan ikon
+        icon.style.opacity = 1;
+        icon.style.transform = 'scale(1)';
+
+        // Animasi ketik manual via JS
+        const fullText = text.textContent;
+        text.textContent = '';
+        text.style.opacity = 1;
+        let index = 0;
+        const typingSpeed = 100; // ms per karakter
+
+        function typeChar() {
+            if (index < fullText.length) {
+                text.textContent += fullText[index];
+                index++;
+                setTimeout(typeChar, typingSpeed);
+            }
+        }
+        typeChar();
     });
 });
 </script>
