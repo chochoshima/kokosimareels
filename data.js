@@ -540,6 +540,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "ASCII PORTRAIT",
     videoUrl: "",
     text: `Create a waist-up wide shot image showing the subject from head to waist clearly visible, with balanced framing that gives equal visual importance to body, clothing, and pose, not focusing on the face. Use ONE provided reference photo strictly to match facial identity only, without emphasizing facial details. The image must fill the frame edge-to-edge with no borders or margins.The human figure is constructed from extremely dense, complex, layered ASCII-like character textures, rendered entirely as an image, not real text and not readable typography. The character textures act purely as visual shading and surface detail, tightly packed and chaotic, forming depth across skin, hair, and outfit, never aligning into readable letters, words, rows, or text blocks.Style: high-contrast grayscale, cinematic directional lighting, strong depth and contrast across the entire body area, not face-centric.Pose & styling: dynamic waist-up body posture, natural movement (torso twist, relaxed arms, confident stance), wearing a modern, fashionable editorial outfit with visible texture across the clothing.Quality: ultra-detailed, realistic, cohesive image.STRICT NEGATIVE RULES:No close-up, no face-only framing, no head-and-shoulders shot, no portrait crop, no readable text, no titles, no captions, no logos, no watermarks, no typographic elements.`
+},
+	"ai-098": {
+    title: "ASCII TWO",
+    videoUrl: "",
+    text: `Create a waist-up wide shot image of TWO human models, framed edge-to-edge with no borders or margins, using TWO separate reference photos with each model’s facial identity preserved exactly according to their own photo, no mixing or blending. The male model should have a confident, authoritative posture, and the female model should have a feminine, elegant posture with a slight smile, both depicted waist-up with natural, dynamic body language. Render both figures as extremely dense, complex ASCII-like character textures, tightly packed, layered, and intricate across skin, hair, and clothing, functioning purely as visual shading and surface detail, never forming readable letters, words, rows, or typographic blocks. Style: high-contrast grayscale, cinematic lighting, strong depth and contrast across both bodies. Fashion: modern editorial outfits matching each model’s gender, with textures formed by dense character patterns. Composition can be symmetrical or asymmetrical, showing natural interaction or connection, ultra-detailed, cohesive, and realistic. STRICT NEGATIVE RULES: no close-up, no face-only framing, no portrait crop, no readable text, no typography, no titles, no captions, no logos, no watermarks.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -547,6 +552,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
