@@ -515,6 +515,21 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "POPularART",
     videoUrl: "",
     text: `Full-body modern dynamic pop art illustration, using the provided photo reference only for identity likeness (facial features and general proportions), fully stylized and non-photographic. The subject is sitting casually at an outdoor European sidewalk café, small round table, coffee cup, cobblestone street, café umbrellas, and classic European buildings suggested through energetic graphic forms. Rendered with bold contemporary color palettes, high-contrast gradients, expressive brush strokes, dynamic geometric shapes, layered textures, and clean yet energetic outlines, with no skin texture, no realistic lighting, no photographic details, and no photo-pasted look. The pose feels lively and stylish, with motion implied through color flow and shape direction. Outfit is modern, elegant, and fashion-forward, integrated seamlessly into the illustration. The entire scene feels like a contemporary pop art poster or digital art piece, vibrant, urban, and expressive, with a subtly hidden`
+},
+	"ai-093": {
+    title: "UNnatural",
+    videoUrl: "",
+    text: `Foto ultra-realistis resolusi tinggi menampilkan seorang individu berdiri menghadap kamera dengan ekspresi fokus dan serius, kepala sedikit menoleh ke kiri, bergaya kasual namun modis (jaket denim dan celana chino), diambil menggunakan Hasselblad X1D II dengan lensa f/1.4. Latar hutan belantara dipenuhi pohon-pohon raksasa menjulang tinggi, di mana ranting-ranting yang sangat lebat dan saling beririsan membentuk pola fractal bercabang yang berulang, secara visual menyatu membentuk struktur menyerupai pola hexagonal alami—terlihat pada sela-sela antar cabang dan ruang negatif di kanopi, menciptakan jaringan geometris organik yang kompleks namun tetap realistis, menjadikan pola ini sebagai subjek visual kedua setelah manusia. Komposisi golden ratio dengan sudut dinamis worm-view dari bawah menempatkan individu di foreground sementara kanopi bercabang fractal–hexagonal mendominasi area atas frame, memperkuat skala, kedalaman, dan perspektif heroik. Pencahayaan sinematik dramatis tetap alami, difilter oleh kanopi rapat tanpa efek cahaya buatan, menonjolkan tekstur kulit kayu, cabang, dan dedaunan serta mempertegas ritme visual pola fractal–hexagonal yang terbaca jelas. Rekonstruksi wajah organik dari foto referensi wajib dipertahankan sepenuhnya—bentuk mata, hidung, bibir, dan garis rahang tidak berubah—dengan wajah terintegrasi sempurna ke dalam adegan, pencahayaan wajah, bayangan, dan suhu warna kulit konsisten dengan lingkungan hutan, tanpa kesan tempelan, menghasilkan visual sinematik yang kohesif, hidup, dan imersif.`
+},
+"ai-094": {
+    title: "UNnatural2",
+    videoUrl: "",
+    text: `A hyper-realistic, ultra-high-resolution cinematic photograph of a focused individual standing in a primeval wilderness. Shot on Hasselblad X1D II, 35mm f/1.4 lens, low-angle worm-eye perspective to emphasize heroic scale. The person wears a high-texture raw denim jacket and tailored khaki chinos, head slightly turned to the left with a sharp, serious gaze. The environment features gargantuan ancient trees with an impossibly dense canopy. The branches exhibit a hyper-detailed natural fractal branching pattern, creating a mesmerizing organic geometric network that forms distinct hexagonal patterns in the negative space. Cinematic natural lighting filtered through the thick fractal canopy, creating intricate dapple shadows and high-contrast highlights on the bark's texture. Perfect organic facial reconstruction from reference photo; eyes, nose, lips, and jawline must remain 100% identical to the source. Skin tones, shadows, and color temperature on the face are flawlessly integrated with the forest’s mossy green and earthy brown atmosphere. 8k resolution, photorealistic, deep depth of field.`
+},
+"ai-095": {
+    title: "PLAYFUL JOURNEY",
+    videoUrl: "",
+    text: `A hyper-realistic, ultra-high-resolution cinematic photograph featuring two individuals standing extremely close, interacting playfully like longtime friends—one laughing while lightly nudging the other’s shoulder, the other responding with a half-smile and amused expression, bodies slightly angled toward each other, creating a sense of motion and spontaneity. Shot on a Hasselblad X1D II with a 35mm f/1.4 lens using a dramatic low-angle worm-eye perspective to emphasize heroic scale while maintaining intimacy. Both wear high-texture raw denim jackets and tailored khaki chinos with visible fabric grain and natural wrinkles. The primeval wilderness is dominated by gargantuan ancient trees and an impossibly dense canopy, where hyper-detailed natural fractal branching patterns interlock organically, forming a mesmerizing geometric network with clearly readable hexagonal shapes in the negative space, acting as a strong secondary subject after the human interaction. Cinematic natural lighting filters through the thick fractal canopy, creating lively dappled shadows and high-contrast highlights that accentuate expressive faces, bark texture, and moss-covered branches. Perfect organic facial reconstruction from each respective reference photo is mandatory—eyes, nose, lips, and jawline remain 100% identical—while skin tones, shadows, and color temperature blend flawlessly with the forest’s mossy greens and earthy browns, with zero cutout or pasted look. 8K resolution, photorealistic, deep depth of field, immersive cinematic realism.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -522,6 +537,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
