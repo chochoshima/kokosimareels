@@ -198,7 +198,7 @@ body {
         align-items: center; /* Kartu di tengah vertikal */
         gap: 20px;           /* Jarak antar kolom lebih lega */
         padding: 0 100px; 
-        height: calc(100vh - var(--header-h));
+        height: calc(95vh - var(--header-h));
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
@@ -331,18 +331,57 @@ body {
         animation: desktopGlow 2s infinite ease-in-out;
     }
 
-    /* FIX: NAVIGASI SLIM TENGAH */
-    .nav-controls-bottom {
-        position: fixed; bottom: 15px; left: 50%;
-        transform: translateX(-50%); display: flex; gap: 25px; z-index: 10005;
+    .pagination {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
     }
 
-    .nav-btn {
-        background: transparent !important; border: none !important;
-        color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 2px;
-        text-transform: uppercase; cursor: pointer; opacity: 0.6;
+    .pagination span {
+        font-size: 12px;
+        color: #fff;
+        opacity: 0.6;
+        font-weight: 400;
+        cursor: pointer;
         transition: all 0.3s ease;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: rgba(255,255,255,0.05);
     }
+
+    .pagination span.active {
+        font-weight: 800;
+        opacity: 1;
+        background: var(--accent);
+    }
+
+    .pagination span:hover {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+	.nav-controls-bottom {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 25px;
+    z-index: 10005;
+}
+
+.nav-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
 
     .light-theme .nav-btn { color: #1e293b !important; }
     .nav-btn:hover { opacity: 1; color: var(--accent) !important; transform: scale(1.1); }
