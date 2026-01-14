@@ -49,16 +49,13 @@
 	
 </header>
 <div class="nav-controls-bottom">
-    <button class="nav-btn prev" onclick="document.querySelector('.feed').scrollBy({left: -400, behavior: 'smooth'})">
-        <i class="fas fa-chevron-left"></i> Prev
-    </button>
-    <button class="nav-btn next" onclick="document.querySelector('.feed').scrollBy({left: 400, behavior: 'smooth'})">
-        Next <i class="fas fa-chevron-right"></i>
-    </button>
+    <button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Prev</button>
+    <div class="pagination"></div>
+    <button class="nav-btn next">Next <i class="fas fa-chevron-right"></i></button>
 </div>
 <main class="feed" id="main-feed"></main>
-
 <script src="data.js"></script>
+<script src="feed-pagination.js" defer></script>
 <script>
 const WORKER_URL = "https://visitor-counter.kokopujiyanto.workers.dev";
 const CHANNEL_YOUTUBE = "https://youtube.com/@kokosimaabsurd";
