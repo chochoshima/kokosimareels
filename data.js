@@ -560,6 +560,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "KINGKONG pendrive",
     videoUrl: "",
     text: `Using a photo reference of the same person, depict a man inside a computer accessories store wearing a plain t-shirt, jeans, and a backpack. Facial features must closely match the reference photo, same person, identical facial structure. The scene is captured in a candid, unstaged moment, natural posture, not a modeling pose. He is holding an extremely oversized flash drive still in sealed blister packaging, parody brand “KINGKONG”, with a bold King Kong gorilla head logo. The flash drive design clearly resembles early 2000s USB flash drives: thick rectangular body, rounded edges, matte plastic casing, visible USB-A connector with metal cap, small indicator LED, simple industrial look. The packaging layout and color scheme closely resemble early-2000s memory packaging style, but no Kingston text, no real brand names, all branding replaced with KINGKONG. The product appears brand new, ultra-detailed plastic and cardboard textures. The size is absurdly large compared to his hands and body, yet photographed in a highly realistic documentary-style photo, natural indoor electronics store lighting, realistic shadows, subtle depth of field, no cinematic exaggeration, no stylized look.`
+},
+	"ai-102": {
+    title: "LONG DIMM",
+    videoUrl: "",
+    text: `Using a photo reference of the same person, depict a man sitting at a work desk in a computer repair or PC build environment. Facial features must closely match the reference photo—same person, identical facial structure, no face alteration. He is seated naturally (not posing), focused on his task.On the desk in front of him is a desktop PC with the CPU casing fully opened and partially disassembled: visible motherboard, empty RAM slots, exposed cables, cooling fan, and metal chassis. The scene feels candid and documentary-like, as if captured mid-repair.The man is holding an absurdly oversized long DIMM RAM module with both hands. The RAM design clearly resembles classic desktop DDR memory sticks: elongated PCB shape, visible gold contact pins, multiple black memory chips aligned in rows, simple industrial electronics look. No real-world brand names—use a parody generic label only (optional subtle fictional marking), no Kingston, Corsair, or other real brands.The RAM size is unrealistically large compared to his hands and body, yet photographed in a highly realistic manner, maintaining correct perspective and lighting. Textures of PCB, chips, metal pins, and dust inside the PC case are ultra-detailed.Lighting is natural indoor workshop lighting—soft fluorescent or ambient room light, realistic shadows, slight depth of field. The overall style is realistic documentary photography, unstaged, non-cinematic, non-stylized, no dramatic angles. Everything should look believable except for the intentionally oversized RAM.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -567,6 +572,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
