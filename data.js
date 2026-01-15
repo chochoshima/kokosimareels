@@ -555,6 +555,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "8mb",
     videoUrl: "",
     text: `Seorang pria dewasa menggunakan foto referensi, mengenakan kemeja putih khas pekerja kantoran, berjalan normal di antara partisi ruang kantor modern dengan gerakan candid alami, seolah tertangkap kamera tanpa disengaja. Ia membawa sebuah disket merah dengan bentuk, detail, dan rasio yang sama persis seperti disket standar, termasuk sudut membulat, lubang logam, dan label persegi, tanpa distorsi bentuk sama sekali, namun ukurannya sangat besar, tidak masuk akal secara skala, jauh lebih besar dari tubuh manusia. Disket diperlakukan seperti alat kerja biasa, tanpa pose dramatis, ekspresi netral fokus pada aktivitas, tidak melihat kamera. Kantor sibuk di Jakarta, karyawan lain berlalu-lalang, meja kerja dengan komputer menyala, dokumen menumpuk. Gaya fotografi dokumenter, indoor street photography, pencahayaan kantor natural bercampur cahaya siang, warna realistis dengan merah disket sangat dominan, depth of field alami, photorealistic, absurd realism, illogical scale but correct proportions, unposed, candid moment.`
+},
+	"ai-101": {
+    title: "KINGKONG pendrive",
+    videoUrl: "",
+    text: `Using a photo reference of the same person, depict a man inside a computer accessories store wearing a plain t-shirt, jeans, and a backpack. Facial features must closely match the reference photo, same person, identical facial structure. The scene is captured in a candid, unstaged moment, natural posture, not a modeling pose. He is holding an extremely oversized flash drive still in sealed blister packaging, parody brand “KINGKONG”, with a bold King Kong gorilla head logo. The flash drive design clearly resembles early 2000s USB flash drives: thick rectangular body, rounded edges, matte plastic casing, visible USB-A connector with metal cap, small indicator LED, simple industrial look. The packaging layout and color scheme closely resemble early-2000s memory packaging style, but no Kingston text, no real brand names, all branding replaced with KINGKONG. The product appears brand new, ultra-detailed plastic and cardboard textures. The size is absurdly large compared to his hands and body, yet photographed in a highly realistic documentary-style photo, natural indoor electronics store lighting, realistic shadows, subtle depth of field, no cinematic exaggeration, no stylized look.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -562,6 +567,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
