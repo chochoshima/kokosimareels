@@ -545,6 +545,16 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "ASCII TWO",
     videoUrl: "",
     text: `Create a waist-up wide shot image of TWO human models, framed edge-to-edge with no borders or margins, using TWO separate reference photos with each model’s facial identity preserved exactly according to their own photo, no mixing or blending. The male model should have a confident, authoritative posture, and the female model should have a feminine, elegant posture with a slight smile, both depicted waist-up with natural, dynamic body language. Render both figures as extremely dense, complex ASCII-like character textures, tightly packed, layered, and intricate across skin, hair, and clothing, functioning purely as visual shading and surface detail, never forming readable letters, words, rows, or typographic blocks. Style: high-contrast grayscale, cinematic lighting, strong depth and contrast across both bodies. Fashion: modern editorial outfits matching each model’s gender, with textures formed by dense character patterns. Composition can be symmetrical or asymmetrical, showing natural interaction or connection, ultra-detailed, cohesive, and realistic. STRICT NEGATIVE RULES: no close-up, no face-only framing, no portrait crop, no readable text, no typography, no titles, no captions, no logos, no watermarks.`
+},
+	"ai-099": {
+    title: "DISKET",
+    videoUrl: "",
+    text: `Seorang pria dewasa menggunakan foto referensi, mengenakan kemeja putih ala pekerja kantoran, berdiri biasa di depan sebuah komputer desktop jadul tahun 1990-an berwarna putih sedikit usang dan menguning karena usia, tanpa gaya pose atau ekspresi dibuat-buat. Gerakannya tampak candid dan natural, seperti tertangkap kamera secara tidak sengaja saat ia mencoba memasukkan sebuah disket merah berukuran sangat besar ke dalam komputer. Bentuk, detail, dan rasio disket sama persis seperti disket asli, lengkap dengan sudut membulat, lubang logam, dan label, tanpa distorsi bentuk, hanya skalanya yang jauh di luar nalar manusia dan komputer. Disket juga terlihat terlalu besar dibandingkan slot disket pada PC, menciptakan kontras absurd namun diperlakukan seperti aktivitas kerja biasa. Lingkungan kantor sibuk di Jakarta, partisi kantor, meja kerja penuh berkas, monitor lain menyala, karyawan berlalu-lalang di latar belakang. Gaya fotografi dokumenter indoor, unposed candid moment, pencahayaan lampu kantor bercampur cahaya siang, warna realistis dengan aksen merah disket sangat dominan, depth of field alami, photorealistic, absurd realism, illogical scale but correct proportions, not looking at camera.`
+},
+"ai-100": {
+    title: "8mb",
+    videoUrl: "",
+    text: `Seorang pria dewasa menggunakan foto referensi, mengenakan kemeja putih khas pekerja kantoran, berjalan normal di antara partisi ruang kantor modern dengan gerakan candid alami, seolah tertangkap kamera tanpa disengaja. Ia membawa sebuah disket merah dengan bentuk, detail, dan rasio yang sama persis seperti disket standar, termasuk sudut membulat, lubang logam, dan label persegi, tanpa distorsi bentuk sama sekali, namun ukurannya sangat besar, tidak masuk akal secara skala, jauh lebih besar dari tubuh manusia. Disket diperlakukan seperti alat kerja biasa, tanpa pose dramatis, ekspresi netral fokus pada aktivitas, tidak melihat kamera. Kantor sibuk di Jakarta, karyawan lain berlalu-lalang, meja kerja dengan komputer menyala, dokumen menumpuk. Gaya fotografi dokumenter, indoor street photography, pencahayaan kantor natural bercampur cahaya siang, warna realistis dengan merah disket sangat dominan, depth of field alami, photorealistic, absurd realism, illogical scale but correct proportions, unposed, candid moment.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -552,6 +562,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
