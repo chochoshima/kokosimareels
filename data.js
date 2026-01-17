@@ -600,6 +600,22 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "avant-garde HYPE ABIS",
     videoUrl: "",
     text: `Professional editorial fashion photography, a high-end formal suit jacket and trousers meticulously crafted from [Product Material/Identity], featuring exact color tones, surface grain, and tactile fabric texture of the product. The suit is worn by a single person (preserving facial identity from reference photo), styled in a graceful and authoritative manner. Lighting is precisely matched to the product reference: sophisticated studio lighting, controlled contrast, soft highlights, and deep realistic shadows. The subject is posed subtly with a calm, thin smile, exuding confidence and dignity. Background is a clean, dark professional studio setting. Shot on Hasselblad X1D II, 85mm lens, f/2.8, ultra-realistic skin textures, 8k resolution, cinematic material response, seamless integration of product identity into sophisticated tailoring. --ar 9:16 --v 6.0`
+},
+	"ai-110": {
+    title: "avant-garde HYPE ABIS",
+    videoUrl: "",
+    text: `Professional high-end editorial fashion photography, a bespoke avant-garde suit jacket crafted from [Product Material/Identity] paired with deep-black tailored formal trousers. The trousers feature a matte black finish with high-definition fabric grain, creating a sophisticated contrast against the jacket's texture. Worn by a single subject, maintaining 100% facial identity and bone structure from the reference photo. Elegant and authoritative posture, subtle confident thin smile. Lighting: Masterful studio chiaroscuro, sophisticated soft-box highlights mapping the contours of the fabric, deep natural shadows, precisely matched color temperature. Background: Minimalist dark charcoal professional studio, blurred depth of field. Technical: Shot on Hasselblad X1D II, 100mm Medium Format lens, f/2.8, ISO 64. Hyper-detailed skin pores, natural skin oil sheen, seamless fabric-to-skin integration, 8k resolution, cinematic material response, fashion magazine quality. --ar 9:16 --v 6.0 --stylize 250
+	Instruksi Penggunaan (Wajib)
+Gunakan foto referensi produk sebagai acuan utama untuk warna, tekstur, material, grafis, dan pencahayaan.
+Gunakan foto referensi orang sebagai acuan wajah.`
+},
+"ai-111": {
+    title: "avant-garde HYPE ABIS",
+    videoUrl: "",
+    text: `Professional high-end editorial fashion photography, a bespoke avant-garde suit jacket crafted from [Product Material/Identity] paired with deep-black tailored formal trousers. The trousers feature a matte black finish with high-definition fabric grain, creating a sophisticated contrast against the jacket's texture. Worn by a single subject, maintaining 100% facial identity and bone structure from the reference photo. Elegant and authoritative posture, subtle confident thin smile. Lighting: Masterful studio chiaroscuro, sophisticated soft-box highlights mapping the contours of the fabric, deep natural shadows, precisely matched color temperature. Background: Minimalist dark charcoal professional studio, blurred depth of field. Technical: Shot on Hasselblad X1D II, 100mm Medium Format lens, f/2.8, ISO 64. Hyper-detailed skin pores, natural skin oil sheen, seamless fabric-to-skin integration, 8k resolution, cinematic material response, fashion magazine quality. --ar 9:16 --v 6.0 --stylize 250
+	Instruksi Penggunaan (Wajib)
+Gunakan foto referensi produk sebagai acuan utama untuk warna, tekstur, material, grafis, dan pencahayaan.
+Gunakan foto referensi orang sebagai acuan wajah.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -607,6 +623,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
