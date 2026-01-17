@@ -565,6 +565,11 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "LONG DIMM",
     videoUrl: "",
     text: `Using a photo reference of the same person, depict a man sitting at a work desk in a computer repair or PC build environment. Facial features must closely match the reference photo—same person, identical facial structure, no face alteration. He is seated naturally (not posing), focused on his task.On the desk in front of him is a desktop PC with the CPU casing fully opened and partially disassembled: visible motherboard, empty RAM slots, exposed cables, cooling fan, and metal chassis. The scene feels candid and documentary-like, as if captured mid-repair.The man is holding an absurdly oversized long DIMM RAM module with both hands. The RAM design clearly resembles classic desktop DDR memory sticks: elongated PCB shape, visible gold contact pins, multiple black memory chips aligned in rows, simple industrial electronics look. No real-world brand names—use a parody generic label only (optional subtle fictional marking), no Kingston, Corsair, or other real brands.The RAM size is unrealistically large compared to his hands and body, yet photographed in a highly realistic manner, maintaining correct perspective and lighting. Textures of PCB, chips, metal pins, and dust inside the PC case are ultra-detailed.Lighting is natural indoor workshop lighting—soft fluorescent or ambient room light, realistic shadows, slight depth of field. The overall style is realistic documentary photography, unstaged, non-cinematic, non-stylized, no dramatic angles. Everything should look believable except for the intentionally oversized RAM.`
+},
+	"ai-103": {
+    title: "BALL ON",
+    videoUrl: "",
+    text: `Foto ultra-realistis resolusi tinggi menampilkan seorang individu berdiri menghadap kamera dengan ekspresi fokus dan serius, kepala sedikit menoleh ke kiri, bergaya kasual namun modis (jaket denim dan celana chino), diambil menggunakan Hasselblad X1D II dengan lensa f/1.4. Latar hutan belantara dipenuhi pohon-pohon raksasa menjulang tinggi, di mana ranting-ranting yang sangat lebat dan saling beririsan membentuk pola fractal bercabang yang berulang, secara visual menyatu membentuk struktur menyerupai pola hexagonal alami—terlihat pada sela-sela antar cabang dan ruang negatif di kanopi, menciptakan jaringan geometris organik yang kompleks namun tetap realistis, menjadikan pola ini sebagai subjek visual kedua setelah manusia. Komposisi golden ratio dengan sudut dinamis worm-view dari bawah menempatkan individu di foreground sementara kanopi bercabang fractal–hexagonal mendominasi area atas frame, memperkuat skala, kedalaman, dan perspektif heroik. Pencahayaan sinematik dramatis tetap alami, difilter oleh kanopi rapat tanpa efek cahaya buatan, menonjolkan tekstur kulit kayu, cabang, dan dedaunan serta mempertegas ritme visual pola fractal–hexagonal yang terbaca jelas. Rekonstruksi wajah organik dari foto referensi wajib dipertahankan sepenuhnya—bentuk mata, hidung, bibir, dan garis rahang tidak berubah—dengan wajah terintegrasi sempurna ke dalam adegan, pencahayaan wajah, bayangan, dan suhu warna kulit konsisten dengan lingkungan hutan, tanpa kesan tempelan, menghasilkan visual sinematik yang kohesif, hidup, dan imersif.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -572,6 +577,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
