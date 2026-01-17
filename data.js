@@ -590,6 +590,16 @@ Pencahayaan realistis dari lampu jalan dan toko sekitar, bayangan alami, street 
     title: "avant-garde SEMEN",
     videoUrl: "",
     text: `A high-end editorial fashion portrait of [Subject from Reference Photo], facial features, bone structure, and jawline preserved with 100% identity fidelity. The subject is wearing a bespoke, avant-garde formal suit meticulously tailored from authentic Indonesian industrial cement sack material (heavy-duty kraft paper).Garment Details: The suit jacket features the iconic visual hierarchy of classic 'Semen Gresik' packaging: raw earth-tone brown paper, bold block typography, and industrial layout markers, but all text is rendered as generic fictional branding. The construction shows extreme tailoring precision: thick industrial double-stitching, visible heavy fiber seams, sharp structural paper creases, and a reinforced valve opening integrated into the lapel. The texture is a mix of matte paper grain, subtle industrial dust, and layered paper panels. Underneath, a crisp, clean white formal shirt provides a sharp contrast.Photography & Lighting: Captured using a Hasselblad X1D II, 85mm f/1.4 lens. Shot in a professional studio against a deep, void-black background. Chiaroscuro lighting style: dramatic softbox key light creating high contrast, deep shadows, and crisp highlights on the paper’s wrinkles.Pose & Expression: The subject performs a dynamic high-fashion pose—a confident torso twist with a slight weight shift—evoking movement. The expression is a subtle, thin smile, calm and sophisticated. The facial skin tone and lighting are perfectly integrated with the warm brown hues of the suit. Hyper-realistic skin textures, 8k resolution, cinematic atmosphere, avant-garde luxury aesthetic`
+},
+	"ai-108": {
+    title: "avant-garde RENDANG",
+    videoUrl: "",
+    text: `Using a product photo as the primary visual reference, precisely match the lighting direction, light softness, contrast ratio, color temperature, shadow behavior, surface highlights, and material response exactly as seen in the product reference image, and apply those same lighting characteristics to a formal suit jacket and suit constructed from the product’s visual identity. The suit’s outer material faithfully reproduces the product’s exact color tones, surface texture, material grain, print quality, folds, seams, and natural wear, making it appear as if the product itself has been reshaped into refined formal tailoring rather than an exaggerated costume. Under the suit jacket, the subject wears a clean formal shirt to maintain a composed, elegant appearance. The suit is worn by a single person using a photo reference of the same individual, with facial structure preserved exactly and non-gender presentation adapting naturally; if the reference is feminine, the posture and styling appear graceful and authoritative. The pose is subtle and controlled, conveying confidence and dignity without exaggeration. Shot in a professional studio with a dark, clean background, lighting strictly follows the product reference for realistic highlight and shadow placement. Expression shows a calm, subtle thin smile, composed and confident. Ultra-realistic editorial fashion photography, restrained elegance, high material accuracy, photorealistic skin detail, cinematic yet understated realism, seamless fusion between product identity and sophisticated formalwear.`
+},
+"ai-109": {
+    title: "avant-garde HYPE ABIS",
+    videoUrl: "",
+    text: `Professional editorial fashion photography, a high-end formal suit jacket and trousers meticulously crafted from [Product Material/Identity], featuring exact color tones, surface grain, and tactile fabric texture of the product. The suit is worn by a single person (preserving facial identity from reference photo), styled in a graceful and authoritative manner. Lighting is precisely matched to the product reference: sophisticated studio lighting, controlled contrast, soft highlights, and deep realistic shadows. The subject is posed subtly with a calm, thin smile, exuding confidence and dignity. Background is a clean, dark professional studio setting. Shot on Hasselblad X1D II, 85mm lens, f/2.8, ultra-realistic skin textures, 8k resolution, cinematic material response, seamless integration of product identity into sophisticated tailoring. --ar 9:16 --v 6.0`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -597,6 +607,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
