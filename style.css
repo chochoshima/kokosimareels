@@ -328,12 +328,12 @@ body {
 
     /* Badge Like & Share */
     .like-badge-inline {
-        flex: 0 0 60px !important;
+        flex: 0 0 40px !important;
         background: rgba(255,59,48,0.1) !important;
     }
 
     .btn-share {
-        flex: 0 0 42px !important;
+        flex: 0 0 40px !important;
     }
 
     /* ============================================================
