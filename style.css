@@ -207,6 +207,7 @@ body {
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
         background: var(--bg-color);
+		-webkit-overflow-scrolling: touch;
     }
 
     /* Hilangkan scrollbar di Chrome/Safari */
@@ -229,6 +230,7 @@ body {
         overflow: visible;
         scroll-snap-align: center;
         transition: transform 0.4s ease;
+		will-change: transform;
     }
 
     /* ============================================================
@@ -260,6 +262,7 @@ body {
         bottom: 0;
         left: 0;
         width: 100%;
+		min-height: 130px
         padding: 60px 20px 20px;
         background: linear-gradient(
             to top,
