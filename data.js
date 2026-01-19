@@ -616,6 +616,11 @@ Gunakan foto referensi orang sebagai acuan wajah.`
 	Instruksi Penggunaan (Wajib)
 Gunakan foto referensi produk sebagai acuan utama untuk warna, tekstur, material, grafis, dan pencahayaan.
 Gunakan foto referensi orang sebagai acuan wajah.`
+},
+	"ai-111": {
+    title: "NGEYUP",
+    videoUrl: "",
+    text: `Sebuah mahakarya fotografi makro surealis yang menangkap momen autentik seorang pria berukuran miniatur yang sedang berteduh di dalam sebuah cup mi instan styrofoam bekas yang tergeletak terguling di pinggir jalan aspal basah, tepat di antara rerumputan liar dan tanah berlumpur di bawah naungan pohon saat senja. Cup tersebut tampak tua dan kotor dengan tekstur styrofoam yang penyok, pori-porinya tersumbat debu jalanan dan noda sisa kuah yang mengering, sementara logo khas mi instan di permukaannya terlihat pudar dan terkelupas akibat cuaca. Di dalam cup tersebut, subjek pria [sesuai referensi foto] duduk dengan pose alami yang rileks namun tampak lelah; identitas wajahnya—mulai dari struktur kelopak mata, lekuk hidung, hingga garis rahang—wajib dipertahankan sepenuhnya tanpa distorsi, dengan ekspresi wajah yang hidup, luwes, dan reflektif seolah sedang memperhatikan rintik hujan. Kulitnya menampilkan tekstur pori yang detail dengan sisa kelembapan udara, mengenakan kaos putih lusuh yang tampak lembap dan agak transparan terkena air, serta celana pendek denim robek yang kotor. Di sampingnya bersandar sebuah karung goni kecil (bagor) yang basah. Atmosfer gambar diciptakan melalui pencahayaan soft-diffused khas langit mendung, dengan rintik hujan yang tertangkap tajam saat jatuh mengenai daun dan menciptakan cipratan mikro di permukaan tanah. Latar belakang menampilkan hiruk pikuk lalu lintas malam yang blur secara organik menjadi bokeh sinematik, menghasilkan kontras antara kesunyian di dalam cup dan keramaian kota. Diambil menggunakan lensa Hasselblad 100mm Macro pada f/2.2, menghasilkan kedalaman fokus yang sangat dangkal (shallow depth of field) di mana setiap tetesan air pada bilah rumput dan detail debu pada styrofoam terlihat sangat tajam, menciptakan kesatuan pemandangan yang utuh, tanpa efek tempelan, dan memiliki koherensi fisik yang absolut.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -623,6 +628,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
