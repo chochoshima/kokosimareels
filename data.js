@@ -656,6 +656,11 @@ Gunakan foto referensi orang sebagai acuan wajah.`
     title: "KONDENSOR VGA",
     videoUrl: "",
     text: `A candid ultra-realistic documentary-style photo taken from a low-angle perspective inside a narrow Indonesian residential alley, showing an absurd yet believable installation: a full-form RTX 5080 graphics card—complete original design with triple cooling fans, detailed shroud colors, RGB accents, exposed screws, layered metal heatsink, and curved aerodynamic silhouette—scaled up to the size of a real outdoor AC condenser unit. The oversized RTX 5080 is mounted on the empty wall space above a wooden window, or on a clear section of the wall beside the window, without blocking or covering the window opening, making the installation feel structurally logical. Thick insulated AC hoses, copper refrigerant pipes, drainage hose, and power cables clearly extend from the back and underside of the GPU and pass through the wall into the indoor unit. Because the unit is installed slightly high, a portable ladder is placed below it. A male AC technician wearing a realistic air-conditioner service uniform (work shirt with name patch, dark utility pants, gloves, tool belt) is standing on the ladder while cleaning the RTX 5080 condenser using a brush and water spray, captured mid-action naturally. Use the provided face reference photo for the technician’s face, preserving exact facial features, proportions, natural skin texture, and imperfections without beautification. Natural tropical daylight filtered between tightly packed houses, humid atmosphere, aged concrete walls with stains and moss, worn wooden window frame, cluttered cables, imperfect framing, everyday street-photography candid feel, no cinematic lighting, no stylization, raw realistic documentation.`
+},
+	"ai-120": {
+    title: "VESPA PX",
+    videoUrl: "",
+    text: `Ultra-realistic candid street photography of a man riding a classic Vespa PX in vintage dark British racing green (semi-gloss finish, full steel body). The rider’s face is 100% identical to the reference photo, with precise eyes, nose, lips, jawline, and hairstyle, wearing a Black Yellowcorn SEED motorcycle jacket with mesh and protective panels, “KOKOSIMA” text on front and sleeves, additional patch text “ONEstamp” and “kokosimareels.pages.dev”, khaki cargo pants, and black sneakers with white soles. He is wearing a plain white full-face helmet. On the rear seat, a medium-sized black touring bag is strapped horizontally with black elastic straps accented with distinct red bungee cords. A large-sized vintage Sony video camera (such as a Sony Handycam or CCD-VX1000 from the 1980s–1990s) is mounted on a very long, slender, and sturdy camera extender stick at the center of the rear of the Vespa, slightly leaning backward. The camera is realistically large, with visible lens, dials, and tape slot, proportional to the Vespa and rider, creating a believable professional touring vlog setup. The Vespa is cruising on a typical Yogyakarta street, with simple local workshops and buildings in the background. Natural warm daylight illuminates the scene, soft motion blur appears on the wheels and pavement, front three-quarter eye-level angle, sharp facial detail, realistic skin texture, and authentic street atmosphere, with no cinematic filters.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -663,6 +668,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
