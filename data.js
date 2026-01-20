@@ -636,6 +636,11 @@ Gunakan foto referensi orang sebagai acuan wajah.`
     title: "INDONESIAN JONES",
     videoUrl: "",
     text: `"Ultra-realistic vertical movie poster of an Indonesian adventure film titled 'Indonesia Jones', with tagline 'Pencarian Bakat Terpendam' below the title. Central figure: an Indonesian man dressed like Indiana Jones, wearing a fedora, khaki field shirt, rugged pants, and a vintage leather backpack, digging a deep, hand-dug hole in a dense tropical jungle. He carries a classic leather whip coiled at his side and a vintage revolver tucked into a belt holster. Beside the hole is an ancient worn map with a hand-drawn mark 'BAKAT' in red ink and a small red circle indicating the location. Natural daylight filters through the jungle canopy, casting soft, realistic shadows and highlights on his face, body, and gear. Leaves, roots, and dirt add authenticity. Title in bold adventure-style font, gold/yellow with subtle texture; tagline in smaller cream/white font below. At the bottom of the poster, small realistic text listing credits with random Hollywood-style names, e.g., 'Directed by Jason Blackwood, Produced by Olivia Hartman, Written by Marcus Steele, Music by Emma Vaughn, Studio: Orion Pictures, 2026 Release'. Vertical format, ultra-high resolution, photorealistic textures of soil, foliage, leather, and skin, capturing a raw, candid documentary feel."`
+},
+	"ai-116": {
+    title: "BALON GOYANG",
+    videoUrl: "",
+    text: `Ultra-realistic photo of a custom inflatable air dancer (tube man) standing in front of an Indonesian rubber stamp shop named ONEstamp (stamp-making shop, not philately). The character wears a casual printed work-uniform design directly on the inflatable surface, using a red, white, black, and orange color scheme with clear text “ONEstamp Reborn”, visible seam lines, panel divisions, vinyl wrinkles, and air-pressure bulges. The arms are longer and slimmer than the body, allowing natural waving motion from a strong air blower. The head is a three-dimensional inflatable form that closely resembles a real human face while clearly remaining a balloon—rounded volume, slightly exaggerated proportions, smooth but subtly creased vinyl surface, gentle facial distortion from internal air pressure, soft highlights, and realistic shading; the provided photo reference is used strictly for facial identity (eyes, nose, lips, jawline, proportions, skin tone) without beautification or plastic-doll smoothness. The scene takes place on a typical Indonesian street with a modest roadside shopfront, tiled facade, partially open rolling shutter, stamp samples on display, overhead electrical cables, parked motorbikes, and a slightly cluttered urban atmosphere, captured in natural tropical daylight with soft overcast lighting, eye-level candid photography, grounded scale, and true-to-life realism.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -643,6 +648,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
