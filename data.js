@@ -661,6 +661,11 @@ Gunakan foto referensi orang sebagai acuan wajah.`
     title: "VESPA PX",
     videoUrl: "",
     text: `Ultra-realistic candid street photography of a man riding a classic Vespa PX in vintage dark British racing green (semi-gloss finish, full steel body). The rider’s face is 100% identical to the reference photo, with precise eyes, nose, lips, jawline, and hairstyle, wearing a Black Yellowcorn SEED motorcycle jacket with mesh and protective panels, “KOKOSIMA” text on front and sleeves, additional patch text “ONEstamp” and “kokosimareels.pages.dev”, khaki cargo pants, and black sneakers with white soles. He is wearing a plain white full-face helmet. On the rear seat, a medium-sized black touring bag is strapped horizontally with black elastic straps accented with distinct red bungee cords. A large-sized vintage Sony video camera (such as a Sony Handycam or CCD-VX1000 from the 1980s–1990s) is mounted on a very long, slender, and sturdy camera extender stick at the center of the rear of the Vespa, slightly leaning backward. The camera is realistically large, with visible lens, dials, and tape slot, proportional to the Vespa and rider, creating a believable professional touring vlog setup. The Vespa is cruising on a typical Yogyakarta street, with simple local workshops and buildings in the background. Natural warm daylight illuminates the scene, soft motion blur appears on the wheels and pavement, front three-quarter eye-level angle, sharp facial detail, realistic skin texture, and authentic street atmosphere, with no cinematic filters.`
+},
+	"ai-121": {
+    title: "APA NTAR?",
+    videoUrl: "",
+    text: `A raw, hyper-realistic candid photograph shot on a Hasselblad H6D, 35mm lens for a natural field of view. A person [Reference Face] is seated fully visible at a weathered wooden table on a massive floating island, holding and sipping a cup of coffee, maintaining exact facial features and authentic expression from the reference. On the table, a modest plate of Indonesian 'gorengan' shows realistic textures of crispy flour and glistening oil. The proportions of the person, table, and surrounding elements are natural and consistent. Environment & Flora: The ground is detailed with dark damp Indonesian soil, porous volcanic rocks, and thick gnarled Banyan roots weaving through the island. Lush tropical vegetation, including large Monstera Deliciosa, Birds of Paradise, and wild ferns, display realistic imperfections, insect bites, and translucent dew droplets. The floating island is expansive, stretching beyond the frame, creating the impression that this is the largest island in the scene, with areas of open terrain, cliffs, and cascading waterfalls visible along the edges. Background & Atmosphere: Behind the subject, a larger-than-before traditional 'Warung Tenda' with faded blue tarpaulin and a wooden Indonesian street food cart displaying the text "kokosimareels.pages.dev" on its side is integrated naturally into the terrain. A single vendor is serving, with no other customers present. In the background, multiple smaller floating islands drift through misty clouds, interconnected by thick mossy vines, emphasizing the scale of the main island as the dominant landmass. Lighting & Technical: Natural, diffused sunlight filters through the canopy, casting soft, organic dappled shadows on the subject, table, and foliage. High-detail textures on wood grain, stone pores, and leaves. Full-body perspective keeps proportions correct, cinematic depth of field, atmospheric perspective, authentic color grading, raw photo style, no beautification, 8k resolution, ultra-realistic.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -668,6 +673,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
