@@ -1133,3 +1133,87 @@ body,
     .light-theme .nav-btn { color: #1e293b !important; }
     .nav-btn:hover { opacity: 1; color: var(--accent) !important; transform: scale(1.1); }
 }
+/* ============================================================
+   MOBILE LANDSCAPE MODE (HP ROTATE / LS)
+   ============================================================ */
+@media (max-width: 1023px) and (orientation: landscape) {
+
+    /* BODY */
+    body {
+        padding-top: 60px;
+    }
+
+    /* FEED JADI HORIZONTAL */
+    .feed {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: calc(100dvh - 60px);
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        padding: 0 30px;
+        gap: 20px;
+    }
+
+    .feed::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* ITEM */
+    .item {
+        flex: 0 0 auto;
+        height: 100%;
+        padding: 0;
+        scroll-snap-align: center;
+        justify-content: center;
+    }
+
+    /* MEDIA CONTAINER → LANDSCAPE SIZE */
+    .media-container {
+        height: 80vh;
+        width: calc(80vh * 9 / 16);
+        max-width: none;
+        max-height: none;
+        border-radius: 18px;
+    }
+
+    /* OVERLAY TEKS */
+    .content-container {
+        padding: 50px 15px 15px;
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.85),
+            transparent
+        );
+    }
+
+    .content-container h3 {
+        font-size: 0.95rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .prompt-preview {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 2;
+    }
+
+    /* ACTIONS */
+    .actions {
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .actions .btn,
+    .actions .like-badge-index {
+        height: 32px;
+        font-size: 11px;
+    }
+
+    /* FLOATING STACK DIMATIKAN (BIAR GA NUTUP) */
+    .floating-stack {
+        display: none;
+    }
+}
