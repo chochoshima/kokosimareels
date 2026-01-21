@@ -666,6 +666,75 @@ Gunakan foto referensi orang sebagai acuan wajah.`
     title: "APA NTAR?",
     videoUrl: "",
     text: `A raw, hyper-realistic candid photograph shot on a Hasselblad H6D, 35mm lens for a natural field of view. A person [Reference Face] is seated fully visible at a weathered wooden table on a massive floating island, holding and sipping a cup of coffee, maintaining exact facial features and authentic expression from the reference. On the table, a modest plate of Indonesian 'gorengan' shows realistic textures of crispy flour and glistening oil. The proportions of the person, table, and surrounding elements are natural and consistent. Environment & Flora: The ground is detailed with dark damp Indonesian soil, porous volcanic rocks, and thick gnarled Banyan roots weaving through the island. Lush tropical vegetation, including large Monstera Deliciosa, Birds of Paradise, and wild ferns, display realistic imperfections, insect bites, and translucent dew droplets. The floating island is expansive, stretching beyond the frame, creating the impression that this is the largest island in the scene, with areas of open terrain, cliffs, and cascading waterfalls visible along the edges. Background & Atmosphere: Behind the subject, a larger-than-before traditional 'Warung Tenda' with faded blue tarpaulin and a wooden Indonesian street food cart displaying the text "kokosimareels.pages.dev" on its side is integrated naturally into the terrain. A single vendor is serving, with no other customers present. In the background, multiple smaller floating islands drift through misty clouds, interconnected by thick mossy vines, emphasizing the scale of the main island as the dominant landmass. Lighting & Technical: Natural, diffused sunlight filters through the canopy, casting soft, organic dappled shadows on the subject, table, and foliage. High-detail textures on wood grain, stone pores, and leaves. Full-body perspective keeps proportions correct, cinematic depth of field, atmospheric perspective, authentic color grading, raw photo style, no beautification, 8k resolution, ultra-realistic.`
+},
+	"ai-121": {
+    title: "APA NTAR?",
+    videoUrl: "",
+    text: `A raw, hyper-realistic candid photograph shot on a Hasselblad H6D, 35mm lens for a natural field of view. A person [Reference Face] is seated fully visible at a weathered wooden table on a massive floating island, holding and sipping a cup of coffee, maintaining exact facial features and authentic expression from the reference. On the table, a modest plate of Indonesian 'gorengan' shows realistic textures of crispy flour and glistening oil. The proportions of the person, table, and surrounding elements are natural and consistent. Environment & Flora: The ground is detailed with dark damp Indonesian soil, porous volcanic rocks, and thick gnarled Banyan roots weaving through the island. Lush tropical vegetation, including large Monstera Deliciosa, Birds of Paradise, and wild ferns, display realistic imperfections, insect bites, and translucent dew droplets. The floating island is expansive, stretching beyond the frame, creating the impression that this is the largest island in the scene, with areas of open terrain, cliffs, and cascading waterfalls visible along the edges. Background & Atmosphere: Behind the subject, a larger-than-before traditional 'Warung Tenda' with faded blue tarpaulin and a wooden Indonesian street food cart displaying the text "kokosimareels.pages.dev" on its side is integrated naturally into the terrain. A single vendor is serving, with no other customers present. In the background, multiple smaller floating islands drift through misty clouds, interconnected by thick mossy vines, emphasizing the scale of the main island as the dominant landmass. Lighting & Technical: Natural, diffused sunlight filters through the canopy, casting soft, organic dappled shadows on the subject, table, and foliage. High-detail textures on wood grain, stone pores, and leaves. Full-body perspective keeps proportions correct, cinematic depth of field, atmospheric perspective, authentic color grading, raw photo style, no beautification, 8k resolution, ultra-realistic.`
+},
+"ai-122": {
+    title: "HALTE?",
+    videoUrl: "",
+    text: `Sebuah foto kandid jalanan (candid street photography) yang tidak sengaja menangkap momen di halte bus Indonesia era 80-an, memperlihatkan seorang pria dengan wajah identik sesuai foto referensi yang sedang duduk termenung menunggu jemputan di tengah terik matahari siang yang menyengat. Pria tersebut mengenakan kaus hitam dan celana jins dengan detail butiran keringat yang nyata pada kulitnya, namun elemen yang paling mencolok secara visual adalah sebuah cincin akik raksasa di jarinya yang tetap mempertahankan bentuk desain cincin tradisional namun dengan ukuran batu bulat lonjong yang sangat absurd, lebih besar dari kepala manusia, berwarna hitam pekat mengkilap menyerupai obsidian dengan motif pusaran misterius. Komposisi gambar terasa sangat natural dan tidak dibuat-buat, menangkap tas ransel tua di lantai, kerumunan penumpang lain yang tampak lelah, serta kepulan asap kendaraan di latar belakang yang menciptakan efek heat haze sinematik melalui lensa 85mm dengan tekstur film analog yang grainy dan pencahayaan kontras tinggi yang menyatu secara organik dengan karakter wajah subjek.`
+},
+"ai-123": {
+    title: "ASE PENTURA?",
+    videoUrl: "",
+    text: `Identity & Pose
+
+Ultra-realistic full-body photography of a man with the face identity 100% identical to the reference photo. Face Lock: Maintain exact bone structure, jawline, and eyes. Pose: Standing confidently with a slightly eccentric and proud expression, one hand on his hip and the other gesturing outward, exactly mirroring the iconic theatrical movie poster pose.
+Costume & Hair (Film Accurate)
+
+Hairstyle: Dramatically tall pompadour with a sharp, structural quiff at the front, slicked back on the sides with a high-shine wet look.
+The Shirt: Bright Hawaiian shirt with a chaotic vintage tropical pattern (blue, orange, red, and yellow), worn wide open.
+Underwear: A clean white ribbed tank top (singlet) tucked into the waistband.
+The Pants: High-waisted, vibrant red and black vertical striped trousers, cinched with a slim black leather belt.
+Footwear: Rugged, worn-out black leather work boots.
+The Animal Kingdom (Ensemble)
+
+On Shoulders: A green iguana with a long tail draped over his right shoulder; a small Capuchin monkey sitting on his left shoulder.
+In Hand: A large, vibrant red Macaw parrot perched on his extended left hand.
+At Feet: A diverse group of animals surrounding his legs including a Golden Retriever dog standing in the center, a penguin on the left, a skunk, a small raccoon, and a ginger tabby cat. All animals must look highly realistic with detailed fur and feathers.
+Environment & Technical Specs
+
+Background: Solid, minimalist pure white background (high-key studio backdrop) with no shadows or floor line for a clean professional cut-out look.
+Lighting: Bright, even studio lighting to capture every fabric thread, skin pore, and animal fur detail.
+Camera: Shot on Phase One XF, 80mm lens, f/8 for maximum sharpness across all subjects.
+Quality: 8k resolution, cinematic color grading, authentic textures, hyper-realistic.
+Negative Prompt
+(background scenery:1.2), street, outdoor, trees, buildings, (posed look at camera:0.8), airbrushed skin, CGI, 3D render, cartoon, anime, altered facial features, changing eye color, different nose shape, jeans, modern outfit, watermarks, text, logos, signature, blurry, low resolution, merged animals, distorted paws.`
+},
+"ai-124": {
+    title: "PET DETECTIVE?",
+    videoUrl: "",
+    text: `Identity & Dynamic Action
+
+Ultra-realistic candid street photography of a man with face identity 100% identical to the reference photo. Face Lock: Preserving exact facial features and proportions. He is walking purposefully and expressively on a busy Jakarta sidewalk, striding forward with confidence, head held high, looking slightly to the side.
+Iconic Costume & Hair (Film Accurate)
+
+Hairstyle: Dramatically tall pompadour, sharp structural quiff, slicked back with a high-shine wet look.
+The Shirt: Bright Hawaiian shirt with chaotic vintage tropical patterns (blue, orange, red, yellow), worn wide open over a clean white ribbed tank top (singlet).
+The Pants: High-waisted, vibrant red and black vertical striped trousers, cinched with a slim black leather belt.
+Footwear: Rugged, worn-out black leather work boots, showing signs of street use.
+The Moving Menagerie (Interacting with Environment)
+
+On Shoulders: A green iguana with a long tail draped over his right shoulder, its claws subtly gripping the shirt. A small, realistic Capuchin monkey is perched calmly on his left shoulder, observing its surroundings.
+In Hand: A large, vibrant red Macaw parrot is perched naturally on his extended left hand, its feathers ruffled slightly by movement.
+At His Feet (Walking): A Golden Retriever, a small skunk, a domestic cat (ginger tabby), and a Chihuahua are walking alongside him on the sidewalk. Each animal is moving with him, maintaining a natural gait and realistic interaction with the urban environment (e.g., sniffing the ground, looking ahead).
+Authentic Jakarta Street Scene
+
+Setting: A vibrant, sun-drenched Jakarta sidewalk (trotoar) in front of typical "Ruko" (shophouse) facades.
+Foreground & Midground: Several "Pedagang Kaki Lima" (street vendors) with their pushcarts or makeshift stalls selling local snacks (gorengan), fruits, or drinks. Visible details include makeshift tarpaulins, plastic crates, and stacks of goods.
+Background Elements: Tangled overhead power cables, parked motorbikes (Honda Vario/Scoopy), faded "Warung" or "Pecel Lele" banners with Indonesian text, and a bustling crowd of blurred passersby creating a sense of dynamic movement.
+Atmosphere: High-energy, chaotic yet charming urban realism, true to Jakarta's street life.
+Technical Photography Specs
+
+Camera: Shot on a Sony Alpha 1, using a 50mm f/1.8 prime lens for a natural, slightly compressed street-photography feel.
+Lighting: Harsh tropical midday sun, creating strong, defined shadows and highlights. The light catches the texture of the animals' fur and feathers, and the worn details of the street.
+Composition: Eye-level, medium full-body shot, capturing the man and his entourage in motion. Subtle motion blur on the background and distant pedestrians to emphasize the moving subjects.
+Quality: 8k resolution, documentary-style color grading, hyper-detailed textures on skin, fabric, fur, and the urban environment.
+Negative Prompt
+(posed look:1.2), studio background, clean streets, empty sidewalk, Western city, fantasy creatures, cartoon, anime, CGI, illustrations, altered facial features, generic animals, blurry animals, watermarks, text, logos, signature, low resolution.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -673,6 +742,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
