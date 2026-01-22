@@ -1134,18 +1134,29 @@ body,
     .nav-btn:hover { opacity: 1; color: var(--accent) !important; transform: scale(1.1); }
 }
 /* ============================================================
-   MOBILE LANDSCAPE – SAFE VIEWPORT (BROWSER BAR AWARE)
+   FINAL — MOBILE LANDSCAPE DESKTOP-LIKE (SAFE VIEWPORT)
    ============================================================ */
 @media (max-width: 1023px) and (orientation: landscape) {
 
+    /* -----------------------------
+       SAFE VIEWPORT FIX
+       ----------------------------- */
     :root {
         --header-h: 60px;
     }
 
-    body {
-        padding-top: var(--header-h);
+    html, body {
+        height: 100%;
     }
 
+    body {
+        padding-top: var(--header-h);
+        overflow: hidden; /* body diam, scroll di feed */
+    }
+
+    /* -----------------------------
+       FEED = DESKTOP GRID
+       ----------------------------- */
     .feed {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -1156,18 +1167,83 @@ body,
         overflow-y: auto;
         overflow-x: hidden;
 
+        /* matikan mode reels */
         scroll-snap-type: none !important;
     }
 
-    .item {
-        height: auto;
-        scroll-snap-align: unset;
+    .feed::-webkit-scrollbar {
+        width: 6px;
     }
 
+    .feed::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+    }
+
+    /* -----------------------------
+       ITEM (CARD MODE)
+       ----------------------------- */
+    .item {
+        height: auto;
+        padding: 0;
+        scroll-snap-align: unset;
+        transform: none !important;
+    }
+
+    /* -----------------------------
+       MEDIA CARD
+       ----------------------------- */
     .media-container {
         width: 100%;
         aspect-ratio: 9 / 16;
         max-height: none;
         border-radius: 16px;
     }
+
+    /* -----------------------------
+       OVERLAY CONTENT (PADAT)
+       ----------------------------- */
+    .content-container {
+        padding: 40px 12px 12px;
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.85),
+            transparent
+        );
+    }
+
+    .content-container h3 {
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .prompt-preview {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 2;
+    }
+
+    /* -----------------------------
+       ACTION BUTTONS (COMPACT)
+       ----------------------------- */
+    .actions {
+        margin-top: 8px;
+        gap: 6px;
+    }
+
+    .actions .btn,
+    .actions .like-badge-index {
+        height: 30px;
+        font-size: 10px;
+        border-radius: 10px;
+    }
+
+    /* -----------------------------
+       FLOATING UI OFF (BIAR LEGA)
+       ----------------------------- */
+    .floating-stack {
+        display: none !important;
+    }
 }
+
