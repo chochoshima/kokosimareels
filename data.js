@@ -735,6 +735,11 @@ Composition: Eye-level, medium full-body shot, capturing the man and his entoura
 Quality: 8k resolution, documentary-style color grading, hyper-detailed textures on skin, fabric, fur, and the urban environment.
 Negative Prompt
 (posed look:1.2), studio background, clean streets, empty sidewalk, Western city, fantasy creatures, cartoon, anime, CGI, illustrations, altered facial features, generic animals, blurry animals, watermarks, text, logos, signature, low resolution.`
+},
+	"ai-125": {
+    title: "KOMPOR GPU?",
+    videoUrl: "",
+    text: `Visual Concept: Ultra-realistic, high-end hardware-mod photography featuring a full-scale NVIDIA GeForce RTX 5080 repurposed as the literal chassis of a gas stove at a kaki lima street food stall, where the iconic rectangular shroud, exact thickness, proportions, heatsink fin density, vent layout, sharp corner angles, and “GeForce RTX” branding are locked 100% identical to the real RTX 5080 design with absolutely no redesign or stylization; Hardware Modification: the GPU is laid perfectly flat on a worn stainless-steel street food cart, all three cooling fans are physically removed and replaced precisely inside the original circular fan cutouts with industrial-grade gas burners (tungku), the center burner is active emitting a sharp blue LPG flame while the left and right burners are off but visibly stained from prior use, subtle heat discoloration and soot marks appear only around the burner rings preserving the rest of the GPU’s pristine industrial finish, PCIe gold fingers remain clearly visible on the side untouched, and the rear backplate features a brushed metal waterblock-style plate with visible screws, realistic and flush with the GPU silhouette; Cooking Moment (Nasi Goreng Action): a blackened steel wok (wajan besi) sits on the active middle burner with nasi goreng being cooked mid-action where individual rice grains are visibly separated, egg scrambling into the rice, chopped scallions, garlic, and chili scattered, a thin burst of steam and light oil smoke rising upward, the spatula caught mid-toss freezing the iconic nasi goreng flipping motion, and small sparks of oil reacting with flame for added realism; Subject Integration: the street food vendor using the provided photo reference with facial identity 100% identical stands slightly to the side to avoid covering the GPU, clearly visible and actively cooking, holding a metal spatula with his body angled naturally as he cooks, wearing a casual kaki lima outfit with a focused expression and hands showing subtle oil sheen, captured in a high-angle medium shot / top-down isometric camera angle ensuring the entire RTX 5080 body remains fully visible from end to end; Environmental Details: classic Indonesian kaki lima setting with plastic stools and a small folding table in the background, bottles of kecap manis, sambal, and minyak goreng nearby, a green 3kg LPG cylinder connected via a rubber hose directly to the GPU power-connector port area as ironic visual contrast, and a night street atmosphere with passing bokeh lights and faint crowd blur; Technical & Texture Fidelity: 100% photorealistic materials including matte black GPU surface with subtle oil mist, micro-scratches on the metal cart, heat tinting on burner edges only, and natural smoke diffusion with no CGI look; Photography: shot on Sony A7R V with a 35mm lens, cinematic street lighting combining warm sodium and cool ambient contrast, high contrast, ultra-sharp focus on RTX branding, heatsink fins, and burner details, shallow depth of field background with subject and GPU tack-sharp, candid documentary-style realism.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
@@ -742,6 +747,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
