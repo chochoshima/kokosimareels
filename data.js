@@ -756,7 +756,7 @@ Negative Prompt
     text: `Hyper-realistic semi-chibi 3D character based on the uploaded reference photo, preserving exact facial features—eyes, nose, lips, cheeks, and expression remain identical, with facial realism as the highest priority. The character has semi-chibi proportions with a slightly oversized head and small body, smooth porcelain-like skin, subtle natural blush, soft pout with a gentle, thin smile, big realistic glassy eyes subtly looking at or engaging with the camera, and subtle skin pores visible. Outfit matches the character’s gender: fun, casual, modern clothing (e.g., T-shirt or casual shirt, pants or jeans, sneakers or bare feet), playful and stylish. The character is standing or sitting on a realistic office desk with true-to-life scale and proportions, interacting with objects such as a keyboard, monitor, mouse, mug, and stationery, all appearing photographic and life-sized, while the character appears noticeably smaller, emphasizing the cute semi-chibi effect. The scene features a minimal soft pastel background, clean studio aesthetic, dreamy cozy atmosphere, soft diffused lighting, shallow depth of field, macro perspective illusion, and ultra-sharp focus on the face. Render as an ultra-realistic 3D image with high-detail fabric textures, realistic folds, professional lighting, and 8K quality, NOT illustration, NOT cartoon, NOT anime.`
 },
 "ai-129": {
-    title: "MUFFER MONSTER",
+    title: "muffler MONSTER",
     videoUrl: "",
     text: `Ultra-realistic candid street photography of an Indonesian man riding a motorcycle stopped at a red traffic light. He slightly turns his head backward, looking over his shoulder with a curious, calm expression. The motorcycle features an absurdly oversized exhaust muffler, extremely large and disproportionate compared to the bike—far beyond realistic scale—yet rendered with hyper-detailed metal texture, weld seams, bolts, heat discoloration, and realistic reflections, making it feel physically real despite its impossible size.The exhaust dominates the rear of the motorcycle, extending far outward and downward, almost touching the asphalt, drawing immediate visual focus. The rider wears casual Indonesian street clothing (simple t-shirt, jeans, sandals or sneakers), slightly worn and natural.The environment shows a typical Indonesian urban street: traffic lights, tangled overhead cables, small shops (warung), street signs in Bahasa Indonesia, motorbikes and cars waiting at the intersection, faded road markings, and warm tropical daylight.Natural candid composition, eye-level camera angle from behind-left of the motorcycle, shallow depth of field, realistic motion pause, cinematic lighting, authentic street atmosphere, photorealistic textures, high dynamic range, no stylization, no cartoon, no CGI look.`
 },
@@ -776,6 +776,7 @@ Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
   const cleanTitle = item.title.replace(/^\d+\./, "");
   item.title = `${num}.${cleanTitle}`;
 });
+
 
 
 
