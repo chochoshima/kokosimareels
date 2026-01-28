@@ -789,11 +789,6 @@ Negative Prompt
     title: "STONEBREAKER",
     videoUrl: "",
     text: `Ultra-realistic candid documentary photography in an Indonesian stone quarry, using photo reference for all human subjects, preserving exact facial features, skin tone, age, expression, and body proportions. The scene is lit by harsh tropical midday sunlight with natural shadows and dust in the air. A massive natural rock boulder, larger than a human body, dominates the frame. An Indonesian male stone breaker stands on top of the boulder, captured mid-action while breaking stone, wearing worn-out work clothes—faded t-shirt, rolled-up pants, rubber sandals—his body covered in sweat and dust, expression tired, focused, and completely natural. He uses Stormbreaker as a purely physical tool, matching the reference image exactly: a large asymmetrical axe-hammer head made of matte silver-gray metal with scratches and impact marks, and a dark brown wooden handle formed from twisted wood tightly wrapping and gripping the metal core, organic, rough, cracked, and weathered, with no glow, no magic, and no visual effects. Beside the boulder, a second Indonesian male stone breaker, also based on photo reference, works at ground level using a traditional iron hammer, emphasizing scale and realism through comparison. The image is handheld, slightly imperfect, with subtle motion blur from real movement, natural textures on skin, stone, wood, and metal, no cinematic lighting, no HDR, no CGI—appearing as a raw, authentic photojournalistic moment where an absurdly shaped tool exists naturally within everyday manual labor.`
-},
-"ai-137": {
-    title: "",
-    videoUrl: "",
-    text: ``
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
