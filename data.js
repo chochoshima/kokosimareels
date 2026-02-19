@@ -809,6 +809,58 @@ Negative Prompt
     title: "BOSS",
     videoUrl: "",
     text: `Dynamic low-light photography using an unconventional and dynamic camera angle (an extreme tilted worm’s-eye view with off-center framing), featuring a person (male or female) whose age, facial features, and proportions strictly match the reference photo, with no identity or age alteration. The subject wears a black suit–inspired outfit tailored to their gender and physique, accented with a subtle yet striking red tie or red detail, and holds a calm, authoritative “big boss” pose—composed, controlled, and deeply confident, expressing quiet power and strong presence rather than aggression. The background is dominantly deep black with spacious negative space, creating a sense of scale and breathing room while maintaining a dark, immersive atmosphere. Cinematic, directional lighting from unconventional angles gently sculpts highlights and shadows, emphasizing dignity, depth, and restraint. The overall mood is refined, high-contrast, urban fashion photography—minimalist, elegant, and commanding—ultra-realistic, sharp detail, and visually intense without losing calm authority.`
+},
+"ai-140": {
+    title: "RAMADHAN",
+    videoUrl: "",
+    text: `Create an ultra-realistic elegant Ramadan greeting postcard using the uploaded reference photo. Preserve the exact facial features from the reference image — do not alter eyes, nose, lips, jawline, face shape, skin tone, or original identity. Maintain 100% facial accuracy.
+Adjust outfit based on gender in the reference photo:
+
+If male: wear an elegant white or cream baju koko with subtle embroidery details, clean, refined, and sophisticated.
+If female: wear a beautifully styled hijab that follows the natural head shape from the reference, paired with modest Muslim attire in soft neutral tones (white, cream, pastel, or soft gold accents), elegant and graceful.
+Pose: natural and composed. Can be seated gracefully or standing calmly. Expression warm, serene, and sincere (soft smile, not exaggerated). Hands positioned politely in front or relaxed naturally.
+Background: deep emerald green luxurious backdrop with intricate Islamic gold geometric patterns and refined arabesque ornaments. Add subtle glowing golden lanterns, soft crescent moon accent, elegant gold decorative frame elements, and gentle warm bokeh light for a festive Ramadan ambiance.
+Lighting: soft cinematic studio lighting, warm highlights, subtle rim light separation, smooth skin texture, ultra-detailed fabric texture, realistic shadows, professional photography look, high dynamic range, sharp focus, premium greeting card quality.
+Typography (gold embossed effect):
+
+“Marhaban Ya Ramadhan”
+
+with refined subtitle:
+
+“Selamat Menunaikan Ibadah Puasa”
+Typography style: elegant Islamic calligraphy blended with luxury serif font, gold foil embossed effect, refined spacing, balanced placement.
+Composition: centered and balanced layout, luxurious postcard aesthetic, clean negative space, harmonious design, ultra-detailed, photorealistic, premium Ramadan celebration theme. Adapt framing naturally to match the reference image orientation or vertical cinematic layout if needed.`
+},
+"ai-141": {
+    title: "RAMADHAN",
+    videoUrl: "",
+    text: `Create an ultra-realistic elegant Ramadan greeting postcard using the uploaded reference photo. Preserve the exact facial features from the reference image — do not alter eyes, nose, lips, jawline, face shape, skin tone, or original identity. Maintain 100% facial accuracy.
+Adjust outfit based on gender in the reference photo:
+
+If male: wear an elegant white or cream baju koko with subtle embroidery details, clean, refined, and sophisticated.
+If female: wear a beautifully styled hijab that follows the natural head shape from the reference, paired with modest Muslim attire in soft neutral tones (white, cream, pastel, or soft gold accents), elegant and graceful.
+Pose: natural and composed. Can be seated gracefully or standing calmly. Expression warm, serene, and sincere (soft smile, not exaggerated). Hands positioned politely in front or relaxed naturally.
+Background: deep emerald green luxurious backdrop with intricate Islamic gold geometric patterns and refined arabesque ornaments. Add subtle glowing golden lanterns, soft crescent moon accent, elegant gold decorative frame elements, and gentle warm bokeh light for a festive Ramadan ambiance.
+Lighting: soft cinematic studio lighting, warm highlights, subtle rim light separation, smooth skin texture, ultra-detailed fabric texture, realistic shadows, professional photography look, high dynamic range, sharp focus, premium greeting card quality.
+Typography (gold embossed effect):
+
+“Marhaban Ya Ramadhan”
+
+with refined subtitle:
+
+“Selamat Menunaikan Ibadah Puasa”
+Typography style: elegant Islamic calligraphy blended with luxury serif font, gold foil embossed effect, refined spacing, balanced placement.
+Composition: centered and balanced layout, luxurious postcard aesthetic, clean negative space, harmonious design, ultra-detailed, photorealistic, premium Ramadan celebration theme. Adapt framing naturally to match the reference image orientation or vertical cinematic layout if needed.`
+},
+"ai-142": {
+    title: "Marhaban Ya Ramadhan",
+    videoUrl: "",
+    text: `Create an elegant Ramadan greeting postcard that combines digital embossed carving art in the background with classical heavy impasto oil painting on the subject, using the uploaded reference photo while preserving 100% exact facial features and identity (do not alter eyes, nose, lips, face structure, proportions, or likeness); adjust outfit according to gender in the reference—if male, wear a refined white or cream baju koko with subtle embroidery, if female, wear a graceful modest hijab and elegant Muslim attire in soft neutral tones—render the subject in dramatic Rembrandt-inspired impasto oil painting style with extremely thick palette-knife strokes, sculpted layered paint buildup, visible ridges, cracked micro-texture, tactile depth, and three-dimensional raised paint casting tiny realistic shadows on the canvas; apply warm chiaroscuro lighting with golden highlights on one side of the face and deep shadow falloff for classical depth; design the background as luxurious deep emerald green digital art with intricate Islamic geometric patterns and arabesque ornaments in detailed gold embossed carving style, metallic, polished, slightly reflective, with dimensional bevel and soft glow accents, subtle crescent moon and lantern motifs integrated harmoniously; maintain calm, serene, dignified expression with gentle natural smile, seated or standing gracefully; include clearly legible and correctly spelled gold embossed text reading exactly: “Marhaban Ya Ramadhan” and “Selamat Menunaikan Ibadah Puasa”, with refined spacing and premium finish; ultra-detailed, high contrast, museum-quality subject painting blended seamlessly with modern embossed ornamental backdrop, spiritual, luxurious, and visually striking.`
+},
+"ai-143": {
+    title: "Marhaban Ya Ramadhan",
+    videoUrl: "",
+    text: `Create an elegant Ramadan greeting postcard that combines digital embossed carving art in the background with classical heavy impasto oil painting on the subject, using the uploaded reference photo while preserving 100% exact facial features and identity (do not alter eyes, nose, lips, face structure, proportions, or likeness); adjust outfit according to gender in the reference—if male, wear a refined white or cream baju koko with subtle embroidery, if female, wear a graceful modest hijab and elegant Muslim attire in soft neutral tones—render the subject in dramatic Rembrandt-inspired impasto oil painting style with extremely thick palette-knife strokes, sculpted layered paint buildup, visible ridges, cracked micro-texture, tactile depth, and three-dimensional raised paint casting tiny realistic shadows on the canvas; apply warm chiaroscuro lighting with golden highlights on one side of the face and deep shadow falloff for classical depth; design the background as luxurious deep emerald green digital art with intricate Islamic geometric patterns and arabesque ornaments in detailed gold embossed carving style, metallic, polished, slightly reflective, with dimensional bevel and soft glow accents, subtle crescent moon and lantern motifs integrated harmoniously; maintain calm, serene, dignified expression with gentle natural smile, seated or standing gracefully; include clearly legible and correctly spelled gold embossed text reading exactly: “Marhaban Ya Ramadhan” and “Selamat Menunaikan Ibadah Puasa”, with refined spacing and premium finish; ultra-detailed, high contrast, museum-quality subject painting blended seamlessly with modern embossed ornamental backdrop, spiritual, luxurious, and visually striking.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
