@@ -881,6 +881,21 @@ Composition: centered and balanced layout, luxurious postcard aesthetic, clean n
     title: "PASTEL COLOUR",
     videoUrl: "",
     text: `Extreme close-up watercolor portrait on textured canvas, focusing intensely on the face with elegant modern fashion slightly visible at the edges. Soft pastel base tones — blush pink, lavender, baby blue, mint, peach — contrasted with slightly deeper pastel accents for intensity. Wet-on-wet watercolor technique with rich translucent layers, soft bleeding edges, natural water diffusion, and subtle pigment granulation. The face remains detailed and expressive, softly illuminated, while the background becomes dramatically chaotic. Explosive watercolor splashes burst outward in multiple directions, large fluid paint eruptions, heavy splatters, dripping streaks, scattered droplets, and organic ink-like spreads overlapping dynamic geometric shapes (circles, triangles, abstract curves). Paint appears freshly thrown onto the canvas — energetic motion frozen in time. Visible canvas grain beneath saturated yet semi-transparent pigments. High contrast between delicate facial rendering and wild expressive background. Artistic, emotional, raw, dynamic, high-detail watercolor masterpiece.`
+},
+"ai-148": {
+    title: "MUDIK",
+    videoUrl: "",
+    text: `Use the provided photo as the main face reference and maintain 100% facial accuracy. Do not alter the facial structure, age, skin texture, or maturity level. The eyes, nose, lips, jawline, and hairstyle must remain identical to the reference.
+
+A highly realistic street photography scene showing a man riding a classic Honda CB70 matic-style motorcycle during the chaotic Indonesian mudik travel season. He is wearing blue denim jeans, a denim jacket, a plain white t-shirt, and simple green flip-flops.
+
+On the rear seat and back rack of the motorcycle, there is an absurd but carefully balanced stack of household items tied together with ropes and cargo straps. The stacked items include large luggage bags, cardboard boxes, a refrigerator, and a wooden wardrobe, all arranged in a vertical tower-like structure that still appears physically balanced.
+
+At the very top of the stack, placed carefully and believably, sits a black Toyota Avanza car, positioned horizontally as if it is the final item loaded onto the pile. The car appears realistically scaled but still visually absurd, tightly secured with ropes as if somehow part of the luggage stack.
+
+The man rides calmly through a busy road in Semarang city, surrounded by dense mudik traffic: motorcycles, cars, buses, street vendors, and urban roadside buildings typical of Central Java. Other riders glance in confusion at the impossible cargo tower.
+
+Captured in candid street photography style, natural daylight, slight motion blur from traffic movement, realistic lighting, documentary feel, shallow depth of field, ultra-detailed textures, dust, sunlight reflections on vehicles, authentic Indonesian street atmosphere, photorealistic, 50mm lens, high dynamic range, cinematic realism.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
