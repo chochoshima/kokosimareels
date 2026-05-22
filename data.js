@@ -896,6 +896,25 @@ At the very top of the stack, placed carefully and believably, sits a black Toyo
 The man rides calmly through a busy road in Semarang city, surrounded by dense mudik traffic: motorcycles, cars, buses, street vendors, and urban roadside buildings typical of Central Java. Other riders glance in confusion at the impossible cargo tower.
 
 Captured in candid street photography style, natural daylight, slight motion blur from traffic movement, realistic lighting, documentary feel, shallow depth of field, ultra-detailed textures, dust, sunlight reflections on vehicles, authentic Indonesian street atmosphere, photorealistic, 50mm lens, high dynamic range, cinematic realism.`
+},
+"ai-149": {
+    title: "pixar",
+    videoUrl: "",
+    text: `Transform the provided reference photo into a stylized 3D animated character with a strong Pixar-inspired movie aesthetic while preserving the person’s identity as accurately as possible. The final image must clearly look like a 3D animated film character, not a realistic photo, but the face should remain instantly recognizable as the same person from the reference image.
+IMPORTANT — IDENTITY PRESERVATION: Maintain the original facial structure, face shape, jawline, cheeks, nose shape, lip shape, eye placement, eyebrow shape, hairstyle, skin tone, age appearance, and facial expression from the reference photo. Preserve the exact gender shown in the reference image and do not reinterpret or alter gender in any way.
+The animated stylization should only convert the person into a 3D animation form without changing their core identity. Keep the same facial proportions and recognizable characteristics, including natural smile, serious expression, or facial mood from the reference. Avoid random beautification or generating a different face.
+If the reference photo includes a hijab, preserve the hijab naturally and respectfully in the same recognizable style and shape while adapting it into the 3D animated design.
+Use a stylized animated look inspired by high-end family animated films:
+expressive animated eyes while maintaining original eye shape
+smooth stylized skin shading
+soft rounded animated geometry
+detailed 3D hair or fabric textures
+cinematic animated lighting
+clean and polished non-photorealistic rendering
+charming animated proportions without excessive exaggeration
+Change the outfit into a casual yet elegant style appropriate to the subject while keeping the overall personality and vibe of the reference photo. Outfit should feel fashionable, modern, clean, and believable in animated form.
+Adjust the background into a fully stylized animated environment that matches the subject naturally, such as a cozy indoor setting, modern café, aesthetic city street, or soft cinematic outdoor environment with depth of field and warm atmospheric lighting.
+Create the final image in portrait orientation (9:16), centered composition, ultra-detailed 3D animated render, vibrant but balanced colors, cinematic depth, movie-quality animation style, highly expressive yet identity-accurate character design, clearly animated and not photorealistic.`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
