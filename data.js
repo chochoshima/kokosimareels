@@ -943,6 +943,19 @@ Lighting: dramatic cinematic lighting, high contrast, soft shadows, professional
 Composition: vertical poster framing, centered character, waist-up or mid-body shot, stylish AAA game character poster aesthetic, ultra realistic, premium quality, dynamic atmosphere.
 Color palette: black, dark gray, red neon, orange glow, subtle warm highlights.
 Style: realistic cinematic photography mixed with futuristic Japanese cyberpunk aesthetics, ultra detailed, modern samurai concept art, highly polished visual design, realistic pose and physically accurate proportions.deep face expression`
+},
+"ai-153": {
+    title: "Elite Warrior by chatGPT",
+    videoUrl: "",
+    text: `Create a highly detailed futuristic cyber samurai portrait using the provided reference photo as the main character identity. Preserve the facial structure, hairstyle, skin tone, expression, and overall likeness from the reference image while transforming the character into a modern techwear samurai.
+IMPORTANT: maintain natural human anatomy, realistic body proportions, balanced shoulder width, correct arm length, accurate hand anatomy, and a believable standing pose. The body posture must look relaxed yet powerful, with natural positioning of the katana and clothing folds. Avoid distorted limbs, oversized hands, awkward posture, broken anatomy, or unrealistic body scaling.
+Outfit design: layered futuristic Japanese streetwear mixed with tactical techwear, glossy waterproof fabric, utility straps, oversized jacket, subtle armor details, modern katana. Main outfit colors are matte black with glowing red and orange accents instead of blue. Add subtle neon orange lighting reflections and red energy details across the clothing.
+Background style: cinematic cyberpunk Japanese atmosphere with bold Japanese calligraphy brush strokes, abstract smoke, digital particles, futuristic city textures, floating light fragments, dramatic contrast, and stylish poster composition.
+Mood: mysterious, powerful, calm, elite warrior aura.
+Lighting: dramatic cinematic lighting, high contrast, soft shadows, professional fashion photography look, ultra detailed skin texture, realistic fabric detail, sharp focus.
+Composition: vertical poster framing, centered character, waist-up or mid-body shot, stylish AAA game character poster aesthetic, ultra realistic, premium quality, dynamic atmosphere.
+Color palette: black, dark gray, red neon, orange glow, subtle warm highlights.
+Style: realistic cinematic photography mixed with futuristic Japanese cyberpunk aesthetics, ultra detailed, modern samurai concept art, highly polished visual design, realistic pose and physically accurate proportions.deep face expression`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
