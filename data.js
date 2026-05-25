@@ -923,6 +923,26 @@ Create the final image in portrait orientation (9:16), centered composition, ult
 The motorcycle has NO standard exhaust pipe at all. Instead, the entire exhaust system is replaced by a giant brass tuba integrated directly into the motorcycle engine. The tuba functions as the exhaust itself, mounted horizontally along the lower side of the bike following the natural exhaust path. The curved brass tubing connects directly from the engine block and flows toward the rear wheel area like a real exhaust system. The massive tuba bell replaces the muffler tip completely.
 The tuba exhaust must look mechanically believable despite the absurd concept — realistic welded joints, clamps, mounting brackets, heat discoloration near the engine, soot residue inside the bell opening, scratched brass surface, fingerprints, bolts, vibration supports, and authentic custom motorcycle engineering details. No original exhaust parts visible anywhere.
 Main visual focus is the bizarre oversized tuba exhaust integrated seamlessly into the motorcycle body. Use cinematic low-angle street photography composition emphasizing the engine connection and giant brass horn shape. Nearby people subtly stare in confusion or amusement while the rider remains calm and casual. Ultra detailed textures, grounded realism mixed with absurd engineering, natural daylight, documentary-style photography, realistic Indonesian roadside atmosphere, shallow depth of field, 35mm lens look, subtle motion blur on surroundings.`
+},
+"ai-151": {
+    title: "WAR ROBOT",
+    videoUrl: "",
+    text: `Gunakan foto referensi seseorang sebagai karakter utama, pertahankan identitas wajah, bentuk wajah, gaya rambut, ekspresi, dan ciri khas asli dari foto referensi. Buat adegan full realistic dengan kualitas fotografi profesional sinematik. Karakter sedang duduk santai di tengah reruntuhan gedung futuristis pasca perang pada siang hari, pose natural dan percaya diri di atas puing beton, besi hancur, dan sisa bangunan rusak. Karakter memegang senjata futuristis sci-fi dengan desain realistis modern, detail mekanikal presisi, dan material logam berkualitas tinggi.
+Di latar belakang terdapat sebuah mobile suit robot raksasa original design, bukan gundam dan tidak menyerupai franchise tertentu. Robot tampil sangat realistis seperti mesin perang futuristis nyata, dengan armor berat industrial, mechanical joints kompleks, battle damage halus, goresan logam, debu, dan detail teknis yang sangat rinci. Ukuran robot sangat besar mendominasi latar belakang namun tetap terlihat realistis secara perspektif dan pencahayaan.
+Suasana siang hari dengan cahaya matahari terang dramatis menembus debu dan asap tipis di area reruntuhan kota futuristis. Lingkungan dipenuhi gedung rusak, kabel menjuntai, papan hologram mati, puing berserakan, dan atmosfer dystopian modern. Gunakan gaya visual realistic professional photography, ultra photorealistic, cinematic composition, realistic human anatomy, highly detailed textures, natural daylight, volumetric sunlight, realistic shadows, depth of field, HDR photography, sharp focus, movie still quality, immersive sci-fi ambience, masterpiece quality, extremely detailed.`
+},
+"ai-152": {
+    title: "Elite Warrior",
+    videoUrl: "",
+    text: `Create a highly detailed futuristic cyber samurai portrait using the provided reference photo as the main character identity. Preserve the facial structure, hairstyle, skin tone, expression, and overall likeness from the reference image while transforming the character into a modern techwear samurai.
+IMPORTANT: maintain natural human anatomy, realistic body proportions, balanced shoulder width, correct arm length, accurate hand anatomy, and a believable standing pose. The body posture must look relaxed yet powerful, with natural positioning of the katana and clothing folds. Avoid distorted limbs, oversized hands, awkward posture, broken anatomy, or unrealistic body scaling.
+Outfit design: layered futuristic Japanese streetwear mixed with tactical techwear, glossy waterproof fabric, utility straps, oversized jacket, subtle armor details, modern katana. Main outfit colors are matte black with glowing red and orange accents instead of blue. Add subtle neon orange lighting reflections and red energy details across the clothing.
+Background style: cinematic cyberpunk Japanese atmosphere with bold Japanese calligraphy brush strokes, abstract smoke, digital particles, futuristic city textures, floating light fragments, dramatic contrast, and stylish poster composition.
+Mood: mysterious, powerful, calm, elite warrior aura.
+Lighting: dramatic cinematic lighting, high contrast, soft shadows, professional fashion photography look, ultra detailed skin texture, realistic fabric detail, sharp focus.
+Composition: vertical poster framing, centered character, waist-up or mid-body shot, stylish AAA game character poster aesthetic, ultra realistic, premium quality, dynamic atmosphere.
+Color palette: black, dark gray, red neon, orange glow, subtle warm highlights.
+Style: realistic cinematic photography mixed with futuristic Japanese cyberpunk aesthetics, ultra detailed, modern samurai concept art, highly polished visual design, realistic pose and physically accurate proportions.deep face expression`
 }
 };
 Object.entries(PROMPT_DATABASE).forEach(([key, item]) => {
